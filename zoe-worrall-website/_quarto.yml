@@ -20,6 +20,9 @@ website:
 
       - href: projects/project_listings.qmd
 
+      - text: "Blog"
+      - href: e-155_website/blog.qmd
+
       - href: art/index.qmd
 
       - href: contacts/index.qmd
