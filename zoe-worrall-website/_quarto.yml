@@ -20,16 +20,16 @@ website:
 
       - href: projects/project_listings.qmd
 
-      - text: "Blog"
-      - href: blog.qmd
-
       - href: art/index.qmd
 
       - href: contacts/index.qmd
 
+      - href: e_155.qmd
+
   sidebar:
     - title: "About Past Work"
       contents:
+       - e_155.qmd
        - projects/open_ivis.qmd
        - projects/mci_lci.qmd
        - contact.qmd
