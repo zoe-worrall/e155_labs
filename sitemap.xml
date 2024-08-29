@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zoe-worrall.github.io/e155_labs/e-155_website/blog.html</loc>
-    <lastmod>2024-08-28T15:07:56.942Z</lastmod>
+    <lastmod>2024-08-29T16:04:37.071Z</lastmod>
   </url>
   <url>
-    <loc>https://zoe-worrall.github.io/e155_labs/e-155_website/posts/001_post_2024-08-28.html</loc>
-    <lastmod>2024-08-28T15:08:44.891Z</lastmod>
+    <loc>https://zoe-worrall.github.io/e155_labs/e-155_website/e_155.html</loc>
+    <lastmod>2024-08-29T16:23:18.300Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zoe-worrall.github.io/e155_labs/e-155_website/labs/lab1/lab1.html</loc>
+    <lastmod>2024-08-29T16:08:36.465Z</lastmod>
   </url>
   <url>
     <loc>https://zoe-worrall.github.io/e155_labs/index.html</loc>
@@ -17,11 +21,15 @@
     <lastmod>2024-08-28T15:03:51.247Z</lastmod>
   </url>
   <url>
-    <loc>https://zoe-worrall.github.io/e155_labs/e_155.html</loc>
-    <lastmod>2024-08-29T15:42:15.936Z</lastmod>
+    <loc>https://zoe-worrall.github.io/e155_labs/contacts/index.html</loc>
+    <lastmod>2024-08-29T15:57:53.180Z</lastmod>
   </url>
   <url>
     <loc>https://zoe-worrall.github.io/e155_labs/about.html</loc>
     <lastmod>2024-08-28T15:05:07.162Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zoe-worrall.github.io/e155_labs/e-155_website/posts/001_post_2024-08-28.html</loc>
+    <lastmod>2024-08-28T15:08:44.891Z</lastmod>
   </url>
 </urlset>

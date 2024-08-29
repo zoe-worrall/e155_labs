@@ -2,7 +2,7 @@
   {
     "objectID": "e-155_website/blog.html",
     "href": "e-155_website/blog.html",
-    "title": "E155 Blog",
+    "title": "Blog",
     "section": "",
     "text": "Hello Quarto\n\n\n\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nAug 23, 2024\n\n\nZoe Worrall\n\n\n\n\n\n\nNo matching items"
   },
@@ -12,6 +12,13 @@
     "title": "Zoe Worrall’s Website",
     "section": "",
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "contacts/index.html",
+    "href": "contacts/index.html",
+    "title": "Contact Me",
+    "section": "",
+    "text": "Social Media\nMy Github can be found here!\nFollow me on LinkedIn here\nIf you’d like to reach out to me via email, please direct it to zworrall@g.hmc.edu"
   },
   {
     "objectID": "about.html",

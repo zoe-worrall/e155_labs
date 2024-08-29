@@ -73,13 +73,11 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="zoe_text.css">
 <meta property="og:title" content="Zoe Worrall’s Website - E155 Webpage">
 <meta property="og:description" content="Microprocessors: Projects and Labs">
-<meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/images/img_test.png">
+<meta property="og:image" content="images/img_test.png">
 <meta property="og:site_name" content="Zoe Worrall's Website">
-<meta property="og:image:height" content="100">
-<meta property="og:image:width" content="100">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -95,26 +93,22 @@ ul.task-list li input[type="checkbox"] {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="./projects/project_listings.qmd"> 
-<span class="menu-text"></span></a>
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./e_155.html" aria-current="page"> 
+<span class="menu-text">E155 Webpage</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./e-155_website/blog.html"> 
-<span class="menu-text">E155 Blog</span></a>
+<span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./art/index.html"> 
 <span class="menu-text">Zoe Worrall’s Artworks</span></a>
   </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="./contacts/index.qmd"> 
-<span class="menu-text"></span></a>
-  </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./e_155.html" aria-current="page"> 
-<span class="menu-text">E155 Webpage</span></a>
+    <a class="nav-link" href="./contacts/index.html"> 
+<span class="menu-text">Contact Me</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -122,48 +116,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./e_155.html">E155 Webpage</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./e_155.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">E155 Webpage</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
- <span class="menu-text">projects/open_ivis.qmd</span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">projects/mci_lci.qmd</span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">contact.qmd</span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">mudd_clinic_2024.qmd</span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">art.qmd</span>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
@@ -287,7 +243,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/zoe-worrall\.github\.io\/e155_labs\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -624,14 +580,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
-    <a class="nav-link" href="./1.qmd">
-<p>lol</p>
-</a>
-  </li>  
-    <li class="nav-item">
-    <a class="nav-link" href="./1.qmd">
-<p>lol</p>
-</a>
+    <a class="nav-link" href="https://github.com/zoe-worrall">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
   </li>  
 </ul>
     </div>
