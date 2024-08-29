@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "e-155_website/blog.html",
+    "href": "e-155_website/blog.html",
+    "title": "E155 Blog",
+    "section": "",
+    "text": "Hello Quarto\n\n\n\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nAug 23, 2024\n\n\nZoe Worrall\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Zoe Worrall’s Website",
@@ -33,12 +40,5 @@
     "title": "About",
     "section": "Art",
     "text": "Art\nIn addition to majoring in Engineering, I am also pursuing a concentration in Studio Art."
-  },
-  {
-    "objectID": "posts/blog.html",
-    "href": "posts/blog.html",
-    "title": "E155 Blog",
-    "section": "",
-    "text": "No matching items"
   }
 ]
