@@ -4,7 +4,7 @@
     padding-top: 0;
     padding-bottom: 0;
     font-family: 'Oswald';
-    font-size: 1em;
+    font-size: 0.6em;
   }
   
   @media (max-width: 991px) {
@@ -22,7 +22,7 @@
     padding-top: 0;
     padding-bottom: 0;
     margin-right: 0;
-    margin-left: 1em;
+    margin-left: 0.5em;
   }
   
   @media (max-width: 767px) {
@@ -55,9 +55,9 @@
     font-weight: 400;
   }
   
-  @media (max-width: 991px) {
+  @media (max-width: 2000px) {
   .navbar-nav .nav-link {
-    color: white;
+    color: #0b36b6;
     font-weight: 400;
   }
   }

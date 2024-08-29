@@ -1,10 +1,9 @@
-project:
-  preview:
-    port: 5029
-  type: website
+---
+title: "E155 Webpage"
+subtitle: "Microprocessors: Projects and Labs"
 
 website:
-  title: "Zoe Worrall's Website"
+  title: "MicrorProcessors"
   image: images/img_test.png
   favicon: images/bg_test.png
   open-graph: true
@@ -16,10 +15,8 @@ website:
     title: false
     collapse-below: lg
     left:
-      - href: e-155_website/e_155.qmd
-      - href: e-155_website/blog.qmd
-      - href: art/index.qmd
-      - href: contacts/index.qmd
+      - href: blog.qmd
+      - href: labs/lab1/lab1.qmd
 
   page-navigation: true
 
@@ -48,3 +45,5 @@ format:
 
 execute: 
   freeze: auto  # basically ensures that R, Python, and Julia code is only executed locally
+---
+
