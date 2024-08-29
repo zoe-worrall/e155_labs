@@ -1,0 +1,16 @@
+---
+pagetitle: Artworks | Zoe Worrall
+title: Zoe Worrall's Artworks
+subtitle: Digital and Studio | Past and Present
+search: false
+repo-actions: false
+listing:
+  contents: artworks
+  sort: "title desc"
+  type: grid
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  page-size: 12
+comments: false
+---

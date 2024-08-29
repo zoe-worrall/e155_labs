@@ -1,0 +1,73 @@
+project:
+  preview:
+    port: 5029
+  type: website
+
+website:
+  title: "Zoe Worrall's Website"
+  image: images/img_test.png
+  favicon: images/bg_test.png
+  open-graph: true
+  navbar:
+    toggle-position: right
+    background: "#f0eeeb"
+    logo: images/img_test.png
+    logo-alt: "Test Image"
+    title: false
+    collapse-below: lg
+    right:
+      - href: about/index.qmd
+
+      - href: projects/project_listings.qmd
+
+      - text: "Blog"
+      - href: blog.qmd
+
+      - href: art/index.qmd
+
+      - href: contacts/index.qmd
+
+  sidebar:
+    - title: "About Past Work"
+      contents:
+       - projects/open_ivis.qmd
+       - projects/mci_lci.qmd
+       - contact.qmd
+       - mudd_clinic_2024.qmd
+       - art.qmd
+    - title: "Artworks Past and Present"
+      contents:
+       - art/digital.qmd 
+       - art/studio.qmd
+
+  page-navigation: true
+
+  back-to-top-navigation: false
+
+  page-footer:
+    background: "#000000"
+    left: |
+      Copyright
+    center:
+      - href: 1.qmd
+        icon: github
+        aria-label: GitHub
+      - href: 1.qmd
+        text: "lol"
+        aria-label: RWDS Zenodo community
+    right: |
+
+
+format:
+  html:
+    theme: [lux, zoe_text.scss]
+    css: zoe_text.css
+    toc: true
+    smooth-scroll: true
+    grid:
+      sidebar-width: 0px
+      body-width: 1000px
+      margin-width: 250px
+
+execute: 
+  freeze: auto  # basically ensures that R, Python, and Julia code is only executed locally
