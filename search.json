@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Zoe Worrall’s Website",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Mae g’ovannen! My name is Zoe Worrall, and I am currently a senior Engineering Major at Harvey Mudd College. Although I have experience with a broad range of engineering topics including materials engineering, continuum mechanics, and manufacturing, my primary interests lie in signal processing, radio frequency, and optical systems."
+  },
+  {
+    "objectID": "about.html#welcome",
+    "href": "about.html#welcome",
+    "title": "About",
+    "section": "",
+    "text": "Mae g’ovannen! My name is Zoe Worrall, and I am currently a senior Engineering Major at Harvey Mudd College. Although I have experience with a broad range of engineering topics including materials engineering, continuum mechanics, and manufacturing, my primary interests lie in signal processing, radio frequency, and optical systems."
+  },
+  {
+    "objectID": "about.html#engineering",
+    "href": "about.html#engineering",
+    "title": "About",
+    "section": "Engineering",
+    "text": "Engineering\nMudd’s general Engineering gives its students a strong background in a variety of subjects, but by far what has clicked with me the most in my schooling has been electrical engineering, especially through research.\nWhether it was working under PI Dr. Jason Gallicchio on software defined radio, or within the Harvey Mudd Biophotonics Lab with Dr. Joshua Brake, I’ve learned to work with electromagnetic waves, their generation, and their processing.\nMy favorite courses at HMC have included E&M, Data Structures for C++, Digital Design and Computer Architecture, analog circuit design, and Systems Engineering."
+  },
+  {
+    "objectID": "about.html#art",
+    "href": "about.html#art",
+    "title": "About",
+    "section": "Art",
+    "text": "Art\nIn addition to majoring in Engineering, I am also pursuing a concentration in Studio Art."
+  },
+  {
+    "objectID": "posts/blog.html",
+    "href": "posts/blog.html",
+    "title": "E155 Blog",
+    "section": "",
+    "text": "No matching items"
+  }
+]
