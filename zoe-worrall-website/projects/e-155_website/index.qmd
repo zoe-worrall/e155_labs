@@ -1,5 +1,5 @@
 ---
-title: "E155 Project"
+title: "E155 Labs"
 listing:
   contents:
   - "labs/lab1/lab1.qmd"

@@ -15,12 +15,20 @@ website:
     title: false
     collapse-below: lg
     left:
-      - href: projects/e-155_website/e_155.qmd
       - href: projects/e-155_website/blog.qmd
+      - text: "E155 Labs"
+        menu:
+        - href: projects/e-155_website/labs/lab1/lab1.qmd
+        - href: projects/e-155_website/labs/lab2/lab2.qmd
+        - href: projects/e-155_website/labs/lab3/lab3.qmd
+        - href: projects/e-155_website/labs/lab4/lab4.qmd
+        - href: projects/e-155_website/labs/lab5/lab5.qmd
+        - href: projects/e-155_website/labs/lab6/lab6.qmd
+        - href: projects/e-155_website/labs/lab7/lab7.qmd
       - text: "Projects"
-      - menu: 
+        menu: 
         - text: "E155 Project"
-          href: projects/e-155_website/e_155.qmd
+          href: projects/e-155_website
         - href: projects/E80_sub.qmd
         - href: projects/mcf_lci.qmd
         - href: projects/open_ivis.qmd
@@ -38,6 +46,8 @@ website:
     center:
       - icon: github
         href: https://github.com/zoe-worrall
+      - icon: linkedin
+        href: https://www.linkedin.com/in/zoeworrall
     right: |
 
 
