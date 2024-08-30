@@ -1,0 +1,8 @@
+---
+title: "Engineering Systems E80"
+subtitle: Implementing sonar, salinity, and temperature sensors on a ocean-launchable submarine
+sidebar: false
+page-layout: article
+toc: false
+title-block-banner: true
+---

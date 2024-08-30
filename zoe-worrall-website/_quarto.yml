@@ -16,8 +16,15 @@ website:
     title: false
     collapse-below: lg
     left:
-      - href: e-155_website/e_155.qmd
-      - href: e-155_website/blog.qmd
+      - href: projects/e-155_website/e_155.qmd
+      - href: projects/e-155_website/blog.qmd
+      - text: "Projects"
+      - menu: 
+        - text: "E155 Project"
+          href: projects/e-155_website
+        - href: projects/E80_sub.qmd
+        - href: projects/mcf_lci.qmd
+        - href: projects/open_ivis.qmd
       - href: art/index.qmd
       - href: contacts/index.qmd
 

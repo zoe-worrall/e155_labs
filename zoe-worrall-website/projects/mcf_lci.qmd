@@ -1,0 +1,24 @@
+---
+title: "Multicore Fiber Bundle Low Coherence Interferometry Research"
+subtitle: Designing a system for in-situ imaging using multicore optic fiber
+sidebar: false
+page-layout: article
+toc: false
+title-block-banner: true
+---
+
+## What is the Goal?
+Brain imaging capabilities such as fMRI scans, although broad in capability, normally face issues when it comes to creating images with spatial and temporal resolution. Light increases the capabilities of both of these, but is limited by conventional lenses, which though non-intrusive causes a great degree of scatter, and GRIN lenses, which are wide, stiff intrusions in the context of optical imaging and risk damaging the subject while preventing in-situ imaging. Multicore fibers lie in the  middle of these two. Capable of in-situ imaging and minimally invasive, this system would allow for the high temporal and spatial resolution of light and the benefits of non optical system.
+
+## What I Worked On
+
+
+* **Simulations** – ...
+* **SLM Calibrations** – ...
+* **Interferometry** – ...
+* **Software Connections** – U1800 Camera, pco.panda Camera, NiDAQmx...
+
+## Want to Learn More?
+See [the HMC Biophotonics Lab page](https://pages.hmc.edu/biophotonics/).
+
+Multicore Fiber Bundle LCI is one of the research projects run by Mudd Professor Josh Brake at Harvey Mudd College.

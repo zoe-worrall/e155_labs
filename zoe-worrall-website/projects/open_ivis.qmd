@@ -1,0 +1,25 @@
+---
+title: "openIVIS"
+subtitle: Creating an open source, modular in-vivo imaging system
+sidebar: false
+page-layout: article
+toc: false
+title-block-banner: true
+---
+OpenIVIS is one of the research projects run by Mudd Professor Josh Brake at Harvey Mudd College, in conjunction with Colorado School of Mines and with the additional support of the National Science Foundation and the Zuckerburg Chan Trust. Having aided in its progression towards increased imaging modularity, I helped to publish a paper on the topic. 
+
+This research is still in progress, although I am no longer working in this lab.
+
+## What is the Goal?
+Much of the in-vivo imaging research available to small universities and labs is too expensive to use, or may be too risky to pursue, most machines costing hundreds of thousands of dollars and only being available or more accessible to larger organizations. The purpose of openIVIS is to construct a cheap in-vivo imaging system with easily accessible materials. Although openIVIS will not replace the current, expensive opportunities that exist, the goal of this project is to design an alternative stepping stone that will allow labratories to perform fundamental, proof of concept tests that they would otherwise find difficult to attain. All of this will be done in an open-source context, with an accessible GUI, CAD designs, computer systems, and types of imaging.
+
+## What I Worked On
+I worked with the openIVIS project from Fall 2023 to Fall 2024. Within that time, I created a new CAD design for the system's shell, and worked on its imaging capabilities using laser speckle contrast imaging (LSCI).
+
+* **CAD Designs** – Originally, the designs supplied by Colorado School of Mines had straight edges for the box, which did not provide for easy assembly. I worked within SolidWorks to build a new box model of the same dimensions that would use puzzle-piece layout to fit the pieces more snuggly, and to prevent light from entering the box.
+* **Machining** – Using the HMC Machine Shop and Makerspace, I used a lathe, drill, laser cutter, and 3D printers to create the parts necessary for the assembly of the system.
+* **Laser Speckle Contrast Imaging** – Based on the idea of low exposure time leading to increased blurriness of moving objects, my main focus was to create LSCI capabilities for the openIVIS system. This was done by programming of 20+ Python models of different fourier transforms and cross correlations of both simulated and actual data. By the end of summer, 2023, the system was performing rudimentary imaging of moving liquid encased in diffusing material that was otherwise invisible to the naked eye and the camara.
+* **Fluorescent Imaging** – I created a basic CAD design for implementing LED lights on top of the box that would be kept out of the box to prevent overheating. This design was 3D printed, and is currently one of the prototypes that have aided in the progression of the project.
+
+## Want to Learn More?
+See [the HMC Biophotonics Lab page](https://pages.hmc.edu/biophotonics/), as well as the [Colorado School of Mines research paper](https://www.biorxiv.org/content/10.1101/2023.10.06.561111v1) on which I am listed.
