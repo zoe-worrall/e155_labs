@@ -1,31 +1,10 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
     "section": "",
-    "text": "Mae g’ovannen! My name is Zoe Worrall, and I am currently a senior Engineering Major at Harvey Mudd College. Although I have experience with a broad range of engineering topics including materials engineering, continuum mechanics, and manufacturing, my primary interests lie in signal processing, radio frequency, and optical systems."
-  },
-  {
-    "objectID": "about.html#welcome",
-    "href": "about.html#welcome",
-    "title": "About",
-    "section": "",
-    "text": "Mae g’ovannen! My name is Zoe Worrall, and I am currently a senior Engineering Major at Harvey Mudd College. Although I have experience with a broad range of engineering topics including materials engineering, continuum mechanics, and manufacturing, my primary interests lie in signal processing, radio frequency, and optical systems."
-  },
-  {
-    "objectID": "about.html#engineering",
-    "href": "about.html#engineering",
-    "title": "About",
-    "section": "Engineering",
-    "text": "Engineering\nMudd’s general Engineering gives its students a strong background in a variety of subjects, but by far what has clicked with me the most in my schooling has been electrical engineering, especially through research.\nWhether it was working under PI Dr. Jason Gallicchio on software defined radio, or within the Harvey Mudd Biophotonics Lab with Dr. Joshua Brake, I’ve learned to work with electromagnetic waves, their generation, and their processing.\nMy favorite courses at HMC have included E&M, Data Structures for C++, Digital Design and Computer Architecture, analog circuit design, and Systems Engineering."
-  },
-  {
-    "objectID": "about.html#art",
-    "href": "about.html#art",
-    "title": "About",
-    "section": "Art",
-    "text": "Art\nIn addition to majoring in Engineering, I am also pursuing a concentration in Studio Art."
+    "text": "Link to the E155 Lab Website\nLink to the HMC Biophotonics Lab"
   },
   {
     "objectID": "contacts/index.html",
@@ -65,7 +44,7 @@
   {
     "objectID": "projects/e-155_website/index.html",
     "href": "projects/e-155_website/index.html",
-    "title": "E155 Project",
+    "title": "E155 Labs",
     "section": "",
     "text": "Lab 1 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 2 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 3 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 4 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 5 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 6 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 7 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
@@ -75,6 +54,13 @@
     "title": "Is ‘Smart’ Really a Thing?",
     "section": "",
     "text": "Is “Smart” really a thing?\nI have a distinct memory from my time in elementary school of realizing that being smart is a very relative thing. The fact is, even elementary school students can understand that there’s a grey area when it comes to “intellectual prowess”: it is weird, in that way, that we try to decide and define who is smart and who isn’t. Sometimes, there are outliers of course - no one would ever really try to fight me if I said that Einstein was a genius. And yet, to me “smart” remains a very loaded word.\nThe main aspect of “smartness” I was thinking about in lower school was smartness in a multitude of categories: even if I may be book smart, for example, I have a very difficult time understanding people, and when it comes to social interactions I’m relatively hopeless. Smartness, from my perspective, ought to be considered more like (and forgive my references here) a Dungeons and Dragons character sheet rather than as some individual thing that measures solely how much someone has memorized flash card.\nAs a society, we’ve definitely been moving in the correct direction – standardized testing becoming optional for many schools is one of the first steps to recognizing the multitude of “smart” categories of students, and it will likely bring about a great degree of change for the better in multiple institutions. There obviously remains a long path to this recognition, however, and to that extent I’ve come up with a few paths I think might be able to be followed. The primary goal of these paths, or initiatives, would be to actively support the “smartness” of students not only in their intelligence, but in their five other categories as well (although I will mainly want to focus on Constitution, Wisdom, and Charisma).\nFor those unitiated in Dungeons and Dragons, I’ve provided a short, handy example of each of the six stats explained using tomatoes.\n\n\n\nImage of Tomato DnD Chart\n\n\nBased off of the DnD chart:\n\n(Constitution): How often has there been a friend that is just inherently in tune with their own body? This applies particularly to athletes and to dancers; the reason why I’d say that this falls under my terminology for “smart” is that this is a skill, based in understanding, that must be incessently worked at. Over time, you need enough experience with moving, working out, or playing games to understand yourself. The best way that we might begin incorporating a greater degree of respect for this “smartness” would likely be similar to the gym classes we have now; however, it relies on the coaches or teachers leading these activities encouraging learning about physical improvement, and applauding personal growth (not just natural skill)\n(Wisdom): This is street smarts, and although it can’t really be taught, it is always good to introduce new material to kids in class. I think running small sessions of activities that have unexpected or unrecognizable projects would aid in improving “wisdom smartness”.\n(Charisma): This one is quite important, and quite often overlooked. Charisma is a trait that is often built up from a very young age, and I know that I for one struggle with it. This smartness was my primary inspiration for thinking this in elementary school; knowing social interactions, when to speak, what is funny to say, when to say it, is difficult. As adults we’ve honed in on proper timing in converstaions, or proper topics to discuss, but as children most of the time this is only learned through peer-to-peer interaction. I’d say that in this case, the problem is less about teaching Charisma “smartness” and more about acknowledging it; potentially in school, especially lower levels of schooling, taking time to acknowledge feats of charisma, or running small programs where students share what they admire about how other people interact with them. The main point here is cognizance of the importance of social awareness.\n\nThere’s something to be said for teachers and mentors being involved outside of the classroom. I think at the end of the day, what I really wanted to get across with this post is the fact that students should acknowledge a variety of talents that they have, not just the ones that they demonstrate via memorization or in class."
+  },
+  {
+    "objectID": "projects/e-155_website/labs/lab1/lab1.html#the-basic-blueprint-plan",
+    "href": "projects/e-155_website/labs/lab1/lab1.html#the-basic-blueprint-plan",
+    "title": "Lab 1 Initial Page",
+    "section": "The basic blueprint plan",
+    "text": "The basic blueprint plan\nPDF insert of the lab report will go here"
   },
   {
     "objectID": "projects/mcf_lci.html",
@@ -105,46 +91,46 @@
     "text": "Want to Learn More?\nSee the HMC Biophotonics Lab page.\nMulticore Fiber Bundle LCI is one of the research projects run by Mudd Professor Josh Brake at Harvey Mudd College."
   },
   {
-    "objectID": "projects/e-155_website/labs/lab1/lab1.html",
-    "href": "projects/e-155_website/labs/lab1/lab1.html",
-    "title": "Lab 1 Initial Page",
+    "objectID": "projects/e-155_website/posts/initial_learning_goals.html",
+    "href": "projects/e-155_website/posts/initial_learning_goals.html",
+    "title": "E155: Learning Goals",
     "section": "",
-    "text": "PDF insert of the lab report will go here"
+    "text": "My final goals for MicroP’s mainly revolve around getting more familiar with FPGA boards, as well as practicing my time management skills. This semester is set up to be packed with a lot of material, but it is all material that focuses mainly on projects rather than problem sets: resultantly, it’s an excellent way to hone in on my organization and my calendar skills.\nAdditionally, it has been about a year since I took E85, which means that many of my Verilog skills that I built up are rusty; this ought to be an excellent way to get back into programming in SystemVerilog. Additionally, FPGA’s are heavily used within the radio transmitting and signal processing world, and so I think it’s very important that I learn how to interact with them, even at their most basic level.\nFinally, I’m excited that this course incorporates Quarto and Github! It was not something that I was anticipating, but I believe that one of my final goals with this course is to build some additional professional skills that will allow me to present my work better, whether in academia or in industry."
   },
   {
-    "objectID": "projects/e-155_website/labs/lab1/lab1.html#the-basic-blueprint-plan",
-    "href": "projects/e-155_website/labs/lab1/lab1.html#the-basic-blueprint-plan",
-    "title": "Lab 1 Initial Page",
+    "objectID": "projects/e-155_website/posts/initial_learning_goals.html#my-thoughts",
+    "href": "projects/e-155_website/posts/initial_learning_goals.html#my-thoughts",
+    "title": "E155: Learning Goals",
     "section": "",
-    "text": "PDF insert of the lab report will go here"
+    "text": "My final goals for MicroP’s mainly revolve around getting more familiar with FPGA boards, as well as practicing my time management skills. This semester is set up to be packed with a lot of material, but it is all material that focuses mainly on projects rather than problem sets: resultantly, it’s an excellent way to hone in on my organization and my calendar skills.\nAdditionally, it has been about a year since I took E85, which means that many of my Verilog skills that I built up are rusty; this ought to be an excellent way to get back into programming in SystemVerilog. Additionally, FPGA’s are heavily used within the radio transmitting and signal processing world, and so I think it’s very important that I learn how to interact with them, even at their most basic level.\nFinally, I’m excited that this course incorporates Quarto and Github! It was not something that I was anticipating, but I believe that one of my final goals with this course is to build some additional professional skills that will allow me to present my work better, whether in academia or in industry."
   },
   {
     "objectID": "projects/e-155_website/blog.html",
     "href": "projects/e-155_website/blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Is ‘Smart’ Really a Thing?\n\n\n\n\n\nExamining what it means to be smart, and strategies to respect alternative forms of it within the classroom\n\n\n\n\n\nAug 23, 2024\n\n\nZoe Worrall\n\n\n\n\n\n\nNo matching items"
+    "text": "E155: Learning Goals\n\n\n\n\n\n\nblogpost\n\n\n\nExplaining my initial learning goals for MicroPs\n\n\n\n\n\nAug 29, 2024\n\n\nZoe Worrall\n\n\n\n\n\n\n\n\n\n\n\n\nIs ‘Smart’ Really a Thing?\n\n\n\n\n\n\nblogpost\n\n\n\nExamining what it means to be smart, and strategies to respect alternative forms of it within the classroom\n\n\n\n\n\nAug 23, 2024\n\n\nZoe Worrall\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Zoe Worrall’s Website",
     "section": "",
-    "text": "Mae g’ovannen! My name is Zoe Worrall, and I am currently a senior Engineering Major at Harvey Mudd College. Although I have experience with a broad range of engineering topics including materials engineering, continuum mechanics, and manufacturing, my primary interests lie in signal processing, radio frequency, and optical systems."
+    "text": "** note for Prof. Brake for E155 (this will be removed later): the links to Github and LinkedIn are in the footbar at the bottom of this page\n\n\nMae g’ovannen! My name is Zoe Worrall, and I am currently a senior Engineering Major at Harvey Mudd College.\nAlthough I have experience with a broad range of engineering topics including materials engineering, continuum mechanics, and manufacturing, my primary interests lie in signal processing, radio frequency, and optical systems.\n\n\nMudd’s general Engineering gives its students a strong background in a variety of subjects, but what has clicked with me the most in my schooling has been electrical engineering, especially through research.\nWhether it was working under PI Dr. Jason Gallicchio on software defined radio, or with research of in-vivo imaging systems in the Harvey Mudd Biophotonics Lab with Dr. Joshua Brake, I’ve learned to work with electromagnetic waves, their generation, and their processing.\n\n\n\n\n\n\nMy favorite courses at HMC have included E&M, Data Structures for C++, Digital Design and Computer Architecture, analog circuit design, and Systems Engineering."
   },
   {
     "objectID": "index.html#welcome",
     "href": "index.html#welcome",
     "title": "Zoe Worrall’s Website",
     "section": "",
-    "text": "Mae g’ovannen! My name is Zoe Worrall, and I am currently a senior Engineering Major at Harvey Mudd College. Although I have experience with a broad range of engineering topics including materials engineering, continuum mechanics, and manufacturing, my primary interests lie in signal processing, radio frequency, and optical systems."
+    "text": "** note for Prof. Brake for E155 (this will be removed later): the links to Github and LinkedIn are in the footbar at the bottom of this page\n\n\nMae g’ovannen! My name is Zoe Worrall, and I am currently a senior Engineering Major at Harvey Mudd College.\nAlthough I have experience with a broad range of engineering topics including materials engineering, continuum mechanics, and manufacturing, my primary interests lie in signal processing, radio frequency, and optical systems.\n\n\nMudd’s general Engineering gives its students a strong background in a variety of subjects, but what has clicked with me the most in my schooling has been electrical engineering, especially through research.\nWhether it was working under PI Dr. Jason Gallicchio on software defined radio, or with research of in-vivo imaging systems in the Harvey Mudd Biophotonics Lab with Dr. Joshua Brake, I’ve learned to work with electromagnetic waves, their generation, and their processing.\n\n\n\n\n\n\nMy favorite courses at HMC have included E&M, Data Structures for C++, Digital Design and Computer Architecture, analog circuit design, and Systems Engineering."
   },
   {
     "objectID": "index.html#engineering",
     "href": "index.html#engineering",
     "title": "Zoe Worrall’s Website",
-    "section": "Engineering",
-    "text": "Engineering\nMudd’s general Engineering gives its students a strong background in a variety of subjects, but what has clicked with me the most in my schooling has been electrical engineering, especially through research.\nWhether it was working under PI Dr. Jason Gallicchio on software defined radio, or with research of in-vivo imaging systems in the Harvey Mudd Biophotonics Lab with Dr. Joshua Brake, I’ve learned to work with electromagnetic waves, their generation, and their processing.\nMy favorite courses at HMC have included E&M, Data Structures for C++, Digital Design and Computer Architecture, analog circuit design, and Systems Engineering."
+    "section": "",
+    "text": "Mudd’s general Engineering gives its students a strong background in a variety of subjects, but what has clicked with me the most in my schooling has been electrical engineering, especially through research.\nWhether it was working under PI Dr. Jason Gallicchio on software defined radio, or with research of in-vivo imaging systems in the Harvey Mudd Biophotonics Lab with Dr. Joshua Brake, I’ve learned to work with electromagnetic waves, their generation, and their processing."
   },
   {
     "objectID": "index.html#art",
