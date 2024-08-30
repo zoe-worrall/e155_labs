@@ -3,7 +3,7 @@
 .navbar {
     padding-top: 0;
     padding-bottom: 0;
-    font-family: 'Oswald';
+    font-family:'Times New Roman';
     font-size: 0.6em;
   }
   
@@ -94,16 +94,15 @@
   }
   
   .dropdown-item {
-    font-family: inherit;
+    font-family:'Times New Roman';
     letter-spacing: 1px;
     display: block;
     width: 100%;
-    padding: 1rem 1rem;
+    padding: 0.5rem 0.5rem;
     clear: both;
-    font-weight: 300;
+    font-weight: 100;
     color: #716ddf;
     text-align: inherit;
-    text-transform: uppercase;
     white-space: nowrap;
     background-color: rgba(0,0,0,0);
     border: 0;
@@ -117,6 +116,7 @@ body.nav-fixed {
   }
   
   #quarto-content {
+    font-family: 'Times New Roman';
     background-color: #f0eeeb;
   }
   
@@ -128,12 +128,16 @@ body.nav-fixed {
     margin-bottom: 0;
   }
 
+  h2.text-heading-default{
+    font-family: "Times New Roman";
+  }
+
 
   /*-- nav footer styles --*/
 
   .nav-footer {
     color: white;
-    font-family: 'Oswald';
+    font-family: 'Times New Roman' !important;
     font-weight: 400;
     padding-left: 1.5em !important;
     padding-right: 1.5em !important;
@@ -155,7 +159,6 @@ body.nav-fixed {
   
   .nav-footer-left .footer-items .nav-link, .nav-footer-center .footer-items .nav-link, .nav-footer-right .footer-items .nav-link {
     font-weight: 400;
-    text-transform: uppercase;
   }
   
   .nav-footer-left .footer-items .nav-item, .nav-footer-center .footer-items .nav-item, .nav-footer-right .footer-items .nav-item {
@@ -165,9 +168,9 @@ body.nav-fixed {
   }
   
   .nav-footer-left {
-    font-family: 'Montserrat';
+    font-family:'Times New Roman';
   }
   
   .nav-footer-right {
-    font-family: 'Montserrat';
+    font-family:'Times New Roman';
   }

@@ -5,14 +5,13 @@ project:
 
 website:
   title: "Zoe Worrall's Website"
-  image: images/img_test.png
+  image: images/ZoeWorrall_Photo.png
   favicon: images/bg_test.png
   open-graph: true
   navbar:
     toggle-position: right
     background: "#f0eeeb"
-    logo: images/img_test.png
-    logo-alt: "Test Image"
+    logo: images/zoe_logo.png
     title: false
     collapse-below: lg
     left:
@@ -21,7 +20,7 @@ website:
       - text: "Projects"
       - menu: 
         - text: "E155 Project"
-          href: projects/e-155_website
+          href: projects/e-155_website/e_155.qmd
         - href: projects/E80_sub.qmd
         - href: projects/mcf_lci.qmd
         - href: projects/open_ivis.qmd
@@ -44,8 +43,10 @@ website:
 
 format:
   html:
-    theme: [lux, zoe_text.scss]
-    css: zoe_text.css
+    # theme: [cosmos, zoe_text.scss]
+    theme: jolla
+    font-family: "Times New Roman"
+    # css: zoe_text.css
     toc: true
     smooth-scroll: true
     grid:
