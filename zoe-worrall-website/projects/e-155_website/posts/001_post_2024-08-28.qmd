@@ -6,6 +6,7 @@ date: "8/23/24"
 image: images/tomatoes.jpeg
 categories:
   - reflection
+  - blogpost
 ---
 
 ### Is "Smart" really a thing?

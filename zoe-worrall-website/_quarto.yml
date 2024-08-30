@@ -33,6 +33,7 @@ website:
         - href: projects/mcf_lci.qmd
         - href: projects/open_ivis.qmd
       - href: art/index.qmd
+      - href: resources.qmd
       - href: contacts/index.qmd
 
   page-navigation: true

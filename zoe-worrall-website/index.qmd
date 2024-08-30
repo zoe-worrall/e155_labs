@@ -5,26 +5,28 @@ image: images/ZoeWorrall_Photo.jpg
 ---
 
 ## Welcome
+** note for Prof. Brake for E155 (this will be removed later): the links to Github and LinkedIn are in the footbar at the bottom of this page
+
 
 ::: {.grid}
 
-::: {.g-col-8}
+::: {.g-col-6}
+Mae g'ovannen! My name is Zoe Worrall, and I am currently a senior Engineering Major at Harvey Mudd College. 
 
-
-Mae g'ovannen! My name is Zoe Worrall, and I am currently a senior Engineering Major at Harvey Mudd College. Although I have experience with a broad range of engineering topics including materials engineering, continuum mechanics, and manufacturing, my primary interests lie in signal processing, radio frequency, and optical systems. 
-:::
-
-::: {.g-col-4}
-![](images/ZoeWorrall_Photo.jpg){width=80%}
-::: 
-
-:::
+Although I have experience with a broad range of engineering topics including materials engineering, continuum mechanics, and manufacturing, my primary interests lie in signal processing, radio frequency, and optical systems. 
 
 ## Engineering
 
 Mudd's general Engineering gives its students a strong background in a variety of subjects, but what has clicked with me the most in my schooling has been electrical engineering, especially through research.
 
 Whether it was working under PI Dr. Jason Gallicchio on software defined radio, or with research of in-vivo imaging systems in the Harvey Mudd Biophotonics Lab with Dr. Joshua Brake, I've learned to work with electromagnetic waves, their generation, and their processing. 
+:::
+
+::: {.g-col-6}
+![](images/ZoeWorrall_Photo.jpg){width=80%}
+::: 
+
+:::
 
 My favorite courses at HMC have included E&M, Data Structures for C++, Digital Design and Computer Architecture, analog circuit design, and Systems Engineering.
 

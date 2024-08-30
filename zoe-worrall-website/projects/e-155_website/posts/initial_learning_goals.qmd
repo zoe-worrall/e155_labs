@@ -1,0 +1,18 @@
+---
+title: "E155: Learning Goals"
+description: "Explaining my initial learning goals for MicroPs"
+author: "Zoe Worrall"
+date: "8/29/24"
+image: images/cool_design.png
+categories:
+  - blogpost
+---
+
+## My Thoughts
+
+My final goals for MicroP's mainly revolve around getting more familiar with FPGA boards, as well as practicing my time management skills.
+This semester is set up to be packed with a lot of material, but it is all material that focuses mainly on projects rather than problem sets: resultantly, it's an excellent way to hone in on my organization and my calendar skills.
+
+Additionally, it has been about a year since I took E85, which means that many of my Verilog skills that I built up are rusty; this ought to be an excellent way to get back into programming in SystemVerilog. Additionally, FPGA's are heavily used within the radio transmitting and signal processing world, and so I think it's very important that I learn how to interact with them, even at their most basic level.
+
+Finally, I'm excited that this course incorporates Quarto and Github! It was not something that I was anticipating, but I believe that one of my final goals with this course is to build some additional professional skills that will allow me to present my work better, whether in academia or in industry. 

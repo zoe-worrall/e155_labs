@@ -4,6 +4,8 @@ categories:
   - labreport
 ---
 
+## Lab 1: FPGA and MCU Setup and Testing
+
 ## The basic blueprint plan
 
 PDF insert of the lab report will go here

@@ -1,0 +1,7 @@
+---
+title: "Resources"
+---
+
+[Link to the E155 Lab Website](https://hmc-e155.github.io/)
+
+[Link to the HMC Biophotonics Lab](https://pages.hmc.edu/biophotonics/)
