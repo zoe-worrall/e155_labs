@@ -3,7 +3,7 @@
 .navbar {
     padding-top: 0;
     padding-bottom: 0;
-    font-family: 'Oswald';
+    font-family:'Times New Roman';
     font-size: 0.6em;
   }
   
@@ -22,7 +22,7 @@
     padding-top: 0;
     padding-bottom: 0;
     margin-right: 0;
-    margin-left: 0.5em;
+    margin-left: 1em;
   }
   
   @media (max-width: 767px) {
@@ -32,14 +32,14 @@
   }
   
   .navbar-logo {
-    max-height: 10px;
+    max-height: 2em;
     width: auto;
     align-items: baseline;
   }
   
   @media (max-width: 991px) {
   .navbar-logo {
-    max-height: 100px;
+    max-height: 1em;
     width: auto;
     align-items: baseline;
   }
@@ -67,7 +67,7 @@
   }
   
   .nav-item {
-    margin-top: 5rem; 
+    margin-top: 0.01em; 
   }
   
   @media (max-width: 1200px) {
@@ -79,12 +79,12 @@
   @media (max-width: 991px) {
     .nav-item {
       margin-top: 0;
-      margin-right: 0rem;
+      margin-right: 0.5rem;
   }
   }
   
   .aa-DetachedSearchButton {
-    margin-top: 5rem;
+    margin-top: 0.5rem;
   }
   
   @media (max-width: 991px) {
@@ -94,16 +94,15 @@
   }
   
   .dropdown-item {
-    font-family: inherit;
+    font-family:'Times New Roman';
     letter-spacing: 1px;
     display: block;
     width: 100%;
-    padding: 1rem 1rem;
+    padding: 0.5rem 0.5rem;
     clear: both;
-    font-weight: 300;
+    font-weight: 100;
     color: #716ddf;
     text-align: inherit;
-    text-transform: uppercase;
     white-space: nowrap;
     background-color: rgba(0,0,0,0);
     border: 0;
@@ -117,15 +116,20 @@ body.nav-fixed {
   }
   
   #quarto-content {
+    font-family: 'Times New Roman';
     background-color: #f0eeeb;
   }
   
   #quarto-content>* {
-    padding-top: 10;
+    padding-top: 2;
   }
   
   h2.anchored {
     margin-bottom: 0;
+  }
+
+  h2.text-heading-default{
+    font-family: "Times New Roman";
   }
 
 
@@ -133,7 +137,7 @@ body.nav-fixed {
 
   .nav-footer {
     color: white;
-    font-family: 'Oswald';
+    font-family: 'Times New Roman' !important;
     font-weight: 400;
     padding-left: 1.5em !important;
     padding-right: 1.5em !important;
@@ -155,7 +159,6 @@ body.nav-fixed {
   
   .nav-footer-left .footer-items .nav-link, .nav-footer-center .footer-items .nav-link, .nav-footer-right .footer-items .nav-link {
     font-weight: 400;
-    text-transform: uppercase;
   }
   
   .nav-footer-left .footer-items .nav-item, .nav-footer-center .footer-items .nav-item, .nav-footer-right .footer-items .nav-item {
@@ -165,9 +168,9 @@ body.nav-fixed {
   }
   
   .nav-footer-left {
-    font-family: 'Montserrat';
+    font-family:'Times New Roman';
   }
   
   .nav-footer-right {
-    font-family: 'Montserrat';
+    font-family:'Times New Roman';
   }

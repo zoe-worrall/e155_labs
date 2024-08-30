@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "e-155_website/blog.html",
-    "href": "e-155_website/blog.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Hello Quarto\n\n\n\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nAug 23, 2024\n\n\nZoe Worrall\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Zoe Worrall’s Website",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
-  },
-  {
-    "objectID": "contacts/index.html",
-    "href": "contacts/index.html",
-    "title": "Contact Me",
-    "section": "",
-    "text": "Social Media\nMy Github can be found here!\nFollow me on LinkedIn here\nIf you’d like to reach out to me via email, please direct it to zworrall@g.hmc.edu"
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -45,6 +24,132 @@
     "objectID": "about.html#art",
     "href": "about.html#art",
     "title": "About",
+    "section": "Art",
+    "text": "Art\nIn addition to majoring in Engineering, I am also pursuing a concentration in Studio Art."
+  },
+  {
+    "objectID": "contacts/index.html",
+    "href": "contacts/index.html",
+    "title": "Contact Me",
+    "section": "",
+    "text": "Social Media\nMy Github can be found here!\nFollow me on LinkedIn here\nIf you’d like to reach out to me via email, please direct it to zworrall@g.hmc.edu"
+  },
+  {
+    "objectID": "projects/open_ivis.html",
+    "href": "projects/open_ivis.html",
+    "title": "openIVIS",
+    "section": "",
+    "text": "OpenIVIS is one of the research projects run by Mudd Professor Josh Brake at Harvey Mudd College, in conjunction with Colorado School of Mines and with the additional support of the National Science Foundation and the Zuckerburg Chan Trust. Having aided in its progression towards increased imaging modularity, I helped to publish a paper on the topic.\nThis research is still in progress, although I am no longer working in this lab."
+  },
+  {
+    "objectID": "projects/open_ivis.html#what-is-the-goal",
+    "href": "projects/open_ivis.html#what-is-the-goal",
+    "title": "openIVIS",
+    "section": "What is the Goal?",
+    "text": "What is the Goal?\nMuch of the in-vivo imaging research available to small universities and labs is too expensive to use, or may be too risky to pursue, most machines costing hundreds of thousands of dollars and only being available or more accessible to larger organizations. The purpose of openIVIS is to construct a cheap in-vivo imaging system with easily accessible materials. Although openIVIS will not replace the current, expensive opportunities that exist, the goal of this project is to design an alternative stepping stone that will allow labratories to perform fundamental, proof of concept tests that they would otherwise find difficult to attain. All of this will be done in an open-source context, with an accessible GUI, CAD designs, computer systems, and types of imaging."
+  },
+  {
+    "objectID": "projects/open_ivis.html#what-i-worked-on",
+    "href": "projects/open_ivis.html#what-i-worked-on",
+    "title": "openIVIS",
+    "section": "What I Worked On",
+    "text": "What I Worked On\nI worked with the openIVIS project from Fall 2023 to Fall 2024. Within that time, I created a new CAD design for the system’s shell, and worked on its imaging capabilities using laser speckle contrast imaging (LSCI).\n\nCAD Designs – Originally, the designs supplied by Colorado School of Mines had straight edges for the box, which did not provide for easy assembly. I worked within SolidWorks to build a new box model of the same dimensions that would use puzzle-piece layout to fit the pieces more snuggly, and to prevent light from entering the box.\nMachining – Using the HMC Machine Shop and Makerspace, I used a lathe, drill, laser cutter, and 3D printers to create the parts necessary for the assembly of the system.\nLaser Speckle Contrast Imaging – Based on the idea of low exposure time leading to increased blurriness of moving objects, my main focus was to create LSCI capabilities for the openIVIS system. This was done by programming of 20+ Python models of different fourier transforms and cross correlations of both simulated and actual data. By the end of summer, 2023, the system was performing rudimentary imaging of moving liquid encased in diffusing material that was otherwise invisible to the naked eye and the camara.\nFluorescent Imaging – I created a basic CAD design for implementing LED lights on top of the box that would be kept out of the box to prevent overheating. This design was 3D printed, and is currently one of the prototypes that have aided in the progression of the project."
+  },
+  {
+    "objectID": "projects/open_ivis.html#want-to-learn-more",
+    "href": "projects/open_ivis.html#want-to-learn-more",
+    "title": "openIVIS",
+    "section": "Want to Learn More?",
+    "text": "Want to Learn More?\nSee the HMC Biophotonics Lab page, as well as the Colorado School of Mines research paper on which I am listed."
+  },
+  {
+    "objectID": "projects/e-155_website/index.html",
+    "href": "projects/e-155_website/index.html",
+    "title": "E155 Project",
+    "section": "",
+    "text": "Lab 1 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 2 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 3 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 4 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 5 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 6 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 7 Initial Page\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/e-155_website/posts/001_post_2024-08-28.html",
+    "href": "projects/e-155_website/posts/001_post_2024-08-28.html",
+    "title": "Is ‘Smart’ Really a Thing?",
+    "section": "",
+    "text": "Is “Smart” really a thing?\nI have a distinct memory from my time in elementary school of realizing that being smart is a very relative thing. The fact is, even elementary school students can understand that there’s a grey area when it comes to “intellectual prowess”: it is weird, in that way, that we try to decide and define who is smart and who isn’t. Sometimes, there are outliers of course - no one would ever really try to fight me if I said that Einstein was a genius. And yet, to me “smart” remains a very loaded word.\nThe main aspect of “smartness” I was thinking about in lower school was smartness in a multitude of categories: even if I may be book smart, for example, I have a very difficult time understanding people, and when it comes to social interactions I’m relatively hopeless. Smartness, from my perspective, ought to be considered more like (and forgive my references here) a Dungeons and Dragons character sheet rather than as some individual thing that measures solely how much someone has memorized flash card.\nAs a society, we’ve definitely been moving in the correct direction – standardized testing becoming optional for many schools is one of the first steps to recognizing the multitude of “smart” categories of students, and it will likely bring about a great degree of change for the better in multiple institutions. There obviously remains a long path to this recognition, however, and to that extent I’ve come up with a few paths I think might be able to be followed. The primary goal of these paths, or initiatives, would be to actively support the “smartness” of students not only in their intelligence, but in their five other categories as well (although I will mainly want to focus on Constitution, Wisdom, and Charisma).\nFor those unitiated in Dungeons and Dragons, I’ve provided a short, handy example of each of the six stats explained using tomatoes.\n\n\n\nImage of Tomato DnD Chart\n\n\nBased off of the DnD chart:\n\n(Constitution): How often has there been a friend that is just inherently in tune with their own body? This applies particularly to athletes and to dancers; the reason why I’d say that this falls under my terminology for “smart” is that this is a skill, based in understanding, that must be incessently worked at. Over time, you need enough experience with moving, working out, or playing games to understand yourself. The best way that we might begin incorporating a greater degree of respect for this “smartness” would likely be similar to the gym classes we have now; however, it relies on the coaches or teachers leading these activities encouraging learning about physical improvement, and applauding personal growth (not just natural skill)\n(Wisdom): This is street smarts, and although it can’t really be taught, it is always good to introduce new material to kids in class. I think running small sessions of activities that have unexpected or unrecognizable projects would aid in improving “wisdom smartness”.\n(Charisma): This one is quite important, and quite often overlooked. Charisma is a trait that is often built up from a very young age, and I know that I for one struggle with it. This smartness was my primary inspiration for thinking this in elementary school; knowing social interactions, when to speak, what is funny to say, when to say it, is difficult. As adults we’ve honed in on proper timing in converstaions, or proper topics to discuss, but as children most of the time this is only learned through peer-to-peer interaction. I’d say that in this case, the problem is less about teaching Charisma “smartness” and more about acknowledging it; potentially in school, especially lower levels of schooling, taking time to acknowledge feats of charisma, or running small programs where students share what they admire about how other people interact with them. The main point here is cognizance of the importance of social awareness.\n\nThere’s something to be said for teachers and mentors being involved outside of the classroom. I think at the end of the day, what I really wanted to get across with this post is the fact that students should acknowledge a variety of talents that they have, not just the ones that they demonstrate via memorization or in class."
+  },
+  {
+    "objectID": "projects/mcf_lci.html",
+    "href": "projects/mcf_lci.html",
+    "title": "Multicore Fiber Bundle Low Coherence Interferometry Research",
+    "section": "",
+    "text": "Brain imaging capabilities such as fMRI scans, although broad in capability, normally face issues when it comes to creating images with spatial and temporal resolution. Light increases the capabilities of both of these, but is limited by conventional lenses, which though non-intrusive causes a great degree of scatter, and GRIN lenses, which are wide, stiff intrusions in the context of optical imaging and risk damaging the subject while preventing in-situ imaging. Multicore fibers lie in the middle of these two. Capable of in-situ imaging and minimally invasive, this system would allow for the high temporal and spatial resolution of light and the benefits of non optical system."
+  },
+  {
+    "objectID": "projects/mcf_lci.html#what-is-the-goal",
+    "href": "projects/mcf_lci.html#what-is-the-goal",
+    "title": "Multicore Fiber Bundle Low Coherence Interferometry Research",
+    "section": "",
+    "text": "Brain imaging capabilities such as fMRI scans, although broad in capability, normally face issues when it comes to creating images with spatial and temporal resolution. Light increases the capabilities of both of these, but is limited by conventional lenses, which though non-intrusive causes a great degree of scatter, and GRIN lenses, which are wide, stiff intrusions in the context of optical imaging and risk damaging the subject while preventing in-situ imaging. Multicore fibers lie in the middle of these two. Capable of in-situ imaging and minimally invasive, this system would allow for the high temporal and spatial resolution of light and the benefits of non optical system."
+  },
+  {
+    "objectID": "projects/mcf_lci.html#what-i-worked-on",
+    "href": "projects/mcf_lci.html#what-i-worked-on",
+    "title": "Multicore Fiber Bundle Low Coherence Interferometry Research",
+    "section": "What I Worked On",
+    "text": "What I Worked On\n\nSimulations – …\nSLM Calibrations – …\nInterferometry – …\nSoftware Connections – U1800 Camera, pco.panda Camera, NiDAQmx…"
+  },
+  {
+    "objectID": "projects/mcf_lci.html#want-to-learn-more",
+    "href": "projects/mcf_lci.html#want-to-learn-more",
+    "title": "Multicore Fiber Bundle Low Coherence Interferometry Research",
+    "section": "Want to Learn More?",
+    "text": "Want to Learn More?\nSee the HMC Biophotonics Lab page.\nMulticore Fiber Bundle LCI is one of the research projects run by Mudd Professor Josh Brake at Harvey Mudd College."
+  },
+  {
+    "objectID": "projects/e-155_website/labs/lab1/lab1.html",
+    "href": "projects/e-155_website/labs/lab1/lab1.html",
+    "title": "Lab 1 Initial Page",
+    "section": "",
+    "text": "PDF insert of the lab report will go here"
+  },
+  {
+    "objectID": "projects/e-155_website/labs/lab1/lab1.html#the-basic-blueprint-plan",
+    "href": "projects/e-155_website/labs/lab1/lab1.html#the-basic-blueprint-plan",
+    "title": "Lab 1 Initial Page",
+    "section": "",
+    "text": "PDF insert of the lab report will go here"
+  },
+  {
+    "objectID": "projects/e-155_website/blog.html",
+    "href": "projects/e-155_website/blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Is ‘Smart’ Really a Thing?\n\n\n\n\n\nExamining what it means to be smart, and strategies to respect alternative forms of it within the classroom\n\n\n\n\n\nAug 23, 2024\n\n\nZoe Worrall\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Zoe Worrall’s Website",
+    "section": "",
+    "text": "Mae g’ovannen! My name is Zoe Worrall, and I am currently a senior Engineering Major at Harvey Mudd College. Although I have experience with a broad range of engineering topics including materials engineering, continuum mechanics, and manufacturing, my primary interests lie in signal processing, radio frequency, and optical systems."
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Zoe Worrall’s Website",
+    "section": "",
+    "text": "Mae g’ovannen! My name is Zoe Worrall, and I am currently a senior Engineering Major at Harvey Mudd College. Although I have experience with a broad range of engineering topics including materials engineering, continuum mechanics, and manufacturing, my primary interests lie in signal processing, radio frequency, and optical systems."
+  },
+  {
+    "objectID": "index.html#engineering",
+    "href": "index.html#engineering",
+    "title": "Zoe Worrall’s Website",
+    "section": "Engineering",
+    "text": "Engineering\nMudd’s general Engineering gives its students a strong background in a variety of subjects, but what has clicked with me the most in my schooling has been electrical engineering, especially through research.\nWhether it was working under PI Dr. Jason Gallicchio on software defined radio, or with research of in-vivo imaging systems in the Harvey Mudd Biophotonics Lab with Dr. Joshua Brake, I’ve learned to work with electromagnetic waves, their generation, and their processing.\nMy favorite courses at HMC have included E&M, Data Structures for C++, Digital Design and Computer Architecture, analog circuit design, and Systems Engineering."
+  },
+  {
+    "objectID": "index.html#art",
+    "href": "index.html#art",
+    "title": "Zoe Worrall’s Website",
     "section": "Art",
     "text": "Art\nIn addition to majoring in Engineering, I am also pursuing a concentration in Studio Art."
   }
