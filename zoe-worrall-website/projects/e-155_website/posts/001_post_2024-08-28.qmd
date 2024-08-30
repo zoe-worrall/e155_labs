@@ -5,7 +5,6 @@ author: "Zoe Worrall"
 date: "8/23/24"
 image: images/tomatoes.jpeg
 categories:
-  - reflection
   - blogpost
 ---
 

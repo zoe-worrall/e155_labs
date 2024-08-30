@@ -5,6 +5,7 @@ listing:
   - "posts/*.qmd"
   sort: "date desc"
   type: default
-  categories: false
+  categories: true
+  image-height: 10rem
 ---
 
