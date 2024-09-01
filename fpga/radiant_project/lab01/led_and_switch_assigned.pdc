@@ -1,0 +1,7 @@
+ldc_set_location -site {15} [get_ports {s[0]}]
+ldc_set_location -site {16} [get_ports {s[1]}]
+ldc_set_location -site {17} [get_ports {s[2]}]
+ldc_set_location -site {18} [get_ports {s[3]}]
+ldc_set_location -site {42} [get_ports {led[0]}]
+ldc_set_location -site {38} [get_ports {led[1]}]
+ldc_set_location -site {28} [get_ports {led[2]}]
