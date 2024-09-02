@@ -1,3 +1,6 @@
+## Lab 1 Overview
+<em> For actual lab write up, visit the github pages found in zoe-worrall-website/projects/e-155_website/labs/lab1 folder in this same repository</em>
+
 This is a lab that is meant to perform functions as define in MicroP's Lab Module 1.
 
 The simulation for the test bench can be found within the project folder "lab01_vectorsim.mpf"
