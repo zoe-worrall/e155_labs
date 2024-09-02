@@ -1,0 +1,22 @@
+C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module top
+
+Top level modules:
+	top
+
+} {} {}} C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module seven_segment
+
+Top level modules:
+	seven_segment
+
+} {} {}} C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/led_control.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/led_control.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module led_control
+
+Top level modules:
+	led_control
+
+} {} {}}

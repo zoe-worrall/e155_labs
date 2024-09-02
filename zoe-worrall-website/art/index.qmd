@@ -5,7 +5,7 @@ subtitle: Digital and Studio | Past and Present
 search: false
 repo-actions: false
 listing:
-  contents: digital
+  contents: artworks/
   sort: "title desc"
   type: grid
   categories: true
