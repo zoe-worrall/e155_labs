@@ -16,24 +16,17 @@ Code was written on Parallels, Windows 11, mounted on a Mac with M1 chip. Files 
 This lab features the following top-down structure:
 
 lab01 structure:
- |
 
- |__ lab01_tb.sv  (the test bench for top.sv)
-
- |
-
- |__ lab01_testvectors.tv  (the text vectors used in lab01_tb.sv)
-
- |
-
- |__ top.sv	  (compiles seven_segment and led_control. Runs a clock that is used for led[2])
-
+	lab01
 	|
-
-	|____ seven_segment.sv 		(controls a seven-segment array through bits 0x0 to 0xF)
-
+	|__ lab01_tb.sv  (the test bench for top.sv)
 	|
+	|__ lab01_testvectors.tv  (the text vectors used in lab01_tb.sv)
+	|
+	|__ top.sv	  (compiles seven_segment and led_control. Runs a clock that is used for led[2])
+		|
+		|____ seven_segment.sv 		(controls a seven-segment array through bits 0x0 to 0xF)
+		|
+		|____ led_control.sv		(controls three diodes through xor, and, and clock)
 
-	|____ led_control.sv		(controls three diodes through xor, and, and clock)
-	
   
