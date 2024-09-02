@@ -4,7 +4,53 @@ categories:
   - labreport
 ---
 
+The goal of this lab was initial setup and confirmation of FPGA control of on-board LEDs and attached GPIO pin. This was done through the control of three leds: **D6**, **D7**, and **D8**, as well as seven GPIO pins: **45**, **3**, **44**, **9**, **13**, **12**, and **20** through the readout of on-board 4-pin DIP switch. By the end of the laboratory, the three switches were controlled as defined as seen in Tables 1(a) and 1(b), and the seven segment LED matrix as defined in Table 2.
+
+::: {.grid}
+
+::: {.g-col-6}
+
+::: {#tbl-panel layout-ncol=2}
+| s[3] | s[2] | led[1] |
+|------|------|--------|
+| 0    | 0    | 0      |
+| 0    | 1    | 0      |
+| 1    | 0    | 0      |
+| 1    | 1    | 1      |
+: LED 1 (D7) {#tbl-first}
+
+| s[1] | s[0] | led[0] |
+|------|------|--------|
+| 0    | 0    | 0      |
+| 0    | 1    | 1      |
+| 1    | 0    | 1      |
+| 1    | 1    | 0      |
+: LED 0 (D6) {#tbl-second}
+**LED Logic for Table**
+:::
+
+:::
+:::
+
+::: {.g-col-10}
+| Base 10 Value of Switches | Seven Segment Number/Letter |
+|---------------------------|-----------------------------|
+| 0                         | 1                           |
+| 0                         | 1                           |
+| 0                         | 1                           |
+| 0                         | 1                           |
+| 0                         | 1                           |
+| 0                         | 1                           |
+| 0                         | 1                           |
+: **Seven Segment LED Matrix Logic**
+
+:::
+
+:::
+
 ## Lab 1: FPGA and MCU Setup and Testing
+
+
 
 ## The basic blueprint plan
 
