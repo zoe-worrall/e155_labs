@@ -3,7 +3,7 @@
 
 ### Introduction
 
-This is a lab that is meant to perform functions as define in MicroP's Lab Module 1.
+This is a lab that is meant to perform functions as define in [MicroP's Lab Module 1](https://hmc-e155.github.io/lab/lab1/).
 
 The simulation for the test bench can be found within the project folder "lab01_vectorsim.mpf"
 
