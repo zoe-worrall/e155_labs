@@ -1,22 +1,34 @@
 ---
 title: Lab 1 Initial Page
+
+format:
+  html:
+    other-links:
+      - text: "E155 FA Development Board"
+        href: https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf
+      - text: "Lab 1 Github Files"
+        href: https://github.com/zoe-worrall/e155_labs/tree/main/fpga/radiant_project/lab01
+
 categories:
   - labreport
 ---
+## Lab 1: FPGA and MCU Setup and Testing
 
+### Introduction
 The goal of this lab was initial setup and confirmation of FPGA control of on-board LEDs and attached GPIO pin. This was done through the control of three leds: **D6**, **D7**, and **D8**, as well as seven GPIO pins: **45**, **3**, **44**, **9**, **13**, **12**, and **20** through the readout of on-board 4-pin DIP switch. By the end of the laboratory, the three switches were controlled as defined as seen in Tables 1(a) and 1(b), and the seven segment LED matrix as defined in Table 2.
 
 ::: {.grid}
 
 ::: {.g-col-6}
 
-::: {#tbl-panel layout-ncol=2}
+::: {#tbl-panel layout-nrow=2}
 | s[3] | s[2] | led[1] |
 |------|------|--------|
 | 0    | 0    | 0      |
 | 0    | 1    | 0      |
 | 1    | 0    | 0      |
 | 1    | 1    | 1      |
+
 : LED 1 (D7) {#tbl-first}
 
 | s[1] | s[0] | led[0] |
@@ -25,32 +37,90 @@ The goal of this lab was initial setup and confirmation of FPGA control of on-bo
 | 0    | 1    | 1      |
 | 1    | 0    | 1      |
 | 1    | 1    | 0      |
+
 : LED 0 (D6) {#tbl-second}
-**LED Logic for Table**
-:::
+
+**LED Logic for Table** 
 
 :::
+*The logic tables that were used for the led to switch mapping. @tbl-first refers to s[3] and s[2]; on the board, these are switches 1 and 2 (pins P32 and P31 respectively) to match where the highest order digits would be in a four digit number. By extensino, @tbl-second uses the two right-most switches (P35 and P32)*
+
 :::
 
-::: {.g-col-10}
-| Base 10 Value of Switches | Seven Segment Number/Letter |
+::: {.g-col-6}
+| Switch Base 10 Value | Seven Segment Display |
 |---------------------------|-----------------------------|
-| 0                         | 1                           |
-| 0                         | 1                           |
-| 0                         | 1                           |
-| 0                         | 1                           |
-| 0                         | 1                           |
-| 0                         | 1                           |
-| 0                         | 1                           |
-: **Seven Segment LED Matrix Logic**
+|            0              |             0               |
+|            1              |             1               |
+|            2              |             2               |
+|            3              |             3               |
+|            4              |             4               |
+|            5              |             5               |
+|            6              |             6               |
+|            7              |             7               |
+|            8              |             8               |
+|            9              |             9               |
+|            10             |             A               |
+|            11             |             B               |
+|            12             |             C               |
+|            13             |             D               |
+|            14             |             E               |
+|            15             |             F               |
+
+: **Seven Segment LED Matrix Logic** {#tbl-letters}
+
+*The mapping from the decimal readout of the switches in hexadecimal.*
+:::
+
+
+:::
+
+### Hardware Setup
+
+The first stage of this lab involved the soldering of the MCU and the FPGA, as well as all additional SMD and THT pins. To do this, the [E155 FA23 Development Board](https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf) schematic was used. To begin, the SMD components were soldered. Careful consideration was given to make sure that the diodes were soldered in the right order and facing the correct direction. After these were soldered, THT components were then soldered, including the 4-pin DIP switch, the 8-pin DIP switch, and the female headers (@fig-imag1).
+
+![SMD and THT pins soldered](images/SMD_and_THT.JPG){#fig-imag1  width=50% fig-align="center" fig-alt="Image 1"}
+
+
+A board was connected via ribbon cable to the main Development board to allow for control of a breadboard via on-board GPIO pins (@fig-imag2). Once all pieces had been put together, the board was tested via a voltmeter via the screw terminal to ensure that the board could be properly powered (@fig-imag3)(@fig-imag4). The board through the screw terminal required +6 - +20 V; testing was done using 6V, and the board was confirmed to be running. The breadboard was tested using a multimeter to ensure that the 3.3V, 5.0V, and GND pins were properly generating the right voltage. 
+
+::: {.grid}
+
+::: {.g-col-4}
+
+::: {#fig-imag2}
+
+<iframe src="images/Full_Board_Assembled.JPG" fig-align="center" fig-alt="Image 2"></iframe>
+Board assembled with ribbon cable
 
 :::
 
 :::
 
-## Lab 1: FPGA and MCU Setup and Testing
+::: {.g-col-4}
 
+::: {#fig-imag3}
+<iframe src="images/Powered_By_ScrewTerminal.JPG" fig-align="center" fig-alt="Image 3"></iframe>
+Powering the board with the screw terminal at +6V
 
+:::
+
+:::
+
+::: {.g-col-4}
+
+::: {#fig-imag4}
+
+<iframe src="images/PowerScrewTerminal.JPG" fig-align="center" fig-alt="Image 4"></iframe>
+The Voltmeter while powering the screw terminal
+
+:::
+
+:::
+
+:::
+
+All soldered pins and the required impedance values and relevant pin numbers can be found in the E155 FA23 Development Board pdf, linked in "Other Links" on this page.
 
 ## The basic blueprint plan
 
