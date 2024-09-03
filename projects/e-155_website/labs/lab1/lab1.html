@@ -430,7 +430,7 @@ Table&nbsp;2: <strong>Seven Segment LED Matrix Logic</strong>
 <section id="hardware-setup" class="level3">
 <h3 class="anchored" data-anchor-id="hardware-setup">Hardware Setup</h3>
 <p>The first stage of this lab involved the soldering of the MCU and the FPGA, as well as all additional SMD and THT pins. To do this, the <a href="https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf">E155 FA23 Development Board</a> schematic was used. To begin, the SMD components were soldered. Careful consideration was given to make sure that the diodes were soldered in the right order and facing the correct direction. After these were soldered, THT components were then soldered, including the 4-pin DIP switch, the 8-pin DIP switch, and the female headers (<a href="#fig-imag1" class="quarto-xref">Figure&nbsp;1</a>).</p>
-<div id="fig-imag1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Image 1">
+<div id="fig-imag1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Image 1" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-imag1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/SMD_and_THT.JPG" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" alt="Image 1">
@@ -483,6 +483,12 @@ Figure&nbsp;4: The Voltmeter while powering the screw terminal
 </div>
 </div>
 <p>All soldered pins and the required impedance values and relevant pin numbers can be found in the E155 FA23 Development Board pdf, linked in “Other Links” on this page. Once confirmation was had that the board was properly powering all pins using the screw terminal, the transition was then made to powering the board using both the MCU and the FPGA individually via a micro-USB cable.</p>
+<p>The final schematic for this design can be seen below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/schematic_diag.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
 </section>
 <section id="setup-for-lab" class="level3">
 <h3 class="anchored" data-anchor-id="setup-for-lab">Setup for Lab</h3>
@@ -829,7 +835,7 @@ Table&nbsp;3: Table of Switches Mapped to Segments
 </div>
 <p>If we compare A and B, we can see how the current through the diodes will differ between each situation. In case A, the one that I used, if one diode isn’t lit up, it has no impact on the current traveling through the other diode: in every case, the voltage drop will assuredly be either 0V or 2.1 V across a given diode, irrelevant to any other segment within this case. However in case B, the same can not be said. If two diodes are lit up, they will be using double the amount of current, and resultantly the voltage drop caused by the single resistor will double. This means that there will be a smaller voltage drop across the diodes, which means that the more segments that are lit up, the less bright the matrix will glow - if it glows at all. This is why all of the resistors were attached to each cathode in the final design, rather than one resistor being connected to the common anode.</p>
 <p>The FPGA board maps to all pins starting with P; the MCU maps to all pins starting with PA. In order to accomplish the correct mapping, I drew a diagram (<a href="#fig-imag5" class="quarto-xref">Figure&nbsp;7</a>) that mapped the pin number, the segment controlled, and then the GPIO pin I intended for each part of the device. I knew that seg[0] was assigned to segA, seg[6] to segG, etc., and resultantly I was able to make a basic table that I then implemented on my breadboard (<a href="#tbl-sevenseg" class="quarto-xref">Table&nbsp;4</a>)</p>
-<div id="fig-imag5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="10%">
+<div id="fig-imag5" class="quarto-float quarto-figure quarto-figure-center anchored" width="10%" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-imag5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/sevenseg_mapping.png" id="fig-imag5" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:10.0%">
