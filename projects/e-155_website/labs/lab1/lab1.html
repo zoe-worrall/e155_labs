@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Zoe Worrall - zworrall@g.hmc.edu">
+<meta name="dcterms.date" content="2024-09-02">
 
 <title>Lab 1 Initial Page – Zoe Worrall's Website</title>
 <style>
@@ -183,10 +185,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-1-fpga-and-mcu-setup-and-testing" id="toc-lab-1-fpga-and-mcu-setup-and-testing" class="nav-link active" data-scroll-target="#lab-1-fpga-and-mcu-setup-and-testing">Lab 1: FPGA and MCU Setup and Testing</a></li>
-  <li><a href="#the-basic-blueprint-plan" id="toc-the-basic-blueprint-plan" class="nav-link" data-scroll-target="#the-basic-blueprint-plan">The basic blueprint plan</a></li>
+  <li><a href="#lab-1-fpga-and-mcu-setup-and-testing" id="toc-lab-1-fpga-and-mcu-setup-and-testing" class="nav-link active" data-scroll-target="#lab-1-fpga-and-mcu-setup-and-testing">Lab 1: FPGA and MCU Setup and Testing</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#hardware-setup" id="toc-hardware-setup" class="nav-link" data-scroll-target="#hardware-setup">Hardware Setup</a></li>
+  <li><a href="#setup-for-lab" id="toc-setup-for-lab" class="nav-link" data-scroll-target="#setup-for-lab">Setup for Lab</a></li>
+  <li><a href="#the-lab-itself" id="toc-the-lab-itself" class="nav-link" data-scroll-target="#the-lab-itself">The Lab Itself</a></li>
+  </ul></li>
   </ul>
-</nav>
+<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 FA Development Board</a></li><li><a href="https://github.com/zoe-worrall/e155_labs/tree/main/fpga/radiant_project/lab01"><i class="bi bi-link-45deg"></i>Lab 1 Github Files</a></li><li><a href="running_labs.html"><i class="bi bi-link-45deg"></i>Tutorial for Programming FPGAs</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -203,7 +210,19 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zoe Worrall - zworrall@g.hmc.edu </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 2, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -215,12 +234,669 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="lab-1-fpga-and-mcu-setup-and-testing" class="level2">
 <h2 class="anchored" data-anchor-id="lab-1-fpga-and-mcu-setup-and-testing">Lab 1: FPGA and MCU Setup and Testing</h2>
+<p><em>Hours Spent: 21.3, Mapped with Toggl Track</em></p>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>The goal of this lab was initial setup and confirmation of FPGA control of on-board LEDs and attached GPIO pin. This was done through the control of three leds: <strong>D6</strong>, <strong>D7</strong>, and <strong>D8</strong>, as well as seven GPIO pins: <strong>45</strong>, <strong>3</strong>, <strong>44</strong>, <strong>9</strong>, <strong>13</strong>, <strong>12</strong>, and <strong>20</strong> through the readout of on-board 4-pin DIP switch. By the end of the laboratory, the three switches were controlled as defined as seen in Tables 1(a) and 1(b), and the seven segment LED matrix as defined in Table 2.</p>
+<div class="grid">
+<div class="g-col-6">
+<div id="tbl-panel" class="quarto-layout-panel anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-panel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: <strong>LED Logic for Table</strong>
+</figcaption>
+<div aria-describedby="tbl-panel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-panel" style="flex-basis: 100.0%;justify-content: center;">
+<div id="tbl-first" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-first-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) LED 1 (D7)
+</figcaption>
+<div aria-describedby="tbl-first-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">s[3]</th>
+<th style="text-align: left;">s[2]</th>
+<th style="text-align: left;">led[1]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-panel" style="flex-basis: 100.0%;justify-content: center;">
+<div id="tbl-second" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-second-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) LED 0 (D6)
+</figcaption>
+<div aria-describedby="tbl-second-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">s[1]</th>
+<th style="text-align: left;">s[0]</th>
+<th style="text-align: left;">led[0]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+<p><em>The logic tables that were used for the led to switch mapping. <a href="#tbl-first" class="quarto-xref">Table&nbsp;1 (a)</a> refers to s[3] and s[2]; on the board, these are switches 1 and 2 (pins P32 and P31 respectively) to match where the highest order digits would be in a four digit number. By extensino, <a href="#tbl-second" class="quarto-xref">Table&nbsp;1 (b)</a> uses the two right-most switches (P35 and P32)</em></p>
+</div>
+<div class="g-col-6">
+<div id="tbl-letters" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-letters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: <strong>Seven Segment LED Matrix Logic</strong>
+</figcaption>
+<div aria-describedby="tbl-letters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Switch Base 10 Value</th>
+<th>Seven Segment Display</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td>D</td>
+</tr>
+<tr class="odd">
+<td>14</td>
+<td>E</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>The mapping from the decimal readout of the switches in hexadecimal.</em></p>
+</div>
+</div>
 </section>
-<section id="the-basic-blueprint-plan" class="level2">
-<h2 class="anchored" data-anchor-id="the-basic-blueprint-plan">The basic blueprint plan</h2>
-<p>PDF insert of the lab report will go here</p>
+<section id="hardware-setup" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-setup">Hardware Setup</h3>
+<p>The first stage of this lab involved the soldering of the MCU and the FPGA, as well as all additional SMD and THT pins. To do this, the <a href="https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf">E155 FA23 Development Board</a> schematic was used. To begin, the SMD components were soldered. Careful consideration was given to make sure that the diodes were soldered in the right order and facing the correct direction. After these were soldered, THT components were then soldered, including the 4-pin DIP switch, the 8-pin DIP switch, and the female headers (<a href="#fig-imag1" class="quarto-xref">Figure&nbsp;1</a>).</p>
+<div id="fig-imag1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Image 1">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-imag1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/SMD_and_THT.JPG" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" alt="Image 1">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-imag1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: SMD and THT pins soldered
+</figcaption>
+</figure>
+</div>
+<p>A board was connected via ribbon cable to the main Development board to allow for control of a breadboard via on-board GPIO pins (<a href="#fig-imag2" class="quarto-xref">Figure&nbsp;2</a>). Once all pieces had been put together, the board was tested via a voltmeter via the screw terminal to ensure that the board could be properly powered (<a href="#fig-imag3" class="quarto-xref">Figure&nbsp;3</a>)(<a href="#fig-imag4" class="quarto-xref">Figure&nbsp;4</a>). The board through the screw terminal required +6 - +20 V; testing was done using 6V, and the board was confirmed to be running. The breadboard was tested using a multimeter to ensure that the 3.3V, 5.0V, and GND pins were properly generating the right voltage.</p>
+<div class="grid">
+<div class="g-col-4">
+<div id="fig-imag2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-imag2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe src="images/Full_Board_Assembled.JPG" fig-align="center" fig-alt="Image 2">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-imag2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Board assembled with ribbon cable
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-4">
+<div id="fig-imag3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-imag3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe src="images/Powered_By_ScrewTerminal.JPG" fig-align="center" fig-alt="Image 3">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-imag3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Powering the board with the screw terminal at +6V
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-4">
+<div id="fig-imag4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-imag4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe src="images/PowerScrewTerminal.JPG" fig-align="center" fig-alt="Image 4">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-imag4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: The Voltmeter while powering the screw terminal
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>All soldered pins and the required impedance values and relevant pin numbers can be found in the E155 FA23 Development Board pdf, linked in “Other Links” on this page. Once confirmation was had that the board was properly powering all pins using the screw terminal, the transition was then made to powering the board using both the MCU and the FPGA individually via a micro-USB cable.</p>
+</section>
+<section id="setup-for-lab" class="level3">
+<h3 class="anchored" data-anchor-id="setup-for-lab">Setup for Lab</h3>
+<p>I own a Mac computer, so I needed to go through a broad array of necessary preparation in order to begin generating the code for my computer. First, I installed SEGGER Embedded Studio 8.16a on my computer. Following the <a href="https://hmc-e155.github.io/tutorials/segger-embedded-studio-setup/index.html">SEGGER Embedded Studio Tutorial</a>, I confirmed that I was able to load designs onto my MCU board.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Mac Users Aid">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mac Users Aid
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Unfortunately, because I don’t have a Windows, it was necessary to run to the laboratory and use an actual Windows computer in order to install J-Link. The only thing you need to download is the third link on the <a href="https://www.segger.com/products/debug-probes/j-link/models/other-j-links/st-link-on-board/">download links</a>, specifically the one called “SEGGER STLinkReflash utility”. You shouldn’t need to install anything additional, since the supplied boards already had J-Link installed.</p>
+</div>
+</div>
+<p>The FPGA proved to be a little more difficult. This was a multiple step process, and required a bit of troubleshooting.</p>
+<p>First, I installed <a href="https://www.parallels.com">Parallels</a> on my computer: I know that not everyone has $80 lined up to pay for a virtual Windows Machine. I recommend, if possible, use a student discount; when I got it, I managed to find a 50% student discount, which meant in the end I only spent $40. Parallels is one of the best ways to interact with your FPGA besides being in-lab, and I highly recommend it after using it for the past few days.</p>
+<p>Once I had that downloaded, I installed <a href="https://www.latticesemi.com/Products/DesignSoftwareAndIP/FPGAandLDS/Radiant">Lattice Radiant</a> for Windows 64 inside of the Parallels machine. In all, this process took me about two hours, so make sure to budget some time beforehand if you’re planning on doing this on a Mac. As noted by Professor Brake on <a href="https://hmc-e155.github.io/tutorials/lattice-radiant-installation/index.html">his page explaining how to use Lattice Radiant</a>, if you build a design within this program you won’t be able to run it like you would on a Windows, even if you are able to Synthesize the board. Instead, you need to go back to your home screen and find the correct pathing to the file on your Windows computer.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Mac Users Aid">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mac Users Aid
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Not many people seem to know this, but if you have a folder or file open in your File Manager, you can drag the file into an open terminal window in order to get the complete file path; I’m sure there are other ways to do this, but this is the fastest way for me to open most programs.</p>
+</div>
+</div>
+<p>Although you could run the same terminal code that Professor Brake advises, I personally have been using code given to my by Kavi Dey, which works better most of the time because I don’t need to figure out pathing to the .bin file on my computer. If you’re interested, follow <a href="../../../../projects/e-155_website/labs/lab1/running_labs.html">this tutorial</a>.</p>
+</section>
+<section id="the-lab-itself" class="level3">
+<h3 class="anchored" data-anchor-id="the-lab-itself">The Lab Itself</h3>
+<p>The lab is composed of three modules, one test bench, and one basic text file of test vectors. The modules are assumbled such that there is one for the combinational logic used for the LEDs called <code>led_control.sv</code>, and another that is used for the combinational logic of the seven segment array, called <code>seven_segments.sv</code>. The connection of these modules can be visualized in the block diagram below.</p>
+<section id="insert-block-diagram" class="level4">
+<h4 class="anchored" data-anchor-id="insert-block-diagram">INSERT BLOCK DIAGRAM</h4>
+<p>In this design approach, I noted that the led’s followed very basic boolean logic; LED 0 followed XOR logic with the lowest order two bits supplied by the DIP switch, and LED 1 followed AND logic with the two highest bits. LED 2 was very simple to program, as it followed similar logic to that used in the <a href="https://hmc-e155.github.io/tutorials/lattice-radiant-ice40-ultraplus-project-setup/">iCE_40.sv tutorial.</a>.</p>
+<p>The design approach for the seven segment array required some more thoughtful setup. First, I constructed a table for each of the 16 possible arrangements of the DIP switch. Following the general logic that 0 should be mapped to 0x0, 1 to 0x1, etc. etc. until 15 was mapped to 0xF, I then created a table <a href="#tbl-segtable" class="quarto-xref">Table&nbsp;3</a> that mapped out which parts of the segment would need to turn on to display the correct number. This gave me a list of seven bits arrange in 16 ways, which I then used inside a case statement when assigning according to the decimal value held by the DIP switch. Note that in the following table, segA was seg[0], or the least significant bit of the seven_segment array inside of the module; I initially had an issue debugging where I reversed the values on accident, and it created some odd shapes on the seven-segment matrix.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Expandable Table">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Expandable Table
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="tbl-segtable" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-segtable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Table of Switches Mapped to Segments
+</figcaption>
+<div aria-describedby="tbl-segtable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>s[3]</th>
+<th>s[2]</th>
+<th>s[2]</th>
+<th>s[0]</th>
+<th>0x___</th>
+<th>segA</th>
+<th>segB</th>
+<th>segC</th>
+<th>segD</th>
+<th>segE</th>
+<th>segF</th>
+<th>segG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>6</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>“A”</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>“b”</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>“C”</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>“d”</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>“E”</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>“F”</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>In all, the combinational logic for this program was very straight forward. The next challenge came when mapping pins to the GPIO pins, and subsequent mapping to each individual segment on the matrix.</p>
+<p>When attaching the seven segment display, I took care to note the <a href="https://hmc-e155.github.io/assets/doc/MAN64x0%20Series.pdf">design specifications</a>. My board was a common-anode, single-seven segment display, which means that it was a MAN6460 on the data sheet. All segments had a test operating current of 20mA, and a dynamic resistance of 26 ohms when running. Additionally, I found that the average test voltage drop across was 2.1 V; I did not want to design for the maximum voltage scenario (which was 2.8 V), as I’d rather avoid getting too close to any risk of burning the matrix out. Considering that the current draw ought to be 20 mA, and that the voltage drop across a given segment is 2.1 V, I know that the resistors have to remove 1.2V at 20mA of current; when calculating according to the equation V/I = R, this means that the final resistance ought to be about 200 ohms. I used 220 ohm resistors to connect each of the cathodes of the board to their relative pins, and supplied both of the common anode pins with 3.3 V from the GPIO board.</p>
+<p>This leads to the question of why I didn’t put a single resistor at the common anode, and chose instead to use seven different ones. The answer to this lies within the design constraints; we want each of the segments to light up equal amounts every time. If the resistor came before the diode’s power drop, the current through each diode would vary as the number of diodes lighting up varied. A very simple example can be seen with the setup seen in <a href="#fig-compare" class="quarto-xref">Figure&nbsp;5</a>.</p>
+<div id="fig-compare" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-compare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/compare_currents.png" id="fig-compare" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-compare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<p>If we compare A and B, we can see how the current through the diodes will differ between each situation. In case A, the one that I used, if one diode isn’t lit up, it has no impact on the current traveling through the other diode: in every case, the voltage drop will assuredly be either 0V or 2.1 V across a given diode, irrelevant to any other segment within this case. However in case B, the same can not be said. If two diodes are lit up, they will be using double the amount of current, and resultantly the voltage drop caused by the single resistor will double. This means that there will be a smaller voltage drop across the diodes, which means that the more segments that are lit up, the less bright the matrix will glow - if it glows at all. This is why all of the resistors were attached to each cathode in the final design, rather than one resistor being connected to the common anode.</p>
+<p>The FPGA board maps to all pins starting with P; the MCU maps to all pins starting with PA. In order to accomplish the correct mapping, I drew a diagram (<a href="#fig-imag5" class="quarto-xref">Figure&nbsp;6</a>) that mapped the pin number, the segment controlled, and then the GPIO pin I intended for each part of the device. I knew that seg[0] was assigned to segA, seg[6] to segG, etc., and resultantly I was able to make a basic table that I then implemented on my breadboard (<a href="#tbl-sevenseg" class="quarto-xref">Table&nbsp;4</a>)</p>
+<div id="fig-imag5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="10%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-imag5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sevenseg_mapping.png" id="fig-imag5" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:10.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-imag5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<div id="tbl-sevenseg" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-sevenseg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Mapping of Pins to Segments
+</figcaption>
+<div aria-describedby="tbl-sevenseg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>segment number</th>
+<th>GPIO Pin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>P20</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>P12</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>P13</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>P45</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>P9</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>P44</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>P3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>When writing a testbench, I ran into several problems with using test vectors, to the point where I initially just wanted to program a for-loop to check my results. However, I realized after multiple hours of debugging and talking with Kavi that I had saved the file as the wrong type of text file, and resultantly my code couldn’t find the file (not for lack of me putting the textfile in every place)</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Can't Find *.tv File">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Can’t Find *.tv File
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because Windows doesn’t show the full extension, it wasn’t until I was looking through Windows via Terminal that I saw that the .tv file was, in fact, not a .tv file but a .tv.rtf file; this meant that when the program looked for the file that it wanted to run to test the vectors, it was unable to load it, even if the pathing to the text file was correct. Be very careful in Windows that the extension you see in the Finder window may not be the complete extension.</p>
+</div>
+</div>
+<p>The final test bench that I made controlled the four bit input of the switches, and the cross checked the output of top with the values I knew ought to be in the led and seven segment array. The simulation takes a long time to run: I believe in order for it to complete all test vectors, I need to use the command <code>run 1000000</code> (with six 0’s) in order to see the full thing and confirm that it is working. I removed <code>$finish</code> from the initial testbench file I was using as a baseline, as I wanted to be able to see the finished Waveform generator in Questa.</p>
+<p>This final design meets all the requirements for this lab. The bits are arranged in increasing order, left to right, on the DIP switches, and correspond to the LED’s when everything is oriented the same way (i.e.&nbsp;the seven segment array is facing the correct direction, and the ribbon cable keeps everything close to the development board) without any twisting. Listing the requirements, and going over each one, we see that: 1. The development board is fully assembled and all its components are soldered. This was confirmed for the screw panel as well as the GPIO pins using a multimeter in lab. 2. There are three verilog modules written, one that serves at the top wrapper module, and two the serve to individually control the LEDs and control the 7-segment display 3. The FPGA has been programmed to run with this Verilog code. 4. The 7-segment display can display all sixteen hexadecimal digits from 0x0 through 0xF 5. All digits for the board are unique, with no repeats 6. The DIP switches are sequentially ordered, with P37 being the highest order and P32 the lowest. This is true for both the LED logic and the seven segment logic. 7. The LEDs display the specified logic operations properly. 8. I have provided calculations provided to demonstrate that the current draw for each segment in the seven-segment display is within recommended operating conditions, as 1.2V/220ohms = about 20 mA, which is within the device’s marked operating current. 9. I have generated a ModelSim (or specifically Questa) simulation with an automatic test bench that walks through each potential switch combination and ensures that the design is working properly. 10. Finally, I have performed the necessary calcualtions to ensure that all digits, specifically of the seven-segment array, are equally bright, regardless of the number of segments illuminated.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
