@@ -41,6 +41,8 @@ R0
 R1
 R0
 R1
+R0
+R1
 Z2 !s12c _opt2
 R1
 R2
@@ -64,10 +66,10 @@ R1
 cModel Technology
 Z4 dC:/Users/zoeworrall/Desktop/projects_LRS/lab01
 T_opt1
-!s110 1725309895
-VFYSOCGfSdBRzVg@I>10XH0
+!s110 1725403533
+VPOKeZ>S2zC6o0EDCo>QZC2
 Z5 04 8 4 work lab01_tb fast 0
-=1-001c4226aff8-66d623c7-59-978
+=6-001c4226aff8-66d7918c-30e-8c4
 R1
 Z6 !s12f OEM25U4 
 Z7 !s12b OEM100
@@ -77,7 +79,6 @@ o-quiet -auto_acc_if_foreign -work work -L iCE40UP +acc
 Z10 tCvgOpt 0
 n@_opt1
 Z11 OL;O;2024.2;79
-R4
 T_opt2
 !s110 1725273995
 VE]kjESh[e[6YLIAmRRFQT1
@@ -93,103 +94,128 @@ R10
 n@_opt2
 R11
 R4
-vlab01_tb
-2C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv
+vlab01
+2C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01.sv
 Z12 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z13 !s110 1725310129
+Z13 !s110 1725403507
 !i10b 1
-!s100 <l^ej]R]E=L?`gWe4SGYC0
-Ic9R`2UD0DZF2=IQk?LchW3
+!s100 SVLmm1LUB5l8Wgg=DaGEX2
+IoFQcdz:;99D9;ePNf?lXl1
 S1
 R4
-w1725279234
-8C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv
-FC:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv
-!i122 206
-L0 19 71
+w1725403046
+8C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01.sv
+FC:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01.sv
+!i122 219
+L0 22 23
 Z14 VDg1SIo80bB@j0V0VzS_@n1
 Z15 OL;L;2024.2;79
 r1
 !s85 0
 31
-Z16 !s108 1725310129.000000
+!s108 1725403507.000000
+!s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01.sv|
+!i113 0
+Z16 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R10
+vlab01_tb
+2C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv
+R12
+Z17 !s110 1725403506
+!i10b 1
+!s100 <l^ej]R]E=L?`gWe4SGYC0
+Ic9R`2UD0DZF2=IQk?LchW3
+S1
+R4
+w1725403285
+8C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv
+FC:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv
+!i122 215
+L0 19 71
+R14
+R15
+r1
+!s85 0
+31
+Z18 !s108 1725403506.000000
 !s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv|
 !i113 0
-Z17 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R16
 R10
 vled_control
 2C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/led_control.sv
 R12
-R13
+R17
 !i10b 1
 !s100 9VhfYWV<UACSC5<G=LDlH3
 InchRoZQeQNdVJ7<O1I5`81
 S1
 R4
-w1725223308
+w1725401706
 8C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/led_control.sv
 FC:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/led_control.sv
-!i122 207
+!i122 216
 L0 13 12
 R14
 R15
 r1
 !s85 0
 31
-R16
+R18
 !s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/led_control.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/led_control.sv|
 !i113 0
-R17
+R16
 R10
 vseven_segment
 2C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment.sv
 R12
-R13
+R17
 !i10b 1
-!s100 ^mPFNEjQKd:>8;fiZ90L>3
-ICDhG_bz^F<fDhZTzSSkR`1
+!s100 lQEK]bmAdJaTTb1Ii0JHi3
+IWlCRF8XR?IongcdL^m<ec0
 S1
 R4
-w1725309482
+w1725399715
 8C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment.sv
 FC:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment.sv
-!i122 208
-L0 18 36
+!i122 217
+L0 18 37
 R14
 R15
 r1
 !s85 0
 31
-R16
+R18
 !s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment.sv|
 !i113 0
-R17
+R16
 R10
 vtop
 2C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv
 R12
 R13
 !i10b 1
-!s100 kLWZDIo=Ife89=I``@TL42
-IXPGP7QX9>CiE9UZm<j5=@3
+!s100 h58FmUHS2mLTz_BU>HOYS0
+I[C]PWO5Z7@^MC6EcP0P6f0
 S1
 R4
-w1725261858
+w1725403497
 8C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv
 FC:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv
-!i122 209
-L0 22 30
+!i122 218
+L0 22 17
 R14
 R15
 r1
 !s85 0
 31
-R16
+R18
 !s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv|
 !i113 0
-R17
+R16
 R10
