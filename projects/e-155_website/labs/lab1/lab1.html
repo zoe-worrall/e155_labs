@@ -74,8 +74,10 @@ ul.task-list li input[type="checkbox"] {
 
 <meta property="og:title" content="Zoe Worrall’s Website - Lab 1 Writeup">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/projects/e-155_website/labs/lab1/images/ZoeWorrall_Photo.png">
+<meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/projects/e-155_website/labs/lab1/images/lab1_sim.png">
 <meta property="og:site_name" content="Zoe Worrall's Website">
+<meta property="og:image:height" content="480">
+<meta property="og:image:width" content="964">
 </head>
 
 <body class="nav-fixed">
@@ -430,7 +432,7 @@ Table&nbsp;2: <strong>Seven Segment LED Matrix Logic</strong>
 <section id="hardware-setup" class="level3">
 <h3 class="anchored" data-anchor-id="hardware-setup">Hardware Setup</h3>
 <p>The first stage of this lab involved the soldering of the MCU and the FPGA, as well as all additional SMD and THT pins. To do this, the <a href="https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf">E155 FA23 Development Board</a> schematic was used. To begin, the SMD components were soldered. Careful consideration was given to make sure that the diodes were soldered in the right order and facing the correct direction. After these were soldered, THT components were then soldered, including the 4-pin DIP switch, the 8-pin DIP switch, and the female headers (<a href="#fig-imag1" class="quarto-xref">Figure&nbsp;1</a>).</p>
-<div id="fig-imag1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Image 1">
+<div id="fig-imag1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Image 1" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-imag1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/SMD_and_THT.JPG" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" alt="Image 1">
@@ -835,7 +837,7 @@ Table&nbsp;3: Table of Switches Mapped to Segments
 </div>
 <p>If we compare A and B, we can see how the current through the diodes will differ between each situation. In case A, the one that I used, if one diode isn’t lit up, it has no impact on the current traveling through the other diode: in every case, the voltage drop will assuredly be either 0V or 2.1 V across a given diode, irrelevant to any other segment within this case. However in case B, the same can not be said. If two diodes are lit up, they will be using double the amount of current, and resultantly the voltage drop caused by the single resistor will double. This means that there will be a smaller voltage drop across the diodes, which means that the more segments that are lit up, the less bright the matrix will glow - if it glows at all. This is why all of the resistors were attached to each cathode in the final design, rather than one resistor being connected to the common anode.</p>
 <p>The FPGA board maps to all pins starting with P; the MCU maps to all pins starting with PA. In order to accomplish the correct mapping, I drew a diagram (<a href="#fig-imag5" class="quarto-xref">Figure&nbsp;7</a>) that mapped the pin number, the segment controlled, and then the GPIO pin I intended for each part of the device. I knew that seg[0] was assigned to segA, seg[6] to segG, etc., and resultantly I was able to make a basic table that I then implemented on my breadboard (<a href="#tbl-sevenseg" class="quarto-xref">Table&nbsp;4</a>)</p>
-<div id="fig-imag5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="10%">
+<div id="fig-imag5" class="quarto-float quarto-figure quarto-figure-center anchored" width="10%" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-imag5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/sevenseg_mapping.png" id="fig-imag5" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:10.0%">
@@ -906,7 +908,7 @@ Can’t Find *.tv File
 </div>
 </div>
 <p>The final test bench that I made controlled the four bit input of the switches, and the cross checked the output of top with the values I knew ought to be in the led and seven segment array. The simulation takes a long time to run: I believe in order for it to complete all test vectors, I need to use the command <code>run 1000000</code> (with six 0’s) in order to see the full thing and confirm that it is working. I removed <code>$finish</code> from the initial testbench file I was using as a baseline, as I wanted to be able to see the finished Waveform generator in Questa.</p>
-<p><img src="images/lab1_sim.png" class="img-fluid"></p>
+<p><img src="images/lab1_sim2.png" class="img-fluid"></p>
 <p>This final design meets all the requirements for this lab. The bits are arranged in increasing order, left to right, on the DIP switches, and correspond to the LED’s when everything is oriented the same way (i.e.&nbsp;the seven segment array is facing the correct direction, and the ribbon cable keeps everything close to the development board) without any twisting. Listing the requirements, and going over each one, we see that: 1. The development board is fully assembled and all its components are soldered. This was confirmed for the screw panel as well as the GPIO pins using a multimeter in lab. 2. There are three verilog modules written, one that serves at the top wrapper module, and two the serve to individually control the LEDs and control the 7-segment display 3. The FPGA has been programmed to run with this Verilog code. 4. The 7-segment display can display all sixteen hexadecimal digits from 0x0 through 0xF 5. All digits for the board are unique, with no repeats 6. The DIP switches are sequentially ordered, with P37 being the highest order and P32 the lowest. This is true for both the LED logic and the seven segment logic. 7. The LEDs display the specified logic operations properly. 8. I have provided calculations provided to demonstrate that the current draw for each segment in the seven-segment display is within recommended operating conditions, as 1.2V/220ohms = about 20 mA, which is within the device’s marked operating current. 9. I have generated a ModelSim (or specifically Questa) simulation with an automatic test bench that walks through each potential switch combination and ensures that the design is working properly. 10. Finally, I have performed the necessary calcualtions to ensure that all digits, specifically of the seven-segment array, are equally bright, regardless of the number of segments illuminated.</p>
 
 
