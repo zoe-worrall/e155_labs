@@ -5,8 +5,6 @@ image: images/ZoeWorrall_Photo.jpg
 ---
 
 ## Welcome
-** note for Prof. Brake for E155 (this will be removed later): the links to Github and LinkedIn are in the footbar at the bottom of this page
-
 
 ::: {.grid}
 
