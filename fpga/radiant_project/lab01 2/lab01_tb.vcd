@@ -1,0 +1,468 @@
+$date
+	Mon Sep  2 13:50:17 2024
+$end
+$version
+	Questa Lattice OEM Edition 2024.2
+$end
+$timescale
+	1ps
+$end
+
+$scope module lab01_tb $end
+$var reg 1 ! clk $end
+$var reg 1 " reset $end
+$var reg 4 # switch [3:0] $end
+$var reg 3 $ led [2:0] $end
+$var reg 3 % led_expected [2:0] $end
+$var reg 7 & seg [6:0] $end
+$var reg 7 ' seg_expected [6:0] $end
+$var reg 32 ( vectornum [31:0] $end
+$var reg 32 ) errors [31:0] $end
+
+$scope module dut $end
+$var wire 1 * reset $end
+$var wire 1 + s [3] $end
+$var wire 1 , s [2] $end
+$var wire 1 - s [1] $end
+$var wire 1 . s [0] $end
+$var reg 3 / led [2:0] $end
+$var reg 7 0 seg [6:0] $end
+$var reg 1 1 int_osc $end
+$var reg 25 2 counter [24:0] $end
+
+$scope module hf_osc $end
+$var wire 1 3 CLKHFPU $end
+$var wire 1 4 CLKHFEN $end
+$var wire 1 5 CLKHF $end
+$upscope $end
+
+$scope module one_seg $end
+$var wire 1 + s [3] $end
+$var wire 1 , s [2] $end
+$var wire 1 - s [1] $end
+$var wire 1 . s [0] $end
+$var reg 7 6 seg [6:0] $end
+$upscope $end
+
+$scope module one_cont $end
+$var wire 1 7 counter [24] $end
+$var wire 1 8 counter [23] $end
+$var wire 1 9 counter [22] $end
+$var wire 1 : counter [21] $end
+$var wire 1 ; counter [20] $end
+$var wire 1 < counter [19] $end
+$var wire 1 = counter [18] $end
+$var wire 1 > counter [17] $end
+$var wire 1 ? counter [16] $end
+$var wire 1 @ counter [15] $end
+$var wire 1 A counter [14] $end
+$var wire 1 B counter [13] $end
+$var wire 1 C counter [12] $end
+$var wire 1 D counter [11] $end
+$var wire 1 E counter [10] $end
+$var wire 1 F counter [9] $end
+$var wire 1 G counter [8] $end
+$var wire 1 H counter [7] $end
+$var wire 1 I counter [6] $end
+$var wire 1 J counter [5] $end
+$var wire 1 K counter [4] $end
+$var wire 1 L counter [3] $end
+$var wire 1 M counter [2] $end
+$var wire 1 N counter [1] $end
+$var wire 1 O counter [0] $end
+$var wire 1 + s [3] $end
+$var wire 1 , s [2] $end
+$var wire 1 - s [1] $end
+$var wire 1 . s [0] $end
+$var reg 3 P led [2:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+1!
+1"
+bx #
+bx $
+bx %
+b1110 &
+bx '
+b0 (
+b0 )
+bx /
+b1110 0
+01
+bx 2
+b1110 6
+bx P
+x.
+x-
+x,
+x+
+1*
+xO
+xN
+xM
+xL
+xK
+xJ
+xI
+xH
+xG
+xF
+xE
+xD
+xC
+xB
+xA
+x@
+x?
+x>
+x=
+x<
+x;
+x:
+x9
+x8
+x7
+14
+13
+05
+$end
+#1000
+b1000000 '
+b0 %
+b0 #
+0.
+0-
+0,
+0+
+bx0x P
+bx00 P
+bx00 /
+bx00 $
+b1000000 6
+b1000000 0
+b1000000 &
+#5000
+0!
+#10000
+1!
+#10416
+15
+11
+#15000
+0!
+#20000
+1!
+#20832
+05
+01
+#25000
+0!
+#27000
+0"
+0*
+#30000
+1!
+#31248
+15
+11
+b0 2
+0O
+0N
+0M
+0L
+0K
+0J
+0I
+0H
+0G
+0F
+0E
+0D
+0C
+0B
+0A
+0@
+0?
+0>
+0=
+0<
+0;
+0:
+09
+08
+07
+b0 P
+b0 /
+b0 $
+#35000
+0!
+b1 (
+#40000
+1!
+#41000
+b1111001 '
+b1 %
+b1 #
+1.
+b1 P
+b1 /
+b1 $
+b1111001 6
+b1111001 0
+b1111001 &
+#41664
+05
+01
+#45000
+0!
+b10 (
+#50000
+1!
+#51000
+b100100 '
+b10 #
+0.
+1-
+b100100 6
+b100100 0
+b100100 &
+#52080
+15
+11
+#55000
+0!
+b11 (
+#60000
+1!
+#61000
+b110000 '
+b0 %
+b11 #
+1.
+b0 P
+b0 /
+b0 $
+b110000 6
+b110000 0
+b110000 &
+#62496
+05
+01
+#65000
+0!
+b100 (
+#70000
+1!
+#71000
+b11001 '
+b100 #
+0.
+0-
+1,
+b11001 6
+b11001 0
+b11001 &
+#72912
+15
+11
+#75000
+0!
+b101 (
+#80000
+1!
+#81000
+b10010 '
+b1 %
+b101 #
+1.
+b1 P
+b1 /
+b1 $
+b10010 6
+b10010 0
+b10010 &
+#83328
+05
+01
+#85000
+0!
+b110 (
+#90000
+1!
+#91000
+b10 '
+b110 #
+0.
+1-
+b10 6
+b10 0
+b10 &
+#93744
+15
+11
+#95000
+0!
+b111 (
+#100000
+1!
+#101000
+b1111000 '
+b0 %
+b111 #
+1.
+b0 P
+b0 /
+b0 $
+b1111000 6
+b1111000 0
+b1111000 &
+#104160
+05
+01
+#105000
+0!
+b1000 (
+#110000
+1!
+#111000
+b0 '
+b1000 #
+0.
+0-
+0,
+1+
+b0 6
+b0 0
+b0 &
+#114576
+15
+11
+#115000
+0!
+b1001 (
+#120000
+1!
+#121000
+b10000 '
+b1 %
+b1001 #
+1.
+b1 P
+b1 /
+b1 $
+b10000 6
+b10000 0
+b10000 &
+#124992
+05
+01
+#125000
+0!
+b1010 (
+#130000
+1!
+#131000
+b1000 '
+b1010 #
+0.
+1-
+b1000 6
+b1000 0
+b1000 &
+#135000
+0!
+b1011 (
+#135408
+15
+11
+#140000
+1!
+#141000
+b11 '
+b0 %
+b1011 #
+1.
+b0 P
+b0 /
+b0 $
+b11 6
+b11 0
+b11 &
+#145000
+0!
+b1100 (
+#145824
+05
+01
+#150000
+1!
+#151000
+b1000110 '
+b10 %
+b1100 #
+0.
+0-
+1,
+b10 P
+b10 /
+b10 $
+b1000110 6
+b1000110 0
+b1000110 &
+#155000
+0!
+b1101 (
+#156240
+15
+11
+#160000
+1!
+#161000
+b100001 '
+b11 %
+b1101 #
+1.
+b11 P
+b11 /
+b11 $
+b100001 6
+b100001 0
+b100001 &
+#165000
+0!
+b1110 (
+#166656
+05
+01
+#170000
+1!
+#171000
+b110 '
+b1110 #
+0.
+1-
+b110 6
+b110 0
+b110 &
+#175000
+0!
+b1111 (
+#177072
+15
+11
+#180000
+1!
+#181000
+b1110 '
+b10 %
+b1111 #
+1.
+b10 P
+b10 /
+b10 $
+b1110 6
+b1110

@@ -1,0 +1,195 @@
+m255
+K4
+z2
+Z0 !s12c _opt1
+Z1 !s99 nomlopt
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+Z2 !s12c _opt2
+R1
+R2
+R1
+R0
+R1
+Z3 !s12c _opt
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+!s11f vlog 2024.2 2024.05, May 20 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z4 dC:/Users/zoeworrall/Desktop/projects_LRS/lab01
+T_opt1
+!s110 1725309895
+VFYSOCGfSdBRzVg@I>10XH0
+Z5 04 8 4 work lab01_tb fast 0
+=1-001c4226aff8-66d623c7-59-978
+R1
+Z6 !s12f OEM25U4 
+Z7 !s12b OEM100
+Z8 !s124 OEM100
+Z9 !s135 nogc
+o-quiet -auto_acc_if_foreign -work work -L iCE40UP +acc
+Z10 tCvgOpt 0
+n@_opt1
+Z11 OL;O;2024.2;79
+R4
+T_opt2
+!s110 1725273995
+VE]kjESh[e[6YLIAmRRFQT1
+R5
+=1-001c4226aff8-66d5978b-1ae-2264
+R1
+R6
+R7
+R8
+R9
+o-quiet -auto_acc_if_foreign -work work -L iCE40UP +acc -L iCE40UP
+R10
+n@_opt2
+R11
+R4
+vlab01_tb
+2C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv
+Z12 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z13 !s110 1725310129
+!i10b 1
+!s100 <l^ej]R]E=L?`gWe4SGYC0
+Ic9R`2UD0DZF2=IQk?LchW3
+S1
+R4
+w1725279234
+8C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv
+FC:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv
+!i122 206
+L0 19 71
+Z14 VDg1SIo80bB@j0V0VzS_@n1
+Z15 OL;L;2024.2;79
+r1
+!s85 0
+31
+Z16 !s108 1725310129.000000
+!s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv|
+!i113 0
+Z17 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R10
+vled_control
+2C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/led_control.sv
+R12
+R13
+!i10b 1
+!s100 9VhfYWV<UACSC5<G=LDlH3
+InchRoZQeQNdVJ7<O1I5`81
+S1
+R4
+w1725223308
+8C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/led_control.sv
+FC:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/led_control.sv
+!i122 207
+L0 13 12
+R14
+R15
+r1
+!s85 0
+31
+R16
+!s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/led_control.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/led_control.sv|
+!i113 0
+R17
+R10
+vseven_segment
+2C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment.sv
+R12
+R13
+!i10b 1
+!s100 ^mPFNEjQKd:>8;fiZ90L>3
+ICDhG_bz^F<fDhZTzSSkR`1
+S1
+R4
+w1725309482
+8C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment.sv
+FC:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment.sv
+!i122 208
+L0 18 36
+R14
+R15
+r1
+!s85 0
+31
+R16
+!s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment.sv|
+!i113 0
+R17
+R10
+vtop
+2C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv
+R12
+R13
+!i10b 1
+!s100 kLWZDIo=Ife89=I``@TL42
+IXPGP7QX9>CiE9UZm<j5=@3
+S1
+R4
+w1725261858
+8C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv
+FC:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv
+!i122 209
+L0 22 30
+R14
+R15
+r1
+!s85 0
+31
+R16
+!s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv|
+!i113 0
+R17
+R10

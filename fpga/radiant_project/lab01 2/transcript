@@ -1,0 +1,44 @@
+# Reading pref.tcl
+# //  Questa Lattice OEM Edition-64
+# //  Version 2024.2 win64 May 20 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+vsim work.lab01_tb
+# vsim work.lab01_tb 
+# Start time: 02:50:52 on Sep 02,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv(36): Module 'HSOSC' is not defined.
+#  For instance 'hf_osc' at path 'lab01_tb.dut'
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=1, Warnings=0.
+# Error loading design
+# End time: 02:50:53 on Sep 02,2024, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+vsim work.lab01_tb -L iCE40UP -voptargs=+acc
+# vsim work.lab01_tb -L iCE40UP -voptargs="+acc" 
+# Start time: 02:51:23 on Sep 02,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading sv_std.std
+# Loading work.lab01_tb(fast)
+# Loading work.top(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.seven_segment(fast)
+# Loading work.led_control(fast)
+add wave -position end  sim:/lab01_tb/switch
+add wave -position end  sim:/lab01_tb/led
+add wave -position end  sim:/lab01_tb/led_expected
+add wave -position end  sim:/lab01_tb/seg
+add wave -position end  sim:/lab01_tb/seg_expected
+run 200
+# End time: 02:53:09 on Sep 02,2024, Elapsed time: 0:01:46
+# Errors: 0, Warnings: 0

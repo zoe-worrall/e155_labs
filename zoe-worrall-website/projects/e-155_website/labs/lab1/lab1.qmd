@@ -1,6 +1,7 @@
 ---
 title: Lab 1 Writeup
 author: Zoe Worrall  - zworrall@g.hmc.edu
+image: "images/lab1_sim.png"
 date: September 2, 2024
 \contact: "Contact at zworrall@g.hmc.edu"
 
@@ -21,7 +22,7 @@ categories:
 ## Lab 1: FPGA and MCU Setup and Testing
 *Hours Spent: 21.3, Mapped with Toggl Track*
 
-### Introduction
+### Introduction: Hardware
 The goal of this lab was initial setup and confirmation of FPGA control of on-board LEDs and attached GPIO pin. This was done through the control of three leds: **D6**, **D7**, and **D8**, as well as seven GPIO pins: **45**, **3**, **44**, **9**, **13**, **12**, and **20** through the readout of on-board 4-pin DIP switch. By the end of the laboratory, the three switches were controlled as defined as seen in Tables 1(a) and 1(b), and the seven segment LED matrix as defined in Table 2.
 
 ::: {.grid}
@@ -162,7 +163,7 @@ Although you could run the same terminal code that Professor Brake advises, I pe
 
 The lab is composed of three modules, one test bench, and one basic text file of test vectors. The modules are assumbled such that there is one for the combinational logic used for the LEDs called `led_control.sv`, and another that is used for the combinational logic of the seven segment array, called `seven_segments.sv`. The connection of these modules can be visualized in the block diagram below.
 
-![](images/block_diagram_program.png)
+![](images/block_diagram_program2.png)
 
 In this design approach, I noted that the led's followed very basic boolean logic; LED 0 followed XOR logic with the lowest order two bits supplied by the DIP switch, and LED 1 followed AND logic with the two highest bits. LED 2 was very simple to program, as it followed similar logic to that used in the [iCE_40.sv tutorial.](https://hmc-e155.github.io/tutorials/lattice-radiant-ice40-ultraplus-project-setup/).
 
@@ -230,7 +231,7 @@ Because Windows doesn't show the full extension, it wasn't until I was looking t
 
 The final test bench that I made controlled the four bit input of the switches, and the cross checked the output of top with the values I knew ought to be in the led and seven segment array. The simulation takes a long time to run: I believe in order for it to complete all test vectors, I need to use the command `run 1000000` (with six 0's) in order to see the full thing and confirm that it is working. I removed `$finish` from the initial testbench file I was using as a baseline, as I wanted to be able to see the finished Waveform generator in Questa.
 
-![](images/lab1_sim.png)
+![](images/lab1_sim2.png)
 
 This final design meets all the requirements for this lab. The bits are arranged in increasing order, left to right, on the DIP switches, and correspond to the LED's when everything is oriented the same way (i.e. the seven segment array is facing the correct direction, and the ribbon cable keeps everything close to the development board) without any twisting. Listing the requirements, and going over each one, we see that: 
 1. The development board is fully assembled and all its components are soldered. This was confirmed for the screw panel as well as the GPIO pins using a multimeter in lab.
@@ -243,3 +244,10 @@ This final design meets all the requirements for this lab. The bits are arranged
 8. I have provided calculations provided to demonstrate that the current draw for each segment in the seven-segment display is within recommended operating conditions, as 1.2V/220ohms = about 20 mA, which is within the device's marked operating current.
 9. I have generated a ModelSim (or specifically Questa) simulation with an automatic test bench that walks through each potential switch combination and ensures that the design is working properly.
 10. Finally, I have performed the necessary calcualtions to ensure that all digits, specifically of the seven-segment array, are equally bright, regardless of the number of segments illuminated.
+
+## Suggestions for Future Improvements
+
+Overall, this lab was a very good introduction for MicroP's, and really gets the ball rolling so that the student can get back into the frame of mind they were accustomed to in E85. Overall, I think very few edits should be made to this laboratory.
+However, if I had to suggest a change, I believe the main one would be that the lab writeup should include, at some point, a reference to the MCU board, in case the lab user either skipped the section or forgot about it. In particular, since the MCU will be used in the future, it seems important that the user demonstrate that they know how to use it before it is used to a much greater degree further into the semester.
+
+Additionally, a reference to an example of a block diagram within the References page would have aided in clearing up exactly what was expected to be seen in the first lab writeup, as I had many questions that needed to be answered in person, and couldn't be found online.
