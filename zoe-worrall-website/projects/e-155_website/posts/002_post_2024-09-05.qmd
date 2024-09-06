@@ -3,7 +3,7 @@ title: "The Swamp That Stands Between"
 description: "How do art and engineering entangle with each other? And where do we draw the line?"
 author: "Zoe Worrall"
 date: "9/5/24"
-image: images/tomatoes.jpeg
+image: images/breadboard_09052024.png
 categories:
   - blogpost
 ---
