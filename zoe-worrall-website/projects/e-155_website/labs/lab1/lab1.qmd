@@ -10,10 +10,14 @@ format:
     other-links:
       - text: "E155 FA Development Board"
         href: https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf
+      - text: "E155 Breadboard Adapter v4"
+        href: https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf
       - text: "Lab 1 Github Files"
         href: https://github.com/zoe-worrall/e155_labs/tree/main/fpga/radiant_project/lab01
       - text: "Tutorial for Programming FPGAs"
         href: running_labs.html
+      - text: "iCE40_demo Tutorial"
+        href: https://hmc-e155.github.io/tutorials/lattice-radiant-ice40-ultraplus-project-setup/
 
 categories:
   - labreport
@@ -22,68 +26,18 @@ categories:
 ## Lab 1: FPGA and MCU Setup and Testing
 *Hours Spent: 21.3, Mapped with Toggl Track*
 
+### Introduction{#sec-part-intro}
+
+The goal of this lab was to program an FPGA board to do two things:
+1. Control a set of 3 on-board LEDs to follow XOR, AND, and clock counter logic
+2. Control a seven-segment array using the [E155 Breadboard Adapter v4](https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf)
+The clock was configured to run at 48MHz, and connected to an LED such that it blinked at ~2.4 Hz. Additional details about the first goal may be foudn in (@sec-part-LED).
+
 ### Introduction: Hardware
-The goal of this lab was initial setup and confirmation of FPGA control of on-board LEDs and attached GPIO pin. This was done through the control of three leds: **D6**, **D7**, and **D8**, as well as seven GPIO pins: **45**, **3**, **44**, **9**, **13**, **12**, and **20** through the readout of on-board 4-pin DIP switch. By the end of the laboratory, the three switches were controlled as defined as seen in Tables 1(a) and 1(b), and the seven segment LED matrix as defined in Table 2.
 
-::: {.grid}
+The goal of this lab was initial setup and confirmation of FPGA control of on-board LEDs and attached GPIO pin. This was done through the control of three leds: **D6**, **D7**, and **D8**, as well as seven GPIO pins: **45**, **3**, **44**, **9**, **13**, **12**, and **20** through the readout of on-board 4-pin DIP switch.
 
-::: {.g-col-6}
-
-::: {#tbl-panel layout-nrow=2}
-| s[3] | s[2] | led[1] |
-|------|------|--------|
-| 0    | 0    | 0      |
-| 0    | 1    | 0      |
-| 1    | 0    | 0      |
-| 1    | 1    | 1      |
-
-: LED 1 (D7) {#tbl-first}
-
-| s[1] | s[0] | led[0] |
-|------|------|--------|
-| 0    | 0    | 0      |
-| 0    | 1    | 1      |
-| 1    | 0    | 1      |
-| 1    | 1    | 0      |
-
-: LED 0 (D6) {#tbl-second}
-
-**LED Logic for Table** 
-
-:::
-*The logic tables that were used for the led to switch mapping. @tbl-first refers to s[3] and s[2]; on the board, these are switches 1 and 2 (pins P32 and P31 respectively) to match where the highest order digits would be in a four digit number. By extensino, @tbl-second uses the two right-most switches (P35 and P32)*
-
-:::
-
-::: {.g-col-6}
-| Switch Base 10 Value | Seven Segment Display |
-|---------------------------|-----------------------------|
-|            0              |             0               |
-|            1              |             1               |
-|            2              |             2               |
-|            3              |             3               |
-|            4              |             4               |
-|            5              |             5               |
-|            6              |             6               |
-|            7              |             7               |
-|            8              |             8               |
-|            9              |             9               |
-|            10             |             A               |
-|            11             |             B               |
-|            12             |             C               |
-|            13             |             D               |
-|            14             |             E               |
-|            15             |             F               |
-
-: **Seven Segment LED Matrix Logic** {#tbl-letters}
-
-*The mapping from the decimal readout of the switches in hexadecimal.*
-:::
-
-
-:::
-
-### Hardware Setup
+#### Hardware Setup
 
 The first stage of this lab involved the soldering of the MCU and the FPGA, as well as all additional SMD and THT pins. To do this, the [E155 FA23 Development Board](https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf) schematic was used. To begin, the SMD components were soldered. Careful consideration was given to make sure that the diodes were soldered in the right order and facing the correct direction. After these were soldered, THT components were then soldered, including the 4-pin DIP switch, the 8-pin DIP switch, and the female headers (@fig-imag1).
 
@@ -132,9 +86,40 @@ All soldered pins and the required impedance values and relevant pin numbers can
 
 The final schematic for this design can be seen below.
 
-![](images/schematic_diag.png){width=60% fig-align="center"}
+![](images/block_diagram_program2.png){#fig-schem width=60% fig-align="center"}
 
-### Setup for Lab
+
+#### Calculations for Pin Mapping
+
+
+When attaching the seven segment display, I took care to note the [design specifications](https://hmc-e155.github.io/assets/doc/MAN64x0%20Series.pdf). My board was a common-anode, single-seven segment display, which means that it was a MAN6460 on the data sheet. All segments had a test operating current of 20mA, and a dynamic resistance of 26 ohms when running. Additionally, I found that the average test voltage drop across was 2.1 V; I did not want to design for the maximum voltage scenario (which was 2.8 V), as I'd rather avoid getting too close to any risk of burning the matrix out. Considering that the current draw ought to be 20 mA, and that the voltage drop across a given segment is 2.1 V, I know that the resistors have to remove 1.2V at 20mA of current; when calculating according to the equation V/I = R, this means that the final resistance ought to be about 60 ohms. For the sake of safety and with confirmation from Kavi, I used 220 ohm resistors to connect each of the cathodes of the board to their relative pins, and supplied both of the common anode pins with 3.3 V from the GPIO board. This means that each segment, when powered, has a current of 1.2/220 ohms or about 5 mA of current, which would map to 0.5 relative luminosity on their supplied data sheet (@fig-lumositydiag)
+
+![](images/lumosity_diag.png){#fig-lumositydiag}
+
+This leads to the question of why I didn't put a single resistor at the common anode, and chose instead to use seven different ones. The answer to this lies within the design constraints; we want each of the segments to light up equal amounts every time. If the resistor came before the diode's power drop, the current through each diode would vary as the number of diodes lighting up varied. A very simple example can be seen with the setup seen in @fig-compare.
+
+![](images/compare_currents.png){#fig-compare}
+
+If we compare A and B, we can see how the current through the diodes will differ between each situation. In case A, the one that I used, if one diode isn't lit up, it has no impact on the current traveling through the other diode: in every case, the voltage drop will assuredly be either 0V or 2.1 V across a given diode, irrelevant to any other segment within this case. However in case B, the same can not be said. If two diodes are lit up, they will be using double the amount of current, and resultantly the voltage drop caused by the single resistor will double. This means that there will be a smaller voltage drop across the diodes, which means that the more segments that are lit up, the less bright the matrix will glow - if it glows at all. This is why all of the resistors were attached to each cathode in the final design, rather than one resistor being connected to the common anode.
+
+The FPGA board maps to all pins starting with P; the MCU maps to all pins starting with PA. In order to accomplish the correct mapping, I drew a diagram (@fig-imag5) that mapped the pin number, the segment controlled, and then the GPIO pin I intended for each part of the device. I knew that seg[0] was assigned to segA, seg[6] to segG, etc., and resultantly I was able to make a basic table that I then implemented on my breadboard (@tbl-sevenseg)
+
+![](images/sevenseg_mapping.png){#fig-imag5 width=10% fig-align="center"}
+
+| segment number | GPIO Pin |
+|----------------|----------|
+|      0         | P20      |
+|      1         | P12      |
+|      2         | P13      |
+|      3         | P45      |
+|      4         | P9       |
+|      5         | P44      |
+|      6         | P3       |
+
+:Mapping of Pins to Segments {#tbl-sevenseg}
+
+
+### Software Setup
 
 I own a Mac computer, so I needed to go through a broad array of necessary preparation in order to begin generating the code for my computer. First, I installed SEGGER Embedded Studio 8.16a on my computer. Following the [SEGGER Embedded Studio Tutorial](https://hmc-e155.github.io/tutorials/segger-embedded-studio-setup/index.html), I confirmed that I was able to load designs onto my MCU board. 
 
@@ -159,13 +144,82 @@ Not many people seem to know this, but if you have a folder or file open in your
 
 Although you could run the same terminal code that Professor Brake advises, I personally have been using code given to my by Kavi Dey, which works better most of the time because I don't need to figure out pathing to the .bin file on my computer. If you're interested, follow [this tutorial](running_labs.qmd).
 
-### The Lab Itself
+
+### FPGA and LED Logic{#sec-part-LED}
+
+By the end of the laboratory, the three switches were controlled as defined as seen in Tables 1(a) and 1(b), and the seven segment LED matrix as defined in the set of tables below:
+
+::: {.grid}
+
+::: {.g-col-6}
+
+::: {#tbl-panel layout-nrow=2}
+| s[3] | s[2] | led[1] |
+|------|------|--------|
+| 0    | 0    | 0      |
+| 0    | 1    | 0      |
+| 1    | 0    | 0      |
+| 1    | 1    | 1      |
+
+: LED 1 (D7) {#tbl-first}
+
+| s[1] | s[0] | led[0] |
+|------|------|--------|
+| 0    | 0    | 0      |
+| 0    | 1    | 1      |
+| 1    | 0    | 1      |
+| 1    | 1    | 0      |
+
+: LED 0 (D6) {#tbl-second}
+
+**LED Logic for Table** {#tbl-first}
+
+:::
+*The logic tables that were used for the led to switch mapping. @tbl-first refers to s[3] and s[2]; on the board, these are switches 1 and 2 (pins P32 and P31 respectively) to match where the highest order digits would be in a four digit number. By extensino, @tbl-second uses the two right-most switches (P35 and P32)*
+
+:::
+
+::: {.g-col-6}
+| Switch Base 10 Value | Seven Segment Display |
+|---------------------------|-----------------------------|
+|            0              |             0               |
+|            1              |             1               |
+|            2              |             2               |
+|            3              |             3               |
+|            4              |             4               |
+|            5              |             5               |
+|            6              |             6               |
+|            7              |             7               |
+|            8              |             8               |
+|            9              |             9               |
+|            10             |             A               |
+|            11             |             B               |
+|            12             |             C               |
+|            13             |             D               |
+|            14             |             E               |
+|            15             |             F               |
+
+: **Seven Segment LED Matrix Logic** {#tbl-letters}
+
+*The mapping from the decimal readout of the switches in hexadecimal.*
+:::
+
+:::
+
+These table, in turn, will follow the schematic drawing seen in @fig-schem.
 
 The lab is composed of three modules, one test bench, and one basic text file of test vectors. The modules are assumbled such that there is one for the combinational logic used for the LEDs called `led_control.sv`, and another that is used for the combinational logic of the seven segment array, called `seven_segments.sv`. The connection of these modules can be visualized in the block diagram below.
 
-![](images/block_diagram_program2.png)
+![](images/schematic_diag.png)
 
-In this design approach, I noted that the led's followed very basic boolean logic; LED 0 followed XOR logic with the lowest order two bits supplied by the DIP switch, and LED 1 followed AND logic with the two highest bits. LED 2 was very simple to program, as it followed similar logic to that used in the [iCE_40.sv tutorial.](https://hmc-e155.github.io/tutorials/lattice-radiant-ice40-ultraplus-project-setup/).
+##### led_control.sv
+
+In this design approach, I noted that the led's followed very basic boolean logic; LED 0 followed XOR logic with the lowest order two bits supplied by the DIP switch, and LED 1 followed AND logic with the two highest bits (see table in @sec-part-LED). LED 2 was very simple to program, as it followed similar logic to that used in the [iCE_40.sv tutorial](https://hmc-e155.github.io/tutorials/lattice-radiant-ice40-ultraplus-project-setup/).
+
+Resultantly, the led_control module consists of three assign statements. The first two are combination logic for XOR and AND gates. The final part takes in a counter input, and uses it to decide whether to turn on/off the LED based on its most prominent bit in a 2^24 bit counter.
+
+
+##### seven_segment.sv
 
 The design approach for the seven segment array required some more thoughtful setup. First, I constructed a table for each of the 16 possible arrangements of the DIP switch. Following the general logic that 0 should be mapped to 0x0, 1 to 0x1, etc. etc. until 15 was mapped to 0xF, I then created a table @tbl-segtable that mapped out which parts of the segment would need to turn on to display the correct number. This gave me a list of seven bits arrange in 16 ways, which I then used inside a case statement when assigning according to the decimal value held by the DIP switch. Note that in the following table, segA was seg[0], or the least significant bit of the seven_segment array inside of the module; I initially had an issue debugging where I reversed the values on accident, and it created some odd shapes on the seven-segment matrix.
 
@@ -193,33 +247,14 @@ The design approach for the seven segment array required some more thoughtful se
 
 :::
 
-In all, the combinational logic for this program was very straight forward. The next challenge came when mapping pins to the GPIO pins, and subsequent mapping to each individual segment on the matrix.
+##### lab02.sv and top.sv
 
-When attaching the seven segment display, I took care to note the [design specifications](https://hmc-e155.github.io/assets/doc/MAN64x0%20Series.pdf). My board was a common-anode, single-seven segment display, which means that it was a MAN6460 on the data sheet. All segments had a test operating current of 20mA, and a dynamic resistance of 26 ohms when running. Additionally, I found that the average test voltage drop across was 2.1 V; I did not want to design for the maximum voltage scenario (which was 2.8 V), as I'd rather avoid getting too close to any risk of burning the matrix out. Considering that the current draw ought to be 20 mA, and that the voltage drop across a given segment is 2.1 V, I know that the resistors have to remove 1.2V at 20mA of current; when calculating according to the equation V/I = R, this means that the final resistance ought to be about 60 ohms. For the sake of safety and with confirmation from Kavi, I used 220 ohm resistors to connect each of the cathodes of the board to their relative pins, and supplied both of the common anode pins with 3.3 V from the GPIO board. This means that each segment, when powered, has a current of 1.2/220 ohms or about 5 mA of current, which would map to 0.5 relative luminosity on their supplied data sheet (@fig-lumositydiag)
+In all, the combinational logic for this program was very straight forward. The next challenge came when mapping pins to the GPIO pins, and subsequent mapping to each individual segment on the matrix. The two modules for controlling the LEDs and the seven-segment matrix were both placed into a module called "lab01.sv". On a top layer, the Python file "top.sv" generated a clock using an instatiation of an HSOSC module, which it fed into an instance of lab01. 
 
-![](images/lumosity_diag.png){#fig-lumositydiag}
 
-This leads to the question of why I didn't put a single resistor at the common anode, and chose instead to use seven different ones. The answer to this lies within the design constraints; we want each of the segments to light up equal amounts every time. If the resistor came before the diode's power drop, the current through each diode would vary as the number of diodes lighting up varied. A very simple example can be seen with the setup seen in @fig-compare.
+### Testing
 
-![](images/compare_currents.png){#fig-compare}
-
-If we compare A and B, we can see how the current through the diodes will differ between each situation. In case A, the one that I used, if one diode isn't lit up, it has no impact on the current traveling through the other diode: in every case, the voltage drop will assuredly be either 0V or 2.1 V across a given diode, irrelevant to any other segment within this case. However in case B, the same can not be said. If two diodes are lit up, they will be using double the amount of current, and resultantly the voltage drop caused by the single resistor will double. This means that there will be a smaller voltage drop across the diodes, which means that the more segments that are lit up, the less bright the matrix will glow - if it glows at all. This is why all of the resistors were attached to each cathode in the final design, rather than one resistor being connected to the common anode.
-
-The FPGA board maps to all pins starting with P; the MCU maps to all pins starting with PA. In order to accomplish the correct mapping, I drew a diagram (@fig-imag5) that mapped the pin number, the segment controlled, and then the GPIO pin I intended for each part of the device. I knew that seg[0] was assigned to segA, seg[6] to segG, etc., and resultantly I was able to make a basic table that I then implemented on my breadboard (@tbl-sevenseg)
-
-![](images/sevenseg_mapping.png){#fig-imag5 width=10% fig-align="center"}
-
-| segment number | GPIO Pin |
-|----------------|----------|
-|      0         | P20      |
-|      1         | P12      |
-|      2         | P13      |
-|      3         | P45      |
-|      4         | P9       |
-|      5         | P44      |
-|      6         | P3       |
-
-:Mapping of Pins to Segments {#tbl-sevenseg}
+To confirm that the system worked, a very basic testbench was written that ran through every potential arrangement of the 4-Pin system, checking expected LED values and seven-segment outputs. The value of led[2] was ignored in this testbench, as it was assumed to be working given that it had worked in the previous lab, and is extremely difficult to check (with my current knowledge as of September 2024) within a Questa Testbench.
 
 When writing a testbench, I ran into several problems with using test vectors, to the point where I initially just wanted to program a for-loop to check my results. However, I realized after multiple hours of debugging and talking with Kavi that I had saved the file as the wrong type of text file, and resultantly my code couldn't find the file (not for lack of me putting the textfile in every place)
 
