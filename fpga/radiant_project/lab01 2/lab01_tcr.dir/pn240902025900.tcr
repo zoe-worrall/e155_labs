@@ -1,0 +1,9 @@
+#Start recording tcl command: 9/2/2024 02:35:12
+#Project Location: C:/Users/zoeworrall/Desktop/projects_LRS/lab01; Project name: lab01
+prj_open "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01.rdf"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_vector_sim/lab01_vector_sim.spf"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_vector_sim/lab01_vector_sim.spf"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_sim/lab01_sim.spf"
+prj_save 
+prj_close
+#Stop recording: 9/2/2024 02:59:00

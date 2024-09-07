@@ -1,0 +1,54 @@
+----------------------------------------------------------------------
+Report for cell top.TECH
+Register bits:  11 of 5280 (0.208%)
+I/O cells:      23
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               CCU2         6          100.0
+                            FD1P3XZ        11          100.0
+                         HSOSC_CORE         1          100.0
+                                 IB         9          100.0
+                               LUT4        21          100.0
+                                 OB        14          100.0
+SUB MODULES
+                     dual_seven_seg         1
+                              lab02         1
+                      led_summation         1
+                      seven_segment         1
+                              TOTAL        66
+----------------------------------------------------------------------
+Report for cell lab02.v1
+Instance Path : lab_runner
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                                FA2         6          100.0
+                            FD1P3XZ        11          100.0
+                               LUT4        20           95.2
+SUB MODULES
+                     dual_seven_seg         1
+                      led_summation         1
+                      seven_segment         1
+                              TOTAL        40
+----------------------------------------------------------------------
+Report for cell dual_seven_seg.v1
+Instance Path : lab_runner.segments
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4        12           57.1
+SUB MODULES
+                      seven_segment         1
+                              TOTAL        13
+----------------------------------------------------------------------
+Report for cell seven_segment.v1
+Instance Path : lab_runner.segments.segment
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4         7           33.3
+                              TOTAL         7
+----------------------------------------------------------------------
+Report for cell led_summation.v1
+Instance Path : lab_runner.leds
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4         7           33.3
+                              TOTAL         7

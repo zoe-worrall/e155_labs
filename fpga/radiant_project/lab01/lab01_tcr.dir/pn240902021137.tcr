@@ -1,0 +1,161 @@
+#Start recording tcl command: 8/31/2024 15:36:28
+#Project Location: C:/Users/zoeworrall/Desktop/projects_LRS/lab01; Project name: lab01
+prj_open "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01.rdf"
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/sim_lab01/sim_lab01.spf"
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment.sv"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/led_control.sv"
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment_tb.sv"
+prj_remove_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/seven_segment_tb.sv"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv"
+prj_disable_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb.sv"
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_sim/lab01_sim.spf"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_sim/lab01_sim.spf"
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_sim/lab01_sim.spf"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_sim/lab01_sim.spf"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_sim/lab01_sim.spf"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_sim/lab01_sim.spf"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_sim/lab01_sim.spf"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_sim/lab01_sim.spf"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb_testvectors.sv"
+prj_disable_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/lab01_tb_testvectors.sv"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_vectorsim/lab01_vectorsim.spf"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_vectorsim/lab01_vectorsim.spf"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_sim/lab01_sim.spf"
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/lab01_novectorsim/lab01_novectorsim.spf"
+#Stop recording: 9/2/2024 02:11:37

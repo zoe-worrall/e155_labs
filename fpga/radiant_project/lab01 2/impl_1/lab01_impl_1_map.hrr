@@ -1,0 +1,28 @@
+---------------------------------------------------
+Report for cell top
+   Instance path: top
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	         37        100.0
+                               LUTGATE	         11        100.0
+                                LUTCCU	         26        100.0
+                                 IOBUF	         15        100.0
+                                PFUREG	         25        100.0
+SUB MODULES
+                                  cell	      count    LUT4 Usage(%)
+                           led_control	          1         5.4
+                         seven_segment	          1        18.9
+---------------------------------------------------
+Report for cell seven_segment
+   Instance path: top/one_seg
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	          7        18.9
+                               LUTGATE	          7        63.6
+---------------------------------------------------
+Report for cell led_control
+   Instance path: top/one_cont
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	          2         5.4
+                               LUTGATE	          2        18.2

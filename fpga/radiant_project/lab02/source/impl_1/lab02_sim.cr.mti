@@ -1,0 +1,15 @@
+C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/led_summation.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/led_summation.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module led_summation
+
+Top level modules:
+	led_summation
+
+} {} {}} C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/seven_segment.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/seven_segment.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module seven_segment
+
+Top level modules:
+	seven_segment
+
+} {} {}}

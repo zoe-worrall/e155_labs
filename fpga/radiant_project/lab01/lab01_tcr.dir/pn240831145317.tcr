@@ -1,0 +1,16 @@
+#Start recording tcl command: 8/31/2024 10:50:57
+#Project Location: C:/Users/zoeworrall/Desktop/projects_LRS/lab01; Project name: lab01
+prj_create -name "lab01" -impl "impl_1" -dev iCE40UP5K-SG48I -performance "High-Performance_1.2V" -synthesis "lse"
+prj_save 
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv"
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_add_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/led_and_switch_assigned.pdc"
+prj_enable_source "C:/Users/zoeworrall/Desktop/projects_LRS/lab01/led_and_switch_assigned.pdc"
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+#Stop recording: 8/31/2024 14:53:17

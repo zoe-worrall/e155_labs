@@ -1,0 +1,391 @@
+m255
+K4
+z2
+Z0 !s12c _opt1
+Z1 !s99 nomlopt
+R0
+R1
+R0
+R1
+R0
+R1
+Z2 !s12c _opt
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+!s11f vlog 2024.2 2024.05, May 20 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z3 dC:/Users/zoeworrall/Desktop/projects_LRS/lab02
+T_opt
+!s110 1725585334
+Vn1<I@@ZW4W1KW>b909j1V3
+04 8 4 work lab02_tb fast 0
+=1-001c4226aff8-66da57b6-12c-23e4
+R1
+!s12f OEM25U5 
+Z4 !s12b OEM100
+Z5 !s124 OEM100
+Z6 !s135 nogc
+Z7 o-quiet -auto_acc_if_foreign -work work -L iCE40UP +acc
+Z8 tCvgOpt 0
+n@_opt
+Z9 OL;O;2024.2;79
+R3
+T_opt1
+!s110 1725586647
+Vk6Y6Tn7U2=_;V::[P4EQ@2
+04 17 4 work dual_seven_seg_tb fast 0
+=1-001c4226aff8-66da5cd6-33a-29c4
+R1
+!s12f OEM25U3 
+R4
+R5
+R6
+R7
+R8
+n@_opt1
+R9
+vdual_seven_seg
+Z10 2C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/dual_seven_seg.sv
+Z11 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+DXx4 work 22 dual_seven_seg_sv_unit 0 22 ELERG8Lz9?9I;YAfT6jIU0
+Z12 !s110 1725586593
+Z13 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+!i10b 1
+!s100 h=1?Qm7_]W0nY@XELe9Cn2
+I5lh[V<7Z]zXeP=FzFVXLI0
+!s105 dual_seven_seg_sv_unit
+S1
+Z14 dC:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1
+Z15 w1725586585
+Z16 8C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/dual_seven_seg.sv
+Z17 FC:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/dual_seven_seg.sv
+!i122 277
+L0 11 28
+Z18 OL;L;2024.2;79
+31
+Z19 !s108 1725586593.000000
+Z20 !s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/dual_seven_seg.sv|
+Z21 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/dual_seven_seg.sv|
+!i113 0
+Z22 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R8
+Xdual_seven_seg_sv_unit
+R10
+R11
+R12
+VELERG8Lz9?9I;YAfT6jIU0
+r1
+!s85 0
+!i10b 1
+!s100 jf2KlFK`;=FoDJDLb;H_]2
+IELERG8Lz9?9I;YAfT6jIU0
+!i103 1
+S1
+R14
+R15
+R16
+R17
+!i122 277
+L0 9 0
+R18
+31
+R19
+R20
+R21
+!i113 0
+R22
+R8
+vdual_seven_seg_tb
+Z23 2C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/dual_seven_seg_tb.sv
+R11
+DXx4 work 25 dual_seven_seg_tb_sv_unit 0 22 SCLKZ02=QO>g4HnNzAdFo0
+Z24 !s110 1725586594
+R13
+r1
+!s85 0
+!i10b 1
+!s100 R8AWnZ>geTFEP[iTR@LSE3
+IY?BlOXl=ZFm]DIOF:XQU<3
+!s105 dual_seven_seg_tb_sv_unit
+S1
+R14
+Z25 w1725586345
+Z26 8C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/dual_seven_seg_tb.sv
+Z27 FC:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/dual_seven_seg_tb.sv
+!i122 283
+L0 21 81
+R18
+31
+Z28 !s108 1725586594.000000
+Z29 !s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/dual_seven_seg_tb.sv|
+Z30 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/dual_seven_seg_tb.sv|
+!i113 0
+R22
+R8
+Xdual_seven_seg_tb_sv_unit
+R23
+R11
+R24
+VSCLKZ02=QO>g4HnNzAdFo0
+r1
+!s85 0
+!i10b 1
+!s100 UW]DoP:EcXKS@XIFYPaEM0
+ISCLKZ02=QO>g4HnNzAdFo0
+!i103 1
+S1
+R14
+R25
+R26
+R27
+!i122 283
+L0 19 0
+R18
+31
+R28
+R29
+R30
+!i113 0
+R22
+R8
+vlab01
+R10
+R11
+!s110 1725566781
+!i10b 1
+!s100 oaZeBeCS4P=PB6_H6b`LR1
+IUU9^9heGJX@mS@bfJTOKl0
+S1
+R14
+w1725564129
+R16
+R17
+!i122 107
+L0 9 35
+R13
+R18
+r1
+!s85 0
+31
+!s108 1725566781.000000
+R20
+R21
+!i113 0
+R22
+R8
+vlab01_tb
+Z31 2C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/lab02_tb.sv
+R11
+!s110 1725564354
+!i10b 1
+!s100 [eeaN5`n1P<QSzVM@W6A<1
+IV^QOhEWC]7jCZ?`@Qmj@I2
+S1
+R14
+w1725564349
+Z32 8C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/lab02_tb.sv
+Z33 FC:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/lab02_tb.sv
+!i122 19
+Z34 L0 19 83
+R13
+R18
+r1
+!s85 0
+31
+!s108 1725564354.000000
+Z35 !s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/lab02_tb.sv|
+Z36 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/lab02_tb.sv|
+!i113 0
+R22
+R8
+vlab02
+Z37 2C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/lab02.sv
+R11
+DXx4 work 13 lab02_sv_unit 0 22 nDC9^=UjT<TE:2ge<U:^^2
+R12
+R13
+r1
+!s85 0
+!i10b 1
+!s100 Eh;XDleBDQjK5LNDPnFKE0
+IS>e0EaE8[]0BS2I<I7fE40
+!s105 lab02_sv_unit
+S1
+R14
+Z38 w1725585289
+Z39 8C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/lab02.sv
+Z40 FC:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/lab02.sv
+!i122 278
+L0 30 30
+R18
+31
+R19
+Z41 !s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/lab02.sv|
+Z42 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/lab02.sv|
+!i113 0
+R22
+R8
+Xlab02_sv_unit
+R37
+R11
+R12
+VnDC9^=UjT<TE:2ge<U:^^2
+r1
+!s85 0
+!i10b 1
+!s100 3J];R]gzMSmfFKMcjE:bD3
+InDC9^=UjT<TE:2ge<U:^^2
+!i103 1
+S1
+R14
+R38
+R39
+R40
+!i122 278
+L0 28 0
+R18
+31
+R19
+R41
+R42
+!i113 0
+R22
+R8
+vlab02_tb
+R31
+R11
+R12
+!i10b 1
+!s100 9:z7TLEhKN[7HG3ZUe7oT0
+I2DH=3KkI;QW`CQGRFzMPl1
+S1
+R14
+w1725580696
+R32
+R33
+!i122 279
+R34
+R13
+R18
+r1
+!s85 0
+31
+R19
+R35
+R36
+!i113 0
+R22
+R8
+vled_summation
+2C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/led_summation.sv
+R11
+R24
+!i10b 1
+!s100 :U>a]jH6>_IEVkd9YPNfW1
+IZ<1M1Nz0gh14OngcOGC>>2
+S1
+R14
+w1725579280
+8C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/led_summation.sv
+FC:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/led_summation.sv
+!i122 280
+L0 11 7
+R13
+R18
+r1
+!s85 0
+31
+R28
+!s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/led_summation.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/led_summation.sv|
+!i113 0
+R22
+R8
+vseven_segment
+2C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/seven_segment.sv
+R11
+R24
+!i10b 1
+!s100 Kn3gI7W8g2k`51ceXZ8lS3
+I1KWXD2;c9XG3CNBaVb61F3
+S1
+R14
+w1725522834
+8C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/seven_segment.sv
+FC:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/seven_segment.sv
+!i122 281
+L0 20 37
+R13
+R18
+r1
+!s85 0
+31
+R28
+!s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/seven_segment.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/seven_segment.sv|
+!i113 0
+R22
+R8
+vtop
+2C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/top.sv
+R11
+R24
+!i10b 1
+!s100 YgKaT9M?_QL86i_mNfYY@1
+IAPzLGZKLNQGIb;b43m21B0
+S1
+R14
+w1725579931
+8C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/top.sv
+FC:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/top.sv
+!i122 282
+L0 19 19
+R13
+R18
+r1
+!s85 0
+31
+R28
+!s107 C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/top.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/zoeworrall/Desktop/projects_LRS/lab02/source/impl_1/top.sv|
+!i113 0
+R22
+R8

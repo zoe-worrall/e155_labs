@@ -3,3 +3,55 @@ title: Lab 2 Initial Page
 ---
 
 ## Lab 2: Multiplexed 7-Segment Display
+
+Introduction
+
+Introduction
+Briefly explain what was done.
+In this lab, a design was developed to display the output of two 4-pin DIP Switches on a dual seven segmenet LED matrix, as well as displaying the sum of these two values on a set of five LEDs.
+
+
+Design and Testing Methodology
+
+Design and Testing Methodology
+
+The design was developed based on work from Lab 1. The same seven segmenet module was used within a double multiplexer, which used the clock to switch back and forth between powering the two common anodes of the dual display. Using multiplexing, the two values were displayed. An additional module, led_summation, was used to return the sum of the two leds and palce it onto the five on-board LEDs.
+
+The on-board high-speed oscillator from iCE40 UltraPlus primitive library was used to generate the clock. 
+
+The tests need to do two things; they must check that the segments accurately control all pin outputs of the segments, and they must also check that these segments only change when the clock is in the right location. To test both of these, I programmed two different test benches. The first used lab02 and ran through every possible scneario of pin-combinations, and confirmed that the seven-segment array was always displaying the correct values for at least one of these switches. The second testbench tested the multiplexing functions itself, and confirmed that the right segmenets were turned on dependent on the clock input.
+
+Technical Documentation:
+
+Technical Documentation
+Include a link to a Git repository with your Verilog code, a block diagram of your design, and schematics of your circuits.
+The source code for the project can be found in the associated Github repository.
+
+** insert github code here **
+
+Block Diagram
+
+Figure 1: Block diagram of the Verilog design.
+The block diagram in Figure 1 demonstrates the overall architecture of the design. The top-level module top includes two submodules: the high-speed oscillator block (HSOSC) and the clock divider module (clk_divider). 
+
+
+
+Schematic
+
+Figure 2: Schematic of the physical circuit.
+Figure 2 shows the physical layout of the design. An internal 100 k pullup resistor was used to ensure the active low reset pin was not floating. The output LED was connected using a 1 k current-limiting resistor to ensure the output current (~2.6 mA) did not exceed the maximum output current of the FPGA I/O pins.
+
+Results and Discussion
+
+Results and Discussion
+Did you accomplish all of the prescribed tasks? If not, what are the shortcomings? How might you address them given more time? As appropriate, how did the design perform (e.g., How fast/accurate/reliable was it?).
+Testbench Simulation
+
+Figure 3: A screenshot of a QuestaSim simulation demonstrating the blinking output signal. Note that the timescale for the clock divider was modified to divide by 4.
+The design met all intended design objectives. Figure 3 shows a screenshot of the QuestaSim simulation. If a more precise output frequency was desired, a more sophisticated counter could be developed. The current design only allows for the clock to be divided by powers of two.
+
+Conclusion
+
+Conclusion
+Briefly summarize what was done and how it performed. Also note how many hours you spent working on the lab.
+The design successfully blinked an external LED using the on-board high-speed oscillator. I spent a total of two hours working on this lab.

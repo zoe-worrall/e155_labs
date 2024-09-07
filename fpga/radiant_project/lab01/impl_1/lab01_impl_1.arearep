@@ -1,0 +1,43 @@
+----------------------------------------------------------------------
+Report for cell top.TECH
+Register bits:  25 of 5280 (0.473%)
+I/O cells:      15
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               CCU2        13          100.0
+                            FD1P3XZ        25          100.0
+                         HSOSC_CORE         1          100.0
+                                 IB         5          100.0
+                               LUT4        10          100.0
+                                 OB        10          100.0
+SUB MODULES
+                              lab01         1
+                        led_control         1
+                      seven_segment         1
+                              TOTAL        67
+----------------------------------------------------------------------
+Report for cell lab01.v1
+Instance Path : lab_runner
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                                FA2        13          100.0
+                            FD1P3XZ        25          100.0
+                               LUT4         9           90.0
+SUB MODULES
+                        led_control         1
+                      seven_segment         1
+                              TOTAL        49
+----------------------------------------------------------------------
+Report for cell seven_segment.v1
+Instance Path : lab_runner.one_seg
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4         7           70.0
+                              TOTAL         7
+----------------------------------------------------------------------
+Report for cell led_control.v1
+Instance Path : lab_runner.one_cont
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4         2           20.0
+                              TOTAL         2

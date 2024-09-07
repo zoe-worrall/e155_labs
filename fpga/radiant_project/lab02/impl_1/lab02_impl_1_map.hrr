@@ -1,0 +1,50 @@
+---------------------------------------------------
+Report for cell top
+   Instance path: top
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	         34        100.0
+                               LUTGATE	         22        100.0
+                                LUTCCU	         12        100.0
+                                 IOBUF	         23        100.0
+                                PFUREG	         11        100.0
+SUB MODULES
+                                  cell	      count    LUT4 Usage(%)
+                                 lab02	          1        94.1
+---------------------------------------------------
+Report for cell lab02
+   Instance path: top/lab_runner
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	         32        94.1
+                               LUTGATE	         20        90.9
+                                LUTCCU	         12        100.0
+                                PFUREG	         11        100.0
+SUB MODULES
+                                  cell	      count    LUT4 Usage(%)
+                        dual_seven_seg	          1        35.3
+                         led_summation	          1        20.6
+---------------------------------------------------
+Report for cell dual_seven_seg
+   Instance path: top/lab_runner/segments
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	         12        35.3
+                               LUTGATE	         12        54.5
+SUB MODULES
+                                  cell	      count    LUT4 Usage(%)
+                         seven_segment	          1        20.6
+---------------------------------------------------
+Report for cell seven_segment
+   Instance path: top/lab_runner/segments/segment
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	          7        20.6
+                               LUTGATE	          7        31.8
+---------------------------------------------------
+Report for cell led_summation
+   Instance path: top/lab_runner/leds
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	          7        20.6
+                               LUTGATE	          7        31.8

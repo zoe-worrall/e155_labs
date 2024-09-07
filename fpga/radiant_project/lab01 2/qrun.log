@@ -1,0 +1,118 @@
+vsim -L iCE40UP -lib qrun.out/work -wlf vsim.wlf -gui -statslog qrun.out/stats_log -suppress vsim-7033,vsim-8630,3009,3389 -appendlog -l qrun.log -voptargs=+acc work.lab01_tb
+# vsim -L iCE40UP -lib qrun.out/work -wlf vsim.wlf -gui -statslog qrun.out/stats_log -suppress vsim-7033,vsim-8630,3009,3389 -appendlog -l qrun.log -voptargs="+acc" work.lab01_tb 
+# Start time: 02:04:54 on Sep 02,2024
+# ** Error (suppressible): (vsim-19) Failed to access library 'qrun.out/work' at "qrun.out/work".
+# No such file or directory. (errno = ENOENT)
+# ** Error (suppressible): (vsim-19) Failed to access library 'qrun.out/work' at "qrun.out/work".
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vsim-1905) Unable to map work library to a physical path.
+# Error loading design
+# End time: 02:04:55 on Sep 02,2024, Elapsed time: 0:00:01
+# Errors: 3, Warnings: 5
+# A time value could not be extracted from the current line
+# reading C:/lscc/radiant/2024.1/questasim/win64/../modelsim.ini
+# Loading project lab01_sim
+vsim -L iCE40UP -lib qrun.out/work -wlf vsim.wlf -gui -statslog qrun.out/stats_log -suppress vsim-7033,vsim-8630,3009,3389 -appendlog -l qrun.log -voptargs=+acc work.lab01_tb_testvectors
+# vsim -L iCE40UP -lib qrun.out/work -wlf vsim.wlf -gui -statslog qrun.out/stats_log -suppress vsim-7033,vsim-8630,3009,3389 -appendlog -l qrun.log -voptargs="+acc" work.lab01_tb_testvectors 
+# Start time: 02:06:39 on Sep 02,2024
+# ** Error (suppressible): (vsim-19) Failed to access library 'qrun.out/work' at "qrun.out/work".
+# No such file or directory. (errno = ENOENT)
+# ** Error (suppressible): (vsim-19) Failed to access library 'qrun.out/work' at "qrun.out/work".
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vsim-1905) Unable to map work library to a physical path.
+# Error loading design
+# End time: 02:06:40 on Sep 02,2024, Elapsed time: 0:00:01
+# Errors: 3, Warnings: 5
+# reading C:/lscc/radiant/2024.1/questasim/win64/../modelsim.ini
+# Loading project lab01_novectorsim
+vsim -L work -L pmi_work -L ovi_ice40up -L iCE40UP -lib qrun.out/work -wlf vsim.wlf -gui -do {add wave /*} -do {run 100 ns} -statslog qrun.out/stats_log -suppress vsim-7033,vsim-8630,3009,3389 -appendlog -l qrun.log work.lab01_tb -voptargs=+acc
+# vsim -L work -L pmi_work -L ovi_ice40up -L iCE40UP -lib qrun.out/work -wlf vsim.wlf -gui -do "add wave /*" -do "run 100 ns" -statslog qrun.out/stats_log -suppress vsim-7033,vsim-8630,3009,3389 -appendlog -l qrun.log work.lab01_tb -voptargs="+acc" 
+# Start time: 02:45:31 on Sep 02,2024
+# ** Error (suppressible): (vsim-19) Failed to access library 'qrun.out/work' at "qrun.out/work".
+# No such file or directory. (errno = ENOENT)
+# ** Error (suppressible): (vsim-19) Failed to access library 'qrun.out/work' at "qrun.out/work".
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vsim-1905) Unable to map work library to a physical path.
+# Error loading design
+# End time: 02:45:31 on Sep 02,2024, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 5
+# Compile of lab01_tb.sv was successful.
+# Compile of led_control.sv was successful.
+# Compile of seven_segment.sv was successful.
+# Compile of top.sv was successful.
+# 4 compiles, 0 failed with no errors.
+vsim -L work -L pmi_work -L ovi_ice40up -L iCE40UP -lib qrun.out/work -wlf vsim.wlf -gui -do {run 100 ns} -statslog qrun.out/stats_log -suppress vsim-7033,vsim-8630,3009,3389 -appendlog -l qrun.log -voptargs=+acc work.lab01_tb
+# vsim -L work -L pmi_work -L ovi_ice40up -L iCE40UP -lib qrun.out/work -wlf vsim.wlf -gui -do "run 100 ns" -statslog qrun.out/stats_log -suppress vsim-7033,vsim-8630,3009,3389 -appendlog -l qrun.log -voptargs="+acc" work.lab01_tb 
+# Start time: 02:45:59 on Sep 02,2024
+# ** Error (suppressible): (vsim-19) Failed to access library 'qrun.out/work' at "qrun.out/work".
+# No such file or directory. (errno = ENOENT)
+# ** Error (suppressible): (vsim-19) Failed to access library 'qrun.out/work' at "qrun.out/work".
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vsim-1905) Unable to map work library to a physical path.
+# Error loading design
+# End time: 02:46:00 on Sep 02,2024, Elapsed time: 0:00:01
+# Errors: 3, Warnings: 2
+# A time value could not be extracted from the current line
+# A time value could not be extracted from the current line
+# A time value could not be extracted from the current line
+vsim work.lab01_tb
+# vsim work.lab01_tb 
+# Start time: 02:46:46 on Sep 02,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: C:/Users/zoeworrall/Desktop/projects_LRS/lab01/source/impl_1/top.sv(36): Module 'HSOSC' is not defined.
+#  For instance 'hf_osc' at path 'lab01_tb.dut'
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=1, Warnings=0.
+# Error loading design
+# End time: 02:46:47 on Sep 02,2024, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 1
+vsim work.lab01_tb -L iCE40UP -voptargs=+acc
+# vsim work.lab01_tb -L iCE40UP -voptargs="+acc" 
+# Start time: 02:47:13 on Sep 02,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.lab01_tb(fast)
+# Loading work.top(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.seven_segment(fast)
+# Loading work.led_control(fast)
+add wave -position end  sim:/lab01_tb/clk
+add wave -position end  sim:/lab01_tb/reset
+add wave -position end  sim:/lab01_tb/switch
+add wave -position end  sim:/lab01_tb/led
+add wave -position end  sim:/lab01_tb/led_expected
+add wave -position end  sim:/lab01_tb/seg
+add wave -position end  sim:/lab01_tb/seg_expected
+run 200
+restart -f
+# Closing VCD file "lab01_tb.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.lab01_tb(fast)
+# Loading work.top(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.seven_segment(fast)
+# Loading work.led_control(fast)
+project compileall
+# Compile of lab01_tb.sv was successful.
+# Compile of led_control.sv was successful.
+# Compile of seven_segment.sv was successful.
+# Compile of top.sv was successful.
+# 4 compiles, 0 failed with no errors.
+run 300
+restart -f
+# Closing VCD file "lab01_tb.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.lab01_tb(fast)
+# Loading work.top(fast)
+# Loading iCE40UP.HSOSC(fast)
+# Loading work.seven_segment(fast)
+# Loading work.led_control(fast)
+run 10000
+# End time: 02:49:51 on Sep 02,2024, Elapsed time: 0:02:38
+# Errors: 0, Warnings: 2
