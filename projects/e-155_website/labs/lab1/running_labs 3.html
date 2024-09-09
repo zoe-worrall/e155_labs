@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Zoe Worrall">
-<meta name="dcterms.date" content="2024-08-29">
-<meta name="description" content="Explaining my initial learning goals for MicroPs">
 
-<title>E155: Learning Goals – Zoe Worrall's Website</title>
+<title>How to Run FPGA Code – Zoe Worrall's Website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,23 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../../images/bg_test.png" rel="icon" type="image/png">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../../images/bg_test.png" rel="icon" type="image/png">
+<script src="../../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,12 +70,10 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<meta property="og:title" content="Zoe Worrall’s Website - E155: Learning Goals">
-<meta property="og:description" content="Explaining my initial learning goals for MicroPs">
-<meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/projects/e-155_website/posts/images/cool_design.png">
+<meta property="og:title" content="Zoe Worrall’s Website - How to Run FPGA Code">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/projects/e-155_website/labs/lab1/images/ZoeWorrall_Photo.png">
 <meta property="og:site_name" content="Zoe Worrall's Website">
-<meta property="og:image:height" content="120">
-<meta property="og:image:width" content="276">
 </head>
 
 <body class="nav-fixed">
@@ -88,8 +83,8 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../../images/zoe_logo.png" alt="" class="navbar-logo">
+    <a href="../../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../../images/zoe_logo.png" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -99,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../projects/e-155_website/blog.html"> 
+    <a class="nav-link" href="../../../../projects/e-155_website/blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -108,31 +103,31 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-e155-labs">    
         <li>
-    <a class="dropdown-item" href="../../../projects/e-155_website/labs/lab1/lab1.html">
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab1/lab1.html">
  <span class="dropdown-text">Lab 1 Writeup</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../projects/e-155_website/labs/lab2/lab2.html">
- <span class="dropdown-text">Lab 2 Writeup</span></a>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab2/lab2.html">
+ <span class="dropdown-text">Lab 2 Initial Page</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../projects/e-155_website/labs/lab3/lab3.html">
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab3/lab3.html">
  <span class="dropdown-text">Lab 3 Initial Page</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../projects/e-155_website/labs/lab4/lab4.html">
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab4/lab4.html">
  <span class="dropdown-text">Lab 4 Initial Page</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../projects/e-155_website/labs/lab5/lab5.html">
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab5/lab5.html">
  <span class="dropdown-text">Lab 5 Initial Page</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../projects/e-155_website/labs/lab6/lab6.html">
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab6/lab6.html">
  <span class="dropdown-text">Lab 6 Initial Page</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../projects/e-155_website/labs/lab7/lab7.html">
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab7/lab7.html">
  <span class="dropdown-text">Lab 7 Initial Page</span></a>
   </li>  
     </ul>
@@ -143,33 +138,33 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
         <li>
-    <a class="dropdown-item" href="../../../projects/e-155_website">
+    <a class="dropdown-item" href="../../../../projects/e-155_website">
  <span class="dropdown-text">E155 Project</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../projects/E80_sub.html">
+    <a class="dropdown-item" href="../../../../projects/E80_sub.html">
  <span class="dropdown-text">Engineering Systems E80</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../projects/mcf_lci.html">
+    <a class="dropdown-item" href="../../../../projects/mcf_lci.html">
  <span class="dropdown-text">Multicore Fiber Bundle Low Coherence Interferometry Research</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../projects/open_ivis.html">
+    <a class="dropdown-item" href="../../../../projects/open_ivis.html">
  <span class="dropdown-text">openIVIS</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../art/index.html"> 
+    <a class="nav-link" href="../../../../art/index.html"> 
 <span class="menu-text">Zoe Worrall’s Artworks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../resources.html"> 
+    <a class="nav-link" href="../../../../resources.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../contacts/index.html"> 
+    <a class="nav-link" href="../../../../contacts/index.html"> 
 <span class="menu-text">Contact Me</span></a>
   </li>  
 </ul>
@@ -188,43 +183,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#my-thoughts" id="toc-my-thoughts" class="nav-link active" data-scroll-target="#my-thoughts">My Thoughts</a></li>
+  <li><a href="#first-steps" id="toc-first-steps" class="nav-link active" data-scroll-target="#first-steps">First Steps</a></li>
+  <li><a href="#kavis-code" id="toc-kavis-code" class="nav-link" data-scroll-target="#kavis-code">Kavi’s Code</a></li>
+  <li><a href="#running-fpga-code" id="toc-running-fpga-code" class="nav-link" data-scroll-target="#running-fpga-code">Running FPGA Code</a></li>
+  <li><a href="#done" id="toc-done" class="nav-link" data-scroll-target="#done">Done!</a></li>
   </ul>
-</nav>
+<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="lab1.html"><i class="bi bi-link-45deg"></i>Return to Lab 1 Page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">E155: Learning Goals</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">blogpost</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    Explaining my initial learning goals for MicroPs
-  </div>
+<h1 class="title">How to Run FPGA Code</h1>
 </div>
+
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Zoe Worrall </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 29, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -234,11 +212,122 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="my-thoughts" class="level2">
-<h2 class="anchored" data-anchor-id="my-thoughts">My Thoughts</h2>
-<p>My final goals for MicroP’s mainly revolve around getting more familiar with FPGA boards, as well as practicing my time management skills. This semester is set up to be packed with a lot of material, but it is all material that focuses mainly on projects rather than problem sets: resultantly, it’s an excellent way to hone in on my organization and my calendar skills.</p>
-<p>Additionally, it has been about a year since I took E85, which means that many of my Verilog skills that I built up are rusty; this ought to be an excellent way to get back into programming in SystemVerilog. Additionally, FPGA’s are heavily used within the radio transmitting and signal processing world, and so I think it’s very important that I learn how to interact with them, even at their most basic level.</p>
-<p>Finally, I’m excited that this course incorporates Quarto and Github! It was not something that I was anticipating, but I believe that one of my final goals with this course is to build some additional professional skills that will allow me to present my work better, whether in academia or in industry.</p>
+<section id="first-steps" class="level2">
+<h2 class="anchored" data-anchor-id="first-steps">First Steps</h2>
+<p>The first thing that you need to do is write your code. Easy enough; let’s pretend that you’ve done that already.</p>
+<p>I follow <a href="https://hmc-e155.github.io/tutorials/lattice-radiant-installation/index.html">Professor Brake’s tutorial</a> for most of this, and it was quite comprehensive. However, if you’d like even more photos, and specifically information on how I personally load onto my FPGA board, read on. The next thing that you need to do is a bit more difficult if you aren’t connected to your board properly, and that’s to Synthesize your code, like the pretty image below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Synthesize_Windows.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Start by installing Lattice Radiant. It’s straightforward, especially if you are following Professor Brake’s tutorial. I will talk specifically about installing the FTDI driver afterwards, as that was what was more difficult on my end.</p>
+<p>Unfortunately, unless you’ve done it before you’ll probably need to install the FTDI Drivers that Professor Brake mentions. I’ll give you a tip, though, that you shouldn’t just go blindly clicking and installing every zip file that you see – for example, clicking the linke for “setup executable” will give a file that is meant for Windows computers (x86), not for your arm64 chip. Here are the proper steps:</p>
+<ol type="1">
+<li><p>Read through <a href="https://ftdichip.com/document/installation-guides/">the Installation Guide</a> for your situation. If you are like me, and are running a Windows Driver on your Mac, then use <a href="https://ftdichip.com/wp-content/uploads/2023/11/AN_396_FTDI_Drivers_Installation_Guide_for_Windows_10_11.pdf">this Installation Guide</a>. If you are even more like me, and you’re on a Mac with an M1 chip, you should carefully read and then ignore all of Sections 3.1 and 3.2 in this guide, and focuse solely on Section 3.3. As the document says, “Note: This is the only method to install the ARM64 or universal versions of the driver.”.</p></li>
+<li><p>The rest of this process is quite straight forward, so long as you follow Section 3.3. The process will mainly be that you will first need to link your device into Parallels so that you can see it from inside the Parallels Device.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Connect_To_USB_Windows.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>You will then be told that you should be able to open Device Manager within Windows (just use the search bar at the bottom to find it) and immediately see the relevant Ports. If you are like me, you don’t see this and panic. Don’t worry: it’s just hidden from you because it’s currently broken. To rectify this, you need to click <code>View &gt; show hidden devices</code> inside your Device Manager. Miraculously, you will suddenly see the same <code>Ports</code> file that they are talking about in the installation guide.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Show_Hidden_Windows.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>Continue following their recommended steps. Note that when you install the FTDI driver, you should install it <strong>on the Parallels Window Machine and not on your home Mac</strong>, as this will cause errors when the program tries finding it (at least, it did for me).</li>
+</ol>
+</section>
+<section id="kavis-code" class="level2">
+<h2 class="anchored" data-anchor-id="kavis-code">Kavi’s Code</h2>
+<p><em>This has been posted with Kavi’s permission</em></p>
+<p>Kavi was tired of needing to hunt down the .bin file every time. Kavi is also really good at writing shell code. Resultantly, Kavi wrote the following code which will find the binary file that you need, so long as you are in the proper folder for it.</p>
+<p>In order to install this shortcut, first you need to open your .zshrc file. For those of you who are extremely unfamiliar with terminal code, follow the following steps.</p>
+<ol type="1">
+<li>In your terminal, type <code>vim ~/.zshrc</code>. This does two things; vim is a way of opening and editing a current configuration code (or any code file) from within terminal. ~/.zshrc is one of what are called “shell” code files. The ~/ indicates that the path to this file is from your current user’s home file. The “.zshrc” file itself is hidden; if you run <code>ls</code> in your home directory, you’ll note that it doesn’t appear; you can only see it if you list files including hidden ones (<code>ls -a</code>). It is what is run when your computer starts up, and helps point your computer on where to go. It is also where you can write shortcuts for running commands within terminal, which is what we are about to do. Below is an image of what my ~/.zshrc program looks like.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Entering_zshrc_Windows.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>You’ll note that when you have this file open using vim, you can’t type anything. In order to actually insert things into this file, <strong>you need to type the letter <code>i</code></strong>. This will put you into “Insert” mode, indicated by the <code>-- INSERT --</code> on the bottom of your screen. You can now type in this folder! But be careful; deleting things or entering random things will likely throw errors in your terminal, which are often gross and icky to clean up.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/InsertMode_Windows.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Now that you’re in Insert mode, navigate to the bottom of this file (just press/hold down on the down arrows until you get there). Paste the following code.</li>
+</ol>
+<pre><code>#!/bin/bash
+alias program_fpga="find . -name '*.bin' -print | xargs openFPGALoader -b ice40_generic -c ft232  -f"</code></pre>
+<p>What this effectively does is locates the bin file (assuming that you’ve only made one – please don’t add more than one bin file or random, weird behavior will happen and the code likely won’t run), and then enters this into the openFPGALoader program. If you’re unfamiliar with terminal, you’ll notice that there’s a line (called a pipe) <code>|</code> in the middle of the code; this indicates that after you’ve found the *.bin file, you push the output into the next code; in this case, its being used as an argument (xargs) in openFPGA viewer.</p>
+<ol start="4" type="1">
+<li>Now that you’ve inserted it, a problem that I first had when I was learning how to use vim was how to get out of it (vim is one of many ways to edit this programs, by the way: some people prefer using vi, or something else they’ve downloaded off of the interwebs. It’s really up to you how you edit files in terminal – I’m just most familiar with vim). To leave, and especially to save what you just did, <strong>use the <code>Esc</code> key</strong>. If you’ve decide that <strong>you don’t want to save your work, write <code>:q!</code> in the terminal and press Enter</strong>. This effectively quits the program without saving. If you <strong>DO</strong> want to save, instead you need to <strong>write <code>:wq</code>, which will save the edits that you’ve made to your ~/.zshrc file</strong>. You’ve now saved Kavi’s code, and if you want to run it, all you need to write in your terminal is <code>program_fpga</code>.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Double Check">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Double Check
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>P.S. If you’d like to check that your changes were made inside of the program, you can experiment with that new pipe character you’ve just learned about to make sure that the file is in there. In your terminal, type <code>cat ~/.zshrc | grep program_fpga</code>. What this effectively does is:</p>
+<ol type="1">
+<li>Uses <code>cat</code> to return all the text inside your ~/.zshrc file</li>
+<li>Pipelines this text and selectively sorts it, using <code>grep</code>, for the keyword “program_fpga”, which is the function we’ve just added.</li>
+</ol>
+<p>If all went well, you should see the line <code>alias program_fpga="find . -name '*.bin' -print | xargs openFPGALoader -b ice40_generic -c ft232  -f"</code> returned! If nothing is returned, that means it wasn’t saved properly, and you’ll need to go back and make sure that it’s there and that there are no typos.</p>
+</div>
+</div>
+</section>
+<section id="running-fpga-code" class="level2">
+<h2 class="anchored" data-anchor-id="running-fpga-code">Running FPGA Code</h2>
+<p>The first step you need to take to running code off your FPGA board is locating where the folder containing this code is on your computer. Here is an example of how I find mine.</p>
+<ol type="1">
+<li>I go to my Finder window, and go into <code>Locations</code>. This is where I can see Parallels’s virtual Windows environment.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Locations_Windows.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>I then navigate to wherever I’ve saved my file. Note that it is also possible to save your file on your Mac, and upload it to your FPGA from there. For me, I had difficulties connecting to my FPGA whenever I was on my Mac besides when I was using the terminal, and so I chose to avoid some frustration by storing all my files solely on Parallels.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Navigation_Windows.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>By dragging the folder for your lab into terminal, you can enter this path within your terminal in order to run your FGPA, Lattice Radiant code.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/DragNDrop_Windows.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>Now that you are inside the program, you can run Kavi’s Code. Type <code>program_fpga</code>, and if you are connected to your board correctly (make sure that you have the microUSB plugged into the FPGA and that the lights are turned on), the code that you have Synthesized will automatically upload onto the FPGA, and you’ll see it running in real time. To double check and confirm, your terminal should resemble the image below (potentially without the colors)</li>
+</ol>
+<p><img src="images/Running_As_Intended_Windows.png" class="img-fluid"></p>
+</section>
+<section id="done" class="level2">
+<h2 class="anchored" data-anchor-id="done">Done!</h2>
+<p>And that’s it! Congratulations, you’re now able to run code from your FPGA board!</p>
 
 
 </section>
@@ -695,5 +784,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

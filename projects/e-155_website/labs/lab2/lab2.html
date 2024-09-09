@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Zoe Worrall - zworrall@g.hmc.edu">
+<meta name="dcterms.date" content="2024-09-09">
 
-<title>Lab 2 Initial Page – Zoe Worrall's Website</title>
+<title>Lab 2 Writeup – Zoe Worrall's Website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,8 +72,9 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<meta property="og:title" content="Zoe Worrall’s Website - Lab 2 Initial Page">
-<meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/projects/e-155_website/labs/lab2/images/ZoeWorrall_Photo.png">
+<meta property="og:title" content="Zoe Worrall’s Website - Lab 2 Writeup">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/projects/e-155_website/labs/lab2/images/lab2_sim.png">
 <meta property="og:site_name" content="Zoe Worrall's Website">
 </head>
 
@@ -107,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab2/lab2.html">
- <span class="dropdown-text">Lab 2 Initial Page</span></a>
+ <span class="dropdown-text">Lab 2 Writeup</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab3/lab3.html">
@@ -182,23 +185,46 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-2-multiplexed-7-segment-display" id="toc-lab-2-multiplexed-7-segment-display" class="nav-link active" data-scroll-target="#lab-2-multiplexed-7-segment-display">Lab 2: Multiplexed 7-Segment Display</a></li>
+  <li><a href="#lab-2-multiplexed-7-segment-display" id="toc-lab-2-multiplexed-7-segment-display" class="nav-link active" data-scroll-target="#lab-2-multiplexed-7-segment-display">Lab 2: Multiplexed 7-Segment Display</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#design-modules-and-testbenches" id="toc-design-modules-and-testbenches" class="nav-link" data-scroll-target="#design-modules-and-testbenches">Design: Modules and Testbenches</a></li>
+  <li><a href="#design-seven-segment-display" id="toc-design-seven-segment-display" class="nav-link" data-scroll-target="#design-seven-segment-display">Design: Seven Segment Display</a></li>
+  <li><a href="#design-dip-switch-pins" id="toc-design-dip-switch-pins" class="nav-link" data-scroll-target="#design-dip-switch-pins">Design: DIP Switch Pins</a></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
   </ul>
-</nav>
+<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 FA Development Board</a></li><li><a href="https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 Breadboard Adapter v4</a></li><li><a href="https://github.com/zoe-worrall/e155_labs/tree/main/fpga/radiant_project/lab02"><i class="bi bi-link-45deg"></i>Lab 2 Github Files</a></li><li><a href="https://hmc-e155.github.io/assets/doc/2N3906-D.pdf"><i class="bi bi-link-45deg"></i>PNP Transistor Datasheet</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 2 Initial Page</h1>
-</div>
+<h1 class="title">Lab 2 Writeup</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">labreport</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zoe Worrall - zworrall@g.hmc.edu </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 9, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -210,8 +236,326 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="lab-2-multiplexed-7-segment-display" class="level2">
 <h2 class="anchored" data-anchor-id="lab-2-multiplexed-7-segment-display">Lab 2: Multiplexed 7-Segment Display</h2>
+<p><em>Hours Spent: 13.5, Mapped with Toggl Track</em></p>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>In this lab, a design was developed to display the output of two 4-pin DIP Switches on a dual seven segmenet LED matrix, such that each four-pin switch was mapped to one display. The sum of these two values was then displayed on a set of five LEDs. The dual seven segment display is lit up using the same function as in <a href="../../../../portfolio_git_repo/zoe-worrall-website/projects/e-155_website/labs/lab1">Lab 1</a>. Resultantly, it was necessary to multiplex the dual segment such that only one common anode was powered at a time. In addition, due to the current draw required on the display, the +3.3V regulator on the E155 Board was used to power the seven segment display (with the assumption that a computer would be able to supply the required amount of current). In addition, to prevent the current from flowing directly through the FPGA, the common anode was turned on and off using a PNP transistor setup. The LED display needed to be breadboarded, as well, because there are only a total of 4 FPGA-controllable LEDs onboard the development board. A 10-LED display was used to show the sum of each of the bits for this program.</p>
+</section>
+<section id="design-modules-and-testbenches" class="level3">
+<h3 class="anchored" data-anchor-id="design-modules-and-testbenches">Design: Modules and Testbenches</h3>
+<section id="modules" class="level4">
+<h4 class="anchored" data-anchor-id="modules">Modules</h4>
+<p>From the top layer down, it was understood that there would be the blocks displayed in the diagram depicted below.</p>
+<div id="fig-block_diag" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-block_diag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/lab2_block.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-block_diag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Block Diagram of Modules
+</figcaption>
+</figure>
+</div>
+<p>When encoded, the lab resultantly consisted of the above modules. They are explained in the table (<a href="#tbl-modules" class="quarto-xref">Table&nbsp;1</a>) below.</p>
+<div id="tbl-modules" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-modules-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: <strong>Module Functions</strong>
+</figcaption>
+<div aria-describedby="tbl-modules-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Module Name</th>
+<th>Module Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong><code>top.sv</code></strong></td>
+<td>Puts together lab2. Generates a clock that will run the program, and outputs variables to the necessary pins.</td>
+</tr>
+<tr class="even">
+<td><strong><code>lab02.sv</code></strong></td>
+<td>Runs an always_ff block to determine the current state and the next state of the system. Runs combinational logic blocks of dual_seven_segment and led_summation for required seven segment and led logic</td>
+</tr>
+<tr class="odd">
+<td><strong><code>dual_seven_seg.sv</code></strong></td>
+<td>Calls on the seven segment block from Lab 1. According to the clock’s counter, half the time will return seven segment for one switch, and half the time will return the seven seg output for the other</td>
+</tr>
+<tr class="even">
+<td><strong><code>seven_segment.sv</code></strong></td>
+<td>Uses combinational logic to determine which seven segment cathodes to turn on, and which to turn off.</td>
+</tr>
+<tr class="odd">
+<td><strong><code>led_summation.sv</code></strong></td>
+<td>Adds together the collected 4-bits of the two switches and returns their binary equivalent as a 5-bit array</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Some important notes about this layout is that the clock is used to determine a state, S0 or S1, which will determine which display is turned on at any given time. In state <strong>S0</strong>, the system would rely on one switch (s1); in this case, <code>seven_segment</code> would be called on for that switch only. The system would then turn a corresponding anode on and off using the PNP resister; in this case, since its a PNP resistor, it needed to be turn “off” to turn the system on. In state <strong>S1</strong>, the output of <code>seven_segment</code> instead relies on the output of switch s2, and will return the opposite output for the anode display. The logic for this can be found in <a href="#tbl-statelogic" class="quarto-xref">Table&nbsp;2</a>, the following can be said for each of the states.</p>
+<div id="tbl-statelogic" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-statelogic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: <strong>State Logic</strong>
+</figcaption>
+<div aria-describedby="tbl-statelogic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>state</th>
+<th>Switch Used for Seven Segment Logic</th>
+<th>Anode 1</th>
+<th>Anode 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>S0</strong></td>
+<td>s1</td>
+<td>0 (i.e.&nbsp;Display 1 is on)</td>
+<td>1 (Display 2 is off)</td>
+</tr>
+<tr class="even">
+<td><strong>S1</strong></td>
+<td>s2</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><strong>X</strong></td>
+<td>an error has occured, s = 0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Once these modules were all written, they were compiled, checked for errors, and finally put into Questa for testing.</p>
+</section>
+<section id="testing" class="level4">
+<h4 class="anchored" data-anchor-id="testing">Testing</h4>
+<p>Two test benches were written for this lab. The first one checks to make sure that <code>lab02.sv</code> as a whole can run, and correctly lights up the LEDs as seen fit. Because direct control of the counter can’t be gotten when calling on this upper-level module, the testbench instead only checked that at least one of the outputs of the potential seven segment outputs was correct. The second was used to determine that the proper segment was lit up when the correct switch/state was entered into the dual_seven_seg module. In the case of both, a testvector file was composed and assembled using Python to make sure that all possible options were checked for and confirmed. This Python program can be found in Github, at <a href="https://github.com/zoe-worrall/e155_labs/blob/main/this_file.py"><code>this_file.py</code></a></p>
+<section id="testbench-lab02_tb" class="level5">
+<h5 class="anchored" data-anchor-id="testbench-lab02_tb">Testbench lab02_tb</h5>
+<p>In order to make sure that all cases were covered, the test vectors were created by running a for-loop to generate a series of switches; each of these switch combinations was used to generate a potential segment output, and finally a summation-vector was made that could be called on to correctly add the sum of both segments to the end. The python file then printed a series of strings of the form</p>
+<p><code>switch1_switch2_segment1_segment2_summed led values</code></p>
+<p>By running two for loops to cycle through all potential switch values, it can be confirmed that all potential values within the system have been reached. Within the test bench itself, the system uses an or expression to confirm that at least one of the segment outputs is equal to the segment output of the system. It also confirms that the led_summation is working as anticipated.</p>
+<p>Using this testbench, confirmation of the functionality of the whole of lab02 was completed, as all tests could be run without failure (<a href="#fig-testbenchlab02" class="quarto-xref">Figure&nbsp;2</a>)</p>
+<div id="fig-testbenchlab02" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-testbenchlab02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/lab2_QuestaOutLab02.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-testbenchlab02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Output of Running lab02_tb.sv in Questa
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="testbench-dual_seven_seg_tb" class="level5">
+<h5 class="anchored" data-anchor-id="testbench-dual_seven_seg_tb">Testbench dual_seven_seg_tb</h5>
+<p>In order to make sure that all cases were covered, the test vectors for this testbench were created by running a for-loop to generate a series of switches, similar to lab02 testbench. However, these nested for-loops were nested in one final for-loop, which acertained which state the system was in; each of these switch combinations was used to generate a potential segment output, and finally a summation-vector was made that could be called on to correctly add the sum of both segments to the end. The python file then printed a series of strings of the form</p>
+<p><code>switch1_switch2_state_segment_anode1_anode2</code></p>
+<p>By running two for loops to cycle through all potential switch values, it can be confirmed that all potential values within the system have been reached. Within the test bench itself, the system uses an or expression to confirm that at least one of the segment outputs is equal to the segment output of the system. It also confirms that the led_summation is working as anticipated.</p>
+<p>Using this testbench, confirmation of the functionality of the whole of lab02 was completed, as all tests could be run without failure (<a href="#fig-testbenchMultiplex" class="quarto-xref">Figure&nbsp;3</a>)</p>
+<div id="fig-testbenchMultiplex" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-testbenchMultiplex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/lab2_QuestaOutSevenSegTb.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-testbenchMultiplex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Output of Running lab02_tb.sv in Questa
+</figcaption>
+</figure>
+</div>
+<p>With this confirmation that the logic of the modules were working, it was possible to then move on to physical implementation of the program on the actual FPGA and hardware.</p>
+</section>
+</section>
+</section>
+<section id="design-seven-segment-display" class="level3">
+<h3 class="anchored" data-anchor-id="design-seven-segment-display">Design: Seven Segment Display</h3>
+<p>The design was developed based on work from Lab 1. The same seven segmenet module was used within a double multiplexer, which used the clock to switch back and forth between powering the two common anodes of the dual display. Using multiplexing, the two values were displayed.</p>
+<p>Because the final system was multiplexing between two segments, this means that the common anode of a given seven-segment LED must be able to be turned OFF. In the original design for the seven-segment display, the common anode had been plugged in directly to the +3.3V of the development board, and in this way circumvented being powered by the FPGA board (which can not supply more than 0.8 mA at a given time). Attempting to power the seven-segment display directly won’t work (as will be explained in <a href="#sec-calculations" class="quarto-xref">Section&nbsp;1.3.1</a>) unless you want to short your board. Resultantly, two PNP 2N3906 transistors were used, wherein the FPGA was used only to turn the transistor on and off, allowing the +3.3V coming from the Development board to flow within the circuit (once again, circumventing using the FPGA as a current supply directly).</p>
+<section id="sec-calculations" class="level4">
+<h4 class="anchored" data-anchor-id="sec-calculations">Calculations: PNP Transistor Circuit</h4>
+<p>Beforehand, to ensure proper requisites were met for powering the seven segment display that everything was properly set up for the PNP transistor and the resistors in the circuit, some simple mathematial calculations were performed to ensure proper voltage and current was kept throughout the circuit.</p>
+<p>The transistors we were using were <a href="https://hmc-e155.github.io/assets/doc/2N3906-D.pdf">2N3906 PNP transistors</a>. PNP transistors have three terminals; the base, which controls if the PNP is on or off, the emitter, where electrons come from, and the collector, where the electrons go (<a href="#fig-pnptransis" class="quarto-xref">Figure&nbsp;4</a>). For PNP transistors to work, there must be enough of a voltage gap between the base voltage and the emitter voltage that current can flow from one too the other; when this happens, current can also flow from the emitter to the collector, with the assumption that the voltages being used do not break or short out the transistor itself.</p>
+<div id="fig-pnptransis" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pnptransis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pnp_transistor.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pnptransis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: PNP Transistor Diagram
+</figcaption>
+</figure>
+</div>
+<p>To determine these limitations, it was necessary to know three things: the voltage drop across the collector to the emitter (V_CE), the voltage drop across the base to the emitter (V_BE), and finally the maximum current draw that would flow from the collector to the emitter (I_CE).</p>
+<p>According to the PNP’s datasheet, on average the V_CE drop is 3.3 V. The value of V_BE is, as with most transistors, assumed to be about 0.7 V. To start out with, the primary goal of this circuit should be to power the FPGA board without shorting it by sending too much current through it via the emitter to base connection on the board. Resultantly, a resistor should be placed between the FPGA’s output GPIO pin and the base of the transistor such that the current is less than the maximum possible current that can be sent into the board. This can be configured according to the datatable for the GPIO pins (<a href="#fig-fpga_gpio_pins" class="quarto-xref">Figure&nbsp;5</a>), where it can be seen that the maximum current that should be sent into or out of the FPGA board is 0.8 mA. The maximum current we will be sending into our board is based on the resistor values that we install for the diodes with the dual segment display. With the assumption that we use the same 220 Ohm resistors we were originally using, the current draw through each of these resistors will be slightly reduced from what was considered in Lab 1.</p>
+<div id="fig-fpga_gpio_pins" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fpga_gpio_pins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/fpga_maxin_maxout.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fpga_gpio_pins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: GPIO Current Draw Pins for FPGA Board
+</figcaption>
+</figure>
+</div>
+<p>First and foremost, I intend to power the LED’s using 3.3V, but these volts will first travel across the transistor, which is dependent on the current I_C traveling through the circuit. Assuming that this is relatively negligable (see Figure 15 on the PNP Datasheet, to observe that most of the Voltage removed for current lying under 60 mA is close to 0.1 V), and knowing that per diode line there will be an anticipated voltage drop of 2.1 V, that means that any one resistor will need to remove 3.3 - 2.1 Volts, or 1.2 V, from the circuit. When traveling across a 220 Ohm resistor, this will result in a current of roughly 5.45 mA. Assuming that we’ll be powering seven segments at any one time (the maximum amount possible), this means that the total current draw that can be expected is 38.18 mA. We can then compute the necessary amount of current, I_B, that will need to travel through the base in order to turn this circuit on. Using the gain terms found in the datasheet (<a href="#fig-gaincurrent" class="quarto-xref">Figure&nbsp;6</a>), it can be seen that for a given current I_C = 40 mA, the gain will be roughly 50 around room temperature.</p>
+<div id="fig-gaincurrent" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gaincurrent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pnp_gain.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gaincurrent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Table of the Voltage Drop V_CE and Gain of PNP Transistor
+</figcaption>
+</figure>
+</div>
+<p>This means that the corresponding current I_B for the circuit is 38.18 mA/50 = 0.69 mA. In the case of I_B, there is only one resistor between it and the +3.3V power supply; in addition, the transistor will remove V_BE from the circuit, which means that the resistence of this component must be roughly (3.3V - 0.7V)/(0.69 mA), or 3.745 kOhms. In my final circuit design, I used a 3.3 kOhm resistor as it was the closest one I could find in lab, meaning that the final current draw was likely 0.07 mA, which still falls far under the maximum current that the FPGA board can use.</p>
+<p><a href="#tbl-fin_calc" class="quarto-xref">Table&nbsp;3</a> below shows all the calculated voltages, currents, and resistances used for this circuit.</p>
+<div id="tbl-fin_calc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-fin_calc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: <strong>Calculated Component Values</strong>
+</figcaption>
+<div aria-describedby="tbl-fin_calc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 56%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component/Measurement</th>
+<th>Calculated Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>V_CE (voltage from Emitter to Collector)</td>
+<td>3.3 V</td>
+</tr>
+<tr class="even">
+<td>V_BE (voltage drop from Base to Emitter)</td>
+<td>0.7 V</td>
+</tr>
+<tr class="odd">
+<td>I_C (anticipated current drawn from the emitter to the collector)</td>
+<td>38.18 mA</td>
+</tr>
+<tr class="even">
+<td>h_FE (DC gain relative to current I_C)</td>
+<td>55</td>
+</tr>
+<tr class="odd">
+<td>I_B (current necessary to turn on the PNP transistor)</td>
+<td>0.69 mA</td>
+</tr>
+<tr class="even">
+<td>R_transistor (current-limiting resistor between the FPGA and the emitter)</td>
+<td>3.745 kOhms</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="hardware-setup-of-seven-segment-display" class="level4">
+<h4 class="anchored" data-anchor-id="hardware-setup-of-seven-segment-display">Hardware Setup of Seven Segment Display</h4>
+<p>Similar to the <a href="../../../../portfolio_git_repo/zoe-worrall-website/projects/e-155_website/labs/lab1">previous Lab</a>, in this lab each individual seven segment display was connected to a common anode (in this case, the output emitter of a PNP transistor). Each of the cathodes was attached via a resistor to the FPGA output pins onboard the <a href="https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf">E155 Breadboard Adapter</a>. In similar fashion to what was described in Lab 1, setting the board up such that each cathode has a resistor allows for each of the diodes to be equally bright, as they all start at the same voltage drop and resultantly will draw the same current if powered (current being directly correlated with their lumosity).</p>
+<p>The pin numbers, besides pin D, were kept the same as Lab 1 (it was later realized that the print of Pin 18 looks extremely similar to Pin 10, and that was why the system wasn’t working when Pin 10 was being powered; the system now works where Pin D is assigned to Pin 18). There are only three fundamental differences: two common anodes, two sets of A-G pins, and the presence of transistors within the circuit.</p>
+<section id="common-anodes" class="level5">
+<h5 class="anchored" data-anchor-id="common-anodes">Common Anodes</h5>
+<p>The dual display had two common anodes, which were how control over multiplexing was done. At any one time, there were two “states” assumed to exist within the system; in one state, the display on the right was turned on (S0), and in the other, the display on the left (S1)</p>
+</section>
+<section id="two-sets-of-pins" class="level5">
+<h5 class="anchored" data-anchor-id="two-sets-of-pins">Two Sets of Pins</h5>
+<p>Since only a single module calculating the seven-segmenet display could be used at any one time, the corresponding pins of each cathode were connected to each other (i.e.&nbsp;A1 was connected to A2, B1 to B2, etc.). This meant that if both the common anodes had been lit up at the same time, both displays would show the same value, rather than only one lighting up.</p>
+</section>
+<section id="transistors" class="level5">
+<h5 class="anchored" data-anchor-id="transistors">Transistors</h5>
+<p>The common anodes were controlled via the PNP transistors. In doing so, it was possible to only light up one display at a time, while only performing one calculation of the seven segment display.</p>
+<p>The final schematic of this system can be seen in <a href="#fig-sevenSegSchem" class="quarto-xref">Figure&nbsp;7</a></p>
+<div id="fig-sevenSegSchem" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sevenSegSchem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/lab2_scheme_sevenseg.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sevenSegSchem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Dual Seven Segment LED Matrix Schematic
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="design-dip-switch-pins" class="level3">
+<h3 class="anchored" data-anchor-id="design-dip-switch-pins">Design: DIP Switch Pins</h3>
+<p>There are two DIP switches used in this lab, one that is breadboarded and controls the output of the rightmost display, and one that is soldered onto the E155 board and is used the left-most display. The same logic as the previous labs applies to both DIP switches, where the rightmost pin is used as the lowest-order bit. The on-board DIP switches did not require any additional resistrs, as there is an integrated pull-up resistor as detailed on the <a href="https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf">“E155 FA Development Board Datasheet”</a>. However, the readboarded switches did not have these pull-up resistors already; after reviewing the <a href="https://peerlesselectronics.com/media//erp_files/files/78B04ST.pdf">78B04ST DIP switch datasheet</a>, it was found that the switches work at 3.3V, so no voltage adjustment was necessary. However, four additional 220 Ohm resistors were added to the switch board between the switch and ground to create a pull-up resistor, and then four FPGA GPIO pins were connected into the anodes of each DIP switch. The final connections for these connections, as well as the variables to which they were assigned can be found in <a href="#fig-switches" class="quarto-xref">Figure&nbsp;9</a></p>
+<div id="fig-switches" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-switches-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/lab2_scheme_switches.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-switches-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: 4-Pin DIP Switch Schematic
+</figcaption>
+</figure>
+</div>
+<section id="design-led-counter" class="level4">
+<h4 class="anchored" data-anchor-id="design-led-counter">Design: LED Counter</h4>
+<p>The final necessity for this lab is a set of five LEDs to display the binary summation of the two switches. For this project, a <a href="https://www.mouser.com/ProductDetail/Lumex/SSA-LXB10IW-GF-LP?qs=52yRZiL3nOrtt4bQY8D69g%3D%3D">SSA-LXB10TW-GF-LP</a> was used. Since the LED’s require a 2.1 voltage drop across them, very similar to the LEDs inside the seven segment array, 220 Ohm resistors were used for each LED while they drained to ground. This resulted in the corresponding schematic (<strong>?@fig-leds</strong>). Only 5 of the 10 LED-Diode Display were used.</p>
+<div id="fig-switches" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-switches-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/lab2_scheme_leds.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-switches-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: 10-LED Display Schematic
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="design-overall" class="level4">
+<h4 class="anchored" data-anchor-id="design-overall">Design: Overall</h4>
+<p>The final circuit is mainly controlled by the FPGA, except for the 3.3V that supplies the current for the seven segment voltage. The final circuit can be seen in <strong>?@fig-schematic</strong>.</p>
+<div id="fig-schematics" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-schematics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/lab2_schematic.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-schematics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Overall Schematic
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="results-and-discussion" class="level3">
+<h3 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h3>
+<p>As shown in the two test bench simulations above, the program is able to receive the desired outputs. When observed in the lab, with hardware, the correct behavior can be similarly observed.</p>
+<p>If future development desired, additional phases or multiplexed digits could be added quite easily, especially if scaled by 2, as the multiplexing is controlled by each digit of counter; hypothetically, if an additional two numbers needed to be added, two more switches could be set up on the breadboard in similar fashion, the counter could be assigned based on the state of two bits within counter (for a total of four states, rather than two), and the multiplexing would occur via four PNP transistors that move to four common anodes. Scaling is extremely possible with this design.</p>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>In conclusion, all of the program works properly in simulation and in hardware, and can be confirmed both visually and with the aid of a test bench. The program is able to multiplex successfully without having the two LEDs bleed over, and all digits are equally lit for each segment, and proper calculations for the PNP transistor can be found above.</p>
+<p>I spent a total of 13.5 hours working on this lab, with roughly four of them spent on the lab writeup if including the planning of the modules and compiling all of the necessary diagrams.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
