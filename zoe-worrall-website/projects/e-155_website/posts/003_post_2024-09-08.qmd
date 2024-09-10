@@ -3,7 +3,7 @@ title: "Worldbuilding while on the Move"
 description: "Making time where there isn't any to build your fantasy world"
 author: "Zoe Worrall"
 date: "9/10/24"
-image: images/breadboard_09052024.png
+image: images/collection3.png
 categories:
   - blogpost
 listing:

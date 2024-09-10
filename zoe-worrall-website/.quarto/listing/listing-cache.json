@@ -14,11 +14,6 @@
     ],
     "projects/e-155_website/blog.qmd": [
       "posts/*.qmd"
-    ],
-    "projects/e-155_website/posts/003_post_2024-09-08.qmd": [
-      "images/003_images/*.png",
-      "images/003_images",
-      "images/003_images/*"
     ]
   }
 }
