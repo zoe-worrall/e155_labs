@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Zoe Worrall">
-<meta name="dcterms.date" content="2024-09-08">
-<meta name="description" content="How do art and engineering entangle with each other? And where do we draw the line?">
+<meta name="dcterms.date" content="2024-09-10">
+<meta name="description" content="Making time where there isn’t any to build your fantasy world">
 
-<title>post_2024-09-08 – Zoe Worrall's Website</title>
+<title>Worldbuilding while on the Move – Zoe Worrall's Website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -34,6 +34,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
 <link href="../../../images/bg_test.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-listing/list.min.js"></script>
+<script src="../../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,11 +72,69 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-image","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Zoe Worrall’s Website -">
-<meta property="og:description" content="How do art and engineering entangle with each other? And where do we draw the line?">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Zoe Worrall’s Website - Worldbuilding while on the Move">
+<meta property="og:description" content="Making time where there isn’t any to build your fantasy world">
 <meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/projects/e-155_website/posts/images/breadboard_09052024.png">
 <meta property="og:site_name" content="Zoe Worrall's Website">
 <meta property="og:image:height" content="1280">
@@ -188,15 +248,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#name" id="toc-name" class="nav-link active" data-scroll-target="#name">NAME</a></li>
+  <li><a href="#worldbuilding-on-the-move" id="toc-worldbuilding-on-the-move" class="nav-link active" data-scroll-target="#worldbuilding-on-the-move">Worldbuilding on the Move</a></li>
   </ul>
 </nav>
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Worldbuilding while on the Move</h1>
   <div class="quarto-categories">
     <div class="quarto-category">blogpost</div>
   </div>
@@ -204,7 +265,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    How do art and engineering entangle with each other? And where do we draw the line?
+    Making time where there isn’t any to build your fantasy world
   </div>
 </div>
 
@@ -221,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 8, 2024</p>
+      <p class="date">September 10, 2024</p>
     </div>
   </div>
   
@@ -233,13 +294,65 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="name" class="level3">
-<h3 class="anchored" data-anchor-id="name">NAME</h3>
+<section id="worldbuilding-on-the-move" class="level3">
+<h3 class="anchored" data-anchor-id="worldbuilding-on-the-move">Worldbuilding on the Move</h3>
+<p>There are always endless excuses to not doing the things you want to do. At least, that’s what we tell ourselves – but sometimes it is the case that you are actually, fundamentally too busy to do what you want to do. This was a thought I had a while ago when I first started trying to worldbuild. What do you do when you literally don’t have the hours you want to work on something you’re passionate about? Or what do you do if you want to work on that thing during a period when you really, really can’t afford to do it?</p>
+<p>The answer is, and its quite obvious, you do it when you’re on the move. That was the case for my world building adventures so far.</p>
+<p>I realized at a certain pointa few years ago that my art had stagnated - mainly due to me not being able to practice it as much in college. Engineering meant that unless I had whatever I was making due as an assignment for class, I would never actually be able to do the hour long projects that I had been able to devote to it during my senior year of high school (where I was stuck in quarantine with a large pad of paper, a box of colored pencils, and a senior portfolio to draw). I took inspiration from time to time in little doodles in my notebooks, but it was hard to be consistent, or to even have a theme to draw. THe main issue was that there simply wasn’t enough time to make the firm start I needed for making another art project; I needed to be able to come up with something coherent during the short fifteen minute windows I was running between classes or when I was taking notes, but that type of thing, at least in my head, takes time.</p>
+<p>The change came when I began listening to Youtube art videos while walking too and from class, specifically about DeviantArt Drama. The drama itself wasn’t what inspired me, but rather who the drama featured. Swatches of artists on the internet have specific characters they draw, repeatedly, over and over again, in different scenarios, storylines, with different aesthetics or interactions. It is an endless supply of inspiration, in many cases, and often a way for them to express themselves or their own personalities or struggles through their artwork. Some might call it self-insert.</p>
+<p>Now why was this interesting to me? Why did this become some big epiphany? Because it gave my brain a direction to move towards. Previously, the main difficulty was a lack of a goal; I would worldbuild small amounts at a time, for a bunch of different stories, and the discombobulation of it all was what I think caused some of the stalls in my own artpieces. But many of these Deviantartists had been creating their characters and the world around them for years, decades even; it was Tolkein levels of thought, for some of them. It was the inspiration I needed.</p>
+<p>Why?</p>
+<p>Because it made me want to make something that would last from weeks to months to years; rather than just making a small idea and doodling it briefly in my notebook, I made a conscious, though small, effort to incorporate some world building into the doodles I drew on the go or in the margins. I focused more on fleshing out a world while listening to Debussy, or to creating plots for characters inside the world while listening to pop. That’s not to say everything I drew was consumed by worldbuilding, but the concerted effort I made to making something that was more than just something to pass the time, but something with a long term goal, was an important switch.</p>
+<p>So where am I now?</p>
+<p>About four years into making a fantasy world, with fantasy creatures of my own design, fantasy races, characters, and ideas, and all of it cossting a few minutes of a day from the past few years. Worldbuilding is difficult; worldbuilding when you don’t have the hours you need to do it requires a decision on your part to focus on planning it in the few minutes you can steal. So to those artists or writers, to my fellow engineers who want to find the time but can’t make it work, come up with a goal, and make the small tweaks to edge you in the right direction. It doesn’t need to happen all at once; ideas can come slow, and sometimes you may even forget about the goal before you find it again. What’s important is that small bit you add every so often, so that you build yourself from a blank page to a masterpiece.</p>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0">
+<a href="" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="images/003_images/capital_fashion.png" class="thumbnail-image card-img" style="height: 10rem;">
+</p>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1">
+<a href="" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="images/003_images/collection3.png" class="thumbnail-image card-img" style="height: 10rem;">
+</p>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2">
+<a href="" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="images/003_images/lady_of_hail.png" class="thumbnail-image card-img" style="height: 10rem;">
+</p>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3">
+<a href="" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="images/003_images/top_island.png" class="thumbnail-image card-img" style="height: 10rem;">
+</p>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
