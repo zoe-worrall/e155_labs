@@ -160,13 +160,13 @@ There are two DIP switches used in this lab, one that is breadboarded and contro
 
 The final necessity for this lab is a set of five LEDs to display the binary summation of the two switches. For this project, a [SSA-LXB10TW-GF-LP](https://www.mouser.com/ProductDetail/Lumex/SSA-LXB10IW-GF-LP?qs=52yRZiL3nOrtt4bQY8D69g%3D%3D) was used. Since the LED's require a 2.1 voltage drop across them, very similar to the LEDs inside the seven segment array, 220 Ohm resistors were used for each LED while they drained to ground. This resulted in the corresponding schematic (@fig-leds). Only 5 of the 10 LED-Diode Display were used.
 
-![10-LED Display Schematic](images/lab2_scheme_leds.png){#fig-switches width=100%}
+![10-LED Display Schematic](images/lab2_scheme_leds.png){#fig-leds width=100%}
 
 #### Design: Overall
 
 The final circuit is mainly controlled by the FPGA, except for the 3.3V that supplies the current for the seven segment voltage. The final circuit can be seen in @fig-schematic.
 
-![Overall Schematic](images/lab2_schematic.png){#fig-schematics width=100%}
+![Overall Schematic](images/lab2_schematic.png){#fig-schematic width=100%}
 
 ### Results and Discussion
 

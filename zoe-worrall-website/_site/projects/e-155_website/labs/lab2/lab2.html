@@ -504,7 +504,7 @@ Figure&nbsp;7: Dual Seven Segment LED Matrix Schematic
 </section>
 <section id="design-dip-switch-pins" class="level3">
 <h3 class="anchored" data-anchor-id="design-dip-switch-pins">Design: DIP Switch Pins</h3>
-<p>There are two DIP switches used in this lab, one that is breadboarded and controls the output of the rightmost display, and one that is soldered onto the E155 board and is used the left-most display. The same logic as the previous labs applies to both DIP switches, where the rightmost pin is used as the lowest-order bit. The on-board DIP switches did not require any additional resistrs, as there is an integrated pull-up resistor as detailed on the <a href="https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf">“E155 FA Development Board Datasheet”</a>. However, the readboarded switches did not have these pull-up resistors already; after reviewing the <a href="https://peerlesselectronics.com/media//erp_files/files/78B04ST.pdf">78B04ST DIP switch datasheet</a>, it was found that the switches work at 3.3V, so no voltage adjustment was necessary. However, four additional 220 Ohm resistors were added to the switch board between the switch and ground to create a pull-up resistor, and then four FPGA GPIO pins were connected into the anodes of each DIP switch. The final connections for these connections, as well as the variables to which they were assigned can be found in <a href="#fig-switches" class="quarto-xref">Figure&nbsp;9</a></p>
+<p>There are two DIP switches used in this lab, one that is breadboarded and controls the output of the rightmost display, and one that is soldered onto the E155 board and is used the left-most display. The same logic as the previous labs applies to both DIP switches, where the rightmost pin is used as the lowest-order bit. The on-board DIP switches did not require any additional resistrs, as there is an integrated pull-up resistor as detailed on the <a href="https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf">“E155 FA Development Board Datasheet”</a>. However, the readboarded switches did not have these pull-up resistors already; after reviewing the <a href="https://peerlesselectronics.com/media//erp_files/files/78B04ST.pdf">78B04ST DIP switch datasheet</a>, it was found that the switches work at 3.3V, so no voltage adjustment was necessary. However, four additional 220 Ohm resistors were added to the switch board between the switch and ground to create a pull-up resistor, and then four FPGA GPIO pins were connected into the anodes of each DIP switch. The final connections for these connections, as well as the variables to which they were assigned can be found in <a href="#fig-switches" class="quarto-xref">Figure&nbsp;8</a></p>
 <div id="fig-switches" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-switches-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -517,13 +517,13 @@ Figure&nbsp;8: 4-Pin DIP Switch Schematic
 </div>
 <section id="design-led-counter" class="level4">
 <h4 class="anchored" data-anchor-id="design-led-counter">Design: LED Counter</h4>
-<p>The final necessity for this lab is a set of five LEDs to display the binary summation of the two switches. For this project, a <a href="https://www.mouser.com/ProductDetail/Lumex/SSA-LXB10IW-GF-LP?qs=52yRZiL3nOrtt4bQY8D69g%3D%3D">SSA-LXB10TW-GF-LP</a> was used. Since the LED’s require a 2.1 voltage drop across them, very similar to the LEDs inside the seven segment array, 220 Ohm resistors were used for each LED while they drained to ground. This resulted in the corresponding schematic (<strong>?@fig-leds</strong>). Only 5 of the 10 LED-Diode Display were used.</p>
-<div id="fig-switches" class="quarto-float quarto-figure quarto-figure-center anchored">
+<p>The final necessity for this lab is a set of five LEDs to display the binary summation of the two switches. For this project, a <a href="https://www.mouser.com/ProductDetail/Lumex/SSA-LXB10IW-GF-LP?qs=52yRZiL3nOrtt4bQY8D69g%3D%3D">SSA-LXB10TW-GF-LP</a> was used. Since the LED’s require a 2.1 voltage drop across them, very similar to the LEDs inside the seven segment array, 220 Ohm resistors were used for each LED while they drained to ground. This resulted in the corresponding schematic (<a href="#fig-leds" class="quarto-xref">Figure&nbsp;9</a>). Only 5 of the 10 LED-Diode Display were used.</p>
+<div id="fig-leds" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-switches-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-leds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/lab2_scheme_leds.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-switches-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-leds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9: 10-LED Display Schematic
 </figcaption>
 </figure>
@@ -531,13 +531,13 @@ Figure&nbsp;9: 10-LED Display Schematic
 </section>
 <section id="design-overall" class="level4">
 <h4 class="anchored" data-anchor-id="design-overall">Design: Overall</h4>
-<p>The final circuit is mainly controlled by the FPGA, except for the 3.3V that supplies the current for the seven segment voltage. The final circuit can be seen in <strong>?@fig-schematic</strong>.</p>
-<div id="fig-schematics" class="quarto-float quarto-figure quarto-figure-center anchored">
+<p>The final circuit is mainly controlled by the FPGA, except for the 3.3V that supplies the current for the seven segment voltage. The final circuit can be seen in <a href="#fig-schematic" class="quarto-xref">Figure&nbsp;10</a>.</p>
+<div id="fig-schematic" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-schematics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/lab2_schematic.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-schematics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10: Overall Schematic
 </figcaption>
 </figure>
