@@ -1,6 +1,8 @@
 /***
 	The second-level module for lab 3 of MicroP's.
 	
+	runs the finite state machine and the seven segment display
+
 	author: zoe worrall
 	version: 09/06/2024
 	contact: zworrall@g.hmc.edu
