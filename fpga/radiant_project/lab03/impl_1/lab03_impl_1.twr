@@ -1,0 +1,1438 @@
+Lattice Timing Report -  Setup  and Hold, Version Radiant Software (64-bit) 2024.1.0.34.2
+
+Mon Sep 16 19:06:31 2024
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
+
+Command line:    timing -sethld -v 10 -u 10 -endpoints 10 -nperend 1 -sp High-Performance_1.2V -hsp m -pwrprd -html -rpt lab03_impl_1.twr lab03_impl_1.udb -gui -msgset C:/Users/zoeworrall/Desktop/projects_LRS/lab03/promote.xml
+
+-----------------------------------------
+Design:          top
+Family:          iCE40UP
+Device:          iCE40UP5K
+Package:         SG48
+Performance:     High-Performance_1.2V
+Package Status:                     Preliminary    Version 1.5
+**Performance Hardware Data Status :   Advanced Version 1.0
+-----------------------------------------
+
+
+=====================================================================
+                    Table of Contents
+=====================================================================
+    1  Timing Overview
+        1.1  SDC Constraints
+        1.2  Constraint Coverage
+        1.3  Overall Summary
+        1.4  Unconstrained Report
+        1.5  Combinational Loop
+    2  Setup at Speed Grade High-Performance_1.2V Corner at 100 Degrees
+        2.1  Clock Summary
+        2.2  Endpoint slacks
+        2.3  Detailed Report
+    3  Hold at Speed Grade m Corner at -40 Degrees
+        3.1  Endpoint slacks
+        3.2  Detailed Report
+
+=====================================================================
+                    End of Table of Contents
+=====================================================================
+
+==============================================
+1  Timing Overview
+==============================================
+
+1.1  SDC Constraints
+=====================
+create_clock -name {int_osc} -period 41.6667 [get_pins {hf_osc/CLKHF }] 
+
+1.2  Constraint Coverage
+---------------------------
+Constraint Coverage: 83.8446%
+
+
+1.3  Overall Summary
+---------------------------
+ Setup at Speed Grade High-Performance_1.2V Corner at 100 Degrees     Timing Errors: 0 endpoints;  Total Negative Slack: 0.000 ns 
+ Hold at Speed Grade m Corner at -40 Degrees                          Timing Errors: 0 endpoints;  Total Negative Slack: 0.000 ns 
+
+1.4  Unconstrained Report
+===========================
+
+1.4.1  Unconstrained Start/End Points
+--------------------------------------
+
+Clocked but unconstrained timing start points
+-------------------------------------------------------------------
+         Listing 5 Start Points         |           Type           
+-------------------------------------------------------------------
+lab_runner/states/past_letter_i0_i3/Q   |          No required time
+lab_runner/states/past_letter_i0_i2/Q   |          No required time
+lab_runner/states/past_letter_i0_i1/Q   |          No required time
+lab_runner/states/past_letter_i0_i0/Q   |          No required time
+lab_runner/disp_curr/Q                  |          No required time
+-------------------------------------------------------------------
+                                        |                          
+Number of unconstrained timing start po |                          
+ints                                    |                         5
+                                        |                          
+-------------------------------------------------------------------
+
+Clocked but unconstrained timing end points
+-------------------------------------------------------------------
+          Listing 4 End Points          |           Type           
+-------------------------------------------------------------------
+lab_runner/states/stabilize_col/stable_value[0]__0__i3/D                           
+                                        |           No arrival time
+lab_runner/states/stabilize_col/stable_value[0]__0__i4/D                           
+                                        |           No arrival time
+lab_runner/states/stabilize_col/stable_value[0]__0__i1/D                           
+                                        |           No arrival time
+lab_runner/states/stabilize_col/stable_value[0]__0__i2/D                           
+                                        |           No arrival time
+-------------------------------------------------------------------
+                                        |                          
+Number of unconstrained timing end poin |                          
+ts                                      |                         4
+                                        |                          
+-------------------------------------------------------------------
+
+1.4.2  Start/End Points Without Timing Constraints
+---------------------------------------------------
+
+I/O ports without constraint
+----------------------------
+Possible constraints to use on I/O ports are:
+set_input_delay,
+set_output_delay,
+set_max_delay,
+create_clock,
+create_generated_clock,
+...
+
+-------------------------------------------------------------------
+     Listing 10 Start or End Points     |           Type           
+-------------------------------------------------------------------
+col[0]                                  |                     input
+col[1]                                  |                     input
+col[2]                                  |                     input
+col[3]                                  |                     input
+anode2                                  |                    output
+anode1                                  |                    output
+seg[0]                                  |                    output
+seg[1]                                  |                    output
+seg[2]                                  |                    output
+seg[3]                                  |                    output
+-------------------------------------------------------------------
+                                        |                          
+Number of I/O ports without constraint  |                        17
+                                        |                          
+-------------------------------------------------------------------
+
+Nets without clock definition
+Define a clock on a top level port or a generated clock on a clock divider pin associated with this net(s).
+--------------------------------------------------
+There is no instance satisfying reporting criteria
+
+
+
+1.5  Combinational Loop
+========================
+None
+
+===============================================================
+2  Setup at Speed Grade High-Performance_1.2V Corner at 100 Degrees
+===============================================================
+
+2.1  Clock Summary
+=======================
+
+2.1.1 Clock "int_osc"
+=======================
+create_clock -name {int_osc} -period 41.6667 [get_pins {hf_osc/CLKHF }] 
+
+Single Clock Domain
+-------------------------------------------------------------------------------------------------------
+             Clock int_osc              |                    |       Period       |     Frequency      
+-------------------------------------------------------------------------------------------------------
+ From int_osc                           |             Target |          41.667 ns |         24.000 MHz 
+                                        | Actual (all paths) |          20.792 ns |         48.095 MHz 
+hf_osc/CLKHF (MPW)                      |   (50% duty cycle) |          20.792 ns |         48.095 MHz 
+-------------------------------------------------------------------------------------------------------
+
+Clock Domain Crossing
+
+2.2  Endpoint slacks
+=======================
+-------------------------------------------------------
+          Listing 10 End Points          |    Slack    
+-------------------------------------------------------
+lab_runner/states/row_index_i0/SR        |   22.621 ns 
+{lab_runner/states/waiter_i15/SR   lab_runner/states/waiter_i16/SR}              
+                                         |   24.418 ns 
+{lab_runner/states/waiter_i17/SR   lab_runner/states/waiter_i18/SR}              
+                                         |   24.418 ns 
+lab_runner/states/waiter_i20/SR          |   24.418 ns 
+lab_runner/states/curr_letter_i3/SR      |   24.748 ns 
+{lab_runner/states/waiter_i7/SR   lab_runner/states/waiter_i8/SR}              
+                                         |   25.013 ns 
+{lab_runner/states/waiter_i9/SR   lab_runner/states/waiter_i10/SR}              
+                                         |   25.013 ns 
+{lab_runner/states/waiter_i11/SR   lab_runner/states/waiter_i12/SR}              
+                                         |   25.013 ns 
+{lab_runner/states/waiter_i13/SR   lab_runner/states/waiter_i14/SR}              
+                                         |   25.013 ns 
+{lab_runner/states/stabilize_col/stable_value[0]__0__i12/SP   lab_runner/states/stabilize_col/stable_value[0]__0__i11/SP}              
+                                         |   25.026 ns 
+-------------------------------------------------------
+                                         |             
+Setup # of endpoints with negative slack:|           0 
+                                         |             
+-------------------------------------------------------
+
+2.3  Detailed Report
+=======================
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Detail report of critical paths
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    Detailed Report for timing paths 
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ ++++Path 1  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Path Begin       : lab_runner/states/waiter_i3/Q  (SLICE_R14C5C)
+Path End         : lab_runner/states/row_index_i0/SR  (SLICE_R15C5A)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 6
+Delay Ratio      : 80.2% (route), 19.8% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 41.666 ns 
+Path Slack       : 22.620 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                  5.499  39      
+{lab_runner/states/waiter_i19/CK   lab_runner/states/waiter_i3/CK}
+                                                             CLOCK PIN           0.000                  5.499  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+lab_runner/states/waiter_i3/CK->lab_runner/states/waiter_i3/Q
+                                          SLICE_R14C5C       CLK_TO_Q1_DELAY     1.388                  6.887  2       
+lab_runner/states/waiter[3]                                  NET DELAY           2.670                  9.557  2       
+lab_runner/states/i1_2_lut_adj_14/A->lab_runner/states/i1_2_lut_adj_14/Z
+                                          SLICE_R13C7C       B0_TO_F0_DELAY      0.449                 10.006  2       
+lab_runner/states/n61                                        NET DELAY           3.146                 13.152  2       
+lab_runner/states/i5_4_lut/C->lab_runner/states/i5_4_lut/Z
+                                          SLICE_R13C5A       A1_TO_F1_DELAY      0.476                 13.628  1       
+lab_runner/states/n12                                        NET DELAY           0.304                 13.932  1       
+lab_runner/states/i1_4_lut_adj_5/C->lab_runner/states/i1_4_lut_adj_5/Z
+                                          SLICE_R13C5B       C0_TO_F0_DELAY      0.449                 14.381  11      
+lab_runner/states/n41                                        NET DELAY           2.432                 16.813  11      
+lab_runner.states.i2_3_lut_adj_13/D->lab_runner.states.i2_3_lut_adj_13/Z
+                                          SLICE_R12C5B       C0_TO_F0_DELAY      0.449                 17.262  7       
+lab_runner/states/n655                                       NET DELAY           3.569                 20.831  7       
+lab_runner/states/i435_2_lut/A->lab_runner/states/i435_2_lut/Z
+                                          SLICE_R15C5B       C0_TO_F0_DELAY      0.449                 21.280  1       
+lab_runner/states/n533                                       NET DELAY           2.736                 24.016  1       
+lab_runner/states/row_index_i0/SR                            ENDPOINT            0.000                 24.016  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+                                                             CONSTRAINT          0.000                 41.666  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                 47.165  39      
+lab_runner/states/row_index_i0/CK                            CLOCK PIN           0.000                 47.165  1       
+                                                             Uncertainty      -(0.000)                 47.165  
+                                                             Setup time       -(0.529)                 46.636  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Required Time                                                                                          46.636  
+Arrival Time                                                                                        -(24.015)  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                   22.620  
+
+
+
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/waiter_i3/Q  (SLICE_R14C5C)
+Path End         : {lab_runner/states/waiter_i15/SR   lab_runner/states/waiter_i16/SR}  (SLICE_R14C8A)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 5
+Delay Ratio      : 80.8% (route), 19.2% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 41.666 ns 
+Path Slack       : 24.417 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                  5.499  39      
+{lab_runner/states/waiter_i19/CK   lab_runner/states/waiter_i3/CK}
+                                                             CLOCK PIN           0.000                  5.499  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+lab_runner/states/waiter_i3/CK->lab_runner/states/waiter_i3/Q
+                                          SLICE_R14C5C       CLK_TO_Q1_DELAY     1.388                  6.887  2       
+lab_runner/states/waiter[3]                                  NET DELAY           2.670                  9.557  2       
+lab_runner/states/i1_2_lut_adj_14/A->lab_runner/states/i1_2_lut_adj_14/Z
+                                          SLICE_R13C7C       B0_TO_F0_DELAY      0.449                 10.006  2       
+lab_runner/states/n61                                        NET DELAY           3.146                 13.152  2       
+lab_runner/states/i5_4_lut/C->lab_runner/states/i5_4_lut/Z
+                                          SLICE_R13C5A       A1_TO_F1_DELAY      0.476                 13.628  1       
+lab_runner/states/n12                                        NET DELAY           0.304                 13.932  1       
+lab_runner/states/i1_4_lut_adj_5/C->lab_runner/states/i1_4_lut_adj_5/Z
+                                          SLICE_R13C5B       C0_TO_F0_DELAY      0.449                 14.381  11      
+lab_runner/states/n41                                        NET DELAY           2.432                 16.813  11      
+lab_runner.states.i439_2_lut_3_lut_4_lut/B->lab_runner.states.i439_2_lut_3_lut_4_lut/Z
+                                          SLICE_R14C5D       C1_TO_F1_DELAY      0.449                 17.262  11      
+lab_runner/states/n537                                       NET DELAY           4.957                 22.219  11      
+{lab_runner/states/waiter_i15/SR   lab_runner/states/waiter_i16/SR}
+                                                             ENDPOINT            0.000                 22.219  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+                                                             CONSTRAINT          0.000                 41.666  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                 47.165  39      
+{lab_runner/states/waiter_i15/CK   lab_runner/states/waiter_i16/CK}
+                                                             CLOCK PIN           0.000                 47.165  1       
+                                                             Uncertainty      -(0.000)                 47.165  
+                                                             Setup time       -(0.529)                 46.636  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Required Time                                                                                          46.636  
+Arrival Time                                                                                        -(22.218)  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                   24.417  
+
+
+
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/waiter_i3/Q  (SLICE_R14C5C)
+Path End         : {lab_runner/states/waiter_i17/SR   lab_runner/states/waiter_i18/SR}  (SLICE_R14C8B)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 5
+Delay Ratio      : 80.8% (route), 19.2% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 41.666 ns 
+Path Slack       : 24.417 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                  5.499  39      
+{lab_runner/states/waiter_i19/CK   lab_runner/states/waiter_i3/CK}
+                                                             CLOCK PIN           0.000                  5.499  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+lab_runner/states/waiter_i3/CK->lab_runner/states/waiter_i3/Q
+                                          SLICE_R14C5C       CLK_TO_Q1_DELAY     1.388                  6.887  2       
+lab_runner/states/waiter[3]                                  NET DELAY           2.670                  9.557  2       
+lab_runner/states/i1_2_lut_adj_14/A->lab_runner/states/i1_2_lut_adj_14/Z
+                                          SLICE_R13C7C       B0_TO_F0_DELAY      0.449                 10.006  2       
+lab_runner/states/n61                                        NET DELAY           3.146                 13.152  2       
+lab_runner/states/i5_4_lut/C->lab_runner/states/i5_4_lut/Z
+                                          SLICE_R13C5A       A1_TO_F1_DELAY      0.476                 13.628  1       
+lab_runner/states/n12                                        NET DELAY           0.304                 13.932  1       
+lab_runner/states/i1_4_lut_adj_5/C->lab_runner/states/i1_4_lut_adj_5/Z
+                                          SLICE_R13C5B       C0_TO_F0_DELAY      0.449                 14.381  11      
+lab_runner/states/n41                                        NET DELAY           2.432                 16.813  11      
+lab_runner.states.i439_2_lut_3_lut_4_lut/B->lab_runner.states.i439_2_lut_3_lut_4_lut/Z
+                                          SLICE_R14C5D       C1_TO_F1_DELAY      0.449                 17.262  11      
+lab_runner/states/n537                                       NET DELAY           4.957                 22.219  11      
+{lab_runner/states/waiter_i17/SR   lab_runner/states/waiter_i18/SR}
+                                                             ENDPOINT            0.000                 22.219  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+                                                             CONSTRAINT          0.000                 41.666  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                 47.165  39      
+{lab_runner/states/waiter_i17/CK   lab_runner/states/waiter_i18/CK}
+                                                             CLOCK PIN           0.000                 47.165  1       
+                                                             Uncertainty      -(0.000)                 47.165  
+                                                             Setup time       -(0.529)                 46.636  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Required Time                                                                                          46.636  
+Arrival Time                                                                                        -(22.218)  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                   24.417  
+
+
+
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/waiter_i3/Q  (SLICE_R14C5C)
+Path End         : lab_runner/states/waiter_i20/SR  (SLICE_R14C8C)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 5
+Delay Ratio      : 80.8% (route), 19.2% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 41.666 ns 
+Path Slack       : 24.417 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                  5.499  39      
+{lab_runner/states/waiter_i19/CK   lab_runner/states/waiter_i3/CK}
+                                                             CLOCK PIN           0.000                  5.499  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+lab_runner/states/waiter_i3/CK->lab_runner/states/waiter_i3/Q
+                                          SLICE_R14C5C       CLK_TO_Q1_DELAY     1.388                  6.887  2       
+lab_runner/states/waiter[3]                                  NET DELAY           2.670                  9.557  2       
+lab_runner/states/i1_2_lut_adj_14/A->lab_runner/states/i1_2_lut_adj_14/Z
+                                          SLICE_R13C7C       B0_TO_F0_DELAY      0.449                 10.006  2       
+lab_runner/states/n61                                        NET DELAY           3.146                 13.152  2       
+lab_runner/states/i5_4_lut/C->lab_runner/states/i5_4_lut/Z
+                                          SLICE_R13C5A       A1_TO_F1_DELAY      0.476                 13.628  1       
+lab_runner/states/n12                                        NET DELAY           0.304                 13.932  1       
+lab_runner/states/i1_4_lut_adj_5/C->lab_runner/states/i1_4_lut_adj_5/Z
+                                          SLICE_R13C5B       C0_TO_F0_DELAY      0.449                 14.381  11      
+lab_runner/states/n41                                        NET DELAY           2.432                 16.813  11      
+lab_runner.states.i439_2_lut_3_lut_4_lut/B->lab_runner.states.i439_2_lut_3_lut_4_lut/Z
+                                          SLICE_R14C5D       C1_TO_F1_DELAY      0.449                 17.262  11      
+lab_runner/states/n537                                       NET DELAY           4.957                 22.219  11      
+lab_runner/states/waiter_i20/SR                              ENDPOINT            0.000                 22.219  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+                                                             CONSTRAINT          0.000                 41.666  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                 47.165  39      
+lab_runner/states/waiter_i20/CK                              CLOCK PIN           0.000                 47.165  1       
+                                                             Uncertainty      -(0.000)                 47.165  
+                                                             Setup time       -(0.529)                 46.636  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Required Time                                                                                          46.636  
+Arrival Time                                                                                        -(22.218)  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                   24.417  
+
+
+
+
+++++ Path 5 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/waiter_i3/Q  (SLICE_R14C5C)
+Path End         : lab_runner/states/curr_letter_i3/SR  (SLICE_R14C2A)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 6
+Delay Ratio      : 77.5% (route), 22.5% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 41.666 ns 
+Path Slack       : 24.747 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                  5.499  39      
+{lab_runner/states/waiter_i19/CK   lab_runner/states/waiter_i3/CK}
+                                                             CLOCK PIN           0.000                  5.499  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+lab_runner/states/waiter_i3/CK->lab_runner/states/waiter_i3/Q
+                                          SLICE_R14C5C       CLK_TO_Q1_DELAY     1.388                  6.887  2       
+lab_runner/states/waiter[3]                                  NET DELAY           2.670                  9.557  2       
+lab_runner/states/i1_2_lut_adj_14/A->lab_runner/states/i1_2_lut_adj_14/Z
+                                          SLICE_R13C7C       B0_TO_F0_DELAY      0.449                 10.006  2       
+lab_runner/states/n61                                        NET DELAY           3.146                 13.152  2       
+lab_runner/states/i5_4_lut/C->lab_runner/states/i5_4_lut/Z
+                                          SLICE_R13C5A       A1_TO_F1_DELAY      0.476                 13.628  1       
+lab_runner/states/n12                                        NET DELAY           0.304                 13.932  1       
+lab_runner/states/i1_4_lut_adj_5/C->lab_runner/states/i1_4_lut_adj_5/Z
+                                          SLICE_R13C5B       C0_TO_F0_DELAY      0.476                 14.408  11      
+lab_runner/states/n41                                        NET DELAY           0.304                 14.712  11      
+lab_runner.states.i1_3_lut_4_lut_adj_23/D->lab_runner.states.i1_3_lut_4_lut_adj_23/Z
+                                          SLICE_R13C5B       C1_TO_F1_DELAY      0.449                 15.161  7       
+lab_runner/states/n675                                       NET DELAY           3.027                 18.188  7       
+lab_runner/states/i2_4_lut/B->lab_runner/states/i2_4_lut/Z
+                                          SLICE_R14C3D       C0_TO_F0_DELAY      0.449                 18.637  1       
+lab_runner/states/n1407                                      NET DELAY           3.252                 21.889  1       
+lab_runner/states/curr_letter_i3/SR                          ENDPOINT            0.000                 21.889  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+                                                             CONSTRAINT          0.000                 41.666  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                 47.165  39      
+lab_runner/states/curr_letter_i3/CK                          CLOCK PIN           0.000                 47.165  1       
+                                                             Uncertainty      -(0.000)                 47.165  
+                                                             Setup time       -(0.529)                 46.636  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Required Time                                                                                          46.636  
+Arrival Time                                                                                        -(21.888)  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                   24.747  
+
+
+
+
+++++ Path 6 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/waiter_i3/Q  (SLICE_R14C5C)
+Path End         : {lab_runner/states/waiter_i7/SR   lab_runner/states/waiter_i8/SR}  (SLICE_R14C7A)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 5
+Delay Ratio      : 80.1% (route), 19.9% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 41.666 ns 
+Path Slack       : 25.012 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                  5.499  39      
+{lab_runner/states/waiter_i19/CK   lab_runner/states/waiter_i3/CK}
+                                                             CLOCK PIN           0.000                  5.499  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+lab_runner/states/waiter_i3/CK->lab_runner/states/waiter_i3/Q
+                                          SLICE_R14C5C       CLK_TO_Q1_DELAY     1.388                  6.887  2       
+lab_runner/states/waiter[3]                                  NET DELAY           2.670                  9.557  2       
+lab_runner/states/i1_2_lut_adj_14/A->lab_runner/states/i1_2_lut_adj_14/Z
+                                          SLICE_R13C7C       B0_TO_F0_DELAY      0.449                 10.006  2       
+lab_runner/states/n61                                        NET DELAY           3.146                 13.152  2       
+lab_runner/states/i5_4_lut/C->lab_runner/states/i5_4_lut/Z
+                                          SLICE_R13C5A       A1_TO_F1_DELAY      0.476                 13.628  1       
+lab_runner/states/n12                                        NET DELAY           0.304                 13.932  1       
+lab_runner/states/i1_4_lut_adj_5/C->lab_runner/states/i1_4_lut_adj_5/Z
+                                          SLICE_R13C5B       C0_TO_F0_DELAY      0.449                 14.381  11      
+lab_runner/states/n41                                        NET DELAY           2.432                 16.813  11      
+lab_runner.states.i439_2_lut_3_lut_4_lut/B->lab_runner.states.i439_2_lut_3_lut_4_lut/Z
+                                          SLICE_R14C5D       C1_TO_F1_DELAY      0.449                 17.262  11      
+lab_runner/states/n537                                       NET DELAY           4.362                 21.624  11      
+{lab_runner/states/waiter_i7/SR   lab_runner/states/waiter_i8/SR}
+                                                             ENDPOINT            0.000                 21.624  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+                                                             CONSTRAINT          0.000                 41.666  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                 47.165  39      
+{lab_runner/states/waiter_i7/CK   lab_runner/states/waiter_i8/CK}
+                                                             CLOCK PIN           0.000                 47.165  1       
+                                                             Uncertainty      -(0.000)                 47.165  
+                                                             Setup time       -(0.529)                 46.636  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Required Time                                                                                          46.636  
+Arrival Time                                                                                        -(21.623)  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                   25.012  
+
+
+
+
+++++ Path 7 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/waiter_i3/Q  (SLICE_R14C5C)
+Path End         : {lab_runner/states/waiter_i9/SR   lab_runner/states/waiter_i10/SR}  (SLICE_R14C7B)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 5
+Delay Ratio      : 80.1% (route), 19.9% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 41.666 ns 
+Path Slack       : 25.012 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                  5.499  39      
+{lab_runner/states/waiter_i19/CK   lab_runner/states/waiter_i3/CK}
+                                                             CLOCK PIN           0.000                  5.499  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+lab_runner/states/waiter_i3/CK->lab_runner/states/waiter_i3/Q
+                                          SLICE_R14C5C       CLK_TO_Q1_DELAY     1.388                  6.887  2       
+lab_runner/states/waiter[3]                                  NET DELAY           2.670                  9.557  2       
+lab_runner/states/i1_2_lut_adj_14/A->lab_runner/states/i1_2_lut_adj_14/Z
+                                          SLICE_R13C7C       B0_TO_F0_DELAY      0.449                 10.006  2       
+lab_runner/states/n61                                        NET DELAY           3.146                 13.152  2       
+lab_runner/states/i5_4_lut/C->lab_runner/states/i5_4_lut/Z
+                                          SLICE_R13C5A       A1_TO_F1_DELAY      0.476                 13.628  1       
+lab_runner/states/n12                                        NET DELAY           0.304                 13.932  1       
+lab_runner/states/i1_4_lut_adj_5/C->lab_runner/states/i1_4_lut_adj_5/Z
+                                          SLICE_R13C5B       C0_TO_F0_DELAY      0.449                 14.381  11      
+lab_runner/states/n41                                        NET DELAY           2.432                 16.813  11      
+lab_runner.states.i439_2_lut_3_lut_4_lut/B->lab_runner.states.i439_2_lut_3_lut_4_lut/Z
+                                          SLICE_R14C5D       C1_TO_F1_DELAY      0.449                 17.262  11      
+lab_runner/states/n537                                       NET DELAY           4.362                 21.624  11      
+{lab_runner/states/waiter_i9/SR   lab_runner/states/waiter_i10/SR}
+                                                             ENDPOINT            0.000                 21.624  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+                                                             CONSTRAINT          0.000                 41.666  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                 47.165  39      
+{lab_runner/states/waiter_i9/CK   lab_runner/states/waiter_i10/CK}
+                                                             CLOCK PIN           0.000                 47.165  1       
+                                                             Uncertainty      -(0.000)                 47.165  
+                                                             Setup time       -(0.529)                 46.636  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Required Time                                                                                          46.636  
+Arrival Time                                                                                        -(21.623)  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                   25.012  
+
+
+
+
+++++ Path 8 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/waiter_i3/Q  (SLICE_R14C5C)
+Path End         : {lab_runner/states/waiter_i11/SR   lab_runner/states/waiter_i12/SR}  (SLICE_R14C7C)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 5
+Delay Ratio      : 80.1% (route), 19.9% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 41.666 ns 
+Path Slack       : 25.012 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                  5.499  39      
+{lab_runner/states/waiter_i19/CK   lab_runner/states/waiter_i3/CK}
+                                                             CLOCK PIN           0.000                  5.499  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+lab_runner/states/waiter_i3/CK->lab_runner/states/waiter_i3/Q
+                                          SLICE_R14C5C       CLK_TO_Q1_DELAY     1.388                  6.887  2       
+lab_runner/states/waiter[3]                                  NET DELAY           2.670                  9.557  2       
+lab_runner/states/i1_2_lut_adj_14/A->lab_runner/states/i1_2_lut_adj_14/Z
+                                          SLICE_R13C7C       B0_TO_F0_DELAY      0.449                 10.006  2       
+lab_runner/states/n61                                        NET DELAY           3.146                 13.152  2       
+lab_runner/states/i5_4_lut/C->lab_runner/states/i5_4_lut/Z
+                                          SLICE_R13C5A       A1_TO_F1_DELAY      0.476                 13.628  1       
+lab_runner/states/n12                                        NET DELAY           0.304                 13.932  1       
+lab_runner/states/i1_4_lut_adj_5/C->lab_runner/states/i1_4_lut_adj_5/Z
+                                          SLICE_R13C5B       C0_TO_F0_DELAY      0.449                 14.381  11      
+lab_runner/states/n41                                        NET DELAY           2.432                 16.813  11      
+lab_runner.states.i439_2_lut_3_lut_4_lut/B->lab_runner.states.i439_2_lut_3_lut_4_lut/Z
+                                          SLICE_R14C5D       C1_TO_F1_DELAY      0.449                 17.262  11      
+lab_runner/states/n537                                       NET DELAY           4.362                 21.624  11      
+{lab_runner/states/waiter_i11/SR   lab_runner/states/waiter_i12/SR}
+                                                             ENDPOINT            0.000                 21.624  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+                                                             CONSTRAINT          0.000                 41.666  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                 47.165  39      
+{lab_runner/states/waiter_i11/CK   lab_runner/states/waiter_i12/CK}
+                                                             CLOCK PIN           0.000                 47.165  1       
+                                                             Uncertainty      -(0.000)                 47.165  
+                                                             Setup time       -(0.529)                 46.636  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Required Time                                                                                          46.636  
+Arrival Time                                                                                        -(21.623)  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                   25.012  
+
+
+
+
+++++ Path 9 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/waiter_i3/Q  (SLICE_R14C5C)
+Path End         : {lab_runner/states/waiter_i13/SR   lab_runner/states/waiter_i14/SR}  (SLICE_R14C7D)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 5
+Delay Ratio      : 80.1% (route), 19.9% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 41.666 ns 
+Path Slack       : 25.012 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                  5.499  39      
+{lab_runner/states/waiter_i19/CK   lab_runner/states/waiter_i3/CK}
+                                                             CLOCK PIN           0.000                  5.499  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+lab_runner/states/waiter_i3/CK->lab_runner/states/waiter_i3/Q
+                                          SLICE_R14C5C       CLK_TO_Q1_DELAY     1.388                  6.887  2       
+lab_runner/states/waiter[3]                                  NET DELAY           2.670                  9.557  2       
+lab_runner/states/i1_2_lut_adj_14/A->lab_runner/states/i1_2_lut_adj_14/Z
+                                          SLICE_R13C7C       B0_TO_F0_DELAY      0.449                 10.006  2       
+lab_runner/states/n61                                        NET DELAY           3.146                 13.152  2       
+lab_runner/states/i5_4_lut/C->lab_runner/states/i5_4_lut/Z
+                                          SLICE_R13C5A       A1_TO_F1_DELAY      0.476                 13.628  1       
+lab_runner/states/n12                                        NET DELAY           0.304                 13.932  1       
+lab_runner/states/i1_4_lut_adj_5/C->lab_runner/states/i1_4_lut_adj_5/Z
+                                          SLICE_R13C5B       C0_TO_F0_DELAY      0.449                 14.381  11      
+lab_runner/states/n41                                        NET DELAY           2.432                 16.813  11      
+lab_runner.states.i439_2_lut_3_lut_4_lut/B->lab_runner.states.i439_2_lut_3_lut_4_lut/Z
+                                          SLICE_R14C5D       C1_TO_F1_DELAY      0.449                 17.262  11      
+lab_runner/states/n537                                       NET DELAY           4.362                 21.624  11      
+{lab_runner/states/waiter_i13/SR   lab_runner/states/waiter_i14/SR}
+                                                             ENDPOINT            0.000                 21.624  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+                                                             CONSTRAINT          0.000                 41.666  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                 47.165  39      
+{lab_runner/states/waiter_i13/CK   lab_runner/states/waiter_i14/CK}
+                                                             CLOCK PIN           0.000                 47.165  1       
+                                                             Uncertainty      -(0.000)                 47.165  
+                                                             Setup time       -(0.529)                 46.636  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Required Time                                                                                          46.636  
+Arrival Time                                                                                        -(21.623)  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                   25.012  
+
+
+
+
+++++ Path 10 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/waiter_i3/Q  (SLICE_R14C5C)
+Path End         : {lab_runner/states/stabilize_col/stable_value[0]__0__i12/SP   lab_runner/states/stabilize_col/stable_value[0]__0__i11/SP}  (SLICE_R11C5D)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 5
+Delay Ratio      : 80.5% (route), 19.5% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 41.666 ns 
+Path Slack       : 25.025 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                  0.000  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                  5.499  39      
+{lab_runner/states/waiter_i19/CK   lab_runner/states/waiter_i3/CK}
+                                                             CLOCK PIN           0.000                  5.499  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+lab_runner/states/waiter_i3/CK->lab_runner/states/waiter_i3/Q
+                                          SLICE_R14C5C       CLK_TO_Q1_DELAY     1.388                  6.887  2       
+lab_runner/states/waiter[3]                                  NET DELAY           2.670                  9.557  2       
+lab_runner/states/i1_2_lut_adj_14/A->lab_runner/states/i1_2_lut_adj_14/Z
+                                          SLICE_R13C7C       B0_TO_F0_DELAY      0.449                 10.006  2       
+lab_runner/states/n61                                        NET DELAY           3.146                 13.152  2       
+lab_runner/states/i5_4_lut/C->lab_runner/states/i5_4_lut/Z
+                                          SLICE_R13C5A       A1_TO_F1_DELAY      0.476                 13.628  1       
+lab_runner/states/n12                                        NET DELAY           0.304                 13.932  1       
+lab_runner/states/i1_4_lut_adj_5/C->lab_runner/states/i1_4_lut_adj_5/Z
+                                          SLICE_R13C5B       C0_TO_F0_DELAY      0.449                 14.381  11      
+lab_runner/states/n41                                        NET DELAY           2.168                 16.549  11      
+lab_runner/states/i1_4_lut_4_lut/B->lab_runner/states/i1_4_lut_4_lut/Z
+                                          SLICE_R14C5D       D0_TO_F0_DELAY      0.449                 16.998  7       
+lab_runner/states/stabilize_col/in_loop                      NET DELAY           4.944                 21.942  7       
+{lab_runner/states/stabilize_col/stable_value[0]__0__i12/SP   lab_runner/states/stabilize_col/stable_value[0]__0__i11/SP}
+                                                             ENDPOINT            0.000                 21.942  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr      Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+                                                             CONSTRAINT          0.000                 41.666  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY       0.000                 41.666  39      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY           5.499                 47.165  39      
+{lab_runner/states/stabilize_col/stable_value[0]__0__i12/CK   lab_runner/states/stabilize_col/stable_value[0]__0__i11/CK}
+                                                             CLOCK PIN           0.000                 47.165  1       
+                                                             Uncertainty      -(0.000)                 47.165  
+                                                             Setup time       -(0.198)                 46.967  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Required Time                                                                                          46.967  
+Arrival Time                                                                                        -(21.941)  
+----------------------------------------  -----------------  ---------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                   25.025  
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+                    End of Detailed Report for timing paths 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+
+##########################################################
+
+
+
+===============================================================
+3  Hold at Speed Grade m Corner at -40 Degrees
+===============================================================
+
+3.1  Endpoint slacks
+=======================
+-------------------------------------------------------
+          Listing 10 End Points          |    Slack    
+-------------------------------------------------------
+lab_runner/states/stabilize_col/stable_value[0]__0__i11/D              
+                                         |    1.743 ns 
+lab_runner/states/stabilize_col/stable_value[0]__0__i13/D              
+                                         |    1.743 ns 
+lab_runner/states/stabilize_col/stable_value[0]__0__i10/D              
+                                         |    1.743 ns 
+lab_runner/states/past_letter_i0_i0/D    |    1.743 ns 
+lab_runner/states/past_letter_i0_i2/D    |    1.743 ns 
+lab_runner/states/col_index_i0/D         |    1.743 ns 
+lab_runner/states/row_i3/D               |    1.743 ns 
+lab_runner/states/row_i4/D               |    1.743 ns 
+lab_runner/states/row_i2/D               |    1.743 ns 
+lab_runner/states/row_i1/D               |    1.743 ns 
+-------------------------------------------------------
+                                         |             
+Hold # of endpoints with negative slack: |           0 
+                                         |             
+-------------------------------------------------------
+
+3.2  Detailed Report
+=======================
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Detail report of critical paths
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    Detailed Report for timing paths 
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ ++++Path 1  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Path Begin       : lab_runner/states/stabilize_col/stable_value[0]__0__i8/Q  (SLICE_R11C5C)
+Path End         : lab_runner/states/stabilize_col/stable_value[0]__0__i11/D  (SLICE_R11C5D)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 2
+Delay Ratio      : 40.8% (route), 59.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.743 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/stabilize_col/stable_value[0]__0__i9/CK   lab_runner/states/stabilize_col/stable_value[0]__0__i8/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+lab_runner/states/stabilize_col/stable_value[0]__0__i8/CK->lab_runner/states/stabilize_col/stable_value[0]__0__i8/Q
+                                          SLICE_R11C5C       CLK_TO_Q1_DELAY  0.779                  3.863  1       
+lab_runner/states/stabilize_col/stable_value[2][0]
+                                                             NET DELAY        0.712                  4.575  1       
+lab_runner.states.stabilize_col.SLICE_38/D1->lab_runner.states.stabilize_col.SLICE_38/F1
+                                          SLICE_R11C5D       D1_TO_F1_DELAY   0.252                  4.827  1       
+lab_runner.states.stabilize_col.stable_value[2][0].sig_005.FeedThruLUT
+                                                             NET DELAY        0.000                  4.827  1       
+lab_runner/states/stabilize_col/stable_value[0]__0__i11/D
+                                                             ENDPOINT         0.000                  4.827  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+                                                             CONSTRAINT       0.000                  0.000  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/stabilize_col/stable_value[0]__0__i12/CK   lab_runner/states/stabilize_col/stable_value[0]__0__i11/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+                                                             Uncertainty      0.000                  3.084  
+                                                             Hold time        0.000                  3.084  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                       -3.084  
+Arrival Time                                                                                         4.827  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                 1.743  
+
+
+
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/stabilize_col/stable_value[0]__0__i10/Q  (SLICE_R12C4A)
+Path End         : lab_runner/states/stabilize_col/stable_value[0]__0__i13/D  (SLICE_R12C4A)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 2
+Delay Ratio      : 40.8% (route), 59.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.743 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/stabilize_col/stable_value[0]__0__i13/CK   lab_runner/states/stabilize_col/stable_value[0]__0__i10/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+lab_runner/states/stabilize_col/stable_value[0]__0__i10/CK->lab_runner/states/stabilize_col/stable_value[0]__0__i10/Q
+                                          SLICE_R12C4A       CLK_TO_Q1_DELAY  0.779                  3.863  1       
+lab_runner/states/stabilize_col/stable_value[2][2]
+                                                             NET DELAY        0.712                  4.575  1       
+lab_runner.states.stabilize_col.SLICE_37/D0->lab_runner.states.stabilize_col.SLICE_37/F0
+                                          SLICE_R12C4A       D0_TO_F0_DELAY   0.252                  4.827  1       
+lab_runner.states.stabilize_col.stable_value[2][2].sig_003.FeedThruLUT
+                                                             NET DELAY        0.000                  4.827  1       
+lab_runner/states/stabilize_col/stable_value[0]__0__i13/D
+                                                             ENDPOINT         0.000                  4.827  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+                                                             CONSTRAINT       0.000                  0.000  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/stabilize_col/stable_value[0]__0__i13/CK   lab_runner/states/stabilize_col/stable_value[0]__0__i10/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+                                                             Uncertainty      0.000                  3.084  
+                                                             Hold time        0.000                  3.084  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                       -3.084  
+Arrival Time                                                                                         4.827  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                 1.743  
+
+
+
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/stabilize_col/stable_value[0]__0__i7/Q  (SLICE_R12C4D)
+Path End         : lab_runner/states/stabilize_col/stable_value[0]__0__i10/D  (SLICE_R12C4A)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 2
+Delay Ratio      : 40.8% (route), 59.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.743 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+lab_runner/states/stabilize_col/stable_value[0]__0__i7/CK
+                                                             CLOCK PIN        0.000                  3.084  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+lab_runner/states/stabilize_col/stable_value[0]__0__i7/CK->lab_runner/states/stabilize_col/stable_value[0]__0__i7/Q
+                                          SLICE_R12C4D       CLK_TO_Q1_DELAY  0.779                  3.863  1       
+lab_runner/states/stabilize_col/stable_value[1][2]
+                                                             NET DELAY        0.712                  4.575  1       
+lab_runner.states.stabilize_col.SLICE_37/D1->lab_runner.states.stabilize_col.SLICE_37/F1
+                                          SLICE_R12C4A       D1_TO_F1_DELAY   0.252                  4.827  1       
+lab_runner.states.stabilize_col.stable_value[1][2].sig_006.FeedThruLUT
+                                                             NET DELAY        0.000                  4.827  1       
+lab_runner/states/stabilize_col/stable_value[0]__0__i10/D
+                                                             ENDPOINT         0.000                  4.827  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+                                                             CONSTRAINT       0.000                  0.000  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/stabilize_col/stable_value[0]__0__i13/CK   lab_runner/states/stabilize_col/stable_value[0]__0__i10/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+                                                             Uncertainty      0.000                  3.084  
+                                                             Hold time        0.000                  3.084  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                       -3.084  
+Arrival Time                                                                                         4.827  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                 1.743  
+
+
+
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/curr_letter_i0/Q  (SLICE_R15C3C)
+Path End         : lab_runner/states/past_letter_i0_i0/D  (SLICE_R16C3B)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 2
+Delay Ratio      : 40.8% (route), 59.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.743 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+lab_runner/states/curr_letter_i0/CK                          CLOCK PIN        0.000                  3.084  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+lab_runner/states/curr_letter_i0/CK->lab_runner/states/curr_letter_i0/Q
+                                          SLICE_R15C3C       CLK_TO_Q1_DELAY  0.779                  3.863  2       
+lab_runner/dualRunner/curr_letter[0]                         NET DELAY        0.712                  4.575  2       
+lab_runner.SLICE_30/D1->lab_runner.SLICE_30/F1
+                                          SLICE_R16C3B       D1_TO_F1_DELAY   0.252                  4.827  1       
+lab_runner.curr_letter[0].sig_016.FeedThruLUT
+                                                             NET DELAY        0.000                  4.827  1       
+lab_runner/states/past_letter_i0_i0/D                        ENDPOINT         0.000                  4.827  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+                                                             CONSTRAINT       0.000                  0.000  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/past_letter_i0_i1/CK   lab_runner/states/past_letter_i0_i0/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+                                                             Uncertainty      0.000                  3.084  
+                                                             Hold time        0.000                  3.084  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                       -3.084  
+Arrival Time                                                                                         4.827  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                 1.743  
+
+
+
+
+++++ Path 5 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/curr_letter_i2/Q  (SLICE_R15C4C)
+Path End         : lab_runner/states/past_letter_i0_i2/D  (SLICE_R16C3A)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 2
+Delay Ratio      : 40.8% (route), 59.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.743 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+lab_runner/states/curr_letter_i2/CK                          CLOCK PIN        0.000                  3.084  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+lab_runner/states/curr_letter_i2/CK->lab_runner/states/curr_letter_i2/Q
+                                          SLICE_R15C4C       CLK_TO_Q1_DELAY  0.779                  3.863  2       
+lab_runner/dualRunner/curr_letter[2]                         NET DELAY        0.712                  4.575  2       
+lab_runner.SLICE_28/D1->lab_runner.SLICE_28/F1
+                                          SLICE_R16C3A       D1_TO_F1_DELAY   0.252                  4.827  1       
+lab_runner.curr_letter[2].sig_001.FeedThruLUT
+                                                             NET DELAY        0.000                  4.827  1       
+lab_runner/states/past_letter_i0_i2/D                        ENDPOINT         0.000                  4.827  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+                                                             CONSTRAINT       0.000                  0.000  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/past_letter_i0_i3/CK   lab_runner/states/past_letter_i0_i2/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+                                                             Uncertainty      0.000                  3.084  
+                                                             Hold time        0.000                  3.084  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                       -3.084  
+Arrival Time                                                                                         4.827  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                 1.743  
+
+
+
+
+++++ Path 6 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/stabilize_col/stable_value[0]__0__i12/Q  (SLICE_R11C5D)
+Path End         : lab_runner/states/col_index_i0/D  (SLICE_R12C5D)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 2
+Delay Ratio      : 40.8% (route), 59.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.743 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/stabilize_col/stable_value[0]__0__i12/CK   lab_runner/states/stabilize_col/stable_value[0]__0__i11/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+lab_runner/states/stabilize_col/stable_value[0]__0__i12/CK->lab_runner/states/stabilize_col/stable_value[0]__0__i12/Q
+                                          SLICE_R11C5D       CLK_TO_Q0_DELAY  0.779                  3.863  2       
+lab_runner/states/stabilize_col/stab_mat[3][1]
+                                                             NET DELAY        0.712                  4.575  2       
+lab_runner/states/i769_2_lut/B->lab_runner/states/i769_2_lut/Z
+                                          SLICE_R12C5D       D1_TO_F1_DELAY   0.252                  4.827  1       
+lab_runner/states/n204[0]                                    NET DELAY        0.000                  4.827  1       
+lab_runner/states/col_index_i0/D                             ENDPOINT         0.000                  4.827  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+                                                             CONSTRAINT       0.000                  0.000  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/col_index_i1/CK   lab_runner/states/col_index_i0/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+                                                             Uncertainty      0.000                  3.084  
+                                                             Hold time        0.000                  3.084  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                       -3.084  
+Arrival Time                                                                                         4.827  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                 1.743  
+
+
+
+
+++++ Path 7 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/row_i2/Q  (SLICE_R14C4B)
+Path End         : lab_runner/states/row_i3/D  (SLICE_R14C4D)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 2
+Delay Ratio      : 40.8% (route), 59.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.743 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/row_i2/CK   lab_runner/states/row_i1/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+lab_runner/states/row_i2/CK->lab_runner/states/row_i2/Q
+                                          SLICE_R14C4B       CLK_TO_Q0_DELAY  0.779                  3.863  8       
+lab_runner/states/row_c_1                                    NET DELAY        0.712                  4.575  8       
+lab_runner/states/i1582_3_lut_4_lut/D->lab_runner/states/i1582_3_lut_4_lut/Z
+                                          SLICE_R14C4D       D0_TO_F0_DELAY   0.252                  4.827  1       
+lab_runner/states/n1415                                      NET DELAY        0.000                  4.827  1       
+lab_runner/states/row_i3/D                                   ENDPOINT         0.000                  4.827  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+                                                             CONSTRAINT       0.000                  0.000  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/row_i3/CK   lab_runner/states/row_i4/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+                                                             Uncertainty      0.000                  3.084  
+                                                             Hold time        0.000                  3.084  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                       -3.084  
+Arrival Time                                                                                         4.827  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                 1.743  
+
+
+
+
+++++ Path 8 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/row_i1/Q  (SLICE_R14C4B)
+Path End         : lab_runner/states/row_i4/D  (SLICE_R14C4D)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 2
+Delay Ratio      : 40.8% (route), 59.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.743 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/row_i2/CK   lab_runner/states/row_i1/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+lab_runner/states/row_i1/CK->lab_runner/states/row_i1/Q
+                                          SLICE_R14C4B       CLK_TO_Q1_DELAY  0.779                  3.863  8       
+lab_runner/states/row_c_0                                    NET DELAY        0.712                  4.575  8       
+lab_runner/states/i1_3_lut_4_lut/A->lab_runner/states/i1_3_lut_4_lut/Z
+                                          SLICE_R14C4D       D1_TO_F1_DELAY   0.252                  4.827  1       
+lab_runner/states/n1529                                      NET DELAY        0.000                  4.827  1       
+lab_runner/states/row_i4/D                                   ENDPOINT         0.000                  4.827  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+                                                             CONSTRAINT       0.000                  0.000  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/row_i3/CK   lab_runner/states/row_i4/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+                                                             Uncertainty      0.000                  3.084  
+                                                             Hold time        0.000                  3.084  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                       -3.084  
+Arrival Time                                                                                         4.827  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                 1.743  
+
+
+
+
+++++ Path 9 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/row_i2/Q  (SLICE_R14C4B)
+Path End         : lab_runner/states/row_i2/D  (SLICE_R14C4B)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 2
+Delay Ratio      : 40.8% (route), 59.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.743 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/row_i2/CK   lab_runner/states/row_i1/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+lab_runner/states/row_i2/CK->lab_runner/states/row_i2/Q
+                                          SLICE_R14C4B       CLK_TO_Q0_DELAY  0.779                  3.863  8       
+lab_runner/states/row_c_1                                    NET DELAY        0.712                  4.575  8       
+lab_runner/states/i1579_3_lut_4_lut/C->lab_runner/states/i1579_3_lut_4_lut/Z
+                                          SLICE_R14C4B       D0_TO_F0_DELAY   0.252                  4.827  1       
+lab_runner/states/n1413                                      NET DELAY        0.000                  4.827  1       
+lab_runner/states/row_i2/D                                   ENDPOINT         0.000                  4.827  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+                                                             CONSTRAINT       0.000                  0.000  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/row_i2/CK   lab_runner/states/row_i1/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+                                                             Uncertainty      0.000                  3.084  
+                                                             Hold time        0.000                  3.084  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                       -3.084  
+Arrival Time                                                                                         4.827  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                 1.743  
+
+
+
+
+++++ Path 10 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : lab_runner/states/row_i1/Q  (SLICE_R14C4B)
+Path End         : lab_runner/states/row_i1/D  (SLICE_R14C4B)
+Source Clock     : int_osc (R)
+Destination Clock: int_osc (R)
+Logic Level      : 2
+Delay Ratio      : 40.8% (route), 59.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.743 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/row_i2/CK   lab_runner/states/row_i1/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+
+
+Data Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+lab_runner/states/row_i1/CK->lab_runner/states/row_i1/Q
+                                          SLICE_R14C4B       CLK_TO_Q1_DELAY  0.779                  3.863  8       
+lab_runner/states/row_c_0                                    NET DELAY        0.712                  4.575  8       
+lab_runner.states.SLICE_19/D1->lab_runner.states.SLICE_19/F1
+                                          SLICE_R14C4B       D1_TO_F1_DELAY   0.252                  4.827  1       
+n44$n0                                                       NET DELAY        0.000                  4.827  1       
+lab_runner/states/row_i1/D                                   ENDPOINT         0.000                  4.827  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name     Delay Name       Incr   Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+                                                             CONSTRAINT       0.000                  0.000  1       
+hf_osc/CLKHF                              HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  40      
+lab_runner/states/stabilize_col/int_osc                      NET DELAY        3.084                  3.084  40      
+{lab_runner/states/row_i2/CK   lab_runner/states/row_i1/CK}
+                                                             CLOCK PIN        0.000                  3.084  1       
+                                                             Uncertainty      0.000                  3.084  
+                                                             Hold time        0.000                  3.084  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                       -3.084  
+Arrival Time                                                                                         4.827  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                 1.743  
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+                    End of Detailed Report for timing paths 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+
+##########################################################
+
+
+

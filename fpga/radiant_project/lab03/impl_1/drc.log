@@ -1,0 +1,11 @@
+DRC: Design Rule Check Radiant Software (64-bit) 2024.1.0.34.2
+Sun Sep 15 23:26:27 2024
+
+(VERI-1482) Analyzing Verilog file 'C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/lab03.sv'
+(VERI-1482) Analyzing Verilog file 'C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/letter_receiver.sv'
+(VERI-1482) Analyzing Verilog file 'C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/dual_seven_seg.sv'
+(VERI-1482) Analyzing Verilog file 'C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/seven_segment.sv'
+(VERI-1482) Analyzing Verilog file 'C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/lab03_fsm.sv'
+INFO <2049992> - C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/top.sv(13,8-13,11) (VERI-1018) compiling module 'top'
+Done: design load finished with (0) errors, and (0) warnings
+

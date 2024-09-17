@@ -1,0 +1,71 @@
+---------------------------------------------------
+Report for cell top
+   Instance path: top
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	        128        100.0
+                               LUTGATE	         94        100.0
+                                LUTCCU	         34        100.0
+                                 IOBUF	         17        100.0
+                                PFUREG	         63        100.0
+SUB MODULES
+                                  cell	      count    LUT4 Usage(%)
+                                 lab03	          1        80.5
+---------------------------------------------------
+Report for cell lab03
+   Instance path: top/lab_runner
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	        103        80.5
+                               LUTGATE	         69        73.4
+                                LUTCCU	         34        100.0
+                                PFUREG	         63        100.0
+SUB MODULES
+                                  cell	      count    LUT4 Usage(%)
+                        dual_seven_seg	          1         9.4
+                             lab03_fsm	          1        60.9
+---------------------------------------------------
+Report for cell lab03_fsm
+   Instance path: top/lab_runner/states
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	         78        60.9
+                               LUTGATE	         56        59.6
+                                LUTCCU	         22        64.7
+                                PFUREG	         52        82.5
+SUB MODULES
+                                  cell	      count    LUT4 Usage(%)
+                               flop_me	          1         0.8
+                       letter_receiver	          1         4.7
+---------------------------------------------------
+Report for cell flop_me
+   Instance path: top/lab_runner/states/stabilize_col
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	          1         0.8
+                               LUTGATE	          1         1.1
+                                PFUREG	         13        20.6
+---------------------------------------------------
+Report for cell letter_receiver
+   Instance path: top/lab_runner/states/getLetter
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	          6         4.7
+                               LUTGATE	          6         6.4
+---------------------------------------------------
+Report for cell dual_seven_seg
+   Instance path: top/lab_runner/dualRunner
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	         12         9.4
+                               LUTGATE	         12        12.8
+SUB MODULES
+                                  cell	      count    LUT4 Usage(%)
+                         seven_segment	          1         5.5
+---------------------------------------------------
+Report for cell seven_segment
+   Instance path: top/lab_runner/dualRunner/segment
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	          7         5.5
+                               LUTGATE	          7         7.4

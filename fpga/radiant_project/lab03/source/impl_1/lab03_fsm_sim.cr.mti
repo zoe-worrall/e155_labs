@@ -1,0 +1,30 @@
+C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/letter_receiver.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/letter_receiver.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module letter_receiver
+
+Top level modules:
+	letter_receiver
+
+} {} {}} C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/lab03_fsm.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/lab03_fsm.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling package lab03_fsm_sv_unit
+-- Compiling module lab03_fsm
+
+Top level modules:
+	lab03_fsm
+
+} {} {}} C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/top.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/top.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module top
+
+Top level modules:
+	top
+
+} {} {}} C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/seven_segment.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/zoeworrall/Desktop/projects_LRS/lab03/source/impl_1/seven_segment.sv
+Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+-- Compiling module seven_segment
+
+Top level modules:
+	seven_segment
+
+} {} {}}

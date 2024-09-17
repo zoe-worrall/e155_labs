@@ -1,0 +1,78 @@
+----------------------------------------------------------------------
+Report for cell top.TECH
+Register bits:  63 of 5280 (1.193%)
+I/O cells:      17
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               CCU2        17          100.0
+                            FD1P3XZ        63          100.0
+                         HSOSC_CORE         1          100.0
+                                 IB         4          100.0
+                               LUT4        75          100.0
+                                 OB        13          100.0
+SUB MODULES
+                     dual_seven_seg         1
+                            flop_me         1
+                              lab03         1
+                          lab03_fsm         1
+                    letter_receiver         1
+                      seven_segment         1
+                              TOTAL       179
+----------------------------------------------------------------------
+Report for cell lab03.v1
+Instance Path : lab_runner
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                                FA2        17          100.0
+                            FD1P3XZ        63          100.0
+                               LUT4        73           97.3
+SUB MODULES
+                     dual_seven_seg         1
+                            flop_me         1
+                          lab03_fsm         1
+                    letter_receiver         1
+                      seven_segment         1
+                              TOTAL       158
+----------------------------------------------------------------------
+Report for cell lab03_fsm.v1
+Instance Path : lab_runner.states
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                                FA2        11           64.7
+                            FD1P3XZ        52           82.5
+                               LUT4        60           80.0
+SUB MODULES
+                            flop_me         1
+                    letter_receiver         1
+                              TOTAL       125
+----------------------------------------------------------------------
+Report for cell flop_me.v1
+Instance Path : lab_runner.states.stabilize_col
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                            FD1P3XZ        13           20.6
+                               LUT4         1            1.3
+                              TOTAL        14
+----------------------------------------------------------------------
+Report for cell letter_receiver.v1
+Instance Path : lab_runner.states.getLetter
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4         6            8.0
+                              TOTAL         6
+----------------------------------------------------------------------
+Report for cell dual_seven_seg.v1
+Instance Path : lab_runner.dualRunner
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4        12           16.0
+SUB MODULES
+                      seven_segment         1
+                              TOTAL        13
+----------------------------------------------------------------------
+Report for cell seven_segment.v1
+Instance Path : lab_runner.dualRunner.segment
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4         7            9.3
+                              TOTAL         7
