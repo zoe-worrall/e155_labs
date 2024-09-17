@@ -1,5 +1,96 @@
 ---
-title: Lab 3 Initial Page
+title: Lab 3 Writeup
+author: Zoe Worrall  - zworrall@g.hmc.edu
+image: "images/lab2_sim.png"
+date: September 9, 2024
+
+format:
+  html:
+    other-links:
+      - text: "E155 FA Development Board"
+        href: https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf
+      - text: "E155 Breadboard Adapter v4"
+        href: https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf
+      - text: "Lab 2 Github Files"
+        href: https://github.com/zoe-worrall/e155_labs/tree/main/fpga/radiant_project/lab02
+      - text: "PNP Transistor Datasheet"
+        href: https://hmc-e155.github.io/assets/doc/2N3906-D.pdf
+
+categories:
+  - labreport
 ---
 
+
 ## Lab 3: Keypad Scanner
+
+
+Proficiency
+Circuit correctly reads inputs from  keypad.
+Dual seven-segment display shows the last two hexadecimal digits pressed.
+Most recent numeric entry is shown on the right.
+Design does not lock up when multiple buttons are pressed at once. (i.e., it just holds the current values on the display and functions properly again when the buttons are released.)
+Design only registers first button press if additional buttons are pressed down while holding down one button.
+Each button press registered only once (e.g., no switch bouncing)
+Seven segment displays are same brightness regardless of how many segments are illuminated.
+Design has no latches.
+Design has no tristate buffers.
+Report includes state transition diagram illustrating the operation of the system.
+Excellence
+Design uses synchronizers on asynchronous inputs to mitigate metastability.
+Keypad and seven-segment display are aligned in the same orientation (i.e., the top of the numbers on both are facing the same direction).
+State transition diagram is completely specified (i.e., all transitions between states are specified, output conditions specified in each state)
+Report includes state transition table to document the nextstate and output values for each state based on the current state and inputs.
+Report explains tradeoffs between the chosen design decisions and alternatives (e.g., why did you select a certain switch debouncing strategy and what are the tradeoffs between your chosen method and others?).
+General Specifications
+Proficiency
+General Schematic Specifications
+All pin names labeled
+All pin numbers labeled
+Crossing wires clearly identified as junction or unconnected
+Neat layout (e.g., clear organization and spacing)
+All parts labeled with part number
+All component values present
+Block Diagram
+
+Block diagram present with one block per SystemVerilog module
+Each block includes all input and output signals
+HDL & Code Specifications
+
+General Formatting
+
+Descriptive filename (e.g., lab2_jb.sv)
+Descriptive variable names
+Neat formatting (e.g., standard indentation, consistent formatting for variable names (kebab-case/snake_case/camelCase/PascalCase ))
+Descriptive and clear function/module names
+Comments
+
+Comments to indicate the purpose of each function/module
+Lab Writeup/Summary
+
+Brief (e.g., 3-5 sentence) description of the main goals of the assignment and what was done.
+Explanation of design approach. How did you go about designing and implementing the design?
+Explanation of testing approach. How did you verify your design was behaving as expected?
+Statement of whether the design meets all the requirements. If not, list the shortcomings.
+Number of hours spent working on the lab are included.
+Writeup contains minimal spelling or grammar issues and any errors do not significantly detract from clarity of the writeup.
+(Optional) List comments or suggestions on what was particularly good about the assignment or what you think needs to change in future versions.
+Excellence
+General Schematic Specifications
+
+Standard symbols used for all components where applicable
+Signals “flow” from left to right where possible (e.g., inputs on left hand side, outputs on right hand side)
+Title block with author name, title, and date
+HDL & Code Specifications
+
+General Formatting
+
+Name, email, and date at the top of every file
+Comment at the top of each source code file to describe what is in it
+Clear and organized hierarchy (e.g., delineation between top level modules and submodules)
+Testbenches
+
+Testbenches written for each individual module to demonstrate proper operation
+Testbench output included in the report
+Lab Writeup/Summary
+
+Writeup is free of spelling and grammar issues
