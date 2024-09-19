@@ -62,8 +62,8 @@ This gives the following diagram and set of tables for inputs and outputs.
 |-------|-----------------|------------|-------------------------------------------------------------|
 | WAIT  | col == 0 |  WAIT      | row = ROW (see the [row state machine](@fig-row_state_machine)), past_letter remains, curr_letter remains, state = WAIT, waiter = 0 | 
 | WAIT  | col != 0 |  LOG       | next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = WAIT, next_waiter = 2^19 | 
-| LOG   | mat_stab != (4'b0001 | 4'b0010 | 4'b0100 | 4'b1000) | WAIT | row = R_RESET (see the [row state machine](@fig-row_state_machine)), next_past_letter = curr_letter, next_curr_letter = next_letter (output of letter_receiver module), state = LOG, next_waiter = waiter |
-| LOG   | mat_stab == (4'b0001 | 4'b0010 | 4'b0100 | 4'b1000) | CYCLE | next_row = row (see the [row state machine](@fig-row_state_machine)), past_letter remains, curr_letter remains, state = WAIT, waiter = waiter - 1 |
+| LOG   | mat_stab != (4'b0001 or 4'b0010 or 4'b0100 or 4'b1000) | WAIT | row = R_RESET (see the [row state machine](@fig-row_state_machine)), next_past_letter = curr_letter, next_curr_letter = next_letter (output of letter_receiver module), state = LOG, next_waiter = waiter |
+| LOG   | mat_stab == (4'b0001 or 4'b0010 or 4'b0100 or 4'b1000) | CYCLE | next_row = row (see the [row state machine](@fig-row_state_machine)), past_letter remains, curr_letter remains, state = WAIT, waiter = waiter - 1 |
 | CYCLE | waiter != 0 | next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = CYCLE, next_waiter = waiter - 1 |
 | CYCLE | waiter == 0 | next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = TILL_RX_STOP, next_waiter = 0 |
 | TILL_RX_STOP | col[col_index] != 0 | next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = TILL_RX_STOP, next_waiter = 0  |
