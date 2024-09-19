@@ -96,7 +96,7 @@ My final product of code looks like the following. The program primarily consist
 * **flop_me**: a flip flop of some defined length that runs every time within the function in order to solve any metastability that may be present with a button push.
 * **letter_receiver**: a combinational logic block that combines the saved indices of the rows and columns in order to solve for whatever letter/number was pressed. This is how I get the next_letter variable within my finite state machine.
 
-![](images/block_diagram.png)
+![](images/block_diagram_2.png)
 
 I confirmed using Questa that I was able to get the right values for all potential row inputs that I would have by iterating through the fsm (see the testbench below)
 
@@ -126,7 +126,7 @@ In both of these cases, I used a testbench to initialize and push inputs into th
 
 The final schematic of my system was very simple to make. I used four GPIO pins from the FPGA E155 adapter board as an output into the rows, and four GPIO pins from this same board as inputs. Of additional note, becuase I considered 1's as "high" on my board, I turned off the pull-up resistors inside the column pins, and implemented pulldown resistors of 47kOhm impedance on my board, with the knowledge that the keypad's resistors range between 60 and 200 Ohms (found by testing in lab with an oscilloscope); resultantly, any voltage drop caused by the voltage-divider setup I had made would be negligable over the keypad, and would allow for proper reading of the signal. All other parts of this schematic, as a reader may likely recognize, are the same as from Lab2; the seven segment display as well as it PNP transistors are all plugged into the same pins, and depend on the same inputs.
 
-![](images/schematic_lab3.png)
+![](images/schematic_lab3_2.png)
 
 ![](images/4x4Kepad.png)
 
