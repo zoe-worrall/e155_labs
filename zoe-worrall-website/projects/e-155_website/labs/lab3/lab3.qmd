@@ -22,7 +22,7 @@ categories:
 
 
 ## Lab 3: Keypad Scanner
-*Hours Spent: 49 hours, Mapped with Toggl Track*
+*Hours Spent: 56 hours, Mapped with Toggl Track*
 
 ### Introduction
 
@@ -102,13 +102,29 @@ I confirmed using Questa that I was able to get the right values for all potenti
 
 ![](images/fsm_testbench.png)
 
+In order to form a comprehensive test, I initially begin by making sure that every row can be cycled through while we reside inside the Waiting state. No column was entered, and the testbench was used to track that the past letters, current letters, and finally the row cycling; since this is the waiting state, and nothing's been pressed, the rows should cycle, and the output letters (0 and 0) stay the same (@fig-cyclingrows)
+
+![](images/fsm_cycling_rows_testbench.png){#fig-cyclingrows}
+
+After this has been done, the system is then reset. This is confirmed by the testbench, and then the testbench enters a long for-loop that is used to confirm that every letter can be received and updated. For each loop of the table, the row and column are updated; the letter that has been generated is confirmed to be correct in the testbench, as well as the current lit rows and columns. The FSM additionally outputs its state, which is not used in the lab03 overall, but is used in the testbench to confirm that the proper state has also been entered. These cycles run through every row and every potential combination of row and column (@fig-forloop).
+
+![](images/fsm_testbench_smal.png){#fig-forloop}
+
+When we zoom out in full, we can confirm that all letters can be reached, and that they can be stored (@fig-fullrun).
+
+![](images/fsm_testbench.png){#fig-fullrun}
+
 Next, I made another test bench to test my lab03 module as a whole, which looks like the following;
 
-![](images/lab03_testbench.png)
+![](images/lab03_testbench.png){#fig-lab03Test}
+
+This testbench acts very similar to the fsm testbench, but in this case it confirms that the segment oscillates back and forth between the past letter and the current letter. Similar to the previous testbench for the fsm, the values were compared with expected values in the test bench, and when no errors were thrown, and the for-loop was completed without any errors or red lines becoming apparent, the testbench was considered a success.
+
+As can be seen in @fig-lab03Test, the full test could be run, and the expected oscillations between segments occured as lab03 was run. 
 
 In both of these cases, I used a testbench to initialize and push inputs into the modules, and made sure that the expected values matched what I anticipated (indicated by no errors appearing in the terminal window).
 
-The final schematic of my system was very simple to make. I used four GPIO pins from the FPGA E155 adapter board as an output into the rows, and four GPIO pins from this same board as inputs. I implemented large pulldown resistors (47 kOhms), as the pull down resistances within the board are about 200 Ohms. All other parts of this schematic, as a reader may likely recognize, are the same as from Lab2; the seven segment display as well as it PNP transistors are all plugged into the same pins. 
+The final schematic of my system was very simple to make. I used four GPIO pins from the FPGA E155 adapter board as an output into the rows, and four GPIO pins from this same board as inputs. Of additional note, becuase I considered 1's as "high" on my board, I turned off the pull-up resistors inside the column pins, and implemented pulldown resistors of 47kOhm impedance on my board, with the knowledge that the keypad's resistors range between 60 and 200 Ohms (found by testing in lab with an oscilloscope); resultantly, any voltage drop caused by the voltage-divider setup I had made would be negligable over the keypad, and would allow for proper reading of the signal. All other parts of this schematic, as a reader may likely recognize, are the same as from Lab2; the seven segment display as well as it PNP transistors are all plugged into the same pins, and depend on the same inputs.
 
 ![](images/schematic_lab3.png)
 
@@ -116,10 +132,14 @@ The final schematic of my system was very simple to make. I used four GPIO pins 
 
 ### Results and Discussion
 
-As shown in the two test bench simulations above, the program is able to receive the desired outputs. When observed in the lab, with hardware, the correct behavior can be similarly observed.
+As shown in the two test bench simulations above, the program is able to receive the desired outputs. When observed in the lab, with hardware, the correct behavior can be similarly observed. The main issue encountered in this lab were the following:
+* Implementation of pull-down resistors, and turning off the pull-up resistors within the keypads.
+* Implementation of a clock division that prevented the double-readout of a button push, which caused keys that sometimes held values a bit longer (on my keypad, keys E, 7, and 2) to be falsely read as a second input.
 
-If future development desired, I'd like to add more flipflops, as well as simplify the state machine layout within Verilog to make debugging easier and make it more understandable to new viewers.
+If future development desired, I'd like to add more flipflops, as well as simplify the state machine layout within Verilog to make debugging easier and make it more understandable to new viewers; potentially if I have time over winter break, I'll do that and make it extremely nice looking so that it looks better in GitHub.
 
 ### Conclusion
 
 This lab was extremely difficult. I recommend in the future sending out a post about where the keypads are in the beginning of lab, because many people had a hard time finding them: I'd additionally warn people about how some of the keypads don't match their anticipated row and column values, and that people should plan on bringing in multimeters in order to test which buttons are connected where. Finally, I'd suggest that people start by thinking about the flip flops, and don't ignore them until later on; it became much harder to implement once I had my program set up, and if I had had the ability to go back and redo it with the knowledge that multipathing would require me to wait periods of time within a module, etc., I likely would have set it up nicer and it would have been in separate modules.
+
+Additionally, I believe a note should be put somewhere about the speed of the clock, and to consider that as well when implementing your code. Although it is something that can be realized with the aid of an oscilloscope, it didn't cross my mind because I was so fixated on the bugs that may be causing the issue. It may be nice to put a mention, maybe even a vague sentence, somewhere that says to keep an eye on not only the timing issues of your circuit, but in what time scale your circuit is running - that way it doesn't spell out the answer, but still is informative to people like me who get stuck.
