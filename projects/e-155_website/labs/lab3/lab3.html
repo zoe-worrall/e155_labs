@@ -297,15 +297,15 @@ Table&nbsp;1: <strong>State Transition Table</strong>
 </tr>
 <tr class="odd">
 <td>LOG</td>
-<td>mat_stab != (4’b0001</td>
-<td>4’b0010</td>
-<td>4’b0100</td>
+<td>mat_stab != (4’b0001 or 4’b0010 or 4’b0100 or 4’b1000)</td>
+<td>WAIT</td>
+<td>row = R_RESET (see the <a href="@fig-row_state_machine">row state machine</a>), next_past_letter = curr_letter, next_curr_letter = next_letter (output of letter_receiver module), state = LOG, next_waiter = waiter</td>
 </tr>
 <tr class="even">
 <td>LOG</td>
-<td>mat_stab == (4’b0001</td>
-<td>4’b0010</td>
-<td>4’b0100</td>
+<td>mat_stab == (4’b0001 or 4’b0010 or 4’b0100 or 4’b1000)</td>
+<td>CYCLE</td>
+<td>next_row = row (see the <a href="@fig-row_state_machine">row state machine</a>), past_letter remains, curr_letter remains, state = WAIT, waiter = waiter - 1</td>
 </tr>
 <tr class="odd">
 <td>CYCLE</td>
