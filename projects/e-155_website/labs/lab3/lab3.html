@@ -310,26 +310,26 @@ Table&nbsp;1: <strong>State Transition Table</strong>
 <tr class="odd">
 <td>CYCLE</td>
 <td>waiter != 0</td>
+<td>CYCLE</td>
 <td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = CYCLE, next_waiter = waiter - 1</td>
-<td></td>
 </tr>
 <tr class="even">
 <td>CYCLE</td>
 <td>waiter == 0</td>
-<td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = TILL_RX_STOP, next_waiter = 0</td>
-<td></td>
+<td>TX_RX_STOP</td>
+<td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = CYCLE, next_waiter = 0</td>
 </tr>
 <tr class="odd">
 <td>TILL_RX_STOP</td>
 <td>col[col_index] != 0</td>
+<td>TILL_RX_STOP</td>
 <td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = TILL_RX_STOP, next_waiter = 0</td>
-<td></td>
 </tr>
 <tr class="even">
 <td>TILL_RX_STOP</td>
 <td>col[col_index] == 0</td>
+<td>LOG</td>
 <td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = TILL_RX_STOP, next_waiter = 0</td>
-<td></td>
 </tr>
 </tbody>
 </table>
