@@ -76,8 +76,8 @@ ul.task-list li input[type="checkbox"] {
 <meta property="og:description" content="">
 <meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/projects/e-155_website/labs/lab3/images/4x4Kepad.png">
 <meta property="og:site_name" content="Zoe Worrall's Website">
-<meta property="og:image:height" content="1182">
-<meta property="og:image:width" content="1124">
+<meta property="og:image:height" content="1302">
+<meta property="og:image:width" content="1296">
 </head>
 
 <body class="nav-fixed">
@@ -399,7 +399,7 @@ Table&nbsp;2: <strong>State Transition Table for the Row States</strong>
 <li><strong>flop_me</strong>: a flip flop of some defined length that runs every time within the function in order to solve any metastability that may be present with a button push.</li>
 <li><strong>letter_receiver</strong>: a combinational logic block that combines the saved indices of the rows and columns in order to solve for whatever letter/number was pressed. This is how I get the next_letter variable within my finite state machine.</li>
 </ul>
-<p><img src="images/block_diagram.png" class="img-fluid"></p>
+<p><img src="images/block_diagram_2.png" class="img-fluid"></p>
 <p>I confirmed using Questa that I was able to get the right values for all potential row inputs that I would have by iterating through the fsm (see the testbench below)</p>
 <p><img src="images/fsm_testbench.png" class="img-fluid"></p>
 <p>In order to form a comprehensive test, I initially begin by making sure that every row can be cycled through while we reside inside the Waiting state. No column was entered, and the testbench was used to track that the past letters, current letters, and finally the row cycling; since this is the waiting state, and nothing’s been pressed, the rows should cycle, and the output letters (0 and 0) stay the same (<a href="#fig-cyclingrows" class="quarto-xref">Figure&nbsp;2</a>)</p>
@@ -446,7 +446,7 @@ Table&nbsp;2: <strong>State Transition Table for the Row States</strong>
 <p>As can be seen in <a href="#fig-lab03Test" class="quarto-xref">Figure&nbsp;5</a>, the full test could be run, and the expected oscillations between segments occured as lab03 was run.</p>
 <p>In both of these cases, I used a testbench to initialize and push inputs into the modules, and made sure that the expected values matched what I anticipated (indicated by no errors appearing in the terminal window).</p>
 <p>The final schematic of my system was very simple to make. I used four GPIO pins from the FPGA E155 adapter board as an output into the rows, and four GPIO pins from this same board as inputs. Of additional note, becuase I considered 1’s as “high” on my board, I turned off the pull-up resistors inside the column pins, and implemented pulldown resistors of 47kOhm impedance on my board, with the knowledge that the keypad’s resistors range between 60 and 200 Ohms (found by testing in lab with an oscilloscope); resultantly, any voltage drop caused by the voltage-divider setup I had made would be negligable over the keypad, and would allow for proper reading of the signal. All other parts of this schematic, as a reader may likely recognize, are the same as from Lab2; the seven segment display as well as it PNP transistors are all plugged into the same pins, and depend on the same inputs.</p>
-<p><img src="images/schematic_lab3.png" class="img-fluid"></p>
+<p><img src="images/schematic_lab3_2.png" class="img-fluid"></p>
 <p><img src="images/4x4Kepad.png" class="img-fluid"></p>
 </section>
 <section id="results-and-discussion" class="level3">
