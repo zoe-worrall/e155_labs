@@ -196,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul>
-<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 FA Development Board</a></li><li><a href="https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 Breadboard Adapter v4</a></li><li><a href="https://github.com/zoe-worrall/e155_labs/tree/main/fpga/radiant_project/lab03"><i class="bi bi-link-45deg"></i>Lab 3 Github Files</a></li><li><a href="https://hmc-e155.github.io/assets/doc/2N3906-D.pdf"><i class="bi bi-link-45deg"></i>PNP Transistor Datasheet</a></li></ul></div></nav>
+<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 FA Development Board</a></li><li><a href="https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 Breadboard Adapter v4</a></li><li><a href="https://github.com/zoe-worrall/e155_labs/tree/main/fpga/radiant_project/lab03_fin"><i class="bi bi-link-45deg"></i>Lab 3 Github Files</a></li><li><a href="https://hmc-e155.github.io/assets/doc/2N3906-D.pdf"><i class="bi bi-link-45deg"></i>PNP Transistor Datasheet</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -240,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
 <p><em>Hours Spent: 56 hours, Mapped with Toggl Track</em></p>
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>The main point of this laboraotry was to use asynchronous components and a finite state machine to control a keypad connected to an FPGA. The Finite state machine would keep track of both the values of the states, as well as have a recorded memory of both the most recent and the last pin pressed. The difficulties of this lab lay within creating a way to handle metastability; in order to ensure that no random metastability occured within the system while it was running, you need to have a set of flip flops through which you run the column input.</p>
+<p>The main point of this laboratory was to use asynchronous components and a finite state machine to control a keypad connected to an FPGA. The Finite state machine would keep track of both the values of the states, as well as have a recorded memory of both the most recent and the last pin pressed. The difficulties of this lab lay within creating a way to handle metastability; in order to ensure that no random metastability occured within the system while it was running, you need to have a set of flip flops through which you run the column input.</p>
 </section>
 <section id="general-approach" class="level3">
 <h3 class="anchored" data-anchor-id="general-approach">General Approach</h3>
@@ -310,26 +310,26 @@ Table&nbsp;1: <strong>State Transition Table</strong>
 <tr class="odd">
 <td>CYCLE</td>
 <td>waiter != 0</td>
+<td>CYCLE</td>
 <td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = CYCLE, next_waiter = waiter - 1</td>
-<td></td>
 </tr>
 <tr class="even">
 <td>CYCLE</td>
 <td>waiter == 0</td>
-<td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = TILL_RX_STOP, next_waiter = 0</td>
-<td></td>
+<td>TX_RX_STOP</td>
+<td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = CYCLE, next_waiter = 0</td>
 </tr>
 <tr class="odd">
 <td>TILL_RX_STOP</td>
 <td>col[col_index] != 0</td>
+<td>TILL_RX_STOP</td>
 <td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = TILL_RX_STOP, next_waiter = 0</td>
-<td></td>
 </tr>
 <tr class="even">
 <td>TILL_RX_STOP</td>
 <td>col[col_index] == 0</td>
+<td>LOG</td>
 <td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = TILL_RX_STOP, next_waiter = 0</td>
-<td></td>
 </tr>
 </tbody>
 </table>
