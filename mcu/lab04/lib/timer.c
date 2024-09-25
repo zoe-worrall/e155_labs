@@ -14,49 +14,72 @@
 
 
 #define CURR_TIM TIM2
+#define ETF_DIV_CLKINT8 0b0011
+
+// fCK_PSC / (PSC[15:0] + 1).
+#define PSC_DIV_152 0b0000000100000000
+
 
 int configure_TIM23_PWM(TIM_23_STM32L432xx_TypeDef *  TIMx, int freq, double duty) {
   TIMx->CCMR1 &= ~(0b11 << 0); // CC1S
   TIMx->CCMR1 &= ~(1<<7);      // OC1CE
   TIMx->CCMR1 &= ~(1<<16);     // OC1M[3]
   TIMx->CCMR1 |= (0b111 << 4); // OC1M[2:0]
-  TIMx->CCER |=  (1<<0);        // CC1E
+  TIMx->CCER |=  (1<<0);       // CC1E
   TIMx->CCER &= ~(1<<1);       // CC1P
   TIMx->SMCR &= ~(1<<14);      // ECE 
 
   // SMS[3:0]:Slave mode selection, Bits 16,2,1,0. Disable, so that internal clock is used CEN enabled)
-  TIM2->SMCR &= ~(1<<16); TIM2->SMCR &= ~(1<<2); TIM2->SMCR &= ~(1<<1); TIM2->SMCR &= ~(1<<0);
+  TIMx->SMCR &= ~(1<<16); TIM2->SMCR &= ~(1<<2); TIM2->SMCR &= ~(1<<1); TIM2->SMCR &= ~(1<<0);
 
-  TIM2->SMCR &= ~(0b1111 << 8);
-  TIM2->SMCR |=  (0b0011 << 8);  // ETF [3:0]
+  TIMx->SMCR &= ~(0b1111 << 8);
+  TIMx->SMCR |=  (ETF_DIV_CLKINT8 << 8);  // ETF [3:0]
 
-  double log_scale = log2( (PLL_FREQ + 0.0) / freq); // prevent from losing accuracy in long division
+  TIMx->PSC  &= ~(0b1111111111111111<<0);  // controls how much you divide the incoming clock; let's keep it at 152 
+                                            //   (dividing by 2^15 makes it about 0.5 Hz if you keep the duty cycle 50% :) )
+  TIMx->PSC  |=  (PSC_DIV_152<<0);
+
+  /////// CALCULATE FREQUENCY ////////
+  int GPIO_FREQ = PLL_FREQ / (8 * 152);     // divide by ETF and (PSC + 1)
+
+  double log_scale = log2( (GPIO_FREQ + 0.0) / freq); // prevent from losing accuracy in long division
   int best_scale = ceil(log_scale) - 16;            // if freq = 220, this is 0
   if (best_scale < 0) best_scale = 0;
 
-  TIM2-> &= ~(0b1111111111111111<<0);
-  if (freq) {
-      uint32_t f_scale = PLL_FREQ / pow(2, best_scale); 
-      uint32_t forARR = f_scale / freq; // used to set frequency (?)
-      TIM2->ARR |= (forARR<<0);
+  TIMx->ARR &=  ~(0b1111111111111111<<16); // (pg 767) counter just counts continuously between 0 and the auto-reload value in the TIMx_ARR register
+  TIMx->ARR &=  ~(0b1111111111111111<<0);
 
-  TIM2->PSC  &= ~(0b000000000000000<<0);
-  TIM2->PSC  |=  (0b000000100000000<<0);
-  TIM2->ARR &=  ~(0b1111111111111111<<16); // (pg 767) counter just counts continuously between 0 and the auto-reload value in the TIMx_ARR register
-  TIM2->ARR &=  ~(0b1111111111111111<<0);
-  TIM2->ARR |=   (1<<15);
-  TIM2->CCR1 &= ~(0b111111111111111<<0);
-  TIM2->CCR1 |=  (1<<14);       // TIMx_CCRx -> duty cycle
-  TIM2->CCMR1 |= (1<<3);
-  TIM2->CR1 |= (1<<7); // ARPE
-  TIM2->EGR |= (1<<1); // CC1G
-  TIM2->EGR |= (1<<0); // UG
-  TIM2->CR1 &= ~(0b11 << 5); // CMS; 00, Edge Aligned Mode (direction dependent on DIR)
-  TIM2->CR1 &= ~(1<<4);      // DIR; 0, counter is upcounter
-  TIM2->CR1 |=  (1<<0);      // CEN: 1, enable the counter
+  uint32_t f_scale = GPIO_FREQ / pow(2, best_scale); 
+  uint32_t forARR = 0;
+  if (freq > 0) {
+    forARR = f_scale / freq; // used to set frequency (?)
+    TIMx->ARR |= (forARR<<0);
+  } else {
+    forARR = pow(2, 15);
+  }// don't set ARR if the frequency is 0
+  // TIMx->ARR |=   (1<<15);   // maximum possible is set to 2^15, although we could go higher
+    ///////////////////////////////////// (Counter goes from 0 -> ARR)
+
+  // for the duty cycle (0 when CNT > CCR1, 1 when CNT < CCR1 -- normally I want duty of 50%)
+  /////// CALCULATE DUTY ////////
+  TIMx->CCR1 &= ~(0b111111111111111<<0);
+
+  uint32_t this_cycle = forARR * duty;
+  TIMx->CCR1 |=  (this_cycle << 0);                    // TIMx_CCRx -> CCR1  (count up to this number PWM mode 2 - TIMx_CNT<TIMx_CCR1 else active )
+  ///////////////////////////////
+
+  TIMx->CCMR1 |= (1<<3);
+  TIMx->CR1 |= (1<<7); // ARPE
+  TIMx->EGR |= (1<<1); // CC1G
+  TIMx->EGR |= (1<<0); // UG
+  TIMx->CR1 &= ~(0b11 << 5); // CMS; 00, Edge Aligned Mode (direction dependent on DIR)
+  TIMx->CR1 &= ~(1<<4);      // DIR; 0, counter is upcounter
+  TIMx->CR1 |=  (1<<0);      // CEN: 1, enable the counter
 
   return 1;
 }
+
+
 
 /***********************************
 * Sets the timer to be PWM mode on TIM15: Find on page 906  *
@@ -100,7 +123,7 @@ int setup_TIM2_CH1_PWM(void) {  // aiming to set up CH1 on TIM2 as PWM
   TIM2->SMCR |=  (0b0011 << 8);  // ETF [3:0], frequency = 1/8 of f_CK_INT
 
   // set prescaling ( CK_PSC / (PSC[15:0] + 1))
-  TIM2->PSC |= (0b000000100000000);  // downscale by 152
+  TIM2->PSC |= (0b0000000100000000);  // downscale by 152
 
   // to specifically set up PWM mode on a Timer
       // TIMx_ARR  -> frequency
@@ -146,12 +169,39 @@ int configure_TIM2_CH1_PWM(int freq, double duty) { // spec. for CH2 of Device
  // 
 }
 
-
-void delay(uint32_t time){
-  for (volatile int i=0; i<(time); i++);
+/**
+*   Uses the clock being used for delay to wait some amount of time given in ms.
+*
+*   Since the timer is running at 16kHz, that would mean one ms is about 160 waits.
+*/
+void delay(TIM_67_STM32L432xx_TypeDef * DELAY_TIMx, uint32_t ms) {
+  int wait_till = (ms * 160) + DELAY_TIMx->CNT;
+  for (int i=0; i<wait_till; i++);
 }
 
+/**
+*  Configures any Timer (BESIDES TIM2!!) to run at 8 kHz
+*/
+int configure_TIMx(TIM_67_STM32L432xx_TypeDef *  TIMx) {
+  TIMx->CCMR1 &= ~(0b11 << 0); // CC1S
+  TIMx->CCMR1 &= ~(1<<7);      // OC1CE
+  TIMx->CCMR1 &= ~(1<<16);     // OC1M[3]
+  TIMx->CCMR1 |= (0b111 << 4); // OC1M[2:0]
+  TIMx->PSC  &= ~(0b1111111111111111<<0);  // controls how much you divide the incoming clock; let's keep it at 152 
+                                            //   (dividing by 2^15 makes it about 0.5 Hz if you keep the duty cycle 50% :) )
+  TIMx->PSC  |=  (PSC_DIV_152<<0);
+  TIMx->ARR &=  ~(0b1111111111111111<<0);  // assumption is made here that you aren't using TIM2
+  TIMx->ARR |=   (0b1000000000000000<<0);  // ARR capable of changing the timer from 16 kHz to 0.5 Hz; here, we set it so that counter
+                                              // is repeating every 0.5 Hz.
 
+  TIMx->CCMR1 |= (1<<3);
+  TIMx->CR1 |= (1<<7); // ARPE
+  TIMx->EGR |= (1<<1); // CC1G
+  TIMx->EGR |= (1<<0); // UG
+  TIMx->CR1 &= ~(0b11 << 5); // CMS; 00, Edge Aligned Mode (direction dependent on DIR)
+  TIMx->CR1 &= ~(1<<4);      // DIR; 0, counter is upcounter
+  TIMx->CR1 |=  (1<<0);      // CEN: 1, enable the counter
+}
 
 
 

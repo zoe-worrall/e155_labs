@@ -183,12 +183,12 @@ typedef struct {
 // int readTimer(void);
 
 // Delays for 1 millisecond
-void delay(uint32_t time);
+void delay(TIM_67_STM32L432xx_TypeDef * DELAY_TIMx, uint32_t time);
 
-int setup_TIM2_CH1_PWM(void);  // returns 1 when clock is set
+int configure_TIM23_PWM(TIM_23_STM32L432xx_TypeDef *  TIMx, int freq, double duty);  // returns 1 when clock is set
 
 int configure_TIM2_CH1_PWM(int freq, double duty);  // returns 1 when clock is set
 
-int configure_TIM_PWM(TIM_ALL_STM32L432xx_TypeDef *  TIMx, int freq, double duty);
+int configure_TIMx(TIM_67_STM32L432xx_TypeDef *  TIMx);
 
 #endif
