@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab4/lab4.html">
- <span class="dropdown-text">Lab 4 Initial Page</span></a>
+ <span class="dropdown-text">Lab 4 Writeup</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab5/lab5.html">
@@ -246,7 +246,12 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="general-approach">General Approach</h3>
 <p>I first began by drawing a rudimentary FSM chart:</p>
 <p><img src="images/Screenshot 2024-09-17 at 2.31.42 PM.png" class="img-fluid"></p>
-<p>This is based on the fundamental logic that there should be four parts to this problem: 1. A section of the code/hardware that sends a voltage through each row as it goes, <strong>waiting</strong> to detect a signal. If it does detect something, it sends us to the next state. 2. A section of the code/hardware that <strong>logs</strong> the corresponding rows and columns so that we can compute what the letter we need to light up is 3. A section of the code/hardware that <strong>cycles</strong> for about 1ms to prevent bounceback caused by any of the keys 4. A section of the code/hardware that waits until the original button (or what I coined the RX Signal) that was pressed is no longer pressed down (i.e.&nbsp;can’t say “nothing is pressed”, but rather that the original button is no longer pressed); thus, you wait <strong>till the RX signal stops</strong>.</p>
+<p>This is based on the fundamental logic that there should be four parts to this problem: 1. A section of the code/hardware that sends a voltage through each row as it goes, <strong>waiting</strong> to detect a signal. If it does detect something, it sends us to the next state.</p>
+<ol start="2" type="1">
+<li><p>A section of the code/hardware that <strong>logs</strong> the corresponding rows and columns so that we can compute what the letter we need to light up is</p></li>
+<li><p>A section of the code/hardware that <strong>cycles</strong> for about 1ms to prevent bounceback caused by any of the keys</p></li>
+<li><p>A section of the code/hardware that waits until the original button (or what I coined the RX Signal) that was pressed is no longer pressed down (i.e.&nbsp;can’t say “nothing is pressed”, but rather that the original button is no longer pressed); thus, you wait <strong>till the RX signal stops</strong>.</p></li>
+</ol>
 <p>I additionally decided to define a row state machine, although this would reside within the actual program as combinational logic, not as a module.</p>
 <div id="fig-row_state_machine" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -394,10 +399,10 @@ Table&nbsp;2: <strong>State Transition Table for the Row States</strong>
 <h3 class="anchored" data-anchor-id="modules">Modules</h3>
 <p>My final product of code looks like the following. The program primarily consists of the top module, which contains the clock, the lab03 module, which holds the fsm and the dual segment display modules, and finally the individual modules inside them. Describing them below,</p>
 <ul>
-<li><strong>lab03_fsm</strong>: uses an internal flipflop from my flop_me module and a combinational logic block called letter_receiver to iterate through the defined states and return the desired values of interest.</li>
-<li><strong>dual_seven_seg</strong>: the same as from lab02, where it uses multiplexing to light up both of the arrays with two defined numbers; this time, the numbers are supplied by the fsm.</li>
-<li><strong>flop_me</strong>: a flip flop of some defined length that runs every time within the function in order to solve any metastability that may be present with a button push.</li>
-<li><strong>letter_receiver</strong>: a combinational logic block that combines the saved indices of the rows and columns in order to solve for whatever letter/number was pressed. This is how I get the next_letter variable within my finite state machine.</li>
+<li><p><strong>lab03_fsm</strong>: uses an internal flipflop from my flop_me module and a combinational logic block called letter_receiver to iterate through the defined states and return the desired values of interest.</p></li>
+<li><p><strong>dual_seven_seg</strong>: the same as from lab02, where it uses multiplexing to light up both of the arrays with two defined numbers; this time, the numbers are supplied by the fsm.</p></li>
+<li><p><strong>flop_me</strong>: a flip flop of some defined length that runs every time within the function in order to solve any metastability that may be present with a button push.</p></li>
+<li><p><strong>letter_receiver</strong>: a combinational logic block that combines the saved indices of the rows and columns in order to solve for whatever letter/number was pressed. This is how I get the next_letter variable within my finite state machine.</p></li>
 </ul>
 <p><img src="images/block_diagram_2.png" class="img-fluid"></p>
 <p>I confirmed using Questa that I was able to get the right values for all potential row inputs that I would have by iterating through the fsm (see the testbench below)</p>
