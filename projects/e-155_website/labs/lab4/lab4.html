@@ -224,7 +224,7 @@ window.Quarto = {
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul>
-<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 FA Development Board</a></li><li><a href="https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 Breadboard Adapter v4</a></li><li><a href="https://github.com/zoe-worrall/e155_labs/tree/main/fpga/radiant_project/lab03_fin"><i class="bi bi-link-45deg"></i>Lab 4 Github Files</a></li><li><a href="https://www.ti.com/lit/ds/symlink/lm386.pdf"><i class="bi bi-link-45deg"></i>LM386 Datasheet</a></li><li><a href="https://www.mouser.com/datasheet/2/683/SM231508_1-359014.pdf"><i class="bi bi-link-45deg"></i>SM231508-1</a></li><li><a href="https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf"><i class="bi bi-link-45deg"></i>STM32L432xx Reference Manual</a></li><li><a href="https://www.st.com/resource/en/datasheet/stm32l432kb.pdf"><i class="bi bi-link-45deg"></i>STM32L432xx Datasheet</a></li></ul></div></nav>
+<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 FA Development Board</a></li><li><a href="https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 Breadboard Adapter v4</a></li><li><a href="https://github.com/zoe-worrall/e155_labs/tree/main/mcu/lab04"><i class="bi bi-link-45deg"></i>Lab 4 Github Files</a></li><li><a href="https://www.ti.com/lit/ds/symlink/lm386.pdf"><i class="bi bi-link-45deg"></i>LM386 Datasheet</a></li><li><a href="https://www.mouser.com/datasheet/2/683/SM231508_1-359014.pdf"><i class="bi bi-link-45deg"></i>SM231508-1</a></li><li><a href="https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf"><i class="bi bi-link-45deg"></i>STM32L432xx Reference Manual</a></li><li><a href="https://www.st.com/resource/en/datasheet/stm32l432kb.pdf"><i class="bi bi-link-45deg"></i>STM32L432xx Datasheet</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -265,7 +265,7 @@ window.Quarto = {
 
 <section id="lab-4-digital-audio" class="level2">
 <h2 class="anchored" data-anchor-id="lab-4-digital-audio">Lab 4: Digital Audio</h2>
-<p><em>Hours Spent: 32, Mapped with Toggl Track</em></p>
+<p><em>Hours Spent: 48.6, Mapped with Toggl Track</em></p>
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
 <p>In this lab, a STM32L432KCU Microcontroller Unit (the MCU) was used to control a SM231508-1 Speaker to play a series of different musical songs. In order to do so, the MCU was programmed to control the E155 Breadboard Adapter v4 board to output voltages on GPIO pins using an internall phase-lock looped clock, as well as two timers. Through the design of several structs, the enabling of cross communication between pins, and careful reading of the <a href="https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">datasheet</a>, the microcontroller was configured to play songs like “Fur Elise” as well as “Megalovania” and several other recognizable game tunes.</p>
@@ -291,6 +291,16 @@ window.Quarto = {
 <li><p><strong>timer.c</strong>/<strong>timer.h</strong>: A paired C and C header file that assign the proper variables and memory allocation for running timers onboard the MCU. It uses logic gathered from pages 817-980 in the <a href="https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">STM Reference Manual</a> and pages 51-58 in the <a href="https://www.st.com/resource/en/datasheet/stm32l432kb.pdf">STM32L432xx Datasheet</a>. Further details of what needed to be assigned of this can be found in <a href="@sec-timer">Timer Layout</a>.</p></li>
 <li><p><strong>gpio.c</strong>/<strong>gpio.h</strong>: A paired C and C header file that assign the proper variables and memory allocation for connecting to GPIO pins onboard the mcu. It uses logic gathered from pages 258-275 in the <a href="https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">STM Reference Manual</a>. Further details of what needed to be assigned of this can be found in Timer Layout (<a href="#sec-gpio" class="quarto-xref">Section&nbsp;1.2.1.3</a>).</p></li>
 </ol>
+<p>This expanded out into the final, overarching layout seen in <a href="#fig-codeFramework" class="quarto-xref">Figure&nbsp;2</a>.</p>
+<div id="fig-codeFramework" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-codeFramework-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/lab4_C_blockdiagram.png" id="fig-codeFramework" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-codeFramework-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
 <section id="sec-clock" class="level5">
 <h5 class="anchored" data-anchor-id="sec-clock">Clock Memory and Layout</h5>
 <p>Before programming anything, all necessary parameters to control a clock were written out using <a href="images/refMan_Fig13_clocktree.png">Figure 13 in the Reference Manual</a>. For this specific scenario, I wanted to control the phase-locked loop clock to gain experience with varying an onboard clock within the program. This required the layout of the memory bank (based on pages 243-246 in the Reference Manual), as well as the variables assigned as indicated in <a href="#tbl-rcc_1" class="quarto-xref">Table&nbsp;1</a> and <a href="#tbl-rcc_2" class="quarto-xref">Table&nbsp;2</a>. In order to easily access each memory bit, I set up a structure within the header file (called <code>RCC_STM32L432xx_TypeDef</code>), which I then built off the RCC base located at <code>0x40021000UL</code> to control each individual register on the MCU. There are two functions for this program: <a href="@tbl-rcc_1"><code>configurePLL</code></a> and <a href="@tbl-rcc_2"><code>configureClock</code></a>; <code>configurePLL</code> sets up the PLL to be connected to the onboard MSI clock, and <code>configureClock</code> sets up a clock to be delivered to the rest of the board.</p>
@@ -411,7 +421,7 @@ Table&nbsp;2: <strong>configureClock Memory Assignments</strong>
 </section>
 <section id="sec-timer" class="level5">
 <h5 class="anchored" data-anchor-id="sec-timer">Timer Layout</h5>
-<p>For this specific scenario, I wanted to control two timers (as specified in <a href="#fig-simpleFramework" class="quarto-xref">Figure&nbsp;1</a>), one that would be used to control the frequency of the speaker, and the other that would be used to control how long the frequency was played. This required the layout of the memory bank (based on pages 814-816 in the <a href="https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">Reference Manual</a>), as well as the variables assigned as indicated in <strong>?@tbl-timer</strong>. In order to easily access each memory bit, I set up three structures within the header file for Timers 2 and 3, Timers 15 and 16, and Timers 6 and 7 (since each has some variables unassigned, and I didn’t want to accidentaly assign the wrong bits if I happened to be writing to the wrong clock on accident). These structures are called <code>TIM_67_STM32L432xx_TypeDef</code> (Timers 6 and 7), <code>TIM_ALL_STM32L432xx_TypeDef</code> (Could apply to any timer, but is constrained in potential variables for more complex operations (i.e.&nbsp;runs all timers similar to timers 6 and 7)), <code>TIM15_STM32L432xx_TypeDef</code> (Timer 15), and <code>TIM_23_STM32L432xx_TypeDef</code> (Timers 2 and 3). Of these, I built all Timers as defined by their memory as found in Table 2, page 68 and 69 of the reference manual (placed below).</p>
+<p>For this specific scenario, I wanted to control two timers (as specified in <a href="#fig-simpleFramework" class="quarto-xref">Figure&nbsp;1</a>), one that would be used to control the frequency of the speaker, and the other that would be used to control how long the frequency was played. This required the layout of the memory bank (based on pages 814-816 in the <a href="https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">Reference Manual</a>), as well as the variables assigned as indicated in the Expandable Table. In order to easily access each memory bit, I set up three structures within the header file for Timers 2 and 3, Timers 15 and 16, and Timers 6 and 7 (since each has some variables unassigned, and I didn’t want to accidentaly assign the wrong bits if I happened to be writing to the wrong clock on accident). These structures are called <code>TIM_67_STM32L432xx_TypeDef</code> (Timers 6 and 7), <code>TIM_ALL_STM32L432xx_TypeDef</code> (Could apply to any timer, but is constrained in potential variables for more complex operations (i.e.&nbsp;runs all timers similar to timers 6 and 7)), <code>TIM15_STM32L432xx_TypeDef</code> (Timer 15), and <code>TIM_23_STM32L432xx_TypeDef</code> (Timers 2 and 3). Of these, I built all Timers as defined by their memory as found in Table 2, page 68 and 69 of the reference manual (placed below).</p>
 <div class="grid">
 <div class="g-col-6">
 <p><img src="images/TIM6723_mem.png" class="img-fluid"></p>
@@ -575,7 +585,7 @@ Expandable Table
 \frac{75757.58}{2} Hz = 37878.79 Hz
 \]</span></p>
 <p>This is because the speaker must be turned off and on to generate one full wave; in order for a full period to pass, the output must be turned off and on again, meaning that CCR1 would be set to 1, and ARR would be set to 2 in this scenario.</p>
-<p>The lowest frequency possible with this clock would be one where the counter counts to the maximum value of ARR. I am currently assuming that the user may chose to use Timer 2 or Timer 3, so although Timer 2 could have an array of up to 2^32 - 1 counts, I will first consider both Timers together (where Timer 3 is constrained to 16 bits). In this scenario, the maximum that the counter could ever reach would be 2^16-1, or 65535. In this case, the lowest possible frequency would be given by</p>
+<p>The lowest frequency possible with this clock would be one where the counter counts to the maximum value of ARR. I am currently assuming that the user may chose to use Timer 2 or Timer 3, so although Timer 2 could have an array of up to <span class="math inline">\(2^{32} - 1\)</span> counts, I will first consider both Timers together (where Timer 3 is constrained to 16 bits). In this scenario, the maximum that the counter could ever reach would be <span class="math inline">\(2^{16}-1\)</span>, or 65535. In this case, the lowest possible frequency would be given by</p>
 <p><span class="math display">\[
 \frac{75757.58}{65535} Hz = 1.16 Hz
 \]</span></p>
@@ -586,21 +596,21 @@ Expandable Table
 \]</span></p>
 <p>In order for the frequency to be within 1% of 220 Hz, for example, it would need to be between about 213 and 227 Hz. With our current frequency, the integer division of our clock frequency over time would mean that each square wave would happen over a period of <span class="math inline">\(\frac{75757.58}{220} = 344.4\)</span> counts. If this is rounded to the nearest integer using the ceil function in C (i.e.&nbsp;344), the actual Hz that would be generated by the speaker would be 220.2 Hz, well within our required frequency limit. If we go to the maximum Hz range, we can see that the final length of the cycle would be <span class="math inline">\(\frac{75757.58}{1000}\)</span> or 75.75 counts, which would become 76. In this case, the final generated frequency would be 996.81, which is 0.4% from it’s intended value relative to the range (using <span class="math inline">\(\frac{1000-996.81}{1000-220} = 0.4%\)</span>), which inside our desired 1% range.</p>
 <p>As for the delay timer, I currently have it configured so that it prescales by 512. Because there is no external filter trigger in this instance, we do not divide by any additional values, and so the frequency of the counter within TIM6 is given by <span class="math display">\[
-20/512 MHz = 39 kHz
+\frac{20}{512} MHz = 39 kHz
 \]</span></p>
-<p>The shortest possible delay for this timer would resultantly be the length of one counter, i.e.&nbsp;1/39 kHz, which in this case is 25.6 µs. In the case that we would like it to last as long as possible, the longest period would be when 2^16 - 1 clock cycles occur (i.e.&nbsp;ARR = 65535), which would mean a longest period of 1.678 seconds. In our case, since we are playing music that has, at maximum, a whole note that lasts a second, all the music is well within the range of possible note lengths.</p>
+<p>The shortest possible delay for this timer would resultantly be the length of one counter, i.e.&nbsp;1/39 kHz, which in this case is 25.6 µs. In the case that we would like it to last as long as possible, the longest period would be when <span class="math inline">\(2^{16} - 1\)</span> clock cycles occur (i.e.&nbsp;ARR = 65535), which would mean a longest period of 1.678 seconds. In our case, since we are playing music that has, at maximum, a whole note that lasts a second, all the music is well within the range of possible note lengths.</p>
 </section>
 </section>
 <section id="hardware-setup" class="level3">
 <h3 class="anchored" data-anchor-id="hardware-setup">Hardware Setup</h3>
-<p>The hardware setup for this lab was relatively simple. Because the speaker requires a greater current that the MCU GPIO pins can provide, I used an <a href="https://www.ti.com/lit/ds/symlink/lm386.pdf">LM386 amplifier</a> to set-up my system. This chip was set up for a gain of 50 (relative to Figure 9-5 on the data sheet), and has a 10k potentiometer place at the output of pin 3 in order to control the volume of the speaker <a href="#fig-schematic" class="quarto-xref">Figure&nbsp;2</a>.</p>
+<p>The hardware setup for this lab was relatively simple. Because the speaker requires a greater current that the MCU GPIO pins can provide, I used an <a href="https://www.ti.com/lit/ds/symlink/lm386.pdf">LM386 amplifier</a> to set-up my system. This chip was set up for a gain of 50 (relative to Figure 9-5 on the data sheet), and has a 10k potentiometer place at the output of pin 3 in order to control the volume of the speaker <a href="#fig-schematic" class="quarto-xref">Figure&nbsp;3</a>.</p>
 <div id="fig-schematic" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/lab4_schematic.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Schematic Diagram
+Figure&nbsp;3: Schematic Diagram
 </figcaption>
 </figure>
 </div>
@@ -616,16 +626,16 @@ Figure&nbsp;2: Schematic Diagram
 </section>
 <section id="results-and-discussion" class="level3">
 <h3 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h3>
-<p>In conclusion, this lab was a success in configuring an MCU board using C headers and functions. It additionally provided insight into the internal structures and memories found on an MCU, as well as provided a comprehensive understanding of all the relevant background required for working with MCU (<a href="#fig-mcu_running" class="quarto-xref">Figure&nbsp;3</a>).</p>
+<p>In conclusion, this lab was a success in configuring an MCU board using C headers and functions. It additionally provided insight into the internal structures and memories found on an MCU, as well as provided a comprehensive understanding of all the relevant background required for working with MCU (<a href="#fig-mcu_running" class="quarto-xref">Figure&nbsp;4</a>).</p>
 <section id="video-of-working-speaker" class="level4">
 <h4 class="anchored" data-anchor-id="video-of-working-speaker">Video of Working Speaker</h4>
 <div id="fig-mcu_running" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mcu_running-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wo9vZccmqwc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/m7p1qeSPRDM" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mcu_running-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Video of the MCU playing three different songs back to back.
+Figure&nbsp;4: Video of the MCU playing three different songs back to back.
 </figcaption>
 </figure>
 </div>
@@ -634,7 +644,7 @@ Figure&nbsp;3: Video of the MCU playing three different songs back to back.
 <section id="conclusion" class="level3">
 <h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
 <p>In conclusion, all of the program works properly in simulation and in hardware, and can be confirmed both visually and with the aid of a test bench. The program is able to multiplex successfully without having the two LEDs bleed over, and all digits are equally lit for each segment, and proper calculations for the PNP transistor can be found above.</p>
-<p>I spent a total of 13.5 hours working on this lab, with roughly four of them spent on the lab writeup if including the planning of the modules and compiling all of the necessary diagrams.</p>
+<p>I spent a total of 48.6 hours working on this lab, with roughly seven of them spent on the lab writeup, and three spent on fixing the github repo that I broke by uploading a video that was too big, if including the planning of the modules and compiling all of the necessary diagrams.</p>
 
 
 </section>
