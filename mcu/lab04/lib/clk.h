@@ -2,12 +2,12 @@
 #define CLOCK_H
 
 /**
-*   Nucleo-L432KC Singer Header
+*   Nucleo-L432KC Singer Header for Clock
 *
 *   @file: clk.h
 *   @author: Zoe Worrall
 *   @contact: zworrall@g.hmc.edu
-*   @version: 09/21/2024
+*   @version: 09/26/2024
 */
 
 #include <stdint.h>

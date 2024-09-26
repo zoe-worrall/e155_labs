@@ -4,10 +4,10 @@
 /**
 *   Nucleo-L432KC Singer Header
 *
-*   @file: clk.h
+*   @file: timer.h
 *   @author: Zoe Worrall
 *   @contact: zworrall@g.hmc.edu
-*   @version: 09/21/2024
+*   @version: 09/26/2024
 */
 
 #include <stdint.h>
@@ -24,7 +24,7 @@
 #define TIM6_BASE  (0x40001000UL)
 
 /**
-*   Defining the memory structure for Timers 2 and 3 (the main ones)
+*   Defining the memory structure for Timers 2 and 3
 *
 *  Found pages 192-242/1600 in the RM0394 Rev 4 Reference Manual for STM32L432XX Boards
 */ 
@@ -151,36 +151,8 @@ typedef struct {
 #define TIM7 ((TIM_67_STM32L432xx_TypeDef *) TIM7_BASE)
 
 ////////////////////////////////////////////////////////////////////////
-// Defining the required functions for this class -- see pages 969
+// Defining the required functions for this class -- see pages 969 in Reference Manual
 ////////////////////////////////////////////////////////////////////////
-
-// Sets mode of timer: 
-    // 1=Upcounting Mode (1,2,3,1,...), 
-    // 2=Repetition Mode,
-    // 3=Clock selection
-    // 4=Capture/Compare Channels
-    // 5=Capture Input Mode
-    // 6=PWM Input Mode
-    // 7=Forced Output Mode
-    // 8=Output Compare Mode
-    // 9=PWM Mode**
-    // 10=Combined PWM Mode
-    // 11=Complementary Outputs and Dead-Time Insertion
-    // 12=Using Break Function
-    // 13=One-Pulse Mode
-    // 14=Retriggerable One Pulse Mode
-    // 15=UIF Bit Remapping
-    // 16=Timer Input XOR Function
-    // 17=External Trigger Synchronization (Reset mode, Gated mode, Trigger mode, Reset+Trigger mode)
-    // 18=Combined Reset + Trigger Mode
-    // 19=DMA Burst Mode
-    // 20=Timer Synchronization
-    // 21=Debug Mode
-// void setTimerMode(int mode);
-
-// void writeTimer(int counter);
-
-// int readTimer(void);
 
 // Delays for 1 millisecond
 void delay(TIM_67_STM32L432xx_TypeDef * DELAY_TIMx, uint32_t time);

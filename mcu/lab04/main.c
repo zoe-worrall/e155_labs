@@ -8,6 +8,10 @@
 File    : main.c
 Purpose : Generic application start
 
+author: zoe worrall
+contact: zworrall@g.hmc.edu
+version: september 26, 2024
+
 */
 #include "lib/clk.h"
 #include "lib/gpio.h"
@@ -20,6 +24,7 @@ Purpose : Generic application start
 
 #define DELAY_DURATION  200
 
+///////////////// Given With Lab 4 //////////////////////
 const int FUR_ELISE[][2] = {
 {659,	125},
 {623,	125},
@@ -131,8 +136,9 @@ const int FUR_ELISE[][2] = {
 {440,	500},
 {  0,	0}};
 
+/////////////////////////////////////////////////////////
 
-// from E85 (Megalovania) //
+////////////////////////////from E85 (Megalovania) //////////////////////////////////////////
 #define Bb3 233
 #define B3  256
 #define C4  262
@@ -147,34 +153,40 @@ const int FUR_ELISE[][2] = {
 #define C5  523
 #define D5  587
 #define C3  131
+#define G3  196
+#define E3  165
+#define A5  880
 const int MEGALOVANIA[] = { D4,  D4, D5, A4, 0, Gs4, 0, G4, 0, F4, D4, F4, G4,
-                       C4,  C4, D5, A4, 0, Gs4, 0, G4, 0, F4, D4, F4, G4,
-                       B3,  B3, D5, A4, 0, Gs4, 0, G4, 0, F4, D4, F4, G4,
-                      Bb3, Bb3, D5, A4, 0, Gs4, 0, G4, 0, F4, D4, F4, G4};
+                            C4,  C4, D5, A4, 0, Gs4, 0, G4, 0, F4, D4, F4, G4,
+                            B3,  B3, D5, A4, 0, Gs4, 0, G4, 0, F4, D4, F4, G4,
+                           Bb3, Bb3, D5, A4, 0, Gs4, 0, G4, 0, F4, D4, F4, G4, 0};
 
 
-int megaspacing[] = {  500,  500,  1000,  1000, 500,   500, 500,  500, 500,  1000,  500,  500,  500,
+const int megaspacing[] = {  500,  500,  1000,  1000, 500,   500, 500,  500, 500,  1000,  500,  500,  500,
                        500,  500,  1000,  1000, 500,   500, 500,  500, 500,  1000,  500,  500,  500,
                        500,  500,  1000,  1000, 500,   500, 500,  500, 500,  1000,  500,  500,  500,
-                       500,  500,  1000,  1000, 500,   500, 500,  500, 500,  1000,  500,  500,  500};
+                       500,  500,  1000,  1000, 500,   500, 500,  500, 500,  1000,  500,  500,  500, 0};
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//////////////////////////// SUPER MARIO BROS. INTRO TO THEME //////////////////////////////////////////
+const int MARIO[] = { E4, E4, E4, C4, E4, G4, G3, C4, E3, G3, 0, A4, B5, Bb4, C3, G3,
+                      E4, G4, A5, F4, G4, 0, E4, C4, D4, B3, 0 };
 
-// Simple delay function to use a bunch of NOPs to stall the processor
-void main_delay(int cycles) {
-   while (cycles-- > 0) {
-      volatile int x=1000;
-      while (x-- > 0)
-         __asm("nop");
-   }
-}
+const int mariospacing[] = { 125, 63, 125, 63, 125, 250, 250, 188, 188, 125, 63, 125, 125, 63, 125,
+                        124, 63, 63, 125, 63, 63, 63, 125, 63, 125, 188, 0};
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define PIN_NUMBER 5
-/*********************************************************************
+/***********************************
+*                                  *
+*       main()                     *
 *
-*       main()
+*  Sets all clocks to run as they are supposed to, and sets up where timers and pins point.
 *
-*  Function description
-*   Application entry point.
+*  Runs three sets of music, Fur Elise, Megalovania, and the Super Mario Bros. Theme Song.
+*
+*  Should become permanently stuck in a while loop when running.
+*    @return  -- 1 if done running, 0 if not
 */
 int main(void) {
   configureClock();
@@ -193,7 +205,7 @@ int main(void) {
   RCC->AHB2_ENR |= (1<<0);
   setModeOfPinA(PIN_NUMBER*2, 3);
 
-  // set AF14 (aka use TIM15_BKIN on pin PA within register AF9 [7:4], setting AF14 (1110: AF14) )
+  // sets AF1 so that Timer 2, Channel 1 goes to Pin GPIO A 5 on the breakout adapter board.
     // see page 272 https://hmc-e155.github.io/assets/doc/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
     // see page 57 https://hmc-e155.github.io/assets/doc/ds11451-stm32l432kc.pdf
   GPIOA->AFRL &= ~(0b1111 << 20);
@@ -202,19 +214,76 @@ int main(void) {
   // GPIOA->ODR |= (1<<5);
   
   while(1) { 
-    //for (volatile int i=0; i<sizeof(MEGALOVANIA); i++) {
-      //configure_TIM23_PWM(TIM2, FUR_ELISE[i][0], 0.25); 
-      //delay(TIM6, FUR_ELISE[i][1] * 10);
-      
-      
 
-    //configure_TIM23_PWM(TIM2, MEGALOVANIA[i], 0.5);
-    //delay(TIM6, megaspacing[i]);
-    //}
-    for (int i=0; i<10000; i++) {
-      configure_TIM23_PWM(TIM2, C4, 0.5);
-      delay(TIM6, 10000000);
-      }
+    // Play Fur Elise
+    int i = 0;
+    while(FUR_ELISE[i][0] != 0 || FUR_ELISE[i][1] != 0) {
+      configure_TIM23_PWM(TIM2, FUR_ELISE[i][0], 0.5); 
+      delay(TIM6, FUR_ELISE[i][1]);
+      i++;
+    }
+
+    // Count to the next song
+    configure_TIM23_PWM(TIM2, 0, 0);
+    delay(TIM6, 250);
+
+    configure_TIM23_PWM(TIM2, C4, 0.5);
+    delay(TIM6, 250);
+    configure_TIM23_PWM(TIM2, 0, 0);
+    delay(TIM6, 125);
+
+    configure_TIM23_PWM(TIM2, D4, 0.5);
+    delay(TIM6, 250);
+    configure_TIM23_PWM(TIM2, 0, 0);
+    delay(TIM6, 125);
+
+    configure_TIM23_PWM(TIM2, E4, 0.5);
+    delay(TIM6, 250);
+    configure_TIM23_PWM(TIM2, 0, 0.5);
+    delay(TIM6, 250);
+
+    // Play Megalovania (Undertale)
+    volatile int j = 0;
+    while(MEGALOVANIA[j] != 0 || megaspacing[j] != 0) {
+      configure_TIM23_PWM(TIM2, MEGALOVANIA[j], 0.5);
+      delay(TIM6, megaspacing[j]/10);
+      j++;
+    }  
+
+    // Count to the next song
+    configure_TIM23_PWM(TIM2, 0, 0);
+    delay(TIM6, 250);
+
+    configure_TIM23_PWM(TIM2, C4, 0.5);
+    delay(TIM6, 250);
+    configure_TIM23_PWM(TIM2, 0, 0);
+    delay(TIM6, 125);
+
+    configure_TIM23_PWM(TIM2, D4, 0.5);
+    delay(TIM6, 250);
+    configure_TIM23_PWM(TIM2, 0, 0);
+    delay(TIM6, 125);
+
+    configure_TIM23_PWM(TIM2, E4, 0.5);
+    delay(TIM6, 250);
+    configure_TIM23_PWM(TIM2, 0, 0.5);
+    delay(TIM6, 250);
+
+    configure_TIM23_PWM(TIM2, 0, 0.5);
+    delay(TIM6, 500);
+    
+    // Play Super Mario Bros. Theme
+    volatile int k = 0;
+    while (MARIO[k] != 0 || mariospacing[k] != 0) {
+      configure_TIM23_PWM(TIM2, MARIO[k], 0.5);
+      delay(TIM6, mariospacing[k]);
+      k++;
+    }
+
+    // Delay before reloop occurs
+    configure_TIM23_PWM(TIM2, 0, 0);
+    delay(TIM6, 500);
+    
   }
 }
 

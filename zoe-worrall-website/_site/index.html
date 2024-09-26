@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 
 <meta property="og:title" content="Zoe Worrall’s Website">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/images/ZoeWorrall_Photo.jpg">
+<meta property="og:image" content="images/ZoeWorrall_Photo.jpg">
 <meta property="og:site_name" content="Zoe Worrall's Website">
 </head>
 
@@ -116,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="./projects/e-155_website/labs/lab4/lab4.html">
- <span class="dropdown-text">Lab 4 Initial Page</span></a>
+ <span class="dropdown-text">Lab 4 Writeup</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./projects/e-155_website/labs/lab5/lab5.html">
@@ -328,7 +328,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/zoe-worrall\.github\.io\/e155_labs\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

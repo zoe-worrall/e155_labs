@@ -4,10 +4,18 @@
 **********************************************************************
 *                                                                    *
 *                    Zoe Worrall, HMC, 09/20/2024                    *
-*                                                                    *
+*                    Contact: zworrall@g.hmc.edu                     *
 *                                                                    *
 **********************************************************************
+
+  This C program contains four functions:
+
+  setModeofPinA and setModeofPinB set the modes of the A and B GPIO pins on
+      the STM32L432xx Board.
+
 */
+
+//////////////////////////// DEFINITIONS AND INCLUSIONS ////////////////////////////
 #include "timer.h"
 #include "clk.h"
 #include <math.h>
@@ -17,9 +25,28 @@
 #define ETF_DIV_CLKINT8 0b0011
 
 // fCK_PSC / (PSC[15:0] + 1).
-#define PSC_DIV_152 0b0000000100000000
+#define PSC_DIV_152 32
+////////////////////////////////////////////////////////////////////////////////////
 
 
+//////////////////////////// Function Assignment ////////////////////////////
+
+/***********************************
+*                                  *
+*    configure_TIM23_PWM()         *
+*
+*  Set up Timer 2 or 3 as a PWM.
+*
+*  Uses MSI clock as an input. Since MSI is not configured for this setup, it remains at
+*   it's initial frequency of 20 MHz.
+*
+*
+*    @param TIMx -- A pointer to the timer being configured
+*    @param freq -- The frequency to which it is being set
+*    @param duty -- The desired duty cycle of the timer
+*
+*    @return     -- 1 if done configuring
+*/
 int configure_TIM23_PWM(TIM_23_STM32L432xx_TypeDef *  TIMx, int freq, double duty) {
   TIMx->CCMR1 &= ~(0b11 << 0); // CC1S
   TIMx->CCMR1 &= ~(1<<7);      // OC1CE
@@ -40,7 +67,7 @@ int configure_TIM23_PWM(TIM_23_STM32L432xx_TypeDef *  TIMx, int freq, double dut
   TIMx->PSC  |=  (PSC_DIV_152<<0);
 
   /////// CALCULATE FREQUENCY ////////
-  int GPIO_FREQ = PLL_FREQ / (8 * 152);     // divide by ETF and (PSC + 1)
+  int GPIO_FREQ = PLL_FREQ / (8 * PSC_DIV_152);     // divide by ETF and (PSC + 1)
 
   double log_scale = log2( (GPIO_FREQ + 0.0) / freq); // prevent from losing accuracy in long division
   int best_scale = ceil(log_scale) - 16;            // if freq = 220, this is 0
@@ -52,12 +79,11 @@ int configure_TIM23_PWM(TIM_23_STM32L432xx_TypeDef *  TIMx, int freq, double dut
   uint32_t f_scale = GPIO_FREQ / pow(2, best_scale); 
   uint32_t forARR = 0;
   if (freq > 0) {
-    forARR = f_scale / freq; // used to set frequency (?)
+    forARR = ceil(f_scale / freq); // used to set frequency (?)
     TIMx->ARR |= (forARR<<0);
-  } else {
-    forARR = pow(2, 15);
-  }// don't set ARR if the frequency is 0
-  // TIMx->ARR |=   (1<<15);   // maximum possible is set to 2^15, although we could go higher
+  } else { // don't set ARR if the frequency is 0
+   TIMx->ARR |=   (1<<15);   // maximum possible is set to 2^15, although we could go higher
+   }
     ///////////////////////////////////// (Counter goes from 0 -> ARR)
 
   // for the duty cycle (0 when CNT > CCR1, 1 when CNT < CCR1 -- normally I want duty of 50%)
@@ -65,7 +91,11 @@ int configure_TIM23_PWM(TIM_23_STM32L432xx_TypeDef *  TIMx, int freq, double dut
   TIMx->CCR1 &= ~(0b111111111111111<<0);
 
   uint32_t this_cycle = forARR * duty;
-  TIMx->CCR1 |=  (this_cycle << 0);                    // TIMx_CCRx -> CCR1  (count up to this number PWM mode 2 - TIMx_CNT<TIMx_CCR1 else active )
+  if (duty != 0) {
+    TIMx->CCR1 |=  (this_cycle << 0);                    // TIMx_CCRx -> CCR1  (count up to this number PWM mode 2 - TIMx_CNT<TIMx_CCR1 else active )
+  } else {
+    TIMx->CCR1 |= (1 << 0);
+  }
   ///////////////////////////////
 
   TIMx->CCMR1 |= (1<<3);
@@ -82,7 +112,18 @@ int configure_TIM23_PWM(TIM_23_STM32L432xx_TypeDef *  TIMx, int freq, double dut
 
 
 /***********************************
-* Sets the timer to be PWM mode on TIM15: Find on page 906  *
+*                                  *
+*    setup_TIM2_CH1_PWM()          *
+*
+*  Sets Timer 2's first Channel (CH1) in PWM mode 1, and outputs it.
+*   Find additional information on page 906  of Reference Manual
+*
+*  Uses MSI clock as an input. Since MSI is not configured for this setup, it remains at
+*   it's initial frequency of 20 MHz.
+*
+*   Configured to output 20 MHz / (256 * 8) or 9765.62 Hz
+*
+*    @return     -- 1 if done setting up PWM channel
 */
 int setup_TIM2_CH1_PWM(void) {  // aiming to set up CH1 on TIM2 as PWM
 // to setup output of timer to CHy:
@@ -161,26 +202,42 @@ int setup_TIM2_CH1_PWM(void) {  // aiming to set up CH1 on TIM2 as PWM
 
 
 
-/**
-*  Sets the timer up to generate a PWM signal of a given frequency and duty cycle
-*/
-int configure_TIM2_CH1_PWM(int freq, double duty) { // spec. for CH2 of Device
- // incoming frequency is 16.447 kHz
- // 
-}
-
-/**
-*   Uses the clock being used for delay to wait some amount of time given in ms.
+/***********************************
+*                                  *
+*    delay()                       *
 *
-*   Since the timer is running at 16kHz, that would mean one ms is about 160 waits.
+*  Uses a generic clock to wait for some determined amount of time (milliseconds).
+*
+*  Uses MSI clock as an input. Since MSI is not configured for this setup, it remains at
+*   it's initial frequency of 20 MHz. Assumes that the clock is configured at a PSC of 512.
+*
+*   Configured to output 20 MHz / 512 or 39062.5Hz
+*
+*    @param DELAY_TIMx -- A pointer to the timer that you are using to delay
+*    @param ms         -- The amount of milliseconds that should be delayed
 */
 void delay(TIM_67_STM32L432xx_TypeDef * DELAY_TIMx, uint32_t ms) {
-  int wait_till = (ms * 160) + DELAY_TIMx->CNT;
+  int wait_till = (ms * 2000) + DELAY_TIMx->CNT;
   for (int i=0; i<wait_till; i++);
 }
 
 /**
 *  Configures any Timer (BESIDES TIM2!!) to run at 8 kHz
+*/
+/***********************************
+*                                  *
+*    configure_TIMx()              *
+*
+*  Configures any Timer (BESIDES TIM2!!) to run at 39 kHz.
+*
+*  Uses MSI clock as an input. Since MSI is not configured for this setup, it remains at
+*   it's initial frequency of 20 MHz. Assumes that the clock is configured at a PSC of 512.
+*
+*   Configured to output 20 MHz / 512 or 39062.5Hz
+*
+*    @param DELAY_TIMx -- A pointer to the timer that you are creating
+*
+*    @return           -- 1 once the function completes configuration
 */
 int configure_TIMx(TIM_67_STM32L432xx_TypeDef *  TIMx) {
   TIMx->CCMR1 &= ~(0b11 << 0); // CC1S
@@ -189,7 +246,7 @@ int configure_TIMx(TIM_67_STM32L432xx_TypeDef *  TIMx) {
   TIMx->CCMR1 |= (0b111 << 4); // OC1M[2:0]
   TIMx->PSC  &= ~(0b1111111111111111<<0);  // controls how much you divide the incoming clock; let's keep it at 152 
                                             //   (dividing by 2^15 makes it about 0.5 Hz if you keep the duty cycle 50% :) )
-  TIMx->PSC  |=  (PSC_DIV_152<<0);
+  TIMx->PSC  |=  (512<<0);
   TIMx->ARR &=  ~(0b1111111111111111<<0);  // assumption is made here that you aren't using TIM2
   TIMx->ARR |=   (0b1000000000000000<<0);  // ARR capable of changing the timer from 16 kHz to 0.5 Hz; here, we set it so that counter
                                               // is repeating every 0.5 Hz.
@@ -203,155 +260,5 @@ int configure_TIMx(TIM_67_STM32L432xx_TypeDef *  TIMx) {
   TIMx->CR1 |=  (1<<0);      // CEN: 1, enable the counter
 }
 
-
-
-
-// void writeTimer(int counter)
-
-// int readTimer(void);
-
-
-// @zoe: To Remember
-
-  // Set auto-reload preload register to upcounting via TIM15,  CR1,  ARPE
-      // upcounting: count up to TIM15_ARR register -- we need the shadow registers enabled
-      // Disabling UEV avoids updating shadow registers when writing to preload reg -> no update until UDIS = 0
-      // Repetition register (RCR) not important, but is loaded when update is sent
-
-  // Set counter clock (i.e. internal, external, prescaler)
-
-  // write desired data to TIMx_ARR and TIMx_CCRx
-
-  // set CCxIE bit (if doing interrupts, which I'm not at the moment)
-
-  // Select Output Mode -- OCxM  = 011 to toggle OCx output when CNT = CCRx
-                        // OCxPE = 0   to disable preload reg -> must be 0 is you want to change output waveform at any time
-                        // CCxP  = 0   to active high
-                        // CCxE  = 1   to enable output***
-
-  // Enable counter (CEN bit in TIMx_CR1)
-
-  /**
-   from setup of Power to Timer 2, Ch1
-      // Compliance with OCREF_CLR, OCREF can only be asserted if
-          // the result of the comparison..
-
-  old from configureTimer
-  //////////// Setting up Clock Control Register  ////////////
-  TIM2->CR1 |=  (1<<7);   // ARPE - make auto-reload preload enable buffered
-  TIM2->CR1 &= ~(1<<3);   // OPM  - One Pulse Mode OFF, make sure that counter isn't stopped at update event
-  TIM2->CR1 &= ~(1<<1);   // UDIS - Update Disable (I want updates to happen every UG or UEV event)
-  TIM2->CR1 |=  (1<<0);   // CEN  - Enable the counter
-  ////////////////////////////////////////////////////////////
-  
-  // in channel 2:
-  
-  //////////// Setting Output of Timer  ////////////
-  TIM2->CR2 |=  (1<<0);      // CCPC = 1, CCxE, CCxNE and OCxM bits are preloaded, after 
-                                      //   having been written, they are updated only when a 
-                                      //   commutation event (COM) occurs (COMG bit set or 
-                                      //   rising edge detected on TRGI, depending on the CCUS bit).
-  TIM2->CR2 &= ~(0b111<<4);
-  TIM2->CR2 |=  (0b101<<4); // MMS: Compare - OC2REF signal is used as trigger output (TRGO)
-  TIM2->CR2 &= ~(1<<7);     // TIS: (0) The TIMx_CH1 pin is connected to TI1 input
-  TIM2->CR2 |=  (1<<8);     // OIS1: Output Idle state 1 (OC1 output) -- turned on(?)
-
-  ////////////////////////////////////////////////////////////
-
-  //////////// Setting UG (Update Generator)  ////////////
-  TIM2->EGR |= (1<<0); // Reinitialize counter + update registers -- UG (update generate)
-  ////////////////////////////////////////////////////////////
-*/
-
-/*
-  //////////// Set PWM Mode 1  ////////////
-  TIM2->CCMR1 &= ~(1 << 16);  // OC1M[3] -- OutputCompare2mode-bit3 output compare mode is for CC2
-  TIM2->CCMR1 &= ~(0b111<<4);
-  TIM2->CCMR1 |=  (0b110<<4); // OC1M[2:0]: PWM Mode 1 turned on for Channel 2
-              // basically sets this pin to PWM mode 1, - Channel 1 is active as long as 
-                   // TIMx_CNT<TIMx_CCR1 else inactive.  0111: PWM mode 2 - Channel 1 
-                   // is inactive as long as TIMx_CNT<TIMx_CCR1 else active.
-
-  TIM2->CCMR1 |= (1<<3);  // sets OC1PE to 1 (Preload register on TIMx_CCR1 enabled. 
-                                  //      Read/Write operations access the preload register. 
-                                  //      TIMx_CCR1 preload value is loaded in the active 
-                                  //      register at each update event.
-  // CURR_TIM->CCMR1 |= (1<<15); // OC2CE (output compare 2 clear enable)
-                            
-  TIM2->CCMR1 &= ~(0b11<<0);  // CCIS -- Set CC1 acts as Output
-  ////////////////////////////////////////////////
-
-  // Set Capture and Enable Registers //
-  TIM2->CCER |= (1<<0); // CC1E (enabled) - output of Output Selected used. 1: On - OC1 signal is output on the corresponding output pin
-  TIM2->CCER &= ~(1<<1); // CC1P 0: OC1 active high
-
-  //////////// COUNTER CLOCK SCALED ////////////
-  TIM2->PSC &= ~(0b1111111111111111 << 0);
-  TIM2->PSC |=  (20 << 0);  // scale down the 20 MHz clock by 10 to 1 MHz (since final counter can only go up to 65k)
-  //////////////////////////////////////////////
-
-  //////////// DUTY CYCLE ////////////
-  //CURR_TIM->CNT &= ~(0b1111111111111111 << 0);
-  //int full_cycle = pow(2,16);
-  //CURR_TIM->CNT |=  (full_cycle << 0);
-
-  TIM2->CCR2 &= ~(0b1111111111111111 << 0);  // channel 2 is active as long as TIMx_CNT<TIMx_CCR1
-  int duty_cycle = duty * pow(2,16);
-  TIM2->CCR2 |=  (duty_cycle << 0);
-  ////////////////////////////////////
-
-  //////////// FREQUENCY //////////// (based on code from E85)
-  double log_scale = log2( (PLL_FREQ + 0.0) / freq); // prevent from losing accuracy in long division
-  int best_scale = ceil(log_scale) - 16;            // if freq = 220, this is 0
-  if (best_scale < 0) best_scale = 0;
-  
-  TIM2->ARR &= ~(0b1111111111111111<<0);
-  if (freq) {
-      uint32_t f_scale = PLL_FREQ / pow(2, best_scale); 
-      uint32_t forARR = f_scale / freq; // used to set frequency (?)
-      TIM2->ARR |= (forARR<<0);
-  }
-  ////////////////////////////////////
-  return 1;
-  */
-
-  /**
-  Specific Explanations:
-
-  
-  // ???? Make sure that CNT counter goes to CCRy
-  // ???? CK_CNT goes into CNT counter
-  // ???? PSC Prescaler links CK_PSC to CK_CNT
-   // Enable the OCy output:                   TIMx_CCERy
-    // Compare TIMx_CCRy <= TIMx_CNT
-
-OC1M:
-    // The PWM mode can be selected independently on each channel 
-        // (one PWM per OCx output) by writing ‘110’ (PWM mode 1) 
-        // or ‘111’ (PWM mode 2) in the OCxM bits in the TIMx_CCMRx 
-        // register.
-    On page 954: These bits define the behavior of the output reference 
-          signal OC1REF from which OC1 and OC1N are derived. OC1REF is 
-          active high whereas OC1 and OC1N active level depends on CC1P 
-          and CC1NP bits.
-          -> 0110: PWM mode 1 - Channel 1 is active as long as TIMx_CNT<TIMx_CCR1 else inactive.
-
-OC1PE:
-  // You must enable the corresponding preload register by setting the OCxPE bit in the TIMx_CCMRx register
-      // x = 1:: TIM15_CCMR1 -> OC1PE [3] must be set: 1 (enabled)
-      // PWM can be used without validating preload only in "One Pulse Mode", which I'm not using
-
-EGR:
-  // As the preload registers are transferred to the shadow registers only when an update event occurs, 
-      // before starting the counter, you have to initialize all the registers by setting the UG bit 
-      // in the TIMx_EGR register
-      
-  (not set atm)
-  OCx polarity is software programmable using the CCxP bit in the TIMx_CCER register. 
-        It can be programmed as active high or active low. 
-            * OCx output is enabled by a combination of the 
-                    CCxE, CCxNE, MOE, OSSI and OSSR bits (TIMx_CCER and TIMx_BDTR registers). 
-            Refer to the TIMx_CCER register description for more details.
-            */
 
 /*************************** End of file ****************************/

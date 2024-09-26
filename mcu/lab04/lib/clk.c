@@ -4,9 +4,20 @@
 **********************************************************************
 *                                                                    *
 *                    Zoe Worrall, HMC, 09/20/2024                    *
-*                                                                    *
+*                    Contact: zworrall@g.hmc.edu                     *
 *                                                                    *
 **********************************************************************
+
+  This C program contains five functions:
+
+  setModeofPinA and setModeofPinB set the modes of the A and B GPIO pins on
+      the STM32L432xx Board.
+
+  readPinInput reads the input of a GPIO B pin
+
+  setPinAOutput and setPinBOutput set the outputs of the GPIO A and B 
+        pins respectively
+
 */
 #include "clk.h"
 
@@ -67,28 +78,18 @@ int configurePLL(void) {
     return 1;
 }
 
+/***********************************
+*                                  *
+*       configureClock()           *
+*
+*  Sets up a clock using the configurePLL function. 
+*  The clock will have a frequency of 20 MHz.
+*  
+*    @return  -- 1 if done running, 0 if not
+*/
 int configureClock(void) {
     int configured = configurePLL();
     RCC->CFGR |= (0b11 << 0);
-
-  // Now we're setting the clock configuration to use PLL
-    //RCC->CFGR &= ~(0b111 << 28);  // MCOPRE = 000 (i.e. divide by 1)
-
-    // Set MCOSEL[3:0] to be 0101 -> set PLL as main clock
-    //RCC->CFGR &= ~(0b1111<<24);
-    //RCC->CFGR |=  (0b0101<<24);
-
-    // Set APB high-prescaler to not divide HCLK (bit 13 to 0)
-    //RCC->CFGR &= ~(1<<13);
-
-    // Set APB low-speed prescaler to not divide HCLK (bit 10 to 0)
-    //RCC->CFGR &= ~(1<<10);
-
-    // Don't divide SYSCLK by anything (/1) (bit 7 to 0)
-    //RCC->CFGR &= ~(1<<7);
-
-    // PLL used as the system clock
-    //RCC->CFGR |= (0b11<<0);
 
     while(!((RCC->CFGR >> 2) & 0b11));  // wait for index 2:3 to be set to b11
     return configured;

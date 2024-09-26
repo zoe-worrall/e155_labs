@@ -3,12 +3,25 @@
 *                        The Embedded Experts                        *
 **********************************************************************
 *                                                                    *
-*                    Zoe Worrall, HMC, 09/20/2024                    *
-*                                                                    *
+*                    Zoe Worrall, HMC, 09/26/2024                    *
+*                    Contact: zworrall@g.hmc.edu                     *
 *                                                                    *
 **********************************************************************
+
+  This C program contains five functions:
+
+  setModeofPinA and setModeofPinB set the modes of the A and B GPIO pins on
+      the STM32L432xx Board.
+
+  readPinInput reads the input of a GPIO B pin
+
+  setPinAOutput and setPinBOutput set the outputs of the GPIO A and B 
+        pins respectively
+
 */
 #include "gpio.h"
+
+
 
 /***********************************
 *                                  *
@@ -55,17 +68,28 @@ int setModeOfPinA(int pin, int mode) {
   return 1;
 }
 
-/**
-*  Read the input from a pin
-*     @param -- pin
-*     @return -- whether the pin is on or off
+/***********************************
+*                                  *
+*       readPinInput()             *
+*
+*  Reads the input of some pin on the board
+*
+*  @param:   pin -- the pin being read
+*            
+*  @return   The logic being put into the pin
 */
 int readPinInput(int pin) {
   return ((GPIOB->IDR >> pin) & 1);
 }
 
-/**
-*  Set the output of a pin
+/***********************************
+*                                  *
+*       setPinBOutput()            *
+*
+*  Sets the output of a GPIO B pin
+*
+*  @param:   pin -- the pin being set
+*           
 */
 void setPinBOutput(int pin, int value) {
   GPIOB->ODR &= ~(1 << pin);
@@ -73,8 +97,14 @@ void setPinBOutput(int pin, int value) {
   GPIOB->ODR |=  (value << pin);
 }
 
-/**
-*  Set the output of a pin
+/***********************************
+*                                  *
+*       setPinAOutput()            *
+*
+*  Sets the output of a GPIO A pin
+*
+*  @param:   pin -- the pin being set
+*           
 */
 void setPinAOutput(int pin, int value) {
   GPIOA->ODR &= ~(1 << pin);

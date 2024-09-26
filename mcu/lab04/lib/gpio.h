@@ -1,6 +1,16 @@
 #ifndef GPIO_H
 #define GPIO_H
 
+
+/**
+*   Nucleo-L432KC Singer Header for Clock
+*
+*   @file: gpio.h
+*   @author: Zoe Worrall
+*   @contact: zworrall@g.hmc.edu
+*   @version: 09/26/2024
+*/
+
 #include <stdint.h>
 #define __IO volatile
 
@@ -34,11 +44,7 @@ typedef struct {
 
 ////////////////////////////////////////////////////////////////////////
 
-/**
-* Defines what mode you're going to be using the GPIOB pin for: 1. input, 2. output, 3. "alternate function", or 4. "analog config"
-*
-* Returns 1 when properly set
-*/
+
 int setModeOfPinB(int pin_num, int mode);
 
 /**
@@ -48,21 +54,10 @@ int setModeOfPinB(int pin_num, int mode);
 */
 int setModeOfPinA(int pin_num, int mode);
 
-/**
-*  Read the input from a pin
-*
-*     @return -- the voltage being put into the pin
-*/
 int readPinInput(int pin);
 
-/**
-*  Set the output of a pin from GPIOB
-*/
 void setPinBOutput(int pin, int value);
 
-/**
-*  Set the output of a pin from GPIOA
-*/
 void setPinAOutput(int pin, int value);
 
 #endif
