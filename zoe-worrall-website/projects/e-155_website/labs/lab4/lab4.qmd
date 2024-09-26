@@ -12,7 +12,7 @@ format:
       - text: "E155 Breadboard Adapter v4"
         href: https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf
       - text: "Lab 4 Github Files"
-        href: https://github.com/zoe-worrall/e155_labs/tree/main/fpga/radiant_project/lab03_fin
+        href: https://github.com/zoe-worrall/e155_labs/tree/main/mcu/lab04
       - text: "LM386 Datasheet"
         href: https://www.ti.com/lit/ds/symlink/lm386.pdf
       - text: "SM231508-1"
@@ -26,7 +26,7 @@ categories:
   - labreport
 ---
 ## Lab 4: Digital Audio
-*Hours Spent: 32, Mapped with Toggl Track*
+*Hours Spent: 48.6, Mapped with Toggl Track*
 
 ### Introduction
 
@@ -48,6 +48,10 @@ The system that was designed for this lab required this simple framework (@fig-s
 3. **timer.c**/**timer.h**: A paired C and C header file that assign the proper variables and memory allocation for running timers onboard the MCU. It uses logic gathered from pages 817-980 in the [STM Reference Manual](https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf) and pages 51-58 in the [STM32L432xx Datasheet](https://www.st.com/resource/en/datasheet/stm32l432kb.pdf). Further details of what needed to be assigned of this can be found in [Timer Layout](@sec-timer). 
 
 3. **gpio.c**/**gpio.h**: A paired C and C header file that assign the proper variables and memory allocation for connecting to GPIO pins onboard the mcu. It uses logic gathered from pages 258-275 in the [STM Reference Manual](https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf). Further details of what needed to be assigned of this can be found in Timer Layout (@sec-gpio). 
+
+This expanded out into the final, overarching layout seen in @fig-codeFramework.
+
+![](images/lab4_C_blockdiagram.png){#fig-codeFramework}
 
 ##### Clock Memory and Layout{#sec-clock}
 
@@ -76,7 +80,7 @@ Before programming anything, all necessary parameters to control a clock were wr
 
 ##### Timer Layout{#sec-timer}
 
-For this specific scenario, I wanted to control two timers (as specified in @fig-simpleFramework), one that would be used to control the frequency of the speaker, and the other that would be used to control how long the frequency was played. This required the layout of the memory bank (based on pages 814-816 in the [Reference Manual](https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)), as well as the variables assigned as indicated in @tbl-timer. In order to easily access each memory bit, I set up three structures within the header file for Timers 2 and 3, Timers 15 and 16, and Timers 6 and 7 (since each has some variables unassigned, and I didn't want to accidentaly assign the wrong bits if I happened to be writing to the wrong clock on accident). These structures are called `TIM_67_STM32L432xx_TypeDef` (Timers 6 and 7), `TIM_ALL_STM32L432xx_TypeDef` (Could apply to any timer, but is constrained in potential variables for more complex operations (i.e. runs all timers similar to timers 6 and 7)), `TIM15_STM32L432xx_TypeDef` (Timer 15), and `TIM_23_STM32L432xx_TypeDef` (Timers 2 and 3). Of these, I built all Timers as defined by their memory as found in Table 2, page 68 and 69 of the reference manual (placed below).
+For this specific scenario, I wanted to control two timers (as specified in @fig-simpleFramework), one that would be used to control the frequency of the speaker, and the other that would be used to control how long the frequency was played. This required the layout of the memory bank (based on pages 814-816 in the [Reference Manual](https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)), as well as the variables assigned as indicated in the Expandable Table. In order to easily access each memory bit, I set up three structures within the header file for Timers 2 and 3, Timers 15 and 16, and Timers 6 and 7 (since each has some variables unassigned, and I didn't want to accidentaly assign the wrong bits if I happened to be writing to the wrong clock on accident). These structures are called `TIM_67_STM32L432xx_TypeDef` (Timers 6 and 7), `TIM_ALL_STM32L432xx_TypeDef` (Could apply to any timer, but is constrained in potential variables for more complex operations (i.e. runs all timers similar to timers 6 and 7)), `TIM15_STM32L432xx_TypeDef` (Timer 15), and `TIM_23_STM32L432xx_TypeDef` (Timers 2 and 3). Of these, I built all Timers as defined by their memory as found in Table 2, page 68 and 69 of the reference manual (placed below).
 
 ::: {.grid}
 
@@ -145,7 +149,7 @@ $$
 
 This is because the speaker must be turned off and on to generate one full wave; in order for a full period to pass, the output must be turned off and on again, meaning that CCR1 would be set to 1, and ARR would be set to 2 in this scenario.
 
-The lowest frequency possible with this clock would be one where the counter counts to the maximum value of ARR. I am currently assuming that the user may chose to use Timer 2 or Timer 3, so although Timer 2 could have an array of up to 2^32 - 1 counts, I will first consider both Timers together (where Timer 3 is constrained to 16 bits). In this scenario, the maximum that the counter could ever reach would be 2^16-1, or 65535. In this case, the lowest possible frequency would be given by
+The lowest frequency possible with this clock would be one where the counter counts to the maximum value of ARR. I am currently assuming that the user may chose to use Timer 2 or Timer 3, so although Timer 2 could have an array of up to $2^{32} - 1$ counts, I will first consider both Timers together (where Timer 3 is constrained to 16 bits). In this scenario, the maximum that the counter could ever reach would be $2^{16}-1$, or 65535. In this case, the lowest possible frequency would be given by
 
 $$
 \frac{75757.58}{65535} Hz = 1.16 Hz
@@ -163,10 +167,10 @@ $$
 
 As for the delay timer, I currently have it configured so that it prescales by 512. Because there is no external filter trigger in this instance, we do not divide by any additional values, and so the frequency of the counter within TIM6 is given by 
 $$
-20/512 MHz = 39 kHz
+\frac{20}{512} MHz = 39 kHz
 $$
 
-The shortest possible delay for this timer would resultantly be the length of one counter, i.e. 1/39 kHz, which in this case is 25.6 µs. In the case that we would like it to last as long as possible, the longest period would be when 2^16 - 1 clock cycles occur (i.e. ARR = 65535), which would mean a longest period of 1.678 seconds. In our case, since we are playing music that has, at maximum, a whole note that lasts a second, all the music is well within the range of possible note lengths.
+The shortest possible delay for this timer would resultantly be the length of one counter, i.e. 1/39 kHz, which in this case is 25.6 µs. In the case that we would like it to last as long as possible, the longest period would be when $2^{16} - 1$ clock cycles occur (i.e. ARR = 65535), which would mean a longest period of 1.678 seconds. In our case, since we are playing music that has, at maximum, a whole note that lasts a second, all the music is well within the range of possible note lengths.
 
 ### Hardware Setup
 
@@ -193,7 +197,7 @@ In conclusion, this lab was a success in configuring an MCU board using C header
 
 ::: {#fig-mcu_running}
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
+{{< video images/IMG_5326.mov >}}
 
 Video of the MCU playing three different songs back to back.
 
@@ -204,4 +208,4 @@ Video of the MCU playing three different songs back to back.
 
 In conclusion, all of the program works properly in simulation and in hardware, and can be confirmed both visually and with the aid of a test bench. The program is able to multiplex successfully without having the two LEDs bleed over, and all digits are equally lit for each segment, and proper calculations for the PNP transistor can be found above.
 
-I spent a total of 13.5 hours working on this lab, with roughly four of them spent on the lab writeup if including the planning of the modules and compiling all of the necessary diagrams.
+I spent a total of 48.6 hours working on this lab, with roughly seven of them spent on the lab writeup, and three spent on fixing the github repo that I broke by uploading a video that was too big, if including the planning of the modules and compiling all of the necessary diagrams.
