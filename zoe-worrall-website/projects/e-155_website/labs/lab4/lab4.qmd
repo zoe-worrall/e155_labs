@@ -197,7 +197,7 @@ In conclusion, this lab was a success in configuring an MCU board using C header
 
 ::: {#fig-mcu_running}
 
-{{< video images/IMG_5326.mov >}}
+{{< video https://youtu.be/m7p1qeSPRDM >}}
 
 Video of the MCU playing three different songs back to back.
 
