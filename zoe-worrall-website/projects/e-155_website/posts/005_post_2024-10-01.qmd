@@ -1,0 +1,31 @@
+---
+title: "The Swamp that Stands Between"
+description: "Circus and Physics"
+author: "Zoe Worrall"
+date: "9/16/24"
+image: images/flying_trapeze.webp
+categories: true
+---
+
+### About the wild ride of the physics world
+
+*Quotes from Actual Physics Students*
+
+"Much like hoola hooping or acrobatics, stat mech is something I can't do!" - A Physics Student
+
+"I can share my highschool quote - kinetic energy and potential energy are conserved, which explains why my life is spinning out of control and I have potential left" - Another Physics Student
+
+A common trend I've noticed recently is how each type of student for each of the mathematically-rich majors at Mudd (think Engineering, Physics, Math, CS-Math) sort themselves out almost by personality. The physics majors are those who are able to deal with extremely long, complicated math problems, normally requiring a large amount of time in groups. Engineers, rather than complicated problem sets, tend to have a large amount of problems, that take up time but are possible to complete with proper time management skills. Math is purely theoretical, and requires a great degree of thought - I find that this is where people who like working alone but like the complexity of some of the physics problems go.
+
+So why the title of this blog post? Why do I say physics is a circus? What does that make the other majors?
+
+I think that, in part, we can model each of the majors as if they were some extension of the arts; for engineering, I would say they tend to be the classic artistic styles like Renaissance or Baroque period, where very strict rules for art were adhered to and pursued. There is very little chance for abandoning ship and trying to make new pieces, and much of engineering research is about using new concepts from other fields in the very well defined, rule-conscious nature of engineering in order to make the world better or safer.
+
+Math, on the other hand, is much like contemporary dance if I had to say; there is purpose to each of the movements they make, and many of the complexities of the dance can't be truly understood or appreciated until you yourself are a dancer. At that point in time, where you become an appreciator of contemporary dance, you begin attending concerts, watching dances, and choreographing yourself; I think much of the math major's drive for math comes from passion for the subject and the abstract (to which I am woefully unable to process).
+
+So why is physics a circus, in this case? Why did I chose this specific art form?
+I'd say that its because physics is so general as a whole (and yes, engineering is too, but wait). Whereas other majors have either many restrictions (engineering) or stay constrained to the abstract (math), physics is a way of interacting with, modeling, and reconstruing the world, often in new, exciting ways. Obviously, this comes with a great degree of intensity; you can't stick your head into a lion's mouth without being prepared to lose your head, you don't swallow fire without having burned your tongue a few times. I think that the circus, to me, means that there are many different ways of pursuing physics, both theoretical and experimental, and for each of these there is a requisite for a large range of experiences and a vast array of different personalities; but what defines the circus, as what defines physics, is the way in which physicists will spend hours working through one extremely difficult problem, much like how a circus will confront the unknown; physics is unique in that it is almost always set to face a vast array of the unknown and unexplored, because its primary goal is to explore.
+
+This leads back to my quotations at the top from my physics friends. I think physics comes with a heavy dose of cynicism - just like the circus, its not all sunshine and rainbows -- behind every trapeze trick and quantum computation are hours of work and team work and collaboration, perfected to the point that it looks easy. And it is all a part of some great, wide variety of things, that culminates in the spectacle that we have come to love.
+
+![](images/flying_trapeze.webp){width=20%}
