@@ -44,48 +44,31 @@
       project_type="Executable"
       target_reset_script="Reset();" />
     <folder Name="CMSIS Files">
-      <file file_name="CMSIS_5/CMSIS/Core/Include/core_cm4.h" />
+      <file file_name="STM32L4xx/Device/Include/stm32l4xx.h" />
+      <file file_name="STM32L4xx/Device/Source/system_stm32l4xx.c">
+        <configuration
+          Name="Common"
+          default_code_section=".init"
+          default_const_section=".init_rodata" />
+      </file>
     </folder>
     <folder Name="Script Files">
-      <file file_name="STM32L4xx/Device/Include/stm32l412xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l422xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l431xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l432xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l433xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l442xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l443xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l451xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l452xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l462xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l471xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l475xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l476xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l485xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l486xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l496xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l4a6xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l4p5xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l4q5xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l4r5xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l4r7xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l4r9xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l4s5xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l4s7xx.h" />
-      <file file_name="STM32L4xx/Device/Include/stm32l4s9xx.h" />
       <file file_name="STM32L4xx/Scripts/STM32L4xx_Target.js">
         <configuration Name="Common" file_type="Reset Script" />
       </file>
     </folder>
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
-      <file file_name="button_interrupt.c">
-        <folder Name="lib">
-          <file file_name="STM32L432KC.h" />
-        </folder>
+      <file file_name="button_interrupt.c" />
+      <file file_name="main.c">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
       </file>
-      <file file_name="main.c" />
-      <file file_name="main.h" />
-      <file file_name="STM32L4xx/Device/Source/system_stm32l4xx.c" />
+      <file file_name="lib/STM32L432KC_FLASH.c" />
+      <file file_name="lib/STM32L432KC_GPIO.c" />
+      <file file_name="lib/STM32L432KC_RCC.c" />
+      <file file_name="lib/STM32L432KC_SPI.c" />
+      <file file_name="lib/STM32L432KC_TIM.c" />
+      <file file_name="lib/STM32L432KC_USART.c" />
     </folder>
     <folder Name="System Files">
       <file file_name="SEGGER_THUMB_Startup.s" />
