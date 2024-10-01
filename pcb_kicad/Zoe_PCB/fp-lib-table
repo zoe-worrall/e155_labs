@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Zoe_PCB")(type "KiCad")(uri "${KIPRJMOD}/Zoe_PCB.pretty")(options "")(descr ""))
+)
