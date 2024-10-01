@@ -2,9 +2,10 @@
 title: "The Swamp that Stands Between"
 description: "Circus and Physics"
 author: "Zoe Worrall"
-date: "9/16/24"
+date: "10/01/24"
 image: images/flying_trapeze.webp
-categories: true
+categories:
+  - blogpost
 ---
 
 ### About the wild ride of the physics world

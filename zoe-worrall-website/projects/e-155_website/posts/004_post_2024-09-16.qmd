@@ -2,7 +2,8 @@
 title: "Where is the Time?"
 author: "Zoe Worrall"
 date: "9/16/24"
-categories: true
+categories:
+  - blogpost
 ---
 
 ### So about Time
