@@ -59,8 +59,7 @@ int main(void) {
     // 3. Enable falling edge trigger
     EXTI->FTSR1 |= _VAL2FLD(EXTI_FTSR1_FT5, 0b1); // 1: Falling trigger enabled (for Event and Interrupt) for input line 4
 
-    // 4. Turn on EXTI interrupt in NVIC_ISER 
-    // ????? Unsure about the field??
+    // 4. Turn on EXTI interrupt in NVIC_ISER
     NVIC->ISER[0] |= (1 << EXTI9_5_IRQn); // based of of table 46 in the user guide (https://hmc-e155.github.io/assets/doc/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf), whould be 6 for systick
     // EXTI9_5_IRQn -- enables interrupt pins 9-5
 
