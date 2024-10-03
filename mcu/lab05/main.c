@@ -23,6 +23,9 @@ volatile int arrB[5];
 volatile int curr_count_avg;
 volatile int forwards;
 
+volatile int first_time_loop_A;
+volatile int first_time_loop_B;
+
 /*********************************************************************
 *
 *       main()
@@ -104,57 +107,28 @@ int main(void) {
     // EXTI9_5_IRQn -- enables interrupt pins 9-5
     ////////////////////////////////////////////////////////////////////
 
-    volatile int full_period = -1;
-
-
     volatile int frequency = -1;
     idxA = 0; idxB = 0; curr_count_avg = -1;
 
-    volatile int val_A = idxA;
-    volatile int val_B = idxB;
-    volatile int cca = curr_count_avg;
+    volatile int cca = -1;
     
+    first_time_loop_A = 1; first_time_loop_B = 1;
 
     while(1){
-        val_A = idxA;
-        val_B = idxB;
-        cca = curr_count_avg;
         // IF WE HAVEN'T FILLED UP THE ARRAY
         if (curr_count_avg == -1) {
-            if (idxA == 4) {
+            if (!(first_time_loop_A) & !(first_time_loop_B)) { // making sure that the array is completely full
               curr_count_avg = (arrA[0] + arrA[1] + arrA[2] + arrA[3] + arrA[4])/5 + (arrB[0] + arrB[1] + arrB[2] + arrB[3] + arrB[4])/5;
-              full_period = curr_count_avg;
-              full_period = 4 * curr_count_avg / 3e5;
-              frequency = 1/full_period;
+              cca = curr_count_avg;
+              frequency = 3e5 / (4 * curr_count_avg);
             } 
         } else { // ARRAY IS FILLED; WE CAN FIND THE AVERAGE
             curr_count_avg = (arrA[0] + arrA[1] + arrA[2] + arrA[3] + arrA[4])/5 + (arrB[0] + arrB[1] + arrB[2] + arrB[3] + arrB[4])/5;
-            full_period = 4 * curr_count_avg / 3e5;
-            frequency = 1/full_period;
+            cca = curr_count_avg;
+            frequency = 3e5 / (4 * curr_count_avg);
         }
 
-        switch(idxA) {
-          case 0: break;
-          case 1: break;
-          case 2: break;
-          case 3: break;
-          case 4: break;
-          default: break;
-        }
-
-        switch(idxB) {
-          case 0: break;
-          case 1: break;
-          case 2: break;
-          case 3: break;
-          case 4: break;
-          default: break;
-        }
-        
-        TIM7->ARR &= (0b111111111111111 << 0);
-        TIM7->ARR |= frequency;
-
-        delay_millis(TIM6, 1000); // wait for one second before updating again
+        delay_millis(TIM6, 5000); // wait for one second before updating again
     }
 
 }
@@ -167,15 +141,22 @@ void EXTI9_5_IRQHandler (void){
     int code = digitalRead(BUTTON_PIN_1) + 2 * digitalRead(BUTTON_PIN_2);
 
     if (EXTI->PR1 & (1 << 6)) { // pin A5 was triggered
+
        arrA[idxA] = TIM2->CNT;
        A_Event(code);
+       if ((idxA == 4) & first_time_loop_A) { first_time_loop_A = 0; }
+
        idxA++; idxA %= 5;
        EXTI->PR1 |= (1 << _FLD2VAL(EXTI_PR1_PIF6, 1)); // clear the event
+
     } else if (EXTI->PR1 & (1 << 9)) { // pin A9 was triggered
+
        arrA[idxA] = TIM2->CNT;
        B_Event(code);
+       if ((idxB == 4) & first_time_loop_B) { first_time_loop_B = 0; } // if we've reached the end of the arr, we can start calculating frequency 
        idxB++; idxB %= 5;
        EXTI->PR1 |= (1 << _FLD2VAL(EXTI_PR1_PIF9, 1)); // clear the event
+
     }
     TIM2->CNT = 0; // reset the counter so that we can compute the frequency later
 }
