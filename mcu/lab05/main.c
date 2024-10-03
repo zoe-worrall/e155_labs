@@ -107,8 +107,9 @@ int main(void) {
     // EXTI9_5_IRQn -- enables interrupt pins 9-5
     ////////////////////////////////////////////////////////////////////
 
-    volatile int frequency = -1;
+    volatile double frequency = -1;
     idxA = 0; idxB = 0; curr_count_avg = -1;
+    volatile int for_spin = -1;
 
     volatile int cca = -1;
     
@@ -116,19 +117,22 @@ int main(void) {
 
     while(1){
         // IF WE HAVEN'T FILLED UP THE ARRAY
+        SEGGER_RTT_WriteString(0, "Hello World from SEGGER!\r\n");
         if (curr_count_avg == -1) {
             if (!(first_time_loop_A) & !(first_time_loop_B)) { // making sure that the array is completely full
               curr_count_avg = (arrA[0] + arrA[1] + arrA[2] + arrA[3] + arrA[4])/5 + (arrB[0] + arrB[1] + arrB[2] + arrB[3] + arrB[4])/5;
               cca = curr_count_avg;
-              frequency = 3e5 / (4 * curr_count_avg);
+              for_spin = forwards;
+              frequency = (3e5 + 0.0) / (4 * curr_count_avg * 120);
             } 
         } else { // ARRAY IS FILLED; WE CAN FIND THE AVERAGE
             curr_count_avg = (arrA[0] + arrA[1] + arrA[2] + arrA[3] + arrA[4])/5 + (arrB[0] + arrB[1] + arrB[2] + arrB[3] + arrB[4])/5;
             cca = curr_count_avg;
-            frequency = 3e5 / (4 * curr_count_avg);
+            for_spin = forwards;
+            frequency = (3e5 + 0.0) / (4 * curr_count_avg * 120);
         }
 
-        delay_millis(TIM6, 5000); // wait for one second before updating again
+        delay_millis(TIM6, 1000); // wait for one second before updating again
     }
 
 }

@@ -1,0 +1,12 @@
+(footprint "zoeLOGO" (version 20221018) (generator pcbnew)
+  (layer "F.Cu")
+  (attr board_only exclude_from_pos_files exclude_from_bom)
+  (fp_text reference "G***" (at 0 0) (layer "F.SilkS") hide
+      (effects (font (size 1.5 1.5) (thickness 0.3)))
+    (tstamp 18ff0691-e8c7-4a09-b70c-06114d4dcc97)
+  )
+  (fp_text value "LOGO" (at 0.75 0) (layer "F.SilkS") hide
+      (effects (font (size 1.5 1.5) (thickness 0.3)))
+    (tstamp d51871c9-c792-4567-bb59-a977a052e2f5)
+  )
+)
