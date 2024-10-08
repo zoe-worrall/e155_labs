@@ -3,6 +3,10 @@
 *                        The Embedded Experts                        *
 **********************************************************************
 
+@author: zoe worrall
+@contact: zworrall@g.hmc.edu
+@version: October 6, 2024
+
 -------------------------- END-OF-HEADER -----------------------------
 
 File    : main.c for Lab 5
@@ -17,6 +21,7 @@ Purpose : A function that will measure the frequency and duty cycle of
 
 volatile int idxA;
 volatile int idxB;
+int hav_ent;
 
 volatile int arrA[5];
 volatile int arrB[5];
@@ -26,6 +31,18 @@ volatile int forwards;
 volatile int first_time_loop_A;
 volatile int first_time_loop_B;
 
+double frequency = -1;
+
+
+// Function used by printf to send characters to the laptop. Supplied by Kavi for purposed of Lab5
+int _write(int file, char *ptr, int len) {
+  int i = 0;
+  for (i = 0; i < len; i++) {
+    ITM_SendChar((*ptr++));
+  }
+  return len;
+}
+
 /*********************************************************************
 *
 *       main()
@@ -34,17 +51,17 @@ volatile int first_time_loop_B;
 *   Application entry point.
 */
 int main(void) {
-    ////////////////////////////////////////////////////////////////////
-    // Enable LED as output
-    gpioEnable(GPIO_PORT_B);
-    pinMode(LED_PIN, GPIO_OUTPUT);
+    ///////////////////////////Enabling Basic Functions for Main /////////////////////////////////////////
+    // Enable LEDs as outputs
 
     // Enable button as input PA5
     gpioEnable(GPIO_PORT_A);
     pinMode(BUTTON_PIN_1, GPIO_INPUT);
+    GPIOA->PUPDR &= ~_VAL2FLD(GPIO_PUPDR_PUPD6, 0b11); // reset PA6 to 0
     GPIOA->PUPDR |= _VAL2FLD(GPIO_PUPDR_PUPD6, 0b10); // Set PA6 as pull down
  
     pinMode(BUTTON_PIN_2, GPIO_INPUT); // enable pin PA9
+    GPIOA->PUPDR &= ~_VAL2FLD(GPIO_PUPDR_PUPD9, 0b11); // reset PA9 to 0
     GPIOA->PUPDR |= _VAL2FLD(GPIO_PUPDR_PUPD9, 0b10); // Set PA9 as pull down
 
     // Initialize timers
@@ -107,40 +124,83 @@ int main(void) {
     // EXTI9_5_IRQn -- enables interrupt pins 9-5
     ////////////////////////////////////////////////////////////////////
 
-    volatile double frequency = -1;
-    idxA = 0; idxB = 0; curr_count_avg = -1;
+    // used in the case of an extremely slow motor, where more than 1 second is taken to update
+    int prev_idxA = 0; int prev_idxB = 0;
+    int long_term_count = 0;
+
+    idxA = 0; idxB = 0; curr_count_avg = 0;
     volatile int for_spin = -1;
 
-    volatile int cca = -1;
     
     first_time_loop_A = 1; first_time_loop_B = 1;
+    hav_ent = 0;
+    int stall = 0; int stall_exited = 0;
 
     while(1){
+        
+        hav_ent = 0;
+
+        delay_millis(TIM6, 1000);
+
         // IF WE HAVEN'T FILLED UP THE ARRAY
-        SEGGER_RTT_WriteString(0, "Hello World from SEGGER!\r\n");
-        if (curr_count_avg == -1) {
-            if (!(first_time_loop_A) & !(first_time_loop_B)) { // making sure that the array is completely full
-              curr_count_avg = (arrA[0] + arrA[1] + arrA[2] + arrA[3] + arrA[4])/5 + (arrB[0] + arrB[1] + arrB[2] + arrB[3] + arrB[4])/5;
-              cca = curr_count_avg;
-              for_spin = forwards;
+        if (curr_count_avg == 0) {
+
+            if  ( first_time_loop_A & first_time_loop_B) {
+
+              printf("Waiting to start\n");
+
+            } else if (!(first_time_loop_A) & !(first_time_loop_B)) { // making sure that the array is completely full
+
+              curr_count_avg = ((arrA[0] + arrA[1] + arrA[2] + arrA[3] + arrA[4])/5 + (arrB[0] + arrB[1] + arrB[2] + arrB[3] + arrB[4])/5);
               frequency = (3e5 + 0.0) / (4 * curr_count_avg * 120);
-            } 
-        } else { // ARRAY IS FILLED; WE CAN FIND THE AVERAGE
-            curr_count_avg = (arrA[0] + arrA[1] + arrA[2] + arrA[3] + arrA[4])/5 + (arrB[0] + arrB[1] + arrB[2] + arrB[3] + arrB[4])/5;
-            cca = curr_count_avg;
-            for_spin = forwards;
-            frequency = (3e5 + 0.0) / (4 * curr_count_avg * 120);
+              printf("Newly caught signal, frequency is %f Hz \n", frequency);
+
+            }
+
+        } else if (stall) { // STALLED; LET'S WAIT TO SEE IF WE GET SOMETHING
+
+            if (hav_ent) { // we made it out of the loop after waiting for under 10 seconds
+                stall = 0;
+                long_term_count = 0;
+
+                int total_count = long_term_count * TIM2->ARR + ( ((arrA[0] + arrA[1] + arrA[2] + arrA[3] + arrA[4])/5 + (arrB[0] + arrB[1] + arrB[2] + arrB[3] + arrB[4])/5));
+                frequency = (300000.0) / (4 * total_count * 120);
+                printf("Slow frequency, but we caught it! Frequency is %f Hz \n", frequency);
+
+            } else if (long_term_count > 10) { // we've stalled for too long. It's not running
+
+                  printf("The motor isn't spinning D: \n");
+
+            }
+        } else { // ARRAY IS FILLED, AND WE HAVEN'T STALLED; WE CAN FIND THE AVERAGE
+            curr_count_avg = ((arrA[0] + arrA[1] + arrA[2] + arrA[3] + arrA[4])/5 + (arrB[0] + arrB[1] + arrB[2] + arrB[3] + arrB[4])/5);
+            frequency = (300000.0) / (4 * curr_count_avg * 120); // frequency of 3e5 / our location in the period
+            if (!hav_ent) {
+               printf("Haven't yet, adding to long term count %d\n", long_term_count);
+            } else {
+              if (forwards) {
+                printf("Frequency is %f Hz \n", frequency);
+              } else {
+                printf("Frequency is -%f Hz \n", frequency);
+              }
+            }
+        }
+        
+        if (!hav_ent) {
+          long_term_count++;
+          stall = 1;
+          }
         }
 
-        delay_millis(TIM6, 1000); // wait for one second before updating again
     }
-
-}
 
 /**
 *  What to do when handling an interrupt from the input pin (i.e. pin PA5, since that's one of the only ones I can control on my MCU)
 */
 void EXTI9_5_IRQHandler (void){
+
+    hav_ent = 1;
+
     // Check that the button was what triggered our interrupt
     int code = digitalRead(BUTTON_PIN_1) + 2 * digitalRead(BUTTON_PIN_2);
 

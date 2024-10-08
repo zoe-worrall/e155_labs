@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Project_File>
-<solution Name="lab5" version="2" target="8">
+<solution Name="artProject" version="2" target="8">
   <configuration
     Name="Debug"
     c_preprocessor_definitions="DEBUG"
@@ -12,7 +12,7 @@
     gcc_debugging_level="Level 2"
     gcc_omit_frame_pointer="Yes"
     gcc_optimization_level="Level 2 balanced" />
-  <project Name="lab5">
+  <project Name="artProject">
     <configuration
       LIBRARY_IO_TYPE="RTT"
       Name="Common"
@@ -39,10 +39,7 @@
       gcc_entry_point="Reset_Handler"
       link_linker_script_file="$(ProjectDir)/STM32L4xx_Flash.icf"
       linker_memory_map_file="$(ProjectDir)/STM32L432KCUx_MemoryMap.xml"
-      linker_printf_fp_enabled="Float"
-      linker_printf_width_precision_supported="Yes"
       macros="DeviceHeaderFile=$(PackagesDir)/STM32L4xx/Device/Include/stm32l4xx.h;DeviceSystemFile=$(PackagesDir)/STM32L4xx/Device/Source/system_stm32l4xx.c;DeviceVectorsFile=$(PackagesDir)/STM32L4xx/Source/stm32l432xx_Vectors.s;DeviceFamily=STM32L4xx;DeviceSubFamily=STM32L432;Target=STM32L432KCUx"
-      project_dependencies=""
       project_directory=""
       project_type="Executable"
       target_reset_script="Reset();" />
@@ -62,18 +59,33 @@
     </folder>
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
-      <file file_name="button_interrupt.c">
-        <configuration Name="Debug" build_exclude_from_build="Yes" />
-      </file>
-      <file file_name="main.c">
+      <file file_name="main.c" />
+      <file file_name="lib/SEGGER_RTT.h" />
+      <file file_name="lib/STM32L432KC.h" />
+      <file file_name="lib/STM32L432KC_FLASH.c">
         <configuration Name="Debug" build_exclude_from_build="No" />
       </file>
-      <file file_name="lib/STM32L432KC_FLASH.c" />
-      <file file_name="lib/STM32L432KC_GPIO.c" />
-      <file file_name="lib/STM32L432KC_RCC.c" />
-      <file file_name="lib/STM32L432KC_SPI.c" />
-      <file file_name="lib/STM32L432KC_TIM.c" />
-      <file file_name="lib/STM32L432KC_USART.c" />
+      <file file_name="lib/STM32L432KC_FLASH.h" />
+      <file file_name="lib/STM32L432KC_GPIO.c">
+        <configuration Name="Debug" build_exclude_from_build="No" />
+      </file>
+      <file file_name="lib/STM32L432KC_GPIO.h" />
+      <file file_name="lib/STM32L432KC_RCC.c">
+        <configuration Name="Debug" build_exclude_from_build="No" />
+      </file>
+      <file file_name="lib/STM32L432KC_RCC.h" />
+      <file file_name="lib/STM32L432KC_SPI.c">
+        <configuration Name="Debug" build_exclude_from_build="No" />
+      </file>
+      <file file_name="lib/STM32L432KC_SPI.h" />
+      <file file_name="lib/STM32L432KC_TIM.c">
+        <configuration Name="Debug" build_exclude_from_build="No" />
+      </file>
+      <file file_name="lib/STM32L432KC_TIM.h" />
+      <file file_name="lib/STM32L432KC_USART.c">
+        <configuration Name="Debug" build_exclude_from_build="No" />
+      </file>
+      <file file_name="lib/STM32L432KC_USART.h" />
     </folder>
     <folder Name="System Files">
       <file file_name="SEGGER_THUMB_Startup.s" />
