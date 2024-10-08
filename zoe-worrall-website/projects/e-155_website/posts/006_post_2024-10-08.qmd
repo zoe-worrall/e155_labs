@@ -1,0 +1,25 @@
+---
+title: "The Swamp that Stands Between"
+description: "Art and Engineering v2"
+author: "Zoe Worrall"
+date: "10/08/24"
+image: images/leds.png
+categories:
+  - blogpost
+---
+
+### The Swamp That Stands Between: Engineering and (Riddle) Art
+
+Tying back to what I've previously written, let's talk about how art and engineering are blurred.
+
+This past week, I used the same board I use for MicroP's to create an art project for my art course "Myth Mystics Matter", where we've been exploring the origin or knowledge, and why there are different standards of knowledge: the "ways of knowing", as we say. In on of our readings, by Bruno Letour, we explored the differences in the definition of knowledge as defined by Hobbes and Boyle (I highly recommend reading "We have Never Been Modern"; it may be extremely dense and academic, but it provides a lot of interesting ideas and thought processes not readily apparent to us who don't normally think about the philosophical).
+
+The main point Latour made in his essay was that some of the many ways of defining knowledge were fleshed out by Hobbes and Boyle in the 16th and 17th century. Dumbing down what we read to the extreme (which is not dumbed down from my perspective, its just a small snippet of what I was able to understand from these papers) Hobbes stated that in order to avoid complete chaos and war, we need to have one defining body saying what is knowledge, and what is not. Boyle stated that knowledge should be communally agreed upon by a group of people; only by observing what's happening can what is known be fully determined.
+
+For the project, I designed two small breadboards with a set of LEDs. One board I decided would act as Hobbes, the other as Boyle. The Hobbes board had the "LEAD_PIN" pin to blink some ASCII code, and then it along with its four companion "FOLLOW_PIN"s would repeat that same ASCII code. For the Boyle board, I made it so that a network of LED's would spell out the ASCII code, before blinking the ASCII code on all LED's at once.
+
+What was most interesting from this project was how my classmates interpreted my work. I think a lot of the "art" in my project came from the mystique of it; not understadning what I was flashing, not understanding what bits were flashing, and finally not knowing the background on which I had based my idea. In my own way, I had successuflly shown how chaos occurs without a central understanding of knowledge, whether defined by  a group or by an individual. 
+
+The ASCII that I chose to encode was from a court case ([this one](https://netchoice.org/netchoice-wins-at-supreme-court-over-texas-and-floridas-unconstitutional-speech-control-schemes/)) about Netlist vs. the CCIA; mainly, Texas and Virgina tried passing legislation on what information was allowed to be spread on the internet; i.e., controlling knowledge. I encoded the introduction of an article discussing this topic, and it was quite funny seeing everyone trying to figure out what was happening.
+
+I also found it exciting to see how my peers started decoding the ASCII code as it appeared, and how interpretations varied so much depending on their background. They liked different colors, focused on different lights, and understood the board in a variety of different ways, and I loved seeing their enthusiasm really show itself throughout the cold read and resultant discussion.

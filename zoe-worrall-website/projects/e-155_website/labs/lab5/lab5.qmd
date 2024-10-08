@@ -33,7 +33,7 @@ In this lab, a STM32L432KCU Microcontroller Unit (the MCU) was used to to read a
 
 This lab requires the use of a TS-25GA370 DC motor. This motor has two separate voltage supplies (@fig-encoder): one that goes up to 12 V, and is responsible for rotating the motor itself, and the other is the encoder, which requires 5V, and is responsible for sending 5V signals out of the encoder pins, which can be read within this lab. There are two encoder pins that the motor sends out, pin A and pin B. These pins are offset by pi/2 radians, meaning that they behave similar to sine-cosine behavior, or to those that are familiar with it, IQ data in radio. Such a setup enables us to reconstruct received signals with only two data points, depending on whether the signals are rising or falling relative to each other at any given point.
 
-![](images/motor-pins.png){#fig-encoder width = 50%}
+![](images/motor-pins.png){#fig-encoder width=50%}
 
 #### Setup
 
@@ -41,27 +41,17 @@ I learned my lesson about timers after Lab 4, where I repeatedly tried changing 
 
 Firstly, I set up every scenario I would potentially run into within this lab in order to understand what cases I would need to check on the motors for absolute accuracy. I drew all eight of them, as seen in @fig-wheels, and determined that a full "period" of oscillation would actually be four interrupt signals received equal spacing apart. I decided that the best way to deduce frequency, as a result, would be to take the average of some past number of signals in order to determine the current speed of the motor.
 
-![](images/scenario_mapping.png){#fig-wheels}
+![](images/wheel_rot.png){#fig-wheels}
 
 I found two patterns separately that would help me determine both the speed and the frequency of the motor. Firstly, the motor has 12 "signals" that it sends to A, and the same number to B. As a result, every rotation there are a total of 12 pulses supplied by the motor via the quad encoder pins (@fig-encoder). Additionally, since the gear reduction inside the motor is 10:1, there will be 120 pulses received per every actual rotation of the external pin. Resultantly, whatever readout I would get from one channel (i.e. readin A, for example) would represent 1/120 of a total rotation.
 
 As for the forwards or backwards spin, after drawing a step by step look at what would happen to A and B when the motor was rotating forwards versus backwards (@fig-overTime), I was able to construct a table (@fig-tableA) that described the behavior I was seeing.
 
-::: {.grid}
 
-::: {.g-col-6}
+![](images/scenario_mapping.png){#fig-overTime}
 
-![](images/scenario_mapping.png){#fig-overTime width=50%}
+![](images/table_of_forwards.png){#fig-tableA}
 
-:::
-
-::: {.g-col-6}
-
-![](images/table_of_forwards.png){#fig-tableA width=50%}
-
-:::
-
-:::
 
 After this, I worked backwards to find the maximum and minimum frequencies that I would be required to collect considering the planned interrupts of my timer.
 
@@ -181,7 +171,7 @@ For this code, in particular, we must keep in mind that the print statement is u
 
 The final layout for this program can be seen in @fig-finalLayout.
 
-![](images/block_diag.png)
+![](images/block_diag.png){#fig-finalLayout}
 
 The program prints values every second. These values are determined after 1 second of waiting, and are calculated using the arrA and arrB vectors, which have the number of counts between each interrupt saved for the past 5 interrupts. At the very beginning of main's while loop for this system, the variable hav_ent is set to 0; if it remains 0 the entire time, that means that there has been no interrupt within the 1 second delay, and the system enters a stall state. To allow for extremely slow frequencies, the system will wait for 10 beats; if hav_ent has not been set by this time, then the program assumes that the motor is not running, and prints out a variable saying as much.
 
@@ -189,7 +179,7 @@ The program prints values every second. These values are determined after 1 seco
 
 All that was required for the setup of this lab was the TS-25GA370 DC Motor and pins to read the input (PA6 and PA9), as well as to supply 5V and GND to the encoder pins on the motor. The motor was supplied separately with between 0-12V, as demonstrated in the schematic (@fig-schematic)
 
-![Schematic Diagram](images/lab4_schematic.png){#fig-schematic}
+![Schematic Diagram](images/schematic.png){#fig-schematic}
 
 Pins PA6 and PA9 were chosen, individually, becuase they are able to withstand 5 V of power as opposed to other pins that can only take in 3.3 V. This is detailed further in Table 14 (STM32L432xx pin definitions) in the [STM32L432xx Datasheet](https://www.st.com/resource/en/datasheet/stm32l432kb.pdf).
 
