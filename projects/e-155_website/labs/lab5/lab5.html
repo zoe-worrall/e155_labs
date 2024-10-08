@@ -276,46 +276,48 @@ window.Quarto = {
 </section>
 <section id="design" class="level3">
 <h3 class="anchored" data-anchor-id="design">Design</h3>
-<p>This lab requires the use of a TS-25GA370 DC motor. This motor has two separate voltage supplies (<strong>?@fig-encoder</strong>): one that goes up to 12 V, and is responsible for rotating the motor itself, and the other is the encoder, which requires 5V, and is responsible for sending 5V signals out of the encoder pins, which can be read within this lab. There are two encoder pins that the motor sends out, pin A and pin B. These pins are offset by pi/2 radians, meaning that they behave similar to sine-cosine behavior, or to those that are familiar with it, IQ data in radio. Such a setup enables us to reconstruct received signals with only two data points, depending on whether the signals are rising or falling relative to each other at any given point.</p>
-<p><img src="images/motor-pins.png" class="img-fluid">{#fig-encoder width = 50%}</p>
+<p>This lab requires the use of a TS-25GA370 DC motor. This motor has two separate voltage supplies (<a href="#fig-encoder" class="quarto-xref">Figure&nbsp;1</a>): one that goes up to 12 V, and is responsible for rotating the motor itself, and the other is the encoder, which requires 5V, and is responsible for sending 5V signals out of the encoder pins, which can be read within this lab. There are two encoder pins that the motor sends out, pin A and pin B. These pins are offset by pi/2 radians, meaning that they behave similar to sine-cosine behavior, or to those that are familiar with it, IQ data in radio. Such a setup enables us to reconstruct received signals with only two data points, depending on whether the signals are rising or falling relative to each other at any given point.</p>
+<div id="fig-encoder" class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-encoder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/motor-pins.png" id="fig-encoder" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-encoder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
 <section id="setup" class="level4">
 <h4 class="anchored" data-anchor-id="setup">Setup</h4>
 <p>I learned my lesson about timers after Lab 4, where I repeatedly tried changing the frequency of my timer only to run calculations for the accuracy of a frequency and realize that the itmer was wrong. Instead of going through the same pain this time, I chose instead to calculate beforehand the exact frequencies I would need to read out of my board so that I could properly set the timer’s prescaling.</p>
-<p>Firstly, I set up every scenario I would potentially run into within this lab in order to understand what cases I would need to check on the motors for absolute accuracy. I drew all eight of them, as seen in <a href="#fig-wheels" class="quarto-xref">Figure&nbsp;1</a>, and determined that a full “period” of oscillation would actually be four interrupt signals received equal spacing apart. I decided that the best way to deduce frequency, as a result, would be to take the average of some past number of signals in order to determine the current speed of the motor.</p>
+<p>Firstly, I set up every scenario I would potentially run into within this lab in order to understand what cases I would need to check on the motors for absolute accuracy. I drew all eight of them, as seen in <a href="#fig-wheels" class="quarto-xref">Figure&nbsp;2</a>, and determined that a full “period” of oscillation would actually be four interrupt signals received equal spacing apart. I decided that the best way to deduce frequency, as a result, would be to take the average of some past number of signals in order to determine the current speed of the motor.</p>
 <div id="fig-wheels" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wheels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/scenario_mapping.png" id="fig-wheels" class="img-fluid figure-img">
+<img src="images/wheel_rot.png" id="fig-wheels" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-wheels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 </figcaption>
 </figure>
 </div>
-<p>I found two patterns separately that would help me determine both the speed and the frequency of the motor. Firstly, the motor has 12 “signals” that it sends to A, and the same number to B. As a result, every rotation there are a total of 12 pulses supplied by the motor via the quad encoder pins (<strong>?@fig-encoder</strong>). Additionally, since the gear reduction inside the motor is 10:1, there will be 120 pulses received per every actual rotation of the external pin. Resultantly, whatever readout I would get from one channel (i.e.&nbsp;readin A, for example) would represent 1/120 of a total rotation.</p>
-<p>As for the forwards or backwards spin, after drawing a step by step look at what would happen to A and B when the motor was rotating forwards versus backwards (<a href="#fig-overTime" class="quarto-xref">Figure&nbsp;2</a>), I was able to construct a table (<a href="#fig-tableA" class="quarto-xref">Figure&nbsp;3</a>) that described the behavior I was seeing.</p>
-<div class="grid">
-<div class="g-col-6">
-<div id="fig-overTime" class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<p>I found two patterns separately that would help me determine both the speed and the frequency of the motor. Firstly, the motor has 12 “signals” that it sends to A, and the same number to B. As a result, every rotation there are a total of 12 pulses supplied by the motor via the quad encoder pins (<a href="#fig-encoder" class="quarto-xref">Figure&nbsp;1</a>). Additionally, since the gear reduction inside the motor is 10:1, there will be 120 pulses received per every actual rotation of the external pin. Resultantly, whatever readout I would get from one channel (i.e.&nbsp;readin A, for example) would represent 1/120 of a total rotation.</p>
+<p>As for the forwards or backwards spin, after drawing a step by step look at what would happen to A and B when the motor was rotating forwards versus backwards (<a href="#fig-overTime" class="quarto-xref">Figure&nbsp;3</a>), I was able to construct a table (<a href="#fig-tableA" class="quarto-xref">Figure&nbsp;4</a>) that described the behavior I was seeing.</p>
+<div id="fig-overTime" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-overTime-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/scenario_mapping.png" id="fig-overTime" class="img-fluid figure-img" style="width:50.0%">
+<img src="images/scenario_mapping.png" id="fig-overTime" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-overTime-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 </figcaption>
 </figure>
 </div>
-</div>
-<div class="g-col-6">
-<div id="fig-tableA" class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<div id="fig-tableA" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tableA-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/table_of_forwards.png" id="fig-tableA" class="img-fluid figure-img" style="width:50.0%">
+<img src="images/table_of_forwards.png" id="fig-tableA" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-tableA-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 </figcaption>
 </figure>
-</div>
-</div>
 </div>
 <p>After this, I worked backwards to find the maximum and minimum frequencies that I would be required to collect considering the planned interrupts of my timer.</p>
 <p>The datasheet for the motor states that the <a href="(https://hmc-e155.github.io/assets/lab/25GA370.pdf)">motor</a> can run between 10-600 rpm. When calculated into rotations per second, or more specifically the number of signals per second you get the following function:</p>
@@ -438,7 +440,7 @@ Table&nbsp;1: <strong>main.c Global Variabless</strong>
 </section>
 <section id="additional-modules" class="level5">
 <h5 class="anchored" data-anchor-id="additional-modules">Additional Modules</h5>
-<p>This code also makes use of the &lt;stdio.h&gt; header library, as well as the _write function that comes with the the <code>printf</code> library. This library (if you forget to import it or weren’t aware that you needed to when initializing your project) can be added to your *.emProject file, as depicted below (<a href="#fig-helpWithPrintF" class="quarto-xref">Figure&nbsp;4</a>).</p>
+<p>This code also makes use of the &lt;stdio.h&gt; header library, as well as the _write function that comes with the the <code>printf</code> library. This library (if you forget to import it or weren’t aware that you needed to when initializing your project) can be added to your *.emProject file, as depicted below (<a href="#fig-helpWithPrintF" class="quarto-xref">Figure&nbsp;5</a>).</p>
 <div id="fig-helpWithPrintF" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-helpWithPrintF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -466,20 +468,28 @@ Table&nbsp;1: <strong>main.c Global Variabless</strong>
 </section>
 <section id="final-setup" class="level3">
 <h3 class="anchored" data-anchor-id="final-setup">Final Setup</h3>
-<p>The final layout for this program can be seen in <strong>?@fig-finalLayout</strong>.</p>
-<p><img src="images/block_diag.png" class="img-fluid"></p>
+<p>The final layout for this program can be seen in <a href="#fig-finalLayout" class="quarto-xref">Figure&nbsp;6</a>.</p>
+<div id="fig-finalLayout" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-finalLayout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/block_diag.png" id="fig-finalLayout" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-finalLayout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
 <p>The program prints values every second. These values are determined after 1 second of waiting, and are calculated using the arrA and arrB vectors, which have the number of counts between each interrupt saved for the past 5 interrupts. At the very beginning of main’s while loop for this system, the variable hav_ent is set to 0; if it remains 0 the entire time, that means that there has been no interrupt within the 1 second delay, and the system enters a stall state. To allow for extremely slow frequencies, the system will wait for 10 beats; if hav_ent has not been set by this time, then the program assumes that the motor is not running, and prints out a variable saying as much.</p>
 </section>
 <section id="hardware-setup" class="level3">
 <h3 class="anchored" data-anchor-id="hardware-setup">Hardware Setup</h3>
-<p>All that was required for the setup of this lab was the TS-25GA370 DC Motor and pins to read the input (PA6 and PA9), as well as to supply 5V and GND to the encoder pins on the motor. The motor was supplied separately with between 0-12V, as demonstrated in the schematic (<a href="#fig-schematic" class="quarto-xref">Figure&nbsp;5</a>)</p>
+<p>All that was required for the setup of this lab was the TS-25GA370 DC Motor and pins to read the input (PA6 and PA9), as well as to supply 5V and GND to the encoder pins on the motor. The motor was supplied separately with between 0-12V, as demonstrated in the schematic (<a href="#fig-schematic" class="quarto-xref">Figure&nbsp;7</a>)</p>
 <div id="fig-schematic" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/lab4_schematic.png" class="img-fluid figure-img">
+<img src="images/schematic.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Schematic Diagram
+Figure&nbsp;7: Schematic Diagram
 </figcaption>
 </figure>
 </div>
