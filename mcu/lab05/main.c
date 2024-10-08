@@ -5,7 +5,7 @@
 
 @author: zoe worrall
 @contact: zworrall@g.hmc.edu
-@version: October 6, 2024
+@version: October 8, 2024
 
 -------------------------- END-OF-HEADER -----------------------------
 
@@ -47,8 +47,9 @@ int _write(int file, char *ptr, int len) {
 *
 *       main()
 *
-*  Function description
-*   Application entry point.
+*  Enables all required pins. Runs a program that is interrupted and computes the direction and
+*     frequency of rotation of a TS-25GA370 Motor with encoder pins A and B
+*  
 */
 int main(void) {
     ///////////////////////////Enabling Basic Functions for Main /////////////////////////////////////////
@@ -128,14 +129,16 @@ int main(void) {
     int prev_idxA = 0; int prev_idxB = 0;
     int long_term_count = 0;
 
+    // sets the current index and spin direction. Some of these variables are used for debugging.
     idxA = 0; idxB = 0; curr_count_avg = 0;
     volatile int for_spin = -1;
 
-    
+    // Determines whether or not this is the user's first time inside a loop, to send a special message :)
     first_time_loop_A = 1; first_time_loop_B = 1;
     hav_ent = 0;
     int stall = 0; int stall_exited = 0;
 
+    // while loop that will be interrupted if the motor triggers a pin.
     while(1){
         
         hav_ent = 0;
@@ -153,7 +156,11 @@ int main(void) {
 
               curr_count_avg = ((arrA[0] + arrA[1] + arrA[2] + arrA[3] + arrA[4])/5 + (arrB[0] + arrB[1] + arrB[2] + arrB[3] + arrB[4])/5);
               frequency = (3e5 + 0.0) / (4 * curr_count_avg * 120);
-              printf("Newly caught signal, frequency is %f Hz \n", frequency);
+              if (forwards) {
+                printf("Newly caught signal, frequency is %f Hz \n", frequency);
+              } else {
+                printf("Newly caught signal, frequency is -%f Hz \n", frequency);
+              }
 
             }
 
@@ -186,6 +193,7 @@ int main(void) {
             }
         }
         
+        // Enters stall state if we haven't entered a loop in the past second.
         if (!hav_ent) {
           long_term_count++;
           stall = 1;

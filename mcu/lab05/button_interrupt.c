@@ -3,6 +3,9 @@
 // jbrake@hmc.edu
 // 10/31/22
 
+// edited by Zoe Worrall
+// 10/08/2024
+
 #include "lib/main.h"
 #include "stm32l432xx.h"
 
@@ -21,7 +24,6 @@ int main(void) {
     initTIM(FREQ_TIM);
 
     ////////////////////////////////////////////////////////////////////
-    // TODO
     // 1. Enable SYSCFG clock domain in RCC
     // RCC_APB2ENR, bit 0, is SYSCFGEN @ bit 0
     RCC->APB2ENR |= (1<<0);
@@ -38,15 +40,14 @@ int main(void) {
 
 
     ////////////////////////////////////////////////////////////////////
-    // TODO: Configure interrupt for falling edge of GPIO pin for button
+    // Configure interrupt for falling edge of GPIO pin for button
 
     /**
-    *
-    To configure a line as an interrupt source, use the following procedure:
-1. Configure the corresponding mask bit in the EXTI_IMR register.
-2. Configure the Trigger Selection bits of the Interrupt line (EXTI_RTSR and EXTI_FTSR).
-3. Configure the enable and mask bits that control the NVIC IRQ channel mapped to the 
-    EXTI so that an interrupt coming from one of the EXTI lines can be correctly acknowledged.
+      To configure a line as an interrupt source, use the following procedure:
+        1. Configure the corresponding mask bit in the EXTI_IMR register.
+        2. Configure the Trigger Selection bits of the Interrupt line (EXTI_RTSR and EXTI_FTSR).
+        3. Configure the enable and mask bits that control the NVIC IRQ channel mapped to the 
+            EXTI so that an interrupt coming from one of the EXTI lines can be correctly acknowledged.
     */
 
     // 1. Configure mask bit for pin PA4 -- need to set it for EXTI2 ** changed to pin PA5 for now
@@ -66,13 +67,13 @@ int main(void) {
     ////////////////////////////////////////////////////////////////////
 
     while(1){   
-        delay_millis(TIM2, 200);
+        delay_millis(TIM2, 200); // a simple loop that will be interrupted when the button is pressed
     }
 
 }
 
 /**
-*  What to do when handling an interrupt from the input pin (i.e. pin PA5, since that's one of the only ones I can control on my MCU)
+*  The Handler that is called when the button is pressed
 */
 void EXTI9_5_IRQHandler (void){
     // Check that the button was what triggered our interrupt
