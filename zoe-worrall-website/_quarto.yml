@@ -32,6 +32,8 @@ website:
         - href: projects/E80_sub.qmd
         - href: projects/mcf_lci.qmd
         - href: projects/open_ivis.qmd
+        - text: "RF Circuitry Projects"
+          href: projects/radio_frequency
       - href: art/index.qmd
       - href: resources.qmd
       - href: contacts/index.qmd
