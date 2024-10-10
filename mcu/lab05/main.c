@@ -157,9 +157,9 @@ int main(void) {
               curr_count_avg = ((arrA[0] + arrA[1] + arrA[2] + arrA[3] + arrA[4])/5 + (arrB[0] + arrB[1] + arrB[2] + arrB[3] + arrB[4])/5);
               frequency = (3e5 + 0.0) / (4 * curr_count_avg * 120);
               if (forwards) {
-                printf("Newly caught signal, frequency is %f Hz \n", frequency);
+                printf("Newly caught signal, frequency is %f rev/sec \n", frequency);
               } else {
-                printf("Newly caught signal, frequency is -%f Hz \n", frequency);
+                printf("Newly caught signal, frequency is -%f rev/sec \n", frequency);
               }
 
             }
@@ -172,7 +172,7 @@ int main(void) {
 
                 int total_count = long_term_count * TIM2->ARR + ( ((arrA[0] + arrA[1] + arrA[2] + arrA[3] + arrA[4])/5 + (arrB[0] + arrB[1] + arrB[2] + arrB[3] + arrB[4])/5));
                 frequency = (300000.0) / (4 * total_count * 120);
-                printf("Slow frequency, but we caught it! Frequency is %f Hz \n", frequency);
+                printf("Slow frequency, but we caught it! Frequency is %f rev/sec \n", frequency);
 
             } else if (long_term_count > 10) { // we've stalled for too long. It's not running
 
@@ -186,9 +186,9 @@ int main(void) {
                printf("Haven't yet, adding to long term count %d\n", long_term_count);
             } else {
               if (forwards) {
-                printf("Frequency is %f Hz \n", frequency);
+                printf("Frequency is %f rev/sec \n", frequency);
               } else {
-                printf("Frequency is -%f Hz \n", frequency);
+                printf("Frequency is -%f rev/sec \n", frequency);
               }
             }
         }
