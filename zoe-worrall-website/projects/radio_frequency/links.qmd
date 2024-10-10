@@ -1,0 +1,10 @@
+---
+title: "Blog"
+listing:
+  contents:
+  - "projects/*.ipnyb"
+  sort: "date desc"
+  type: default
+  categories: true
+  image-height: 10rem
+---
