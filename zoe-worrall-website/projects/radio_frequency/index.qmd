@@ -2,7 +2,8 @@
 title: "Blog"
 listing:
   contents:
-  - "/projects/designProject1.ipynb"
+  - "/projects/designProjec1_Plotting.ipynb"
+  - "/projects/designProject1_Analysis.ipynb"
   sort: "date desc"
   type: default
   categories: true
