@@ -1,5 +1,5 @@
 ---
-title: "Blog"
+title: "Radio Frequency Circuit: Python Files and Writeups"
 listing:
   contents:
   - "/projects/designProjec1_Plotting.ipynb"

@@ -1,5 +1,70 @@
 ---
-title: Lab 6 Initial Page
----
+title: Lab 6 Writeup
+author: Zoe Worrall  - zworrall@g.hmc.edu
+date: September 25, 2024
 
-## Lab 6: The Internet of Things and Serial Peripheral Interface
+format:
+  html:
+    other-links:
+      - text: "E155 Breadboard Adapter v4"
+        href: https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf
+      - text: "Lab 6 Github Files"
+        href: https://github.com/zoe-worrall/e155_labs/tree/main/mcu/lab06
+      - text: "STM32L432xx Reference Manual"
+        href: https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
+      - text: "STM32L432xx Datasheet"
+        href: https://www.st.com/resource/en/datasheet/stm32l432kb.pdf
+      - text: "DS1722 Datasheet"
+        href: https://www.analog.com/media/en/technical-documentation/data-sheets/DS1722.pdf
+        
+categories:
+  - labreport
+---
+## Lab 6: The Internet of Things and Serial Peripheral Interface (SPI)
+*Hours Spent: __, Mapped with Toggl Track*
+### Introduction
+
+The goal of this laboratory is to introduce us to the Internet of Things, and begin using serial peripheral interconnects using a DS1722 digital temperature sensors (which communicates via SPI) and a ESP8266 board (which sets up a WIFI network through which users can program HTML files).
+
+The final system creates a webpages where the current temperature is displayed and is updated when the page is refreshed. The system must additionally display the state of an on-board LED on the STM32L432KCU microcontroller.
+
+### Design
+
+
+#### Setup
+
+
+#### Sample SPI Transaction
+
+* To Do: Include sample SPI transaction
+    *    Encorporate a way for the user to chose the NUMBER OF BITS used by the DSP controller (i.e., programming the configuration register. This doubles conversion time) [see DS1722 Datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/DS1722.pdf).
+    
+#### Pre-Code
+
+
+
+#### Code
+
+
+
+##### Global Variables
+
+
+##### Additional Modules
+
+
+### Final Setup
+
+
+
+### Hardware Setup
+
+
+### Initial Testing
+
+
+### Results and Discussion
+
+
+### Conclusion
+
