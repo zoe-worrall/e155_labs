@@ -13,5 +13,14 @@
 #define ELEVEN_BIT  0b011
 #define TWELVE_BIT  0b100
 
+#define CS_PIN PA8
+
+void configSensor(int resolutionBits);
+
+
 // Uses the spi system to receive SPI using send and receive
-char readTemp(int resolutionBits);
+double readTemp(void);
+
+char readConfig(void);
+
+char readMSb(void);

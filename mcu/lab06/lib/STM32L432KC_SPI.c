@@ -12,9 +12,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // connected clock is HSI
-void initSPI(int br, int cpol, int cpha, int numBits) {
+void initSPI(int br, int cpol, int cpha) {
 
-    SPI1->CR1 &= ~_VAL2FLD(SPI_CR1_SPE, 0b1);    // make the SPI bus enabled // turn off the spi bus before you receive (bit 6)
+    // SPI1->CR1 &= ~_VAL2FLD(SPI_CR1_SPE, 0b1);    // make the SPI bus enabled // turn off the spi bus before you receive (bit 6)
     
     ////////////////////// GPIO Enabled ///////////////////////////////////
     // connect GPIO pins to RCC
@@ -31,12 +31,13 @@ void initSPI(int br, int cpol, int cpha, int numBits) {
     //////////////////////// SPI Enabled /////////////////////////////////
     // How to Setup According to Configuration (40.4.7, Pg. 1313)
     // 1. Write proper GPIO registers: Configure GPIO for MOSI, MISO and SCK pins.
-    gpioEnable(GPIO_PORT_A);
-    gpioEnable(GPIO_PORT_B);
+    //gpioEnable(GPIO_PORT_A);
+    //gpioEnable(GPIO_PORT_B);
 
     pinMode(SPI_SCK_PIN, GPIO_ALT);
     pinMode(SPI_MISO_PIN, GPIO_ALT);
     pinMode(SPI_MOSI_PIN, GPIO_ALT);
+    //pinMode(SPI_CS_PIN, GPIO_OUTPUT);
 
     // PA5 ->  AF5, SPI1_SCK
     GPIOA->AFR[0] |= _VAL2FLD(GPIO_AFRL_AFSEL5, 5);
@@ -46,9 +47,6 @@ void initSPI(int br, int cpol, int cpha, int numBits) {
 
     // PA12 -> AF5, SPI1_MOSI
     GPIOA->AFR[1] |= _VAL2FLD(GPIO_AFRH_AFSEL12, 5);
-
-    // PB0 is output NSS (?)
-    pinMode(SPI_NSS_PIN, GPIO_OUTPUT);
 
     // Set ospeed high with SCK
     GPIOA->OSPEEDR |= (GPIO_OSPEEDR_OSPEED3);
@@ -71,10 +69,10 @@ void initSPI(int br, int cpol, int cpha, int numBits) {
 
     SPI1->CR2 |=  _VAL2FLD(SPI_CR2_SSOE, 0b1);   // SS output is enabled in master mode and when the SPI interface is enabled
     
-    SPI1->CR2 &= ~_VAL2FLD(SPI_CR2_FRXTH, 0b1);  // 16 bits, RXNE event is generated if the FIFO level is greater than or equal to 1/2 (16-bit)
+    SPI1->CR2 |= _VAL2FLD(SPI_CR2_FRXTH, 0b1);  // 8 bits, RXNE event is generated if the FIFO level is greater than or equal to 1/2 (16-bit)
 
     // data size is whatever the user puts
-    SPI1->CR2 |= _VAL2FLD(SPI_CR2_DS, 0b1111); // sending numBit number of bits
+    SPI1->CR2 |= _VAL2FLD(SPI_CR2_DS, 7); // sending numBit number of bits
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //////////////////////// 2. Turning Everything Else Off ///////////////////////////
@@ -91,7 +89,6 @@ void initSPI(int br, int cpol, int cpha, int numBits) {
     SPI1->CR2 &= ~_VAL2FLD(SPI_CR2_NSSP, 0b1);  // NSS pulse generated, master mode only (we're in mastermode)
                                                   // allows the SPI to generate an NSS pulse 
                                                   // between two consecutive data 
-  
 
     SPI1->CR1 |= _VAL2FLD(SPI_CR1_SPE, 0b1);    // make the SPI bus enabled
 }
@@ -114,13 +111,10 @@ char spiSendReceive(char send) {
     communicate when the SPI is enabled and TXFIFO is not empty, or 
     with the next write to TXFIFO.
     */
-
     while(!(SPI1->SR & SPI_SR_TXE));  // make sure transmit is empty before setting things
-    *(volatile char *) (&SPI1->DR) = send;  // this is a pointer to a volatile char at the DR address in the SPI block
-    while(!(SPI1->SR & SPI_SR_RXNE)); // make sure receive has happened before continuing
-
-    char to_send = (volatile char) (SPI1->DR);
-    return to_send;                  // make volatile?
+    *((volatile char *) (&SPI1->DR)) = send;  // this is a pointer to a volatile char at the DR address in the SPI block
+    while (!(SPI1->SR & SPI_SR_RXNE)); // make sure receive has happened before continuing
+    return  SPI1->DR;
 
     /**
   In any master receive only mode (RXONLY=1 or BIDIMODE=1 & BIDIOE=0), master 
