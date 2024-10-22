@@ -15,6 +15,16 @@
 
 #define CS_PIN PA8
 
+// makes the DS1722 sensor's configuration: first, says that we're writing
+// then, configures the system.
+// to write, it needs to:
+//    1. write address: A7 A6 A5 A4 A3 A2 A2 A1 A0
+//                      
+// CPHA bit must be 1 (starts high)
+// If CPOL is 1, read on rising edge
+// note that this means data should be sent on falling edge 
+    //             (i.e. when SPI is configured for PHA=0)
+// configures the clock using a Polarity 1, Phase 1 SPI
 void configSensor(int resolutionBits);
 
 

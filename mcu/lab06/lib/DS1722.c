@@ -70,10 +70,8 @@ void configSensor(int resolutionBits) {
   globalConfig = config;
   ///////////// ///////////// ///////////// ///////////// ///////////// 
 
-    digitalWrite(SPI_CS_PIN, 1);
     spiSendReceive(ADDRESS_WRIT_CONFIG);
     spiSendReceive(config);
-    digitalWrite(SPI_CS_PIN, 0);
 
 }
 

@@ -30,15 +30,113 @@ The final system creates a webpages where the current temperature is displayed a
 
 ### Design
 
+The main goal of this project was focused on configuring the registers of the STM32L432KCU board. The design uses CMSIS library device templates, but writes its own SPI library, which is configurable. This class is later used by the DS1722 class to talk to the [DS1722](https://www.analog.com/media/en/technical-documentation/data-sheets/DS1722.pdf) chip, which takes digital temperature measurements of the surrounding area. This device can be configured to be adjusted using 8, 9, 10, 11, or 12 bits.
 
-#### Setup
+All of these states can then be configured from within an http webserver, which is set up via an ESP8266 chip (Lab6ESP_19).
 
+The webpage displays:
+
+* The current temperature is displayed using ºC.
+
+* The state of an LED that is set on the board.
+
+
+The DS1722 chip is communicated with after being sent a SPI input with one of four instructions:
+
+* 0x00, 0x01, 0x02 -> Reading the configuration, the lower configuration of bits, the higher configuration of bits
+
+* 0x80 -> Write to the configuration bits
+
+The "configuration" of the chip is of particular interest, because this is how control over the number of bits being sent into the device is determiend; although the chip's SPI will always put out 16 bits, the actual data of these bits differs depending on the configuration. As seen in @tbl-bitMessage, the layout of the bits scales by powers of two; an 8 bit resolution will resultantly be able to determine the temperature with 1ºC of resolution, and 12 bit resolution will be determined with 0.0625ºC of resolution.
+
+| Number Bits | Bit 0   | Bit 1   | Bit 2  | Bit 3   | Bit 4   | Bit 5   | Bit 6   | Bit 7   | Bit 8   | Bit 9   | Bit 10  | Bit 11  | Bit 12  | Bit 13  | Bit 14  | Bit 15  |
+|-------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
+| 8-bits  | $-2^{7}$ | $2^{6}$ | $2^{5}$ | $2^{4}$ | $2^{3}$ | $2^{2}$ | $2^{1}$ | $2^{0}$ | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 12-bits | $-2^{7}$ | $2^{6}$ | $2^{5}$ | $2^{4}$ | $2^{3}$ | $2^{2}$ | $2^{1}$ | $2^{0}$ | $2^{-1}$ | $2^{-2}$ | $2^{-3}$ | $2^{-4}$ | 0 | 0 | 0 | 0 |
+
+: **main.c Global Variabless**{#tbl-bitMessage}
+
+The first 8 bits are found in the `0x02h` (hexidecimal 02, binary `0000_0000_0000_0010`) register, and the last are found in `0x01h` register. 
+
+As a result, there are a total of 5 potential writing commands (configuring the chip to output 8, 9, 10, 11, or 12 bits), and three read commands (read the configuration, the lowest order eight bits, and the highest order eight bits)
+
+
+### Methods
+
+For this lab, I wrote a total of four new files, and within these files several new methods.
+
+#### SPI Module
+
+The files for SPI are called `STM32L432KC_SPI.c` and `STM32L432KC_SPI.h`.
+
+Within these files, there are two main functions; `initSPI` and `spiSendReceive`.
+
+##### `initSPI`
+
+This function takes in three inputs (integers br, cpol, and cpha), and configures the STM32L432KCU's SPI function. In this case, there are two potential ways of controlling whether or not the SPI is transmitting (the Chip Enable [CE] /Chip Select [CS] line), which is either controlling the chip using the software, or by using a GPIO output separate from the SPI modules. In this case, I set the chip select to be hardware, as NSS is difficult to configure on top of the rest of the project.
+
+The `initSPI` will do the following internally:
+
+* Enable all necessary GPIO pins (connect them to the RCC - Reset and Clock Control )
+
+* Enable the SPI within the RCC
+
+* Configure the GPIO's Alternate Function #5 (which sets GPIO pins to be connected to SPI)
+
+* Set the baud rate (I set it to be 256th of the incoming frequency, in this case the PCLK is 16 MHz, so the final baud rate is $\frac{16 MHz}{256}=62500 Hz$)
+
+* Set the polarity and the phase of the clock. The polarity defines where the clock is supposed to start - in the case that it's -  (as it is in this program), the clock starts at 0. The phase defines where data captures happen - so in this case, where I've assigned the phase to be 1, the clock will read the output of its SPI line on the second part of the clock - since the clock starts idle, the first change (0) would be where we'd write to the SPI, and the falling edge would be where the SPI would read. This will accurately communicate with the DSP chip, which is configured to write on the second edge of the clock (in this way, the DSP writes while we're reading, and we write while the chip is reading). The DSP wants the phase to be set to 1, and the chip actually automatically sets itself to read and write at the right edge of the clock.
+
+* Set the SS output to be enabled
+
+* Set FRXTH to generate a receiving event when the FIFO level is 8 bits (i.e. when the buffer has 8 bits, the program will send 8 bits, as opposed to sending 16 bits at once).
+
+* Turn everything else off - including a CRC polynomial calculation, the FRF (we want to use two lines for SPI), and the data-mode of the system (BIDI).
+
+* Finally, enable the SPI once everything has been configured.
+
+
+##### `spiSendReceive`
+
+SPI operates by shifting out old data and replacing it with new data in a FIFO (first-in first-out) stack. A good way of thinking about this is an eight-seat roller coaster; a bunch of people line up, and the first eight people that arrive get sent off all at once when the roller coaster leaves. When the roller coaster gets back (this is where things are slightly different), all eight people get off, and trail one after another out of the roller coaster, while the next eight people file in behind them @fig-rollercoaster.
+
+![](images/Lab6_rollercoaster.png){#fig-rollercoaster width=50%}
+
+First, the function guarantees that the transmit is empty, then put the character you are sending (the variable `send`), and then waiting until the receive is empty before returning the character currently in the FIFO stack.
+
+Of particular note is how pointers and volatile characters are used in this program. The character that is being set inside the SPI1's DR should be volatile, since it should be possible for this character to change depending on the input value.
+
+To make sure that this was a volatile character, we need to cast the character at the SPI1->DR into a volatile char. This is impossible unless we use a pointer to the specific address where the DR was placed in the microcontroller; if we cast the DR value directly to a character, we'd actually be casting the address for SDR into a volatile char, not the value inside of it. As a result, the final value needs to look like ` *((volatile char *) (&SPI1->DR)) = send;`.
+
+
+#### DS1722 Module
+
+##### `configSensor`
+
+Configures the DS1722 with the requisite number of bits. To do this, we first send the signal `1000_0000_0000_0000`, or `0x80`, to the DS1722 chip using the SPI. We then send an 8 bit signal following this, which details how to configure the device. This is detailed in [Table 3](@fig-tblthree) of the [DS1722 Datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/DS1722.pdf)
+
+![](images/figure2.png){#fig-tblthree}
+
+##### `readTemp`
+
+##### `readConfig`
+
+##### `readMSb`
 
 #### Sample SPI Transaction
 
+
+
+
+
+![](images/SPI_sample.png)
+
+
+
+
 * To Do: Include sample SPI transaction
     *    Encorporate a way for the user to chose the NUMBER OF BITS used by the DSP controller (i.e., programming the configuration register. This doubles conversion time) [see DS1722 Datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/DS1722.pdf).
-    
+
 #### Pre-Code
 
 

@@ -31,6 +31,13 @@ char* webpageStart = "<!DOCTYPE html><html><head><title>E155 Web Server Demo Web
 	<body><h1>E155 Web Server Demo Webpage</h1>";
 char* ledStr = "<p>LED Control:</p><form action=\"ledon\"><input type=\"submit\" value=\"Turn the LED on!\"></form>\
 	<form action=\"ledoff\"><input type=\"submit\" value=\"Turn the LED off!\"></form>";
+
+char* tempStr = "<p>Temperature Bit Control:</p><form action=\"eightbit\"><input type=\"submit\" value=\"Use Eight Bit\"></form>\
+        <form action=\"ninebit\"><input type=\"submit\" value=\"Use Nine Bit\"></form> \
+        <form action=\"tenbit\"><input type=\"submit\" value=\"Use Ten Bit\"></form> \
+        <form action=\"elevenbit\"><input type=\"submit\" value=\"Use Eleven Bit\"></form> \
+        <form action=\"twelvebit\"><input type=\"submit\" value=\"Use Twelve Bit\"></form>";
+
 char* webpageEnd   = "</body></html>";
 
 //determines whether a given character sequence is in a char array request, returning 1 if present, -1 if not present
@@ -133,16 +140,29 @@ int updateTempBitStatus(char request[])
     int resolution_bits = updateTempBitStatus(request);
     
     if (pastConfig != resolution_bits) {
+        digitalWrite(PA8, 1); // enable chip select pin
         configSensor(resolution_bits);
+        digitalWrite(PA8, 0); // disable chip select pin
         pastConfig = resolution_bits;
     }
 
-    double temperatureStatus = readTemp();
 
-    char tempStatusStr[30];
-    sprintf(tempStatusStr,"Temperature is %f", temperatureStatus);
-    // Update string with current LED state
+    double temperatureStatus = 0;
+    int i = 0;
+    while(i < 100) {
+      digitalWrite(PA8, 1);
+      temperatureStatus += readTemp();
+      digitalWrite(PA8, 0);
+      i += 1;
+    }
+
+    char tempStatusStr[60];
+    sprintf(tempStatusStr,"Temperature is %f Celsius, Configuration: %d bits", temperatureStatus/100, resolution_bits);
+    ////////////////////////////////////////////////////////////////////////////
   
+
+    /////// LED STATUS /////////
+    // Update string with current LED state
     int led_status = updateLEDStatus(request);
 
     char ledStatusStr[20];
@@ -150,6 +170,9 @@ int updateTempBitStatus(char request[])
       sprintf(ledStatusStr,"LED is on!");
     else if (led_status == 0)
       sprintf(ledStatusStr,"LED is off!");
+    ///////////////////////////////
+
+
 
     // finally, transmit the webpage over UART
     sendString(USART, webpageStart); // webpage header code
@@ -161,6 +184,8 @@ int updateTempBitStatus(char request[])
     sendString(USART, "<p>");
     sendString(USART, ledStatusStr);
     sendString(USART, "</p>");
+
+    sendString(USART, tempStr); // buttons for controlling bitrate
 
     sendString(USART, "<h2>Temperature Status</h2>");
     sendString(USART, "<p>");
