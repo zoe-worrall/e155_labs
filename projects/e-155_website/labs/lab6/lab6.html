@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Zoe Worrall - zworrall@g.hmc.edu">
+<meta name="dcterms.date" content="2024-10-21">
 
-<title>Lab 6 Initial Page – Zoe Worrall's Website</title>
+<title>Lab 6 Writeup – Zoe Worrall's Website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,10 +71,42 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Zoe Worrall’s Website - Lab 6 Initial Page">
-<meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/projects/e-155_website/labs/lab6/images/ZoeWorrall_Photo.png">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Zoe Worrall’s Website - Lab 6 Writeup">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/projects/e-155_website/labs/lab6/images/config_read.png">
 <meta property="og:site_name" content="Zoe Worrall's Website">
+<meta property="og:image:height" content="480">
+<meta property="og:image:width" content="800">
 </head>
 
 <body class="nav-fixed">
@@ -123,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab6/lab6.html">
- <span class="dropdown-text">Lab 6 Initial Page</span></a>
+ <span class="dropdown-text">Lab 6 Writeup</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab7/lab7.html">
@@ -186,23 +220,46 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-6-the-internet-of-things-and-serial-peripheral-interface" id="toc-lab-6-the-internet-of-things-and-serial-peripheral-interface" class="nav-link active" data-scroll-target="#lab-6-the-internet-of-things-and-serial-peripheral-interface">Lab 6: The Internet of Things and Serial Peripheral Interface</a></li>
+  <li><a href="#lab-6-the-internet-of-things-and-serial-peripheral-interface-spi" id="toc-lab-6-the-internet-of-things-and-serial-peripheral-interface-spi" class="nav-link active" data-scroll-target="#lab-6-the-internet-of-things-and-serial-peripheral-interface-spi">Lab 6: The Internet of Things and Serial Peripheral Interface (SPI)</a>
+  <ul class="collapse">
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#hardware-setup" id="toc-hardware-setup" class="nav-link" data-scroll-target="#hardware-setup">Hardware Setup</a></li>
+  <li><a href="#initial-testing" id="toc-initial-testing" class="nav-link" data-scroll-target="#initial-testing">Initial Testing</a></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
   </ul>
-</nav>
+<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 Breadboard Adapter v4</a></li><li><a href="https://github.com/zoe-worrall/e155_labs/tree/main/mcu/lab06"><i class="bi bi-link-45deg"></i>Lab 6 Github Files</a></li><li><a href="https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf"><i class="bi bi-link-45deg"></i>STM32L432xx Reference Manual</a></li><li><a href="https://www.st.com/resource/en/datasheet/stm32l432kb.pdf"><i class="bi bi-link-45deg"></i>STM32L432xx Datasheet</a></li><li><a href="https://www.analog.com/media/en/technical-documentation/data-sheets/DS1722.pdf"><i class="bi bi-link-45deg"></i>DS1722 Datasheet</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 6 Initial Page</h1>
-</div>
+<h1 class="title">Lab 6 Writeup</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">labreport</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zoe Worrall - zworrall@g.hmc.edu </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 21, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -212,10 +269,292 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="lab-6-the-internet-of-things-and-serial-peripheral-interface" class="level2">
-<h2 class="anchored" data-anchor-id="lab-6-the-internet-of-things-and-serial-peripheral-interface">Lab 6: The Internet of Things and Serial Peripheral Interface</h2>
+<section id="lab-6-the-internet-of-things-and-serial-peripheral-interface-spi" class="level2">
+<h2 class="anchored" data-anchor-id="lab-6-the-internet-of-things-and-serial-peripheral-interface-spi">Lab 6: The Internet of Things and Serial Peripheral Interface (SPI)</h2>
+<p><em>Hours Spent: 49.5, Mapped with Toggl Track</em> ### Introduction</p>
+<p>The goal of this laboratory is to introduce us to the Internet of Things, and begin using serial peripheral interconnects using a DS1722 digital temperature sensors (which communicates via SPI) and a ESP8266 board (which sets up a WIFI network through which users can program HTML files).</p>
+<p>The final system creates a webpages where the current temperature is displayed and is updated when the page is refreshed. The system must additionally display the state of an on-board LED on the STM32L432KCU microcontroller.</p>
+<section id="design" class="level3">
+<h3 class="anchored" data-anchor-id="design">Design</h3>
+<p>The main goal of this project was focused on configuring the registers of the STM32L432KCU board. The design uses CMSIS library device templates, but writes its own SPI library, which is configurable. This class is later used by the DS1722 class to talk to the <a href="https://www.analog.com/media/en/technical-documentation/data-sheets/DS1722.pdf">DS1722</a> chip, which takes digital temperature measurements of the surrounding area. This device can be configured to be adjusted using 8, 9, 10, 11, or 12 bits.</p>
+<p>All of these states can then be configured from within an http webserver, which is set up via an ESP8266 chip (Lab6ESP_19).</p>
+<p>The webpage displays:</p>
+<ul>
+<li><p>The current temperature is displayed using ºC.</p></li>
+<li><p>The state of an LED that is set on the board.</p></li>
+</ul>
+<p>The DS1722 chip is communicated with after being sent a SPI input with one of four instructions:</p>
+<ul>
+<li><p>0x00, 0x01, 0x02 -&gt; Reading the configuration, the lower configuration of bits, the higher configuration of bits</p></li>
+<li><p>0x80 -&gt; Write to the configuration bits</p></li>
+</ul>
+<p>The “configuration” of the chip is of particular interest, because this is how control over the number of bits being sent into the device is determiend; although the chip’s SPI will always put out 16 bits, the actual data of these bits differs depending on the configuration. As seen in <a href="#tbl-bitMessage" class="quarto-xref">Table&nbsp;1</a>, the layout of the bits scales by powers of two; an 8 bit resolution will resultantly be able to determine the temperature with 1ºC of resolution, and 12 bit resolution will be determined with 0.0625ºC of resolution.</p>
+<div id="tbl-bitMessage" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bitMessage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: <strong>main.c Global Variabless</strong>
+</figcaption>
+<div aria-describedby="tbl-bitMessage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Number Bits</th>
+<th>Bit 0</th>
+<th>Bit 1</th>
+<th>Bit 2</th>
+<th>Bit 3</th>
+<th>Bit 4</th>
+<th>Bit 5</th>
+<th>Bit 6</th>
+<th>Bit 7</th>
+<th>Bit 8</th>
+<th>Bit 9</th>
+<th>Bit 10</th>
+<th>Bit 11</th>
+<th>Bit 12</th>
+<th>Bit 13</th>
+<th>Bit 14</th>
+<th>Bit 15</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>8-bits</td>
+<td><span class="math inline">\(-2^{7}\)</span></td>
+<td><span class="math inline">\(2^{6}\)</span></td>
+<td><span class="math inline">\(2^{5}\)</span></td>
+<td><span class="math inline">\(2^{4}\)</span></td>
+<td><span class="math inline">\(2^{3}\)</span></td>
+<td><span class="math inline">\(2^{2}\)</span></td>
+<td><span class="math inline">\(2^{1}\)</span></td>
+<td><span class="math inline">\(2^{0}\)</span></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>12-bits</td>
+<td><span class="math inline">\(-2^{7}\)</span></td>
+<td><span class="math inline">\(2^{6}\)</span></td>
+<td><span class="math inline">\(2^{5}\)</span></td>
+<td><span class="math inline">\(2^{4}\)</span></td>
+<td><span class="math inline">\(2^{3}\)</span></td>
+<td><span class="math inline">\(2^{2}\)</span></td>
+<td><span class="math inline">\(2^{1}\)</span></td>
+<td><span class="math inline">\(2^{0}\)</span></td>
+<td><span class="math inline">\(2^{-1}\)</span></td>
+<td><span class="math inline">\(2^{-2}\)</span></td>
+<td><span class="math inline">\(2^{-3}\)</span></td>
+<td><span class="math inline">\(2^{-4}\)</span></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The first 8 bits are found in the <code>0x02h</code> (hexidecimal 02, binary <code>0000_0000_0000_0010</code>) register, and the last are found in <code>0x01h</code> register.</p>
+<p>As a result, there are a total of 5 potential writing commands (configuring the chip to output 8, 9, 10, 11, or 12 bits), and three read commands (read the configuration, the lowest order eight bits, and the highest order eight bits)</p>
+</section>
+<section id="methods" class="level3">
+<h3 class="anchored" data-anchor-id="methods">Methods</h3>
+<p>For this lab, I wrote a total of four new files, and within these files several new methods.</p>
+<section id="spi-module" class="level4">
+<h4 class="anchored" data-anchor-id="spi-module">SPI Module</h4>
+<p>The files for SPI are called <code>STM32L432KC_SPI.c</code> and <code>STM32L432KC_SPI.h</code>.</p>
+<p>Within these files, there are two main functions; <code>initSPI</code> and <code>spiSendReceive</code>.</p>
+<section id="initspi" class="level5">
+<h5 class="anchored" data-anchor-id="initspi"><code>initSPI</code></h5>
+<p>This function takes in three inputs (integers br, cpol, and cpha), and configures the STM32L432KCU’s SPI function. In this case, there are two potential ways of controlling whether or not the SPI is transmitting (the Chip Enable [CE] /Chip Select [CS] line), which is either controlling the chip using the software, or by using a GPIO output separate from the SPI modules. In this case, I set the chip select to be hardware, as NSS is difficult to configure on top of the rest of the project.</p>
+<p>The <code>initSPI</code> will do the following internally:</p>
+<ul>
+<li><p>Enable all necessary GPIO pins (connect them to the RCC - Reset and Clock Control )</p></li>
+<li><p>Enable the SPI within the RCC</p></li>
+<li><p>Configure the GPIO’s Alternate Function #5 (which sets GPIO pins to be connected to SPI)</p></li>
+<li><p>Set the baud rate (I set it to be 256th of the incoming frequency, in this case the PCLK is 16 MHz, so the final baud rate is <span class="math inline">\(\frac{16 MHz}{256}=62500 Hz\)</span>)</p></li>
+<li><p>Set the polarity and the phase of the clock. The polarity defines where the clock is supposed to start - in the case that it’s - (as it is in this program), the clock starts at 0. The phase defines where data captures happen - so in this case, where I’ve assigned the phase to be 1, the clock will read the output of its SPI line on the second part of the clock - since the clock starts idle, the first change (0) would be where we’d write to the SPI, and the falling edge would be where the SPI would read. This will accurately communicate with the DS chip, which is configured to write on the second edge of the clock (in this way, the DS writes while we’re reading, and we write while the chip is reading). The DS wants the phase to be set to 1, and the chip actually automatically sets itself to read and write at the right edge of the clock.</p></li>
+<li><p>Set the SS output to be enabled</p></li>
+<li><p>Set FRXTH to generate a receiving event when the FIFO level is 8 bits (i.e.&nbsp;when the buffer has 8 bits, the program will send 8 bits, as opposed to sending 16 bits at once).</p></li>
+<li><p>Turn everything else off - including a CRC polynomial calculation, the FRF (we want to use two lines for SPI), and the data-mode of the system (BIDI).</p></li>
+<li><p>Finally, enable the SPI once everything has been configured.</p></li>
+</ul>
+</section>
+<section id="spisendreceive" class="level5">
+<h5 class="anchored" data-anchor-id="spisendreceive"><code>spiSendReceive</code></h5>
+<p>SPI operates by shifting out old data and replacing it with new data in a FIFO (first-in first-out) stack. A good way of thinking about this is an eight-seat roller coaster; a bunch of people line up, and the first eight people that arrive get sent off all at once when the roller coaster leaves. When the roller coaster gets back (this is where things are slightly different), all eight people get off, and trail one after another out of the roller coaster, while the next eight people file in behind them <a href="#fig-rollercoaster" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<div id="fig-rollercoaster" class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rollercoaster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Lab6_rollercoaster.png" id="fig-rollercoaster" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-rollercoaster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<p>First, the function guarantees that the transmit is empty, then put the character you are sending (the variable <code>send</code>), and then waiting until the receive is empty before returning the character currently in the FIFO stack.</p>
+<p>Of particular note is how pointers and volatile characters are used in this program. The character that is being set inside the SPI1’s DR should be volatile, since it should be possible for this character to change depending on the input value.</p>
+<p>To make sure that this was a volatile character, we need to cast the character at the SPI1-&gt;DR into a volatile char. This is impossible unless we use a pointer to the specific address where the DR was placed in the microcontroller; if we cast the DR value directly to a character, we’d actually be casting the address for SDR into a volatile char, not the value inside of it. As a result, the final value needs to look like <code>*((volatile char *) (&amp;SPI1-&gt;DR)) = send;</code>.</p>
+</section>
+</section>
+<section id="ds1722-module" class="level4">
+<h4 class="anchored" data-anchor-id="ds1722-module">DS1722 Module</h4>
+<section id="configsensor" class="level5">
+<h5 class="anchored" data-anchor-id="configsensor"><code>configSensor</code></h5>
+<p>Configures the DS1722 with the requisite number of bits. To do this, we first send the signal <code>1000_0000_0000_0000</code>, or <code>0x80</code>, to the DS1722 chip using the SPI. We then send an 8 bit signal following this, which details how to configure the device. This is detailed in <a href="#fig-tblthree" class="quarto-xref">Figure&nbsp;2</a> of the <a href="https://www.analog.com/media/en/technical-documentation/data-sheets/DS1722.pdf">DS1722 Datasheet</a></p>
+<div id="fig-tblthree" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tblthree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/figure2.png" id="fig-tblthree" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-tblthree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<p>The main important string inside this configuration are the three bits at address 1, 2, and 3 that define the number of bits used for resolution within the DS1722. The bits are defined in <a href="#tbl-resBits" class="quarto-xref">Table&nbsp;2</a>.</p>
+<div id="tbl-resBits" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-resBits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: <strong>Lab 6 Table Bits</strong>
+</figcaption>
+<div aria-describedby="tbl-resBits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Resolution in Bits</th>
+<th>Bits in Configuration [3:1]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>8</td>
+<td>0b’000</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>0b’001</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>0b’010</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>0b’011</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>0b’1xx</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="readtemp" class="level5">
+<h5 class="anchored" data-anchor-id="readtemp"><code>readTemp</code></h5>
+<p>There are two things that needs to happen to read the temperature coming out of the DS1722: first, we need all the bits stored in register 1 and 2, and second we need to combine the bits together to read the proper temperature.</p>
+<p>The system sends two addresses, and after each address sent, sends 8 additional bits to get the address readout. One example of this signal can be seen in <a href="#fig-configurationRead" class="quarto-xref">Figure&nbsp;3</a>. In this image, the output from the chip can be seen in D0 (the selected bar in red), the enabling chip is D1 (the second line), the third line is the address being sent to the DS1722 bit stream, and the fourth line is the clock sent from the SPI.</p>
+<p>This specific transmittion, in addition, shows an example of the configuration code explained in <code>configSensor</code>.</p>
+<div id="fig-configurationRead" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-configurationRead-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/config_read.png" id="fig-configurationRead" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-configurationRead-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="readconfig" class="level5">
+<h5 class="anchored" data-anchor-id="readconfig"><code>readConfig</code></h5>
+<p>The module has one final “read” capability, which can be used to confirm the current bit-resolution of the device. This is done by sending the hex signal <code>0x00</code>, to which the chip will put out a bit code resembling the <code>write</code> configuration code previously used in <code>configSensor</code>. Although not used in the final program, it would prove useful if the previous state of the sensor was not stored.</p>
+</section>
+</section>
+<section id="sample-spi-transaction" class="level4">
+<h4 class="anchored" data-anchor-id="sample-spi-transaction">Sample SPI Transaction</h4>
+<p>Prior to running the entire program, I confirmed that the SPI on my board was working using a logic analyzer. Below is the output.</p>
+<p><img src="images/SPI_sample.png" class="img-fluid"></p>
+<p>Each of the lines were attached in the following way:</p>
+<ul>
+<li><p>D0: Chip Enable</p></li>
+<li><p>D1: SPI Clock</p></li>
+<li><p>D2: SPI MISO</p></li>
+<li><p>D3: SPI MOSI</p></li>
+</ul>
+<p>This configuration was used during initial set up to confirm that all terminals were plugged in correctly, and all signals were being received in the right order.</p>
+</section>
+</section>
+<section id="hardware-setup" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-setup">Hardware Setup</h3>
+<p>The schematic for this program (<a href="#fig-schamtic" class="quarto-xref">Figure&nbsp;4</a>) shows the connections between the DS1722, the ESP8266, and the MCU board. I’d like to draw some additional attention to the pulldown resistor at the MISO signal, which is necessary if you want to receive actual data, as the DS1722 chip will not automatically pull this signal to 0 while it is transmitting a signal (the system requires a pulldown resistor).</p>
+<div id="fig-schamtic" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-schamtic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/lab6_schematic.png" id="fig-schamtic" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-schamtic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="initial-testing" class="level3">
+<h3 class="anchored" data-anchor-id="initial-testing">Initial Testing</h3>
+<p>The final configuration was tested for accuracy using a VNA logic analyzer that was run both without the USART control required for configuring the DSP reading, and with the USART control.</p>
+<section id="usart-testing" class="level5">
+<h5 class="anchored" data-anchor-id="usart-testing">USART Testing</h5>
+<p>Testing while using the USART was first done when my USART finally able to connect, and my board was able to communicate via Wifi. I needed to see if the system was able to boot up properly, and more specifically if the configuration was working. I took a screen capture of the configuration and recalculation of the temperature (which used the average of 100 temperature readouts taken from the DS1722 chip). The image that covers a larger time span (left) shows this long stream of SPI transmissions. The image on the right depicts the very start of this string: first, the system takes a read out (which was used in the debugging process within a printf statement to confirm that the SPI was communicating). Next, the system writes a configuration to the system and taking its first readout; the Chip Enable (D1) turns on, and then off briefly before turning back on again to perform a temperature measurement; this is done by the SPI sending out 0x02 (see the D2 LNA line), sending 0x00 while it collects the DS1722’s output, and then sending 0x01 before waiting another 0x00.</p>
+<p>The temperature read out is repeated 100 times, which is why the broader image on the left has so many repeated pulses; after the initial configuration stream, the system reruns the <code>readTemp</code> function 100 times to get the average temperature.</p>
+<div class="grid">
+<div class="g-col-6">
+<p><img src="images/wide_view_avg.png" class="img-fluid"></p>
+</div>
+<div class="g-col-6">
+<p><img src="images/reading_prog.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="results-and-discussion" class="level3">
+<h3 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h3>
+<p>In the future, I’d like to get the SPI working with NSS, and I’d also like to program the system to incorporate the chip-enable pins within the SPI functions themselves rather than externally. At the moment, I configure the enabling pins within my <code>main.c</code> file, because the system appeared to break my USART functionality when I set it within the SPI program. In the future, I’d like to troubleshoot this issue and be able to run my program functions without worrying about enabling and disabling pins (which should be possible, but seemed to somehow be broken).</p>
+<p>I think this Lab was exceptionally good for making sure that I understood the in’s and out’s of the <a href="https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">Reference Manual</a>. In meticulously setting up everything necessary for the SPI bus, I likely read Chapter 40 at least twenty times to make sure I understood every connection, enabler, and register that configures the SPI on the STM32L432KCU. Although I still needed pointers and some aid along the way, I can confidently say that a lot of this project was based on new skills I acquired through this course, and I learned a lot of resilience and persistance of mind that I didn’t have originally, which was one of my primary goals this semester.</p>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>In conclusion, I was successfully able to complete this lab with a working USART and SPI bus link, which communicates via an http link via a Wifi source and allows a user configuration capabilities and insight into a board that they may not be able to see.</p>
+<p>As an additional little fun-thing, here’s a video of my system running on wifi - although you can’t see it, my board’s LED at PB3 is turning on and off with the LED button, and I am viewing the SPI interactions using an oscilloscope’s logic analyzer. Additionally, in order to help see the decimals better, I heat up the DS1722 at one point using my finger, and confirm that my (hand’s) temperature is about 2ºC hotter than the rest of the room, which helps to explain why I’m always cold while programming in the digital lab.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/4HQGL0LhUzw" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
