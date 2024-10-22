@@ -1,7 +1,8 @@
 ---
 title: Lab 6 Writeup
 author: Zoe Worrall  - zworrall@g.hmc.edu
-date: September 25, 2024
+image: 
+date: October 21, 2024
 
 format:
   html:
@@ -21,7 +22,7 @@ categories:
   - labreport
 ---
 ## Lab 6: The Internet of Things and Serial Peripheral Interface (SPI)
-*Hours Spent: __, Mapped with Toggl Track*
+*Hours Spent: 49.5, Mapped with Toggl Track*
 ### Introduction
 
 The goal of this laboratory is to introduce us to the Internet of Things, and begin using serial peripheral interconnects using a DS1722 digital temperature sensors (which communicates via SPI) and a ESP8266 board (which sets up a WIFI network through which users can program HTML files).
@@ -85,7 +86,7 @@ The `initSPI` will do the following internally:
 
 * Set the baud rate (I set it to be 256th of the incoming frequency, in this case the PCLK is 16 MHz, so the final baud rate is $\frac{16 MHz}{256}=62500 Hz$)
 
-* Set the polarity and the phase of the clock. The polarity defines where the clock is supposed to start - in the case that it's -  (as it is in this program), the clock starts at 0. The phase defines where data captures happen - so in this case, where I've assigned the phase to be 1, the clock will read the output of its SPI line on the second part of the clock - since the clock starts idle, the first change (0) would be where we'd write to the SPI, and the falling edge would be where the SPI would read. This will accurately communicate with the DSP chip, which is configured to write on the second edge of the clock (in this way, the DSP writes while we're reading, and we write while the chip is reading). The DSP wants the phase to be set to 1, and the chip actually automatically sets itself to read and write at the right edge of the clock.
+* Set the polarity and the phase of the clock. The polarity defines where the clock is supposed to start - in the case that it's -  (as it is in this program), the clock starts at 0. The phase defines where data captures happen - so in this case, where I've assigned the phase to be 1, the clock will read the output of its SPI line on the second part of the clock - since the clock starts idle, the first change (0) would be where we'd write to the SPI, and the falling edge would be where the SPI would read. This will accurately communicate with the DS chip, which is configured to write on the second edge of the clock (in this way, the DS writes while we're reading, and we write while the chip is reading). The DS wants the phase to be set to 1, and the chip actually automatically sets itself to read and write at the right edge of the clock.
 
 * Set the SS output to be enabled
 
@@ -113,56 +114,97 @@ To make sure that this was a volatile character, we need to cast the character a
 
 ##### `configSensor`
 
-Configures the DS1722 with the requisite number of bits. To do this, we first send the signal `1000_0000_0000_0000`, or `0x80`, to the DS1722 chip using the SPI. We then send an 8 bit signal following this, which details how to configure the device. This is detailed in [Table 3](@fig-tblthree) of the [DS1722 Datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/DS1722.pdf)
+Configures the DS1722 with the requisite number of bits. To do this, we first send the signal `1000_0000_0000_0000`, or `0x80`, to the DS1722 chip using the SPI. We then send an 8 bit signal following this, which details how to configure the device. This is detailed in @fig-tblthree of the [DS1722 Datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/DS1722.pdf)
 
 ![](images/figure2.png){#fig-tblthree}
 
+The main important string inside this configuration are the three bits at address 1, 2, and 3 that define the number of bits used for resolution within the DS1722. The bits are defined in @tbl-resBits.
+
+| Resolution in Bits | Bits in Configuration [3:1] |
+|--------------------|-----------------------------|
+| 8 | 0b'000 |
+| 9 | 0b'001 |
+| 10 | 0b'010 |
+| 11 | 0b'011 |
+| 12 | 0b'1xx |
+
+: **Lab 6 Table Bits**{#tbl-resBits}
+
 ##### `readTemp`
+
+There are two things that needs to happen to read the temperature coming out of the DS1722: first, we need all the bits stored in register 1 and 2, and second we need to combine the bits together to read the proper temperature.
+
+The system sends two addresses, and after each address sent, sends 8 additional bits to get the address readout. One example of this signal can be seen in @fig-configurationRead. In this image, the output from the chip can be seen in D0 (the selected bar in red), the enabling chip is D1 (the second line), the third line is the address being sent to the DS1722 bit stream, and the fourth line is the clock sent from the SPI.
+
+This specific transmittion, in addition, shows an example of the configuration code explained in `configSensor`.
+
+![](images/config_read.png){#fig-configurationRead}
 
 ##### `readConfig`
 
-##### `readMSb`
+The module has one final "read" capability, which can be used to confirm the current bit-resolution of the device. This is done by sending the hex signal `0x00`, to which the chip will put out a bit code resembling the `write` configuration code previously used in `configSensor`. Although not used in the final program, it would prove useful if the previous state of the sensor was not stored.
 
 #### Sample SPI Transaction
 
-
-
-
+Prior to running the entire program, I confirmed that the SPI on my board was working using a logic analyzer. Below is the output.
 
 ![](images/SPI_sample.png)
 
+Each of the lines were attached in the following way:
 
+* D0: Chip Enable
 
+* D1: SPI Clock
 
-* To Do: Include sample SPI transaction
-    *    Encorporate a way for the user to chose the NUMBER OF BITS used by the DSP controller (i.e., programming the configuration register. This doubles conversion time) [see DS1722 Datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/DS1722.pdf).
+* D2: SPI MISO
 
-#### Pre-Code
+* D3: SPI MOSI
 
-
-
-#### Code
-
-
-
-##### Global Variables
-
-
-##### Additional Modules
-
-
-### Final Setup
-
+This configuration was used during initial set up to confirm that all terminals were plugged in correctly, and all signals were being received in the right order.
 
 
 ### Hardware Setup
 
+The schematic for this program (@fig-schamtic) shows the connections between the DS1722, the ESP8266, and the MCU board. I'd like to draw some additional attention to the pulldown resistor at the MISO signal, which is necessary if you want to receive actual data, as the DS1722 chip will not automatically pull this signal to 0 while it is transmitting a signal (the system requires a pulldown resistor).
+
+![](images/lab6_schematic.png){#fig-schamtic}
 
 ### Initial Testing
 
+The final configuration was tested for accuracy using a VNA logic analyzer that was run both without the USART control required for configuring the DSP reading, and with the USART control.
+
+##### USART Testing
+
+Testing while using the USART was first done when my USART finally able to connect, and my board was able to communicate via Wifi. I needed to see if the system was able to boot up properly, and more specifically if the configuration was working. I took a screen capture of the configuration and recalculation of the temperature (which used the average of 100 temperature readouts taken from the DS1722 chip). The image that covers a larger time span (left) shows this long stream of SPI transmissions. The image on the right depicts the very start of this string: first, the system takes a read out (which was used in the debugging process within a printf statement to confirm that the SPI was communicating). Next, the system writes a configuration to the system and taking its first readout; the Chip Enable (D1) turns on, and then off briefly before turning back on again to perform a temperature measurement; this is done by the SPI sending out 0x02 (see the D2 LNA line), sending 0x00 while it collects the DS1722's output, and then sending 0x01 before waiting another 0x00.
+
+The temperature read out is repeated 100 times, which is why the broader image on the left has so many repeated pulses; after the initial configuration stream, the system reruns the `readTemp` function 100 times to get the average temperature.
+
+::: {.grid}
+
+::: {.g-col-6}
+
+![](images/wide_view_avg.png)
+
+:::
+
+::: {.g-col-6}
+
+![](images/reading_prog.png)
+
+:::
+
+:::
 
 ### Results and Discussion
 
+In the future, I'd like to get the SPI working with NSS, and I'd also like to program the system to incorporate the chip-enable pins within the SPI functions themselves rather than externally. At the moment, I configure the enabling pins within my `main.c` file, because the system appeared to break my USART functionality when I set it within the SPI program. In the future, I'd like to troubleshoot this issue and be able to run my program functions without worrying about enabling and disabling pins (which should be possible, but seemed to somehow be broken).
+
+I think this Lab was exceptionally good for making sure that I understood the in's and out's of the [Reference Manual](https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf). In meticulously setting up everything necessary for the SPI bus, I likely read Chapter 40 at least twenty times to make sure I understood every connection, enabler, and register that configures the SPI on the STM32L432KCU. Although I still needed pointers and some aid along the way, I can confidently say that a lot of this project was based on new skills I acquired through this course, and I learned a lot of resilience and persistance of mind that I didn't have originally, which was one of my primary goals this semester.
 
 ### Conclusion
 
+In conclusion, I was successfully able to complete this lab with a working USART and SPI bus link, which communicates via an http link via a Wifi source and allows a user configuration capabilities and insight into a board that they may not be able to see. 
+
+As an additional little fun-thing, here's a video of my system running on wifi - although you can't see it, my board's LED at PB3 is turning on and off with the LED button, and I am viewing the SPI interactions using an oscilloscope's logic analyzer. Additionally, in order to help see the decimals better, I heat up the DS1722 at one point using my finger, and confirm that my (hand's) temperature is about 2ºC hotter than the rest of the room, which helps to explain why I'm always cold while programming in the digital lab.
+
+{{< video https://youtu.be/4HQGL0LhUzw >}}
