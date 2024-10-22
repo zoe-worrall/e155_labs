@@ -3,7 +3,6 @@ title: "The World of Epic the Musical"
 description: "How community makes success"
 author: "Zoe Worrall"
 date: "10/22/24"
-image: images/flying_trapeze.webp
 categories:
   - blogpost
 ---
