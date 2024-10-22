@@ -1,7 +1,7 @@
 ---
 title: Lab 6 Writeup
 author: Zoe Worrall  - zworrall@g.hmc.edu
-image: 
+image: images/config_read.png
 date: October 21, 2024
 
 format:
