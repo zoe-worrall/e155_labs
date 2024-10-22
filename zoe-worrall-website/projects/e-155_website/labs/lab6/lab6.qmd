@@ -189,7 +189,7 @@ The temperature read out is repeated 100 times, which is why the broader image o
 
 ::: {.g-col-6}
 
-![](images/reading_prog.png)
+![](images/running_prog.png)
 
 :::
 
