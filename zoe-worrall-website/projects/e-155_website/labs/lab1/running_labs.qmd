@@ -85,7 +85,7 @@ The first step you need to take to running code off your FPGA board is locating 
 
 ![](images/DragNDrop_Windows.png){width=40% fig-align="center"}
 
-4. Now that you are inside the program, you can run Kavi's Code. Type `program_fpga`, and if you are connected to your board correctly (make sure that you have the microUSB plugged into the FPGA and that the lights are turned on), the code that you have Synthesized will automatically upload onto the FPGA, and you'll see it running in real time. To double check and confirm, your terminal should resemble the image below (potentially without the colors)
+4. Now that you are inside the program, you can run Kavi's Code. Type `program_fpga`, and if you are connected to your board correctly (make sure that you have the microUSB plugged into the FPGA and that the lights are turned on), the code that you have Synthesized will automatically upload onto the FPGA, and you'll see it running in real time. To double check and confirm, your terminal should resemble the image below (potentially without the colors). Note that if you are like me, and using the Parallel's virtual Windows environment, if you had the Upduino linked to your parallel's page, you won't be able to actually load the code onto your board. Make sure to uncheck the Parallel's connection under the logo, `Devices > USB & Bluetooth > ...` to make sure that you can actually upload your code to your board.
 
 ![](images/Running_As_Intended_Windows.png)
 
