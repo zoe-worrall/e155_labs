@@ -23,13 +23,14 @@ categories:
 
 ### Introduction
 
-In this lab, a STM32L432KCU Microcontroller Unit (the MCU) was used to send and receive SPI signals to the Upduino FPGA board. Unfortunately, after troubleshooting on the interconnection between the working FPGA board and the MCU board for fourteen hours, I could not get my FPGA to communicate with my MCU using SPI, and as a result this lab has been left only at Proficiency Level.
+In this lab, a STM32L432KCU Microcontroller Unit (the MCU) was used to send and receive SPI signals to the Upduino FPGA board. After troubleshooting on the interconnection between the working FPGA board and the MCU board for fifty-three and a half hours, I finally checked my old version of the code with a new FPGA and found that the problem was my FPGA.
 
 This lab requires the user to implement the AES-128 (or the Advanced Encryption Standard) program. The complexity of this lab (should have been) mainly focused on the simulation aspects the encryption standard. As described in the following sections, this encryption standard follows a few definitive steps in order to convert an input string of 128 bits into a newly encoded form - similar to how we communicate with the internet now, with a given key a user can decode and encode a string however they want to prevent unwanted eyes viewing the initial message.
 
-Although I got the simulation working after a multitude of debugging efforts, I was unable to get the project working and communicating on hardware, unfortunately.
 
 ### AES-128's Structure
+
+AES-128 fundamentally encodes a system in such a way that the same key can be used to both encrypt and decrypt a file.
 
 To help myself write the functions necessary for this program, I began by drawing out all of the functions for the program so that I knew what to do within Lattice Radiant. There are, fundamentally 5 functions in this program, one of which uses two small "semi-functions", I will term them. These are listed below:
 
