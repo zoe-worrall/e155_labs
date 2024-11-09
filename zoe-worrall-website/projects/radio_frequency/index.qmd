@@ -4,6 +4,7 @@ listing:
   contents:
   - "/projects/designProjec1_Plotting.ipynb"
   - "/projects/designProject1_Analysis.ipynb"
+  - "/projects/Lab4_pythonfile.ipynb"
   sort: "date desc"
   type: default
   categories: true
