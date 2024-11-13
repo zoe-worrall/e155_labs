@@ -8,18 +8,34 @@ format:
     other-links:
       - text: "E155 Breadboard Adapter v4"
         href: https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf
-      - text: "Lab 7 Github Files"
-        href: https://github.com/zoe-worrall/e155_labs/tree/main/mcu/lab05
+      - text: "Lab 7 Github Files for FPGA"
+        href: https://github.com/zoe-worrall/e155_labs/tree/main/fpga/radiant_project/lab07_v5
+      - text: "Lab 7 Github Files for MCU"
+        href: https://github.com/zoe-worrall/e155_labs/tree/main/mcu/lab07_mcu
       - text: "STM32L432xx Reference Manual"
         href: https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
       - text: "STM32L432xx Datasheet"
         href: https://www.st.com/resource/en/datasheet/stm32l432kb.pdf
-        
+listing:
+  contents:
+  - image: "images/DS1Z_QuickPrint1.png"
+  - image: "images/DS1Z_QuickPrint2.png"
+  - image: "images/DS1Z_QuickPrint3.png"
+  - image: "images/DS1Z_QuickPrint4.png"
+  - image: "images/DS1Z_QuickPrint5.png"
+  - image: "images/DS1Z_QuickPrint6.png"
+  - image: "images/DS1Z_QuickPrint7.png"
+  - image: "images/DS1Z_QuickPrint8.png"
+  - image: "images/DS1Z_QuickPrint9.png"
+  - image: "images/DS1Z_QuickPrint10.png"
+  - image: "images/DS1Z_QuickPrint11.png"
+  - image: "images/DS1Z_QuickPrint12.png"
+  - image: "images/DS1Z_QuickPrint13.png"
 categories:
   - labreport
 ---
-## Lab 5: Interrupts
-*Hours Spent: 74 hours, Mapped with Toggl Track*
+## Lab 7: AES-128
+*Hours Spent: 97.5 hours, Mapped with Toggl Track*
 
 ### Introduction
 
@@ -44,28 +60,58 @@ To help myself write the functions necessary for this program, I began by drawin
 
 5. KeyExpansion -- Defines a new list of words based on a supplied key. For each "round" of the function, new words are created, which are used in other functions to adjust the state.
 
-Overall, these functions all come together as described in the pseudocode __.
+Overall, these functions all come together as described in the pseudocode found on page 12 of [the FIPS manual](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197-upd1.pdf), and can be seen in the image below @fig-pseudocode.
 
-I drew out each progran, and will go into furhter detail with each of the following diagram.
+![](images/pseudocode.png){#fig-pseudocode}
 
-![](images/diagram)
+I drew out each progran, and will go into further detail with each of the following diagram for my Radiant Software program.
+
+![](images/blockDiagram_v2.png)
 
 #### AddRoundKey(state, w_round)
 
+AddRoundKey is a function that is used to generate the list of words that will be used by the program to alter the incoming key; for each "round" that this cypher goes through, the program will generate a list of words that are dependent upon the initial key supplied to the program. 
 
+![](images/addRoundKey.png)
+
+These values are determined with the aid of KeyExpansion @sec-KeyExpansion.
 
 #### MixColumns(state)
 
-#### KeyExpansion()
+MixColumns is a fucntion that uses a XOR gate to combine a mix of rows combined with a pre-assorted list of values specific to the AES fucntion, in this case AES-128. This mixing is one of the special pieces of AES, as it is hard to decipher without the initial list of values (defined in @fig-definedVals)
 
-##### SubWord
+![](images/mixColsVals.png){#fig-definedVals}
+
+For a better perspective on what is happening, I have additionally put together a diagram below that shows the user how this is implemented.
+
+![](images/mixcolumns.png).
+
+#### KeyExpansion() {#sec-KeyExpansion}
+
+KeyExpansion uses XOR and a list of ten pre-defined hexadecimal values to change the incoming list of words and alter them for the use of "AddRoundKey".
+
+![](images/keyexpansion.png)
+
+Depending on the round in which the user finds themselves, KeyExpansion will determine the next word using a mix of rotating the words, substituting the words using the SubWord function ( @sec-SubWord ), and XORing values in a specific order.
+
+##### SubWord {#sec-SubWord}
+
+SubBytes is part of the magic of the AES Encryption algorithm, and allows the same value that goes into the matrix, when altered, to be entered again and return its original value. It alters it using something termed "sbox", where each value is multiplied or combined with some defined list of values. This matrix is extremely large, and as found in the lab, should be implemented using the system's RAM.
 
 ##### RotWord
 
+The RotWord function is implemented within a multitude of functions to rotate a row of the incoming word (termed as "state" within the pseudocode)
+
 #### ShiftRows(state)
+
+ShiftRows rotates the incoming word by a differing amount for each row, and as such completely rotates the entire matrix within the function.
+
+![](images/shiftrows.png)
 
 #### SubBytes()
 
+SubBytes uses the synchronized version of SubWord ( @sec-SubWord ) to perform the sbox transformation 
+![](images/subword.png)
 
 ### Final Setup
 
@@ -80,13 +126,52 @@ The test bench trials did function properly for both the SPI and the CORE; in or
 
 For each function, a set of vectors for the state input and state output were made, and the program was run to confirm that the right value was received. Since there are no such thing as edge cases in many of these functions, I didn't construct any fringe case scenarios for this problem.
 
+Testing FSM Testbenches can be seen below, with various zooms on the FSM.
+
+![](images/testbenches/fsm_testbench.png)
+![](images/testbenches/fsm_tb_2.png)
+![](images/testbenches/fsm_tb_3.png)
+![](images/testbenches/fsm_tb_4.png)
+![](images/testbenches/fsm_tb_round9.png)
+
+These FSM's can be further demonstrated to be working by viewing these in the SPI Tesbenches.
+
+![](images/testbenches/spi_tb.png)
+![](images/testbenches/spi_tb_2.png)
+![](images/testbenches/spi_tb_3.png)
+
+Once all the trials were confirmed to have been working within the testbench, I then moved on to implementing the design onto my actual machine.
+
 ### Hardware Trials
+
+The following schematic shows how the pin connects on the MCU and FPGA builds look.
+
+![](images/schematic_fpga.png)
 
 I faced considerable problems with the hardware set up for this lab; I believe that this was, in part, due to a problem with my PB4 and PB5, which are shorted together due to soldering issues. With my Lab 6, I was able to avoid this issue using PB12 and PA11, but due to some of the requisites of this lab, and the time constraints on my own part, I was unable to complete this aspect of the project.
 
+The majority of the time that was stocked up during this project was the time it took to troubleshoot my software to hardware connection. Compiled, three days worth of hours were spent trying to get the hardware working. Multiple variations of code were tried while troubleshooting:
+
+1. Initially, there was no "DONE" block in my FSM, and as a result my final program may have started in the wrong state. I fixed this by rewriting my FSM and making sure I included a state for each potential block.
+
+2. I was not initially using the right board, and instead had implemented my program with too few memory blocks; as a result, there were only 12 RAM buckets, and none of the sbox values could fit in them. When I upgraded, this issue was solved.
+
+3. I initially had 32 rather than 16 sbox modules initialized; this was because I had initialized an SubBytes register both in my fsm machine, to perform an operation before I entered rounds 1-9, and within my "rounds" function. I solved this by including a system of enables in all my functions, which allowed me to toggle what I was receiving out of "rounds", and resultantly use rounds for every single computation.
+
+In the end, however, the issue was not my code; I continued running into the same problem, where the SPI was outputting a variety of values, always the same, but varying with time (there were a total of three distinct SPI values that the FPGA was receiving from the MCU). However, when I programmed my code onto another person's FPGA, my code worked. I confirmed this on two FPGA boards, and confirmed that the software was correct, but something on my hardware was gone.
 
 ### Results and Discussion
 
+I learned a lot of resilience with this project; there were many points where I wanted to give up, but I would continue trying and experimenting. Even though the trial and error felt wasteful, especially close to the end, I believe I understand AES-128 far better than I ever would have if I had gotten it working on my first run through.
+
+As can be seen below, all of the data was able to be seen with the use of a logic analyzer; I have put these in the listings at the bottom of this page.
+
+Additionally, in the future I would like to examine my FPGA with a Logic Analyzer to troubleshoot what's wrong with the pins, and what may be shorted together on my board.
 
 ### Conclusion
 
+In conclusion, after many long hours, I can consider this Lab a success. I think that AES encryption and SPI communications will always be difficult to understand, but with this Lab I've gotten proof that I can succeed by working hard.
+
+{{< video https://youtube.com/shorts/uR9w-qRpS1g?feature=share >}}
+
+{{< video https://youtube.com/shorts/uR9w-qRpS1g >}}
