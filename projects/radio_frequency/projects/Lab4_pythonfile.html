@@ -459,7 +459,7 @@ R^2 linear fit of 5 MHz:   0.9494685301857625 with equation 7.165163632162302e-0
 </div>
 </div>
 </div>
-<div id="60d6a4ae-1268-48ee-8bef-fc3a67bcada8" class="cell" data-execution_count="111">
+<div id="60d6a4ae-1268-48ee-8bef-fc3a67bcada8" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Defining H20's readouts for 100 kHz current to Power and 5 MHz current to Power</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>curr_100_h20 <span class="op">=</span> {<span class="st">'Current (mA)'</span>:         [<span class="dv">45</span>, <span class="dv">42</span>,<span class="dv">40</span>,<span class="dv">37</span>,<span class="dv">35</span>,<span class="dv">32</span>,<span class="dv">30</span>,<span class="dv">25</span>,<span class="dv">23</span>,<span class="dv">22</span>,<span class="dv">20</span>,<span class="dv">18</span>,<span class="dv">16</span>], </span>
@@ -488,7 +488,7 @@ R^2 linear fit of 5 MHz:   0.9494685301857625 with equation 7.165163632162302e-0
 <div class="cell-output cell-output-stdout">
 <pre><code>[45, 42, 40, 37, 35, 32, 30, 25, 23, 22, 20, 18, 16]</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="111">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>[np.float64(0.24277759710476748),
  np.float64(0.22659242396444965),
  np.float64(0.21580230853757107),
@@ -610,7 +610,7 @@ R^2 linear fit of 5 MHz:   0.9494685301857625 with equation 7.165163632162302e-0
 <span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>df_h5_5M[<span class="st">'Denom'</span>] <span class="op">=</span> (radius<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>np.sqrt(<span class="dv">125</span>)</span>
 <span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>df_h5_5M[<span class="st">'Magnetic Field'</span>] <span class="op">=</span> df_h5_5M[<span class="st">'Num'</span>]<span class="op">/</span>denom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="1ffc83e0-93c5-4e23-828b-e046f1de456d" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-execution_count="25">
+<div id="1ffc83e0-93c5-4e23-828b-e046f1de456d" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>pow_hund <span class="op">=</span> df_h5_100k[<span class="st">'Power (dBm)'</span>]</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>pow_fivM <span class="op">=</span> df_h5_5M[<span class="st">'Power (dBm)'</span>]</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -693,7 +693,7 @@ R^2 linear fit of 5 MHz:   0.9494685301857625 with equation 7.165163632162302e-0
 </div>
 </div>
 </div>
-<div id="00ab2d6c-83c7-4eb7-9408-06fc56a99bd2" class="cell" data-execution_count="30">
+<div id="00ab2d6c-83c7-4eb7-9408-06fc56a99bd2" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>rsq_freq <span class="op">=</span> polyfit(np.log(df_h5_htp[<span class="st">'Frequency (MHz)'</span>]), df_h5_htp[<span class="st">'Power (dBm)'</span>], <span class="dv">1</span>)</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> df_h5_htp[<span class="st">'Frequency (MHz)'</span>]</span>
@@ -713,7 +713,7 @@ R^2 linear fit of 5 MHz:   0.9494685301857625 with equation 7.165163632162302e-0
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[30], line 1</span>
+Cell <span class="ansi-green-fg">In[28], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> rsq_freq <span style="color:rgb(98,98,98)">=</span> polyfit(np<span style="color:rgb(98,98,98)">.</span>log(<span class="ansi-yellow-bg">df_h5_htp</span>[<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">Frequency (MHz)</span><span style="color:rgb(175,0,0)">'</span>]), df_h5_htp[<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">Power (dBm)</span><span style="color:rgb(175,0,0)">'</span>], <span style="color:rgb(98,98,98)">1</span>)
 <span class="ansi-green-fg ansi-bold">      3</span> freq <span style="color:rgb(98,98,98)">=</span> df_h5_htp[<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">Frequency (MHz)</span><span style="color:rgb(175,0,0)">'</span>]
 <span class="ansi-green-fg ansi-bold">      4</span> powe <span style="color:rgb(98,98,98)">=</span> df_h5_htp[<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">Power (dBm)</span><span style="color:rgb(175,0,0)">'</span>]
@@ -722,7 +722,7 @@ Cell <span class="ansi-green-fg">In[30], line 1</span>
 </div>
 </div>
 </div>
-<div id="bdc7e608-327b-4bd7-8eb2-a5a4276c7e6f" class="cell" data-execution_count="31">
+<div id="bdc7e608-327b-4bd7-8eb2-a5a4276c7e6f" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h20_hundkhz[<span class="st">'Power (dBm)'</span>], df_h20_hundkhz[<span class="st">'Magnetic Field'</span>], <span class="st">'r.-'</span>, label<span class="op">=</span><span class="st">"H20 (25.7931046060842 uT)"</span>)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h10_100k[<span class="st">'Power (dBm)'</span>], df_h10_100k[<span class="st">'Magnetic Field'</span>], <span class="st">'b.-'</span>, label<span class="op">=</span><span class="st">"H10 (34.3908061414456 uT)"</span>)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h5_100k[<span class="st">'Power (dBm)'</span>], df_h5_100k[<span class="st">'Magnetic Field'</span>], <span class="st">'g.-'</span>, label<span class="op">=</span><span class="st">"H5 (34.3908061414456 uT)"</span>)</span>
@@ -740,7 +740,7 @@ Cell <span class="ansi-green-fg">In[30], line 1</span>
 </div>
 </div>
 </div>
-<div id="0643d054-2597-4238-b685-c0938f14206c" class="cell" data-execution_count="32">
+<div id="0643d054-2597-4238-b685-c0938f14206c" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h20_fiveMHz[<span class="st">'Power (dBm)'</span>], df_h20_fiveMHz[<span class="st">'Magnetic Field'</span>], <span class="st">'r.-'</span>, label<span class="op">=</span><span class="st">"H20 (25.7931046060842 uT)"</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h10_5M[<span class="st">'Power (dBm)'</span>], df_h10_5M[<span class="st">'Magnetic Field'</span>], <span class="st">'b.-'</span>, label<span class="op">=</span><span class="st">"H10 (34.3908061414456 uT)"</span>)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h5_5M[<span class="st">'Power (dBm)'</span>], df_h5_5M[<span class="st">'Magnetic Field'</span>], <span class="st">'g.-'</span>, label<span class="op">=</span><span class="st">"H5 (34.3908061414456 uT)"</span>)</span>
@@ -761,7 +761,7 @@ Cell <span class="ansi-green-fg">In[30], line 1</span>
 </section>
 <section id="part-2.4-plotting-all-frequency-vs-magnitudes-together-h20-h10-h5" class="level3">
 <h3 class="anchored" data-anchor-id="part-2.4-plotting-all-frequency-vs-magnitudes-together-h20-h10-h5">Part 2.4 Plotting all Frequency vs Magnitudes Together (H20, H10, H5)</h3>
-<div id="6b5311ca-467f-4b1d-a5aa-2c701e25544c" class="cell" data-execution_count="33">
+<div id="6b5311ca-467f-4b1d-a5aa-2c701e25544c" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">## the magnetic field for both of these is computed using a current = 6.4 mA (roughly)</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>current_v2 <span class="op">=</span> <span class="fl">6.4</span> <span class="op">*</span> np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">3</span>)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>num_magfield <span class="op">=</span> current_v2 <span class="op">*</span> numTurns <span class="op">*</span> <span class="dv">8</span> <span class="op">*</span> <span class="dv">4</span> <span class="op">*</span> np.pi <span class="op">*</span> np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">7</span>)</span>
@@ -778,7 +778,7 @@ Cell <span class="ansi-green-fg">In[30], line 1</span>
 <span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>df_h5_htp <span class="op">=</span> pd.DataFrame(h5_htp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="68d659c1-c1b5-4626-a882-315a89f1a118" class="cell" data-execution_count="34">
+<div id="68d659c1-c1b5-4626-a882-315a89f1a118" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h10_htp[<span class="st">'Frequency (MHz)'</span>], df_h10_htp[<span class="st">'Power (dBm)'</span>], <span class="st">'r.-'</span>, label<span class="op">=</span><span class="st">"H10"</span>)</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h5_htp[<span class="st">'Frequency (MHz)'</span>], df_h5_htp[<span class="st">'Power (dBm)'</span>], <span class="st">'b.-'</span>, label<span class="op">=</span><span class="st">"H5"</span>)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Frequency (MHz)"</span>)</span>
@@ -797,7 +797,7 @@ Cell <span class="ansi-green-fg">In[30], line 1</span>
 </section>
 <section id="part-3-graphing-the-magnetic-field-vs-distance-from-infinite-wire" class="level1">
 <h1>Part 3: Graphing the Magnetic Field vs Distance from Infinite Wire</h1>
-<div id="c4f66704-bcbc-4543-8d80-bea8e6425223" class="cell" data-execution_count="35">
+<div id="c4f66704-bcbc-4543-8d80-bea8e6425223" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Initial Data (too small)</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>infwire_h20_5M <span class="op">=</span> {<span class="st">'Distance (inches)'</span>:         [<span class="fl">0.0</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>], </span>
@@ -808,12 +808,12 @@ Cell <span class="ansi-green-fg">In[30], line 1</span>
 <span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'Power (dBm)'</span>: [<span class="op">-</span><span class="fl">69.3</span>, <span class="op">-</span><span class="dv">83</span>, <span class="op">-</span><span class="dv">90</span>]}</span>
 <span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>df_infwire_h20_100k <span class="op">=</span> pd.DataFrame(infwire_h20_100k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="59131be4-b497-48f9-9b55-2e82289bb461" class="cell" data-execution_count="36">
+<div id="59131be4-b497-48f9-9b55-2e82289bb461" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_infwire_h20_5M[<span class="st">'Distance (inches)'</span>], df_infwire_h20_5M[<span class="st">'Power (dBm)'</span>], <span class="st">'ro-'</span>)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df_infwire_h20_100k[<span class="st">'Distance (inches)'</span>], df_infwire_h20_100k[<span class="st">'Power (dBm)'</span>], <span class="st">'bo-'</span>)</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Distance (inches)"</span>)</span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power (dBm)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>Text(0, 0.5, 'Power (dBm)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -826,8 +826,8 @@ Cell <span class="ansi-green-fg">In[30], line 1</span>
 </div>
 <section id="graphing-with-more-datapoints-november-4" class="level4">
 <h4 class="anchored" data-anchor-id="graphing-with-more-datapoints-november-4">Graphing With More Datapoints (November 4)</h4>
-<div id="0f2174a4-445e-4248-a556-4e91575a771e" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>inf_h20_5M <span class="op">=</span> {<span class="st">'cm'</span>:    [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">30</span>],</span>
+<div id="0f2174a4-445e-4248-a556-4e91575a771e" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>inf_h20_5M <span class="op">=</span> {<span class="st">'cm'</span>:    [<span class="dv">0</span>,        <span class="dv">1</span>,    <span class="dv">2</span>,    <span class="dv">3</span>,    <span class="dv">4</span>,    <span class="dv">5</span>,   <span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">30</span>],</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">'power'</span>: [<span class="op">-</span><span class="fl">36.2</span>,<span class="op">-</span><span class="fl">45.0</span>,<span class="op">-</span><span class="fl">51.6</span>,<span class="op">-</span><span class="fl">55.8</span>,<span class="op">-</span><span class="fl">60.5</span>,<span class="op">-</span><span class="fl">63.7</span>,<span class="op">-</span><span class="fl">72.5</span>,<span class="op">-</span><span class="fl">76.9</span>,<span class="op">-</span><span class="dv">77</span>,<span class="op">-</span><span class="dv">77</span>,<span class="op">-</span><span class="fl">76.8</span>]</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>             }</span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -843,7 +843,7 @@ Cell <span class="ansi-green-fg">In[30], line 1</span>
 <span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>df_inf_h20_100k <span class="op">=</span> pd.DataFrame(inf_h20_100k)</span>
 <span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>df_inf_h20_500 <span class="op">=</span> pd.DataFrame(inf_h20_500k)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="32ec0198-f87c-4dfd-a961-091c40dd8bd1" class="cell" data-scrolled="true" data-execution_count="38">
+<div id="32ec0198-f87c-4dfd-a961-091c40dd8bd1" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_inf_h20_5M[<span class="st">'cm'</span>], df_inf_h20_5M[<span class="st">'power'</span>], <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"5 MHz"</span>)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df_inf_h20_100k[<span class="st">'cm'</span>], df_inf_h20_100k[<span class="st">'power'</span>], <span class="st">'b.-'</span>, label<span class="op">=</span><span class="st">"100 kHz"</span>)</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>plt.plot(df_inf_h20_500[<span class="st">'cm'</span>], df_inf_h20_500[<span class="st">'power'</span>], <span class="st">'go-'</span>, label<span class="op">=</span><span class="st">"500 kHz"</span>)</span>
@@ -858,27 +858,39 @@ Cell <span class="ansi-green-fg">In[30], line 1</span>
 </div>
 </div>
 </div>
-</section>
-<section id="graphing-odd-behavior-in-the-e-field" class="level3">
-<h3 class="anchored" data-anchor-id="graphing-odd-behavior-in-the-e-field">Graphing Odd Behavior in the E-Field</h3>
-<div id="e4a95414-516a-4785-a02e-022d7e48d409" class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>e_field_VtoP_075_cm_28M <span class="op">=</span> {<span class="st">'voltage'</span>:    [<span class="fl">0.25</span>, <span class="fl">0.46</span>, <span class="fl">0.67</span>, <span class="fl">0.9</span>, <span class="fl">1.13</span>, <span class="fl">1.35</span>, <span class="fl">1.6</span>, <span class="fl">1.82</span>, <span class="fl">2.04</span>, <span class="fl">2.24</span>],</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">'power'</span>: [<span class="op">-</span><span class="fl">53.8</span>, <span class="op">-</span><span class="fl">46.8</span>, <span class="op">-</span><span class="fl">43.7</span>, <span class="op">-</span><span class="fl">41.2</span>, <span class="op">-</span><span class="fl">39.21</span>, <span class="op">-</span><span class="fl">37.6</span>, <span class="op">-</span><span class="fl">36.3</span>, <span class="op">-</span><span class="fl">35.12</span>, <span class="op">-</span><span class="fl">34.06</span>, <span class="op">-</span><span class="fl">32.7</span>]</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>             }</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.174 V</span></span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>e_field_ftoP_075cm_0_174V <span class="op">=</span> {<span class="st">'frequency'</span>:    [<span class="dv">38</span>, <span class="dv">37</span>, <span class="dv">36</span>, <span class="dv">35</span>, <span class="dv">34</span>, <span class="dv">33</span>, <span class="dv">32</span>, <span class="dv">31</span>, <span class="dv">30</span>],</span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>              <span class="st">'power'</span>: [<span class="op">-</span><span class="dv">42</span>, <span class="op">-</span><span class="dv">42</span>, <span class="op">-</span><span class="dv">39</span>, <span class="op">-</span><span class="dv">37</span>, <span class="op">-</span><span class="dv">40</span>, <span class="op">-</span><span class="dv">42</span>, <span class="op">-</span><span class="dv">48</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="fl">52.6</span>]</span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>             }</span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>df_e_field_VtoP_075_cm_28M <span class="op">=</span> pd.DataFrame(e_field_VtoP_075_cm_28M) </span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>df_e_field_ftoP_075cm_0_174V<span class="op">=</span> pd.DataFrame(e_field_ftoP_075cm_0_174V)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="182ad473-d3d3-4173-a3bf-9059d91f770c" class="cell" data-execution_count="95">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">## plot what the magnetic field vs distance looks like</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>pow_fivM <span class="op">=</span> df_h20_fiveMHz[<span class="st">'Power (dBm)'</span>]</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>mag_fivM <span class="op">=</span> df_h20_fiveMHz[<span class="st">'Magnetic Field'</span>] <span class="co"># Tesla</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>rsp_fivemhz <span class="op">=</span> polyfit(pow_fivM,np.log(mag_fivM), <span class="dv">1</span>)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>interc <span class="op">=</span> rsp_fivemhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>]</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>slopes <span class="op">=</span> rsp_fivemhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>log_magvspow <span class="op">=</span> interc <span class="op">+</span> slopes<span class="op">*</span>df_h20_fiveMHz[<span class="st">'Power (dBm)'</span>]</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>plt.plot(pow_fivM, mag_fivM)</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>plt.plot(pow_fivM, np.exp(log_magvspow))</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.plot(df_inf_h20_5M['cm'], mag_field_vs_cm, 'ro-', label="H20")</span></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.title("Magnetic Field (Tesla) vs Distance (cm) of H20 Probe")</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.xlabel("Distance (cm)")</span></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.ylabel("Magnetic Field (Tesla)")</span></span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.legend()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab4_pythonfile_files/figure-html/cell-40-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<div id="147a4178-95f7-415f-8126-dc757ae3de8c" class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_VtoP_075_cm_28M[<span class="st">'voltage'</span>]<span class="op">/</span><span class="fl">0.075</span>, df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"28 MHz, d=0.75cm"</span>)</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Electric Field (V/m)"</span>)</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power (dBm)"</span>)</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Power vs Electric Field Plot"</span>)</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="4418814c-4211-46b8-86be-2bd6cf30fdd2" class="cell" data-execution_count="96">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>log_magtocm <span class="op">=</span> interc <span class="op">+</span> slopes<span class="op">*</span>df_inf_h20_5M[<span class="st">'power'</span>]</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>plt.plot(df_inf_h20_5M[<span class="st">'cm'</span>], np.exp(log_magtocm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -887,34 +899,53 @@ Cell <span class="ansi-green-fg">In[30], line 1</span>
 </div>
 </div>
 </div>
-<div id="42494863-a505-41fe-8548-67dcc59d3f8c" class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_VtoP_075_cm_28M[<span class="st">'voltage'</span>]<span class="op">/</span><span class="fl">0.075</span>, df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"28 MHz, d=0.75cm"</span>)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Electric Field (V/m)"</span>)</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power (dBm)"</span>)</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Power vs Electric Field Plot"</span>)</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">"log"</span>)</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Lab4_pythonfile_files/figure-html/cell-42-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div id="6c4bac71-13db-46a2-9a69-9264daa0a8b3" class="cell" data-execution_count="144">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">## calculate the anticipated disipation if we decrease from r: keep in mind that "0" is where the edge of the scope is next</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co">##   to the wire, i.e. @ 0 the system is actually about 10 mm from the wire.</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># takes in the starting power and just reduces it depending on r</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> getMagField_5M(distance_m, current_0):</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    num <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> np.pi <span class="op">*</span> np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">7</span>) <span class="op">*</span> current_0</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    denom <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> distance_m</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> num <span class="op">/</span> denom</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="co"># radii - list of different potential radius r</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="co"># list1 -- the magnetic field list that we're comparing</span></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> findClosestMatch(radii, list1):</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>    min_rad<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>    min_diff<span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> rad <span class="kw">in</span> radii:</span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>        denom <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> np.pi <span class="op">*</span> np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">7</span>)</span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>        num <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> rad <span class="op">*</span> np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">3</span>) <span class="op">*</span> magneticField_0</span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>        curr_0 <span class="op">=</span> num<span class="op">/</span>denom</span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>        mag_expected <span class="op">=</span> getMagField_5M(df_inf_h20_5M[<span class="st">'cm'</span>]<span class="op">*</span><span class="fl">0.01</span>, curr_0)</span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>        diff <span class="op">=</span> np.<span class="bu">abs</span>(np.<span class="bu">sum</span>(list1 <span class="op">-</span> mag_expected))</span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (diff <span class="op">&lt;</span> min_diff):</span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>            min_rad <span class="op">=</span> rad</span>
+<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a>            min_diff <span class="op">=</span> diff</span>
+<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> min_rad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-<div id="866f6f47-3f28-4805-8587-30b1b0165e64" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>df_e_field_VtoP_075_cm_28M[<span class="st">'e_field'</span>] <span class="op">=</span> df_e_field_VtoP_075_cm_28M[<span class="st">'voltage'</span>]<span class="op">/</span><span class="fl">0.075</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>rsq_freq <span class="op">=</span> polyfit(df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], np.log(df_e_field_VtoP_075_cm_28M[<span class="st">'e_field'</span>]), <span class="dv">1</span>)</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>slope <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>] <span class="co">## slope for the np.log(freq)</span></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>interc <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="co">## slope for the np.log(freq)</span></span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], np.exp(interc <span class="op">+</span> slope<span class="op">*</span>df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>]), <span class="st">'r.-'</span>, label<span class="op">=</span><span class="st">"Fit Line"</span>)</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], df_e_field_VtoP_075_cm_28M[<span class="st">'e_field'</span>], <span class="st">'b.-'</span>, label<span class="op">=</span><span class="st">"Original Function"</span>)</span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"If we wanted to get a dB of -18 dB, "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="df7d4cb5-343a-482d-a0f0-c8118e0546dc" class="cell" data-execution_count="149">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>magneticField_0 <span class="op">=</span> np.exp(log_magtocm[<span class="dv">1</span>])</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>radii <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(findClosestMatch(radii, np.exp(log_magtocm[<span class="dv">1</span>:])))</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>denom <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> np.pi <span class="op">*</span> np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">7</span>)</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>num <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="fl">8.238238238238239</span> <span class="op">*</span> np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">3</span>) <span class="op">*</span> magneticField_0</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>curr_0 <span class="op">=</span> num<span class="op">/</span>denom</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>mag_expected <span class="op">=</span> getMagField_5M(df_inf_h20_5M[<span class="st">'cm'</span>]<span class="op">*</span><span class="fl">0.01</span>, curr_0)</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>plt.plot(df_inf_h20_5M[<span class="st">'cm'</span>][<span class="dv">1</span>:], mag_expected[<span class="dv">1</span>:], <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"Expected using Magnetic Field Equation"</span>)</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>plt.plot(df_inf_h20_5M[<span class="st">'cm'</span>][<span class="dv">1</span>:], np.exp(log_magtocm)[<span class="dv">1</span>:], <span class="st">'bo-'</span>, label<span class="op">=</span><span class="st">"Actual Magnetic Field"</span>)</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Distance [cm]"</span>)</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Magnetic Field [Tesla]"</span>)</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Magnetic Field vs Distance, Expected and Actual"</span>)</span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>If we wanted to get a dB of -18 dB, </code></pre>
+<pre><code>8.238238238238239</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -924,46 +955,71 @@ Cell <span class="ansi-green-fg">In[30], line 1</span>
 </div>
 </div>
 </div>
-<div id="e41e5504-1c8f-48d4-97d2-2e53daec800c" class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>df_e_field_VtoP_075_cm_28M[<span class="st">'e_field'</span>] <span class="op">=</span> df_e_field_VtoP_075_cm_28M[<span class="st">'voltage'</span>]<span class="op">/</span><span class="fl">0.075</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>rsq_freq <span class="op">=</span> polyfit(df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], np.log(df_e_field_VtoP_075_cm_28M[<span class="st">'e_field'</span>]), <span class="dv">1</span>)</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>slope <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>] <span class="co">## slope for the np.log(freq)</span></span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>interc <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="co">## slope for the np.log(freq)</span></span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], interc <span class="op">+</span> slope<span class="op">*</span>df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], <span class="st">'r.-'</span>, label<span class="op">=</span><span class="st">"Fit Line"</span>)</span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], np.log(df_e_field_VtoP_075_cm_28M[<span class="st">'e_field'</span>]), <span class="st">'b.-'</span>, label<span class="op">=</span><span class="st">"Original Function"</span>)</span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Power [dBm]"</span>)</span>
-<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Log of Electric Field [ log(V/m) ]"</span>)</span>
-<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>e_field_18_9_dB <span class="op">=</span> np.exp(interc <span class="op">+</span> slope<span class="op">*</span>(<span class="op">-</span><span class="fl">18.9</span>))</span>
-<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"If we wanted to get a dB of -18 dB, we would need an electric field of </span><span class="sc">{</span>e_field_18_9_dB<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>If we wanted to get a dB of -18 dB, we would need an electric field of 136.47394732535687</code></pre>
+</section>
+<section id="graphing-odd-behavior-in-the-e-field" class="level3">
+<h3 class="anchored" data-anchor-id="graphing-odd-behavior-in-the-e-field">Graphing Odd Behavior in the E-Field</h3>
+<div id="e4a95414-516a-4785-a02e-022d7e48d409" class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>e_field_VtoP_075_cm_28M <span class="op">=</span> {<span class="st">'voltage'</span>:    [<span class="fl">0.25</span>, <span class="fl">0.46</span>, <span class="fl">0.67</span>, <span class="fl">0.9</span>, <span class="fl">1.13</span>, <span class="fl">1.35</span>, <span class="fl">1.6</span>, <span class="fl">1.82</span>, <span class="fl">2.04</span>, <span class="fl">2.24</span>],</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">'power'</span>: [<span class="op">-</span><span class="fl">53.8</span>, <span class="op">-</span><span class="fl">46.8</span>, <span class="op">-</span><span class="fl">43.7</span>, <span class="op">-</span><span class="fl">41.2</span>, <span class="op">-</span><span class="fl">39.21</span>, <span class="op">-</span><span class="fl">37.6</span>, <span class="op">-</span><span class="fl">36.3</span>, <span class="op">-</span><span class="fl">35.12</span>, <span class="op">-</span><span class="fl">34.06</span>, <span class="op">-</span><span class="fl">32.7</span>]</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>             }</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.174 V</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>e_field_ftoP_075cm_0_174V <span class="op">=</span> {<span class="st">'frequency'</span>:    [<span class="dv">38</span>, <span class="dv">37</span>, <span class="dv">36</span>, <span class="dv">35</span>, <span class="dv">34</span>, <span class="dv">33</span>, <span class="dv">32</span>, <span class="dv">31</span>, <span class="dv">30</span>],</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>              <span class="st">'power'</span>: [<span class="op">-</span><span class="dv">42</span>, <span class="op">-</span><span class="dv">42</span>, <span class="op">-</span><span class="dv">39</span>, <span class="op">-</span><span class="dv">37</span>, <span class="op">-</span><span class="dv">40</span>, <span class="op">-</span><span class="dv">42</span>, <span class="op">-</span><span class="dv">48</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="fl">52.6</span>]</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>             }</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>df_e_field_VtoP_075_cm_28M <span class="op">=</span> pd.DataFrame(e_field_VtoP_075_cm_28M) </span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>df_e_field_ftoP_075cm_0_174V<span class="op">=</span> pd.DataFrame(e_field_ftoP_075cm_0_174V)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Lab4_pythonfile_files/figure-html/cell-44-output-2.png" class="img-fluid figure-img"></p>
-</figure>
+<div id="147a4178-95f7-415f-8126-dc757ae3de8c" class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_VtoP_075_cm_28M[<span class="st">'voltage'</span>]<span class="op">/</span><span class="fl">0.075</span>, df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"28 MHz, d=0.75cm"</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Electric Field (V/m)"</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power (dBm)"</span>)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Power vs Electric Field Plot"</span>)</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-<div id="668265ab-b15d-47f6-992b-d27d2d1b4e5e" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_ftoP_075cm_0_174V[<span class="st">'frequency'</span>], df_e_field_ftoP_075cm_0_174V[<span class="st">'power'</span>], <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"0.174 V, d=0.75cm"</span>)</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Frequency (MHz)"</span>)</span>
+<div id="42494863-a505-41fe-8548-67dcc59d3f8c" class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_VtoP_075_cm_28M[<span class="st">'voltage'</span>]<span class="op">/</span><span class="fl">0.075</span>, df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"28 MHz, d=0.75cm"</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Electric Field (V/m)"</span>)</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power (dBm)"</span>)</span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Electric Probe Power vs Frequency Plot"</span>)</span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Lab4_pythonfile_files/figure-html/cell-45-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Power vs Electric Field Plot"</span>)</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">"log"</span>)</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="866f6f47-3f28-4805-8587-30b1b0165e64" class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>df_e_field_VtoP_075_cm_28M[<span class="st">'e_field'</span>] <span class="op">=</span> df_e_field_VtoP_075_cm_28M[<span class="st">'voltage'</span>]<span class="op">/</span><span class="fl">0.075</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>rsq_freq <span class="op">=</span> polyfit(df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], np.log(df_e_field_VtoP_075_cm_28M[<span class="st">'e_field'</span>]), <span class="dv">1</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>slope <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>] <span class="co">## slope for the np.log(freq)</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>interc <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="co">## slope for the np.log(freq)</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], np.exp(interc <span class="op">+</span> slope<span class="op">*</span>df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>]), <span class="st">'r.-'</span>, label<span class="op">=</span><span class="st">"Fit Line"</span>)</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], df_e_field_VtoP_075_cm_28M[<span class="st">'e_field'</span>], <span class="st">'b.-'</span>, label<span class="op">=</span><span class="st">"Original Function"</span>)</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"If we wanted to get a dB of -18 dB, "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="e41e5504-1c8f-48d4-97d2-2e53daec800c" class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>df_e_field_VtoP_075_cm_28M[<span class="st">'e_field'</span>] <span class="op">=</span> df_e_field_VtoP_075_cm_28M[<span class="st">'voltage'</span>]<span class="op">/</span><span class="fl">0.075</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>rsq_freq <span class="op">=</span> polyfit(df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], np.log(df_e_field_VtoP_075_cm_28M[<span class="st">'e_field'</span>]), <span class="dv">1</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>slope <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>] <span class="co">## slope for the np.log(freq)</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>interc <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="co">## slope for the np.log(freq)</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], interc <span class="op">+</span> slope<span class="op">*</span>df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], <span class="st">'r.-'</span>, label<span class="op">=</span><span class="st">"Fit Line"</span>)</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_VtoP_075_cm_28M[<span class="st">'power'</span>], np.log(df_e_field_VtoP_075_cm_28M[<span class="st">'e_field'</span>]), <span class="st">'b.-'</span>, label<span class="op">=</span><span class="st">"Original Function"</span>)</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Power [dBm]"</span>)</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Log of Electric Field [ log(V/m) ]"</span>)</span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>e_field_18_9_dB <span class="op">=</span> np.exp(interc <span class="op">+</span> slope<span class="op">*</span>(<span class="op">-</span><span class="fl">18.9</span>))</span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"If we wanted to get a dB of -18 dB, we would need an electric field of </span><span class="sc">{</span>e_field_18_9_dB<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="668265ab-b15d-47f6-992b-d27d2d1b4e5e" class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_e_field_ftoP_075cm_0_174V[<span class="st">'frequency'</span>], df_e_field_ftoP_075cm_0_174V[<span class="st">'power'</span>], <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"0.174 V, d=0.75cm"</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Frequency (MHz)"</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power (dBm)"</span>)</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Electric Probe Power vs Frequency Plot"</span>)</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -971,105 +1027,79 @@ Cell <span class="ansi-green-fg">In[30], line 1</span>
 <h1>Part 4: Graphing</h1>
 <section id="calculating-the-polyfit-for-the-frequency-to-magnetic-field-data" class="level2">
 <h2 class="anchored" data-anchor-id="calculating-the-polyfit-for-the-frequency-to-magnetic-field-data">Calculating the Polyfit for the Frequency to Magnetic Field Data</h2>
-<div id="ee7fa8fa-287f-4ff4-b028-d79777b2bc33" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> [i<span class="op">*</span>np.<span class="bu">pow</span>(<span class="dv">10</span>, <span class="dv">6</span>) <span class="cf">for</span> i <span class="kw">in</span> df_h5_htp[<span class="st">'Frequency (MHz)'</span>]]</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>powe <span class="op">=</span> df_h5_htp[<span class="st">'Power (dBm)'</span>]</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>rsq_freq <span class="op">=</span> polyfit(np.log(freq), powe, <span class="dv">1</span>)</span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Slope </span><span class="sc">{</span>rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>slope <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>] <span class="co">## slope for the np.log(freq)</span></span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>matching <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(freq)</span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>add_pts_xaxis <span class="op">=</span> [freq[<span class="dv">0</span>], <span class="dv">28</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="dv">10</span>, <span class="dv">6</span>)]</span>
-<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>add_pts <span class="op">=</span> [matching[<span class="dv">0</span>], rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="dv">28</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="dv">10</span>, <span class="dv">6</span>))]</span>
-<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>plt.plot(freq, powe, label<span class="op">=</span><span class="st">"Original Data"</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a>plt.plot(freq, matching, <span class="st">'--'</span>, label<span class="op">=</span><span class="st">"Line of Best Fit"</span>, linewidth<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a>plt.plot(add_pts_xaxis[<span class="dv">1</span>], add_pts[<span class="dv">1</span>], <span class="st">'go'</span>, label<span class="op">=</span><span class="st">"Estimated Location of dB for 28 MHz"</span>)</span>
-<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Frequency (MHz)"</span>)</span>
-<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power"</span>)</span>
-<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">"log"</span>)</span>
-<span id="cb56-20"><a href="#cb56-20" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Frequency vs Power for H5 = 30 uT"</span>)</span>
-<span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a>pow_hund <span class="op">=</span> df_h5_100k[<span class="st">'Power (dBm)'</span>]</span>
-<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a>pow_fivM <span class="op">=</span> df_h5_5M[<span class="st">'Power (dBm)'</span>]</span>
-<span id="cb56-25"><a href="#cb56-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-26"><a href="#cb56-26" aria-hidden="true" tabindex="-1"></a>mag_hund <span class="op">=</span> df_h5_100k[<span class="st">'Magnetic Field'</span>]</span>
-<span id="cb56-27"><a href="#cb56-27" aria-hidden="true" tabindex="-1"></a>mag_fivM <span class="op">=</span> df_h5_5M[<span class="st">'Magnetic Field'</span>]</span>
-<span id="cb56-28"><a href="#cb56-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-29"><a href="#cb56-29" aria-hidden="true" tabindex="-1"></a>rsq_hundkhz <span class="op">=</span> polyfit(np.log(mag_hund),pow_hund, <span class="dv">1</span>)</span>
-<span id="cb56-30"><a href="#cb56-30" aria-hidden="true" tabindex="-1"></a>rsp_fivemhz <span class="op">=</span> polyfit(np.log(mag_hund), pow_fivM, <span class="dv">1</span>)</span>
-<span id="cb56-31"><a href="#cb56-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-32"><a href="#cb56-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Point at 28 MHz occurs at </span><span class="sc">{</span>rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np<span class="sc">.</span>log(<span class="dv">28</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="dv">10</span>, <span class="dv">6</span>))<span class="sc">}</span><span class="ss">dB"</span>)</span>
-<span id="cb56-33"><a href="#cb56-33" aria-hidden="true" tabindex="-1"></a>dB_30uT_at_28M <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="dv">28</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Slope 7.252164121714848
-Point at 28 MHz occurs at -8.545548900687791dB</code></pre>
+<div id="ee7fa8fa-287f-4ff4-b028-d79777b2bc33" class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> [i<span class="op">*</span>np.<span class="bu">pow</span>(<span class="dv">10</span>, <span class="dv">6</span>) <span class="cf">for</span> i <span class="kw">in</span> df_h5_htp[<span class="st">'Frequency (MHz)'</span>]]</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>powe <span class="op">=</span> df_h5_htp[<span class="st">'Power (dBm)'</span>]</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>rsq_freq <span class="op">=</span> polyfit(np.log(freq), powe, <span class="dv">1</span>)</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Slope </span><span class="sc">{</span>rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>slope <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>] <span class="co">## slope for the np.log(freq)</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>matching <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(freq)</span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>add_pts_xaxis <span class="op">=</span> [freq[<span class="dv">0</span>], <span class="dv">28</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="dv">10</span>, <span class="dv">6</span>)]</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>add_pts <span class="op">=</span> [matching[<span class="dv">0</span>], rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="dv">28</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="dv">10</span>, <span class="dv">6</span>))]</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>plt.plot(freq, powe, label<span class="op">=</span><span class="st">"Original Data"</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>plt.plot(freq, matching, <span class="st">'--'</span>, label<span class="op">=</span><span class="st">"Line of Best Fit"</span>, linewidth<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>plt.plot(add_pts_xaxis[<span class="dv">1</span>], add_pts[<span class="dv">1</span>], <span class="st">'go'</span>, label<span class="op">=</span><span class="st">"Estimated Location of dB for 28 MHz"</span>)</span>
+<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Frequency (MHz)"</span>)</span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power"</span>)</span>
+<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">"log"</span>)</span>
+<span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Frequency vs Power for H5 = 30 uT"</span>)</span>
+<span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb59-22"><a href="#cb59-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-23"><a href="#cb59-23" aria-hidden="true" tabindex="-1"></a>pow_hund <span class="op">=</span> df_h5_100k[<span class="st">'Power (dBm)'</span>]</span>
+<span id="cb59-24"><a href="#cb59-24" aria-hidden="true" tabindex="-1"></a>pow_fivM <span class="op">=</span> df_h5_5M[<span class="st">'Power (dBm)'</span>]</span>
+<span id="cb59-25"><a href="#cb59-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-26"><a href="#cb59-26" aria-hidden="true" tabindex="-1"></a>mag_hund <span class="op">=</span> df_h5_100k[<span class="st">'Magnetic Field'</span>]</span>
+<span id="cb59-27"><a href="#cb59-27" aria-hidden="true" tabindex="-1"></a>mag_fivM <span class="op">=</span> df_h5_5M[<span class="st">'Magnetic Field'</span>]</span>
+<span id="cb59-28"><a href="#cb59-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-29"><a href="#cb59-29" aria-hidden="true" tabindex="-1"></a>rsq_hundkhz <span class="op">=</span> polyfit(np.log(mag_hund),pow_hund, <span class="dv">1</span>)</span>
+<span id="cb59-30"><a href="#cb59-30" aria-hidden="true" tabindex="-1"></a>rsp_fivemhz <span class="op">=</span> polyfit(np.log(mag_hund), pow_fivM, <span class="dv">1</span>)</span>
+<span id="cb59-31"><a href="#cb59-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-32"><a href="#cb59-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Point at 28 MHz occurs at </span><span class="sc">{</span>rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np<span class="sc">.</span>log(<span class="dv">28</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="dv">10</span>, <span class="dv">6</span>))<span class="sc">}</span><span class="ss">dB"</span>)</span>
+<span id="cb59-33"><a href="#cb59-33" aria-hidden="true" tabindex="-1"></a>dB_30uT_at_28M <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="dv">28</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Lab4_pythonfile_files/figure-html/cell-46-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="cc39b9b3-0dea-456a-9b6c-795bd691533c" class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pow_h5_hund</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co">#pow_h5_fivM</span></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co">#h5_mag_hund</span></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co">#h5_h10_fivM</span></span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>h5_hund_fit <span class="op">=</span> polyfit(pow_h5_hund, np.log(h5_mag_hund), <span class="dv">1</span>)</span>
-<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>h5_fivM_fit <span class="op">=</span> polyfit(pow_h5_fivM, np.log(h5_h10_fivM), <span class="dv">1</span>)</span>
-<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h5_hund_fit[<span class="st">'polynomial'</span>][<span class="dv">0</span>], <span class="st">", "</span>, h5_fivM_fit[<span class="st">'polynomial'</span>][<span class="dv">0</span>])</span>
-<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h5_hund_fit[<span class="st">'determination'</span>], <span class="st">", "</span>, h5_fivM_fit[<span class="st">'determination'</span>])</span>
-<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a>average_slope_h5_powToMagLog <span class="op">=</span> np.average([h5_hund_fit[<span class="st">'polynomial'</span>][<span class="dv">0</span>], h5_fivM_fit[<span class="st">'polynomial'</span>][<span class="dv">0</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>0.1148268500939353 ,  0.11662069036434657
-0.9999698355516419 ,  0.9949394608227764</code></pre>
-</div>
-</div>
-<div id="df00dd7d-64e1-43ca-a7c0-4c4d9024aade" class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the log magnitude</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(mag_hund), rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(mag_hund))</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(mag_hund), pow_hund)</span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>point69_tes <span class="op">=</span> np.log([<span class="fl">34.3908061414456</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">6</span>)])</span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>point69_db <span class="op">=</span> [rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>]<span class="op">+</span>rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="fl">34.3908061414456</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">6</span>))]</span>
-<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>point0_tes <span class="op">=</span> np.log([ np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">6</span>)]) <span class="co">#, df_h5_100k['Magnetic Field'][0]])</span></span>
-<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>point0_db <span class="op">=</span>  [ rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>]<span class="op">+</span>rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">6</span>))] <span class="co">#, df_h5_100k['Power (dBm)'][0]]</span></span>
+<div id="cc39b9b3-0dea-456a-9b6c-795bd691533c" class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pow_h5_hund</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co">#pow_h5_fivM</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co">#h5_mag_hund</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co">#h5_h10_fivM</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>h5_hund_fit <span class="op">=</span> polyfit(pow_h5_hund, np.log(h5_mag_hund), <span class="dv">1</span>)</span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>h5_fivM_fit <span class="op">=</span> polyfit(pow_h5_fivM, np.log(h5_h10_fivM), <span class="dv">1</span>)</span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h5_hund_fit[<span class="st">'polynomial'</span>][<span class="dv">0</span>], <span class="st">", "</span>, h5_fivM_fit[<span class="st">'polynomial'</span>][<span class="dv">0</span>])</span>
 <span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a>plt.plot(point69_tes, point69_db, <span class="st">'ro'</span>)</span>
-<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a>plt.plot(point0_tes, point0_db, <span class="st">'bo'</span>)</span>
-<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Log of Magnetic Field"</span>)</span>
-<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power"</span>)</span>
-<span id="cb60-15"><a href="#cb60-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Log Magnitude vs Power for H5 = 100 kHz"</span>)</span>
-<span id="cb60-16"><a href="#cb60-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-17"><a href="#cb60-17" aria-hidden="true" tabindex="-1"></a>expectedPower <span class="op">=</span> rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>]<span class="op">+</span>rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span> np.log (<span class="fl">34.3908061414456</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">6</span>))</span>
-<span id="cb60-18"><a href="#cb60-18" aria-hidden="true" tabindex="-1"></a>expectedPower0 <span class="op">=</span> rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>]<span class="op">+</span>rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">6</span>))</span>
-<span id="cb60-19"><a href="#cb60-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"With the given slope, we have expected power </span><span class="sc">{</span>expectedPower0<span class="sc">}</span><span class="ss">dB at 100kHz, which kinda matches the plots we're seeing"</span>)</span>
-<span id="cb60-20"><a href="#cb60-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-21"><a href="#cb60-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The slopes we're seeing are </span><span class="sc">{</span>rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>With the given slope, we have expected power -86.23373186547414dB at 100kHz, which kinda matches the plots we're seeing
-The slopes we're seeing are 8.708501841978626 and 34.078667276432874</code></pre>
+<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h5_hund_fit[<span class="st">'determination'</span>], <span class="st">", "</span>, h5_fivM_fit[<span class="st">'determination'</span>])</span>
+<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a>average_slope_h5_powToMagLog <span class="op">=</span> np.average([h5_hund_fit[<span class="st">'polynomial'</span>][<span class="dv">0</span>], h5_fivM_fit[<span class="st">'polynomial'</span>][<span class="dv">0</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Lab4_pythonfile_files/figure-html/cell-48-output-2.png" class="img-fluid figure-img"></p>
-</figure>
+<div id="df00dd7d-64e1-43ca-a7c0-4c4d9024aade" class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the log magnitude</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(mag_hund), rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(mag_hund))</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(mag_hund), pow_hund)</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>point69_tes <span class="op">=</span> np.log([<span class="fl">34.3908061414456</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">6</span>)])</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>point69_db <span class="op">=</span> [rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>]<span class="op">+</span>rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="fl">34.3908061414456</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">6</span>))]</span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>point0_tes <span class="op">=</span> np.log([ np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">6</span>)]) <span class="co">#, df_h5_100k['Magnetic Field'][0]])</span></span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>point0_db <span class="op">=</span>  [ rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>]<span class="op">+</span>rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">6</span>))] <span class="co">#, df_h5_100k['Power (dBm)'][0]]</span></span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>plt.plot(point69_tes, point69_db, <span class="st">'ro'</span>)</span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a>plt.plot(point0_tes, point0_db, <span class="st">'bo'</span>)</span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Log of Magnetic Field"</span>)</span>
+<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power"</span>)</span>
+<span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Log Magnitude vs Power for H5 = 100 kHz"</span>)</span>
+<span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-17"><a href="#cb61-17" aria-hidden="true" tabindex="-1"></a>expectedPower <span class="op">=</span> rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>]<span class="op">+</span>rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span> np.log (<span class="fl">34.3908061414456</span><span class="op">*</span>np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">6</span>))</span>
+<span id="cb61-18"><a href="#cb61-18" aria-hidden="true" tabindex="-1"></a>expectedPower0 <span class="op">=</span> rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>]<span class="op">+</span>rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(np.<span class="bu">pow</span>(<span class="fl">10.0</span>, <span class="op">-</span><span class="dv">6</span>))</span>
+<span id="cb61-19"><a href="#cb61-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"With the given slope, we have expected power </span><span class="sc">{</span>expectedPower0<span class="sc">}</span><span class="ss">dB at 100kHz, which kinda matches the plots we're seeing"</span>)</span>
+<span id="cb61-20"><a href="#cb61-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-21"><a href="#cb61-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The slopes we're seeing are </span><span class="sc">{</span>rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-<div id="c501a7c9-2135-4b98-a362-e39ad0fa61ef" class="cell" data-execution_count="102">
+<div id="c501a7c9-2135-4b98-a362-e39ad0fa61ef" class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With this in consideration, we know that we can now find the magnetic field for any given power. </span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We have a linear relationship to go from frequency to dB, and then a way to go from dB to magnetic field</span></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1087,128 +1117,111 @@ The slopes we're seeing are 8.708501841978626 and 34.078667276432874</code></pre
 <span id="cb62-15"><a href="#cb62-15" aria-hidden="true" tabindex="-1"></a><span class="co">#^ from dB to log(T)</span></span>
 <span id="cb62-16"><a href="#cb62-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-17"><a href="#cb62-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(log_uT_at_28M) <span class="co"># should be log(T)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>1.3169151965141683</code></pre>
 </div>
+<div id="69b9e694-db57-435a-b1cb-a1c17fe37ec3" class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>h5_hund_fit <span class="op">=</span> polyfit(pow_h5_hund, np.log(h5_mag_hund), <span class="dv">1</span>) <span class="co">## slope of log(Magnetic Field) = m(pow) + b</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>h5_fivM_fit <span class="op">=</span> polyfit(pow_h5_fivM, np.log(h5_h10_fivM), <span class="dv">1</span>)</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>points_28M_uT <span class="op">=</span> [np.log(<span class="fl">34.3908061414456</span><span class="op">*</span><span class="fl">1e-6</span>), log_uT_at_28M] <span class="co"># magnetic fields (in log(Teslas)</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>points_28M_dB <span class="op">=</span> [dB_30uT_at_28M, dB_at_28M]               <span class="co"># power (in dB)</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>h5_hund_logMag <span class="op">=</span> h5_hund_fit[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> h5_hund_fit[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.asarray(points_28M_dB) <span class="co"># in log(Tesla)</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>h5_fivM_logMag <span class="op">=</span> h5_fivM_fit[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> h5_fivM_fit[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.asarray(points_28M_dB) <span class="co"># in log(Tesla)</span></span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>plt.plot(points_28M_uT, points_28M_dB, <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"28 MHz"</span>) <span class="co"># plot the points for 28 M</span></span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(mag_hund), pow_hund, <span class="st">'bo-'</span>, label<span class="op">=</span><span class="st">"100 kHz"</span>)          <span class="co"># </span></span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(mag_fivM), pow_fivM, <span class="st">'go-'</span>, label<span class="op">=</span><span class="st">"5 MHz"</span>)</span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a>plt.plot(h5_hund_logMag, points_28M_dB, <span class="st">'bo--'</span>, label<span class="op">=</span><span class="st">"Expected 100 kHz"</span>, alpha<span class="op">=</span><span class="fl">0.25</span>) <span class="co"># plot the points for 100 kHz</span></span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a>plt.plot(h5_fivM_logMag, points_28M_dB, <span class="st">'go--'</span>, label<span class="op">=</span><span class="st">"Expected 5 MHz"</span>, alpha<span class="op">=</span><span class="fl">0.25</span>) <span class="co"># plot the points for 5 MHz</span></span>
+<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Log of Magnetic Field (H)"</span>)</span>
+<span id="cb63-19"><a href="#cb63-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power (dB)"</span>)</span>
+<span id="cb63-20"><a href="#cb63-20" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb63-21"><a href="#cb63-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-22"><a href="#cb63-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The Magnetic field at -8 dB is </span><span class="sc">{</span>log_uT_at_28M<span class="sc">:.2f}</span><span class="ss"> log(T)"</span>)</span>
+<span id="cb63-23"><a href="#cb63-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-24"><a href="#cb63-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"This corresponds with </span><span class="sc">{</span>np<span class="sc">.</span>exp(log_uT_at_28M)<span class="sc">}</span><span class="ss"> T"</span>)</span>
+<span id="cb63-25"><a href="#cb63-25" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb63-26"><a href="#cb63-26" aria-hidden="true" tabindex="-1"></a><span class="co">## graph the projected slopes of the lines to show what we'd expect to see</span></span>
+<span id="cb63-27"><a href="#cb63-27" aria-hidden="true" tabindex="-1"></a><span class="co"># magnetic field =      b                     +           m * pow</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="69b9e694-db57-435a-b1cb-a1c17fe37ec3" class="cell" data-execution_count="110">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>h5_hund_fit <span class="op">=</span> polyfit(pow_h5_hund, np.log(h5_mag_hund), <span class="dv">1</span>) <span class="co">## slope of log(Magnetic Field) = m(pow) + b</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>h5_fivM_fit <span class="op">=</span> polyfit(pow_h5_fivM, np.log(h5_h10_fivM), <span class="dv">1</span>)</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>points_28M_uT <span class="op">=</span> [np.log(<span class="fl">34.3908061414456</span><span class="op">*</span><span class="fl">1e-6</span>), log_uT_at_28M] <span class="co"># magnetic fields (in log(Teslas)</span></span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>points_28M_dB <span class="op">=</span> [dB_30uT_at_28M, dB_at_28M]               <span class="co"># power (in dB)</span></span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>h5_hund_logMag <span class="op">=</span> h5_hund_fit[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> h5_hund_fit[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.asarray(points_28M_dB) <span class="co"># in log(Tesla)</span></span>
-<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>h5_fivM_logMag <span class="op">=</span> h5_fivM_fit[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> h5_fivM_fit[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.asarray(points_28M_dB) <span class="co"># in log(Tesla)</span></span>
-<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>plt.plot(points_28M_uT, points_28M_dB, <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"28 MHz"</span>) <span class="co"># plot the points for 28 M</span></span>
-<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(mag_hund), pow_hund, <span class="st">'bo-'</span>, label<span class="op">=</span><span class="st">"100 kHz"</span>)          <span class="co"># </span></span>
-<span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(mag_fivM), pow_fivM, <span class="st">'go-'</span>, label<span class="op">=</span><span class="st">"5 MHz"</span>)</span>
-<span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-15"><a href="#cb64-15" aria-hidden="true" tabindex="-1"></a>plt.plot(h5_hund_logMag, points_28M_dB, <span class="st">'bo--'</span>, label<span class="op">=</span><span class="st">"Expected 100 kHz"</span>, alpha<span class="op">=</span><span class="fl">0.25</span>) <span class="co"># plot the points for 100 kHz</span></span>
-<span id="cb64-16"><a href="#cb64-16" aria-hidden="true" tabindex="-1"></a>plt.plot(h5_fivM_logMag, points_28M_dB, <span class="st">'go--'</span>, label<span class="op">=</span><span class="st">"Expected 5 MHz"</span>, alpha<span class="op">=</span><span class="fl">0.25</span>) <span class="co"># plot the points for 5 MHz</span></span>
-<span id="cb64-17"><a href="#cb64-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-18"><a href="#cb64-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Log of Magnetic Field (H)"</span>)</span>
-<span id="cb64-19"><a href="#cb64-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power (dB)"</span>)</span>
-<span id="cb64-20"><a href="#cb64-20" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb64-21"><a href="#cb64-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-22"><a href="#cb64-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The Magnetic field at -8 dB is </span><span class="sc">{</span>log_uT_at_28M<span class="sc">:.2f}</span><span class="ss"> log(T)"</span>)</span>
-<span id="cb64-23"><a href="#cb64-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-24"><a href="#cb64-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"This corresponds with </span><span class="sc">{</span>np<span class="sc">.</span>exp(log_uT_at_28M)<span class="sc">}</span><span class="ss"> T"</span>)</span>
-<span id="cb64-25"><a href="#cb64-25" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb64-26"><a href="#cb64-26" aria-hidden="true" tabindex="-1"></a><span class="co">## graph the projected slopes of the lines to show what we'd expect to see</span></span>
-<span id="cb64-27"><a href="#cb64-27" aria-hidden="true" tabindex="-1"></a><span class="co"># magnetic field =      b                     +           m * pow</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>The Magnetic field at -8 dB is 1.32 log(T)
-This corresponds with 3.731891450869156 T</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Lab4_pythonfile_files/figure-html/cell-50-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="77086122-30c1-41c4-854c-67fd6ddeb1a0" class="cell" data-execution_count="116">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>uT_at_28M <span class="op">=</span> np.exp(log_uT_at_28M)</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>resistance <span class="op">=</span> (<span class="dv">160</span>) <span class="op">/</span> (uT_at_28M)</span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(resistance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>42.873701474552824</code></pre>
-</div>
+<div id="77086122-30c1-41c4-854c-67fd6ddeb1a0" class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>uT_at_28M <span class="op">=</span> np.exp(log_uT_at_28M)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>resistance <span class="op">=</span> (<span class="dv">160</span>) <span class="op">/</span> (uT_at_28M)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(resistance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="e7856dbc-201c-4ba7-ad75-469f24f78dbb" class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>db_100k <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="fl">0.1</span>)</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>db_5M <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="dv">5</span>)</span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>db_100_for_neg69 <span class="op">=</span> rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="dv">69</span>)</span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>db_5M_for_neg69 <span class="op">=</span> rsp_fivemhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsp_fivemhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="dv">69</span>)</span>
-<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"db_100k = </span><span class="sc">{</span>db_100k<span class="sc">}</span><span class="ss">dB, and db_5M = </span><span class="sc">{</span>db_5M<span class="sc">}</span><span class="ss">dB"</span>)</span>
-<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"For the actual plots of H5: 100 kHz has 69uT at </span><span class="sc">{</span>db_100_for_neg69<span class="sc">}</span><span class="ss">, and 5 MHz has 69uT at </span><span class="sc">{</span>db_5M_for_neg69<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>db_100k <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="fl">0.1</span>)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>db_5M <span class="op">=</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_freq[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="dv">5</span>)</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>db_100_for_neg69 <span class="op">=</span> rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsq_hundkhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="dv">69</span>)</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>db_5M_for_neg69 <span class="op">=</span> rsp_fivemhz[<span class="st">'polynomial'</span>][<span class="dv">1</span>] <span class="op">+</span> rsp_fivemhz[<span class="st">'polynomial'</span>][<span class="dv">0</span>]<span class="op">*</span>np.log(<span class="dv">69</span>)</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"db_100k = </span><span class="sc">{</span>db_100k<span class="sc">}</span><span class="ss">dB, and db_5M = </span><span class="sc">{</span>db_5M<span class="sc">}</span><span class="ss">dB"</span>)</span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"For the actual plots of H5: 100 kHz has 69uT at </span><span class="sc">{</span>db_100_for_neg69<span class="sc">}</span><span class="ss">, and 5 MHz has 69uT at </span><span class="sc">{</span>db_5M_for_neg69<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="b4fd52c9-8387-4e39-8dfa-320873b7c185" class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co">## we know the magnetic field is constant; for these, we only vary the frequency and find the power</span></span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>h5_htp_1uT <span class="op">=</span> {<span class="st">'Frequency (MHz)'</span>:         [<span class="dv">1</span>, <span class="fl">0.9</span>, <span class="fl">0.8</span>, <span class="fl">0.7</span>, <span class="fl">0.6</span>, <span class="fl">0.5</span>, <span class="fl">0.4</span>, <span class="fl">0.3</span>], </span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Power (dBm)'</span>: [<span class="op">-</span><span class="dv">80</span>, <span class="op">-</span><span class="fl">80.5</span>, <span class="op">-</span><span class="dv">81</span>, <span class="op">-</span><span class="fl">82.5</span>, <span class="op">-</span><span class="fl">84.5</span>, <span class="op">-</span><span class="fl">86.5</span>, <span class="op">-</span><span class="dv">88</span>, <span class="op">-</span><span class="dv">90</span>]}</span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>h10_htp_1uT <span class="op">=</span> {<span class="st">'Frequency (MHz)'</span>:         [<span class="dv">1</span>, <span class="fl">0.9</span>, <span class="fl">0.8</span>, <span class="fl">0.7</span>, <span class="fl">0.6</span>, <span class="fl">0.5</span>, <span class="fl">0.4</span>, <span class="fl">0.3</span>], </span>
-<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>           <span class="st">'Power (dBm)'</span>: [<span class="op">-</span><span class="dv">57</span>, <span class="op">-</span><span class="fl">57.5</span>, <span class="op">-</span><span class="fl">58.5</span>, <span class="op">-</span><span class="dv">60</span>, <span class="op">-</span><span class="fl">61.5</span>, <span class="op">-</span><span class="dv">63</span>, <span class="op">-</span><span class="fl">65.5</span>, <span class="op">-</span><span class="dv">69</span>]}</span>
-<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>h20_htp_1uT <span class="op">=</span> {<span class="st">'Frequency (MHz)'</span>:         [<span class="dv">1</span>, <span class="fl">0.9</span>, <span class="fl">0.8</span>, <span class="fl">0.7</span>, <span class="fl">0.6</span>, <span class="fl">0.5</span>, <span class="fl">0.4</span>, <span class="fl">0.3</span>], </span>
-<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>           <span class="st">'Power (dBm)'</span>: [<span class="op">-</span><span class="dv">39</span>, <span class="op">-</span><span class="dv">40</span>, <span class="op">-</span><span class="dv">41</span>, <span class="op">-</span><span class="fl">42.5</span>, <span class="op">-</span><span class="dv">44</span>, <span class="op">-</span><span class="dv">45</span>, <span class="op">-</span><span class="dv">47</span>, <span class="op">-</span><span class="dv">50</span>]}</span>
-<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a>df_h5_htp_1uT <span class="op">=</span> pd.DataFrame(h5_htp_1uT)</span>
-<span id="cb69-12"><a href="#cb69-12" aria-hidden="true" tabindex="-1"></a>df_h10_htp_1uT <span class="op">=</span> pd.DataFrame(h10_htp_1uT)</span>
-<span id="cb69-13"><a href="#cb69-13" aria-hidden="true" tabindex="-1"></a>df_h20_htp_1uT <span class="op">=</span> pd.DataFrame(h20_htp_1uT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co">## we know the magnetic field is constant; for these, we only vary the frequency and find the power</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>h5_htp_1uT <span class="op">=</span> {<span class="st">'Frequency (MHz)'</span>:         [<span class="dv">1</span>, <span class="fl">0.9</span>, <span class="fl">0.8</span>, <span class="fl">0.7</span>, <span class="fl">0.6</span>, <span class="fl">0.5</span>, <span class="fl">0.4</span>, <span class="fl">0.3</span>], </span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Power (dBm)'</span>: [<span class="op">-</span><span class="dv">80</span>, <span class="op">-</span><span class="fl">80.5</span>, <span class="op">-</span><span class="dv">81</span>, <span class="op">-</span><span class="fl">82.5</span>, <span class="op">-</span><span class="fl">84.5</span>, <span class="op">-</span><span class="fl">86.5</span>, <span class="op">-</span><span class="dv">88</span>, <span class="op">-</span><span class="dv">90</span>]}</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>h10_htp_1uT <span class="op">=</span> {<span class="st">'Frequency (MHz)'</span>:         [<span class="dv">1</span>, <span class="fl">0.9</span>, <span class="fl">0.8</span>, <span class="fl">0.7</span>, <span class="fl">0.6</span>, <span class="fl">0.5</span>, <span class="fl">0.4</span>, <span class="fl">0.3</span>], </span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>           <span class="st">'Power (dBm)'</span>: [<span class="op">-</span><span class="dv">57</span>, <span class="op">-</span><span class="fl">57.5</span>, <span class="op">-</span><span class="fl">58.5</span>, <span class="op">-</span><span class="dv">60</span>, <span class="op">-</span><span class="fl">61.5</span>, <span class="op">-</span><span class="dv">63</span>, <span class="op">-</span><span class="fl">65.5</span>, <span class="op">-</span><span class="dv">69</span>]}</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>h20_htp_1uT <span class="op">=</span> {<span class="st">'Frequency (MHz)'</span>:         [<span class="dv">1</span>, <span class="fl">0.9</span>, <span class="fl">0.8</span>, <span class="fl">0.7</span>, <span class="fl">0.6</span>, <span class="fl">0.5</span>, <span class="fl">0.4</span>, <span class="fl">0.3</span>], </span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a>           <span class="st">'Power (dBm)'</span>: [<span class="op">-</span><span class="dv">39</span>, <span class="op">-</span><span class="dv">40</span>, <span class="op">-</span><span class="dv">41</span>, <span class="op">-</span><span class="fl">42.5</span>, <span class="op">-</span><span class="dv">44</span>, <span class="op">-</span><span class="dv">45</span>, <span class="op">-</span><span class="dv">47</span>, <span class="op">-</span><span class="dv">50</span>]}</span>
+<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a>df_h5_htp_1uT <span class="op">=</span> pd.DataFrame(h5_htp_1uT)</span>
+<span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a>df_h10_htp_1uT <span class="op">=</span> pd.DataFrame(h10_htp_1uT)</span>
+<span id="cb66-13"><a href="#cb66-13" aria-hidden="true" tabindex="-1"></a>df_h20_htp_1uT <span class="op">=</span> pd.DataFrame(h20_htp_1uT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="f2b387dd-8e8e-4e20-97c6-8ad5156f2ea3" class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h10_htp[<span class="st">'Frequency (MHz)'</span>], df_h10_htp[<span class="st">'Power (dBm)'</span>], <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"H10, 34.3908061414456 uT"</span>)</span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h10_htp_1uT[<span class="st">'Frequency (MHz)'</span>], df_h10_htp_1uT[<span class="st">'Power (dBm)'</span>], <span class="st">'r.-'</span>, label<span class="op">=</span><span class="st">"H10, 1 uT"</span>, alpha <span class="op">=</span> <span class="fl">0.35</span>)</span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h5_htp[<span class="st">'Frequency (MHz)'</span>], df_h5_htp[<span class="st">'Power (dBm)'</span>], <span class="st">'bo-'</span>, label<span class="op">=</span><span class="st">"H5, 34.3908061414456 uT"</span>)</span>
-<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h5_htp_1uT[<span class="st">'Frequency (MHz)'</span>], df_h5_htp_1uT[<span class="st">'Power (dBm)'</span>], <span class="st">'b.-'</span>, label<span class="op">=</span><span class="st">"H5, 1 uT"</span>, alpha <span class="op">=</span> <span class="fl">0.35</span>)</span>
-<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="co">#df_h20_freqtopow_4_8mV</span></span>
-<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h20_freqtopow_4_8mV[<span class="st">'Frequency (MHz)'</span>], df_h20_freqtopow_4_8mV[<span class="st">'Power (dBm)'</span>], <span class="st">'go-'</span>, label<span class="op">=</span><span class="st">"H20, 25.7931046060842 uT"</span>)</span>
-<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>plt.plot(h20_htp_1uT[<span class="st">'Frequency (MHz)'</span>], h20_htp_1uT[<span class="st">'Power (dBm)'</span>], <span class="st">'g.-'</span>, label<span class="op">=</span><span class="st">"H20, 1 uT"</span>, alpha <span class="op">=</span> <span class="fl">0.35</span>)</span>
-<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Frequency (MHz)"</span>)</span>
-<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power (dBm)"</span>)</span>
-<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">"log"</span>)</span>
-<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Frequency vs Power for all H values"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h10_htp[<span class="st">'Frequency (MHz)'</span>], df_h10_htp[<span class="st">'Power (dBm)'</span>], <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"H10, 34.3908061414456 uT"</span>)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h10_htp_1uT[<span class="st">'Frequency (MHz)'</span>], df_h10_htp_1uT[<span class="st">'Power (dBm)'</span>], <span class="st">'r.-'</span>, label<span class="op">=</span><span class="st">"H10, 1 uT"</span>, alpha <span class="op">=</span> <span class="fl">0.35</span>)</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h5_htp[<span class="st">'Frequency (MHz)'</span>], df_h5_htp[<span class="st">'Power (dBm)'</span>], <span class="st">'bo-'</span>, label<span class="op">=</span><span class="st">"H5, 34.3908061414456 uT"</span>)</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h5_htp_1uT[<span class="st">'Frequency (MHz)'</span>], df_h5_htp_1uT[<span class="st">'Power (dBm)'</span>], <span class="st">'b.-'</span>, label<span class="op">=</span><span class="st">"H5, 1 uT"</span>, alpha <span class="op">=</span> <span class="fl">0.35</span>)</span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="co">#df_h20_freqtopow_4_8mV</span></span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h20_freqtopow_4_8mV[<span class="st">'Frequency (MHz)'</span>], df_h20_freqtopow_4_8mV[<span class="st">'Power (dBm)'</span>], <span class="st">'go-'</span>, label<span class="op">=</span><span class="st">"H20, 25.7931046060842 uT"</span>)</span>
+<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a>plt.plot(h20_htp_1uT[<span class="st">'Frequency (MHz)'</span>], h20_htp_1uT[<span class="st">'Power (dBm)'</span>], <span class="st">'g.-'</span>, label<span class="op">=</span><span class="st">"H20, 1 uT"</span>, alpha <span class="op">=</span> <span class="fl">0.35</span>)</span>
+<span id="cb67-11"><a href="#cb67-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-12"><a href="#cb67-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-13"><a href="#cb67-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Frequency (MHz)"</span>)</span>
+<span id="cb67-14"><a href="#cb67-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power (dBm)"</span>)</span>
+<span id="cb67-15"><a href="#cb67-15" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">"log"</span>)</span>
+<span id="cb67-16"><a href="#cb67-16" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb67-17"><a href="#cb67-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Frequency vs Power for all H values"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="f79e95ef-a701-439c-a241-88f198b0c2d8" class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h10_htp[<span class="st">'Frequency (MHz)'</span>][:<span class="op">-</span><span class="dv">2</span>], df_h10_htp[<span class="st">'Power (dBm)'</span>][:<span class="op">-</span><span class="dv">2</span>], <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"H10, 34.3908061414456 uT"</span>)</span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h10_htp_1uT[<span class="st">'Frequency (MHz)'</span>], df_h10_htp_1uT[<span class="st">'Power (dBm)'</span>], <span class="st">'r.-'</span>, label<span class="op">=</span><span class="st">"H10, 1 uT"</span>, alpha <span class="op">=</span> <span class="fl">0.35</span>)</span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h5_htp[<span class="st">'Frequency (MHz)'</span>][:<span class="op">-</span><span class="dv">2</span>], df_h5_htp[<span class="st">'Power (dBm)'</span>][:<span class="op">-</span><span class="dv">2</span>], <span class="st">'bo-'</span>, label<span class="op">=</span><span class="st">"H5, 34.3908061414456 uT"</span>)</span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h5_htp_1uT[<span class="st">'Frequency (MHz)'</span>], df_h5_htp_1uT[<span class="st">'Power (dBm)'</span>], <span class="st">'b.-'</span>, label<span class="op">=</span><span class="st">"H5, 1 uT"</span>, alpha <span class="op">=</span> <span class="fl">0.35</span>)</span>
-<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co">#df_h20_freqtopow_4_8mV</span></span>
-<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h20_freqtopow_4_8mV[<span class="st">'Frequency (MHz)'</span>][:<span class="op">-</span><span class="dv">2</span>], df_h20_freqtopow_4_8mV[<span class="st">'Power (dBm)'</span>][:<span class="op">-</span><span class="dv">2</span>], <span class="st">'go-'</span>, label<span class="op">=</span><span class="st">"H20, 25.7931046060842 uT"</span>)</span>
-<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>plt.plot(h20_htp_1uT[<span class="st">'Frequency (MHz)'</span>], h20_htp_1uT[<span class="st">'Power (dBm)'</span>], <span class="st">'g.-'</span>, label<span class="op">=</span><span class="st">"H20, 1 uT"</span>, alpha <span class="op">=</span> <span class="fl">0.35</span>)</span>
-<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a>avg_dif_h5 <span class="op">=</span> np.mean(df_h5_htp[<span class="st">'Power (dBm)'</span>][:<span class="op">-</span><span class="dv">2</span>] <span class="op">-</span> df_h5_htp_1uT[<span class="st">'Power (dBm)'</span>])</span>
-<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a>avg_dif_h10 <span class="op">=</span> np.mean(df_h10_htp[<span class="st">'Power (dBm)'</span>][:<span class="op">-</span><span class="dv">2</span>] <span class="op">-</span> df_h10_htp_1uT[<span class="st">'Power (dBm)'</span>])</span>
-<span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a>avg_dif_h20 <span class="op">=</span> np.mean(df_h20_freqtopow_4_8mV[<span class="st">'Power (dBm)'</span>][:<span class="op">-</span><span class="dv">2</span>] <span class="op">-</span> h20_htp_1uT[<span class="st">'Power (dBm)'</span>])</span>
-<span id="cb71-15"><a href="#cb71-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-16"><a href="#cb71-16" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb71-17"><a href="#cb71-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Plotting Power by Frequencies, calculating Average Difference"</span>)</span>
-<span id="cb71-18"><a href="#cb71-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Frequency (MHz)"</span>)</span>
-<span id="cb71-19"><a href="#cb71-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power (dBm)"</span>)</span>
-<span id="cb71-20"><a href="#cb71-20" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">"log"</span>)</span>
-<span id="cb71-21"><a href="#cb71-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-22"><a href="#cb71-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average Differences: "</span>)</span>
-<span id="cb71-23"><a href="#cb71-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"H20: </span><span class="sc">{</span>avg_dif_h20<span class="sc">}</span><span class="ss"> (25.7931046060842 times greater)"</span>)</span>
-<span id="cb71-24"><a href="#cb71-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"H10: </span><span class="sc">{</span>avg_dif_h10<span class="sc">}</span><span class="ss"> (34.3908061414456 times greater)"</span>)</span>
-<span id="cb71-25"><a href="#cb71-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"H5: </span><span class="sc">{</span>avg_dif_h5<span class="sc">}</span><span class="ss"> (34.3908061414456 times greater)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h10_htp[<span class="st">'Frequency (MHz)'</span>][:<span class="op">-</span><span class="dv">2</span>], df_h10_htp[<span class="st">'Power (dBm)'</span>][:<span class="op">-</span><span class="dv">2</span>], <span class="st">'ro-'</span>, label<span class="op">=</span><span class="st">"H10, 34.3908061414456 uT"</span>)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h10_htp_1uT[<span class="st">'Frequency (MHz)'</span>], df_h10_htp_1uT[<span class="st">'Power (dBm)'</span>], <span class="st">'r.-'</span>, label<span class="op">=</span><span class="st">"H10, 1 uT"</span>, alpha <span class="op">=</span> <span class="fl">0.35</span>)</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h5_htp[<span class="st">'Frequency (MHz)'</span>][:<span class="op">-</span><span class="dv">2</span>], df_h5_htp[<span class="st">'Power (dBm)'</span>][:<span class="op">-</span><span class="dv">2</span>], <span class="st">'bo-'</span>, label<span class="op">=</span><span class="st">"H5, 34.3908061414456 uT"</span>)</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h5_htp_1uT[<span class="st">'Frequency (MHz)'</span>], df_h5_htp_1uT[<span class="st">'Power (dBm)'</span>], <span class="st">'b.-'</span>, label<span class="op">=</span><span class="st">"H5, 1 uT"</span>, alpha <span class="op">=</span> <span class="fl">0.35</span>)</span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a><span class="co">#df_h20_freqtopow_4_8mV</span></span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>plt.plot(df_h20_freqtopow_4_8mV[<span class="st">'Frequency (MHz)'</span>][:<span class="op">-</span><span class="dv">2</span>], df_h20_freqtopow_4_8mV[<span class="st">'Power (dBm)'</span>][:<span class="op">-</span><span class="dv">2</span>], <span class="st">'go-'</span>, label<span class="op">=</span><span class="st">"H20, 25.7931046060842 uT"</span>)</span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>plt.plot(h20_htp_1uT[<span class="st">'Frequency (MHz)'</span>], h20_htp_1uT[<span class="st">'Power (dBm)'</span>], <span class="st">'g.-'</span>, label<span class="op">=</span><span class="st">"H20, 1 uT"</span>, alpha <span class="op">=</span> <span class="fl">0.35</span>)</span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a>avg_dif_h5 <span class="op">=</span> np.mean(df_h5_htp[<span class="st">'Power (dBm)'</span>][:<span class="op">-</span><span class="dv">2</span>] <span class="op">-</span> df_h5_htp_1uT[<span class="st">'Power (dBm)'</span>])</span>
+<span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a>avg_dif_h10 <span class="op">=</span> np.mean(df_h10_htp[<span class="st">'Power (dBm)'</span>][:<span class="op">-</span><span class="dv">2</span>] <span class="op">-</span> df_h10_htp_1uT[<span class="st">'Power (dBm)'</span>])</span>
+<span id="cb68-14"><a href="#cb68-14" aria-hidden="true" tabindex="-1"></a>avg_dif_h20 <span class="op">=</span> np.mean(df_h20_freqtopow_4_8mV[<span class="st">'Power (dBm)'</span>][:<span class="op">-</span><span class="dv">2</span>] <span class="op">-</span> h20_htp_1uT[<span class="st">'Power (dBm)'</span>])</span>
+<span id="cb68-15"><a href="#cb68-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-16"><a href="#cb68-16" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb68-17"><a href="#cb68-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Plotting Power by Frequencies, calculating Average Difference"</span>)</span>
+<span id="cb68-18"><a href="#cb68-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Frequency (MHz)"</span>)</span>
+<span id="cb68-19"><a href="#cb68-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Power (dBm)"</span>)</span>
+<span id="cb68-20"><a href="#cb68-20" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">"log"</span>)</span>
+<span id="cb68-21"><a href="#cb68-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-22"><a href="#cb68-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average Differences: "</span>)</span>
+<span id="cb68-23"><a href="#cb68-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"H20: </span><span class="sc">{</span>avg_dif_h20<span class="sc">}</span><span class="ss"> (25.7931046060842 times greater)"</span>)</span>
+<span id="cb68-24"><a href="#cb68-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"H10: </span><span class="sc">{</span>avg_dif_h10<span class="sc">}</span><span class="ss"> (34.3908061414456 times greater)"</span>)</span>
+<span id="cb68-25"><a href="#cb68-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"H5: </span><span class="sc">{</span>avg_dif_h5<span class="sc">}</span><span class="ss"> (34.3908061414456 times greater)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
