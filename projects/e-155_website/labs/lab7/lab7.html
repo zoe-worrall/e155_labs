@@ -33,6 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../../">
 <link href="../../../../images/bg_test.png" rel="icon" type="image/png">
+<script src="../../../../site_libs/quarto-listing/list.min.js"></script>
+<script src="../../../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -42,6 +44,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../../../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,8 +73,66 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-image"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="Zoe Worrall’s Website - Lab 7 Writeup">
 <meta property="og:description" content="">
@@ -189,7 +251,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-5-interrupts" id="toc-lab-5-interrupts" class="nav-link active" data-scroll-target="#lab-5-interrupts">Lab 5: Interrupts</a>
+  <li><a href="#lab-7-aes-128" id="toc-lab-7-aes-128" class="nav-link active" data-scroll-target="#lab-7-aes-128">Lab 7: AES-128</a>
   <ul class="collapse">
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#aes-128s-structure" id="toc-aes-128s-structure" class="nav-link" data-scroll-target="#aes-128s-structure">AES-128’s Structure</a></li>
@@ -200,7 +262,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul>
-<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 Breadboard Adapter v4</a></li><li><a href="https://github.com/zoe-worrall/e155_labs/tree/main/mcu/lab05"><i class="bi bi-link-45deg"></i>Lab 7 Github Files</a></li><li><a href="https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf"><i class="bi bi-link-45deg"></i>STM32L432xx Reference Manual</a></li><li><a href="https://www.st.com/resource/en/datasheet/stm32l432kb.pdf"><i class="bi bi-link-45deg"></i>STM32L432xx Datasheet</a></li></ul></div></nav>
+<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 Breadboard Adapter v4</a></li><li><a href="https://github.com/zoe-worrall/e155_labs/tree/main/fpga/radiant_project/lab07_v5"><i class="bi bi-link-45deg"></i>Lab 7 Github Files for FPGA</a></li><li><a href="https://github.com/zoe-worrall/e155_labs/tree/main/mcu/lab07_mcu"><i class="bi bi-link-45deg"></i>Lab 7 Github Files for MCU</a></li><li><a href="https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf"><i class="bi bi-link-45deg"></i>STM32L432xx Reference Manual</a></li><li><a href="https://www.st.com/resource/en/datasheet/stm32l432kb.pdf"><i class="bi bi-link-45deg"></i>STM32L432xx Datasheet</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -239,9 +301,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="lab-5-interrupts" class="level2">
-<h2 class="anchored" data-anchor-id="lab-5-interrupts">Lab 5: Interrupts</h2>
-<p><em>Hours Spent: 74 hours, Mapped with Toggl Track</em></p>
+<section id="lab-7-aes-128" class="level2">
+<h2 class="anchored" data-anchor-id="lab-7-aes-128">Lab 7: AES-128</h2>
+<p><em>Hours Spent: 97.5 hours, Mapped with Toggl Track</em></p>
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
 <p>In this lab, a STM32L432KCU Microcontroller Unit (the MCU) was used to send and receive SPI signals to the Upduino FPGA board. After troubleshooting on the interconnection between the working FPGA board and the MCU board for fifty-three and a half hours, I finally checked my old version of the code with a new FPGA and found that the problem was my FPGA.</p>
@@ -258,29 +320,61 @@ ul.task-list li input[type="checkbox"] {
 <li><p>ShiftRows – Considering state as a matrix, shifts all the state values over by one two the left (including wrap around) depending on which row the state is.</p></li>
 <li><p>KeyExpansion – Defines a new list of words based on a supplied key. For each “round” of the function, new words are created, which are used in other functions to adjust the state.</p></li>
 </ol>
-<p>Overall, these functions all come together as described in the pseudocode __.</p>
-<p>I drew out each progran, and will go into furhter detail with each of the following diagram.</p>
-<p><img src="images/diagram.png" class="img-fluid"></p>
+<p>Overall, these functions all come together as described in the pseudocode found on page 12 of <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197-upd1.pdf">the FIPS manual</a>, and can be seen in the image below <a href="#fig-pseudocode" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<div id="fig-pseudocode" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pseudocode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pseudocode.png" id="fig-pseudocode" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-pseudocode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<p>I drew out each progran, and will go into further detail with each of the following diagram for my Radiant Software program.</p>
+<p><img src="images/blockdiagram.png" class="img-fluid"></p>
 <section id="addroundkeystate-w_round" class="level4">
 <h4 class="anchored" data-anchor-id="addroundkeystate-w_round">AddRoundKey(state, w_round)</h4>
+<p>AddRoundKey is a function that is used to generate the list of words that will be used by the program to alter the incoming key; for each “round” that this cypher goes through, the program will generate a list of words that are dependent upon the initial key supplied to the program.</p>
+<p><img src="images/addRoundKey.png" class="img-fluid"></p>
+<p>These values are determined with the aid of KeyExpansion <a href="#sec-KeyExpansion" class="quarto-xref">Section&nbsp;1.2.3</a>.</p>
 </section>
 <section id="mixcolumnsstate" class="level4">
 <h4 class="anchored" data-anchor-id="mixcolumnsstate">MixColumns(state)</h4>
+<p>MixColumns is a fucntion that uses a XOR gate to combine a mix of rows combined with a pre-assorted list of values specific to the AES fucntion, in this case AES-128. This mixing is one of the special pieces of AES, as it is hard to decipher without the initial list of values (defined in <a href="#fig-definedVals" class="quarto-xref">Figure&nbsp;2</a>)</p>
+<div id="fig-definedVals" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-definedVals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/mixColsVals.png" id="fig-definedVals" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-definedVals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<p>For a better perspective on what is happening, I have additionally put together a diagram below that shows the user how this is implemented.</p>
+<p><img src="images/mixcolumns.png" class="img-fluid">.</p>
 </section>
-<section id="keyexpansion" class="level4">
-<h4 class="anchored" data-anchor-id="keyexpansion">KeyExpansion()</h4>
-<section id="subword" class="level5">
-<h5 class="anchored" data-anchor-id="subword">SubWord</h5>
+<section id="sec-KeyExpansion" class="level4">
+<h4 class="anchored" data-anchor-id="sec-KeyExpansion">KeyExpansion()</h4>
+<p>KeyExpansion uses XOR and a list of ten pre-defined hexadecimal values to change the incoming list of words and alter them for the use of “AddRoundKey”.</p>
+<p><img src="images/keyexpansion.png" class="img-fluid"></p>
+<p>Depending on the round in which the user finds themselves, KeyExpansion will determine the next word using a mix of rotating the words, substituting the words using the SubWord function ( <a href="#sec-SubWord" class="quarto-xref">Section&nbsp;1.2.3.1</a> ), and XORing values in a specific order.</p>
+<section id="sec-SubWord" class="level5">
+<h5 class="anchored" data-anchor-id="sec-SubWord">SubWord</h5>
+<p>SubBytes is part of the magic of the AES Encryption algorithm, and allows the same value that goes into the matrix, when altered, to be entered again and return its original value. It alters it using something termed “sbox”, where each value is multiplied or combined with some defined list of values. This matrix is extremely large, and as found in the lab, should be implemented using the system’s RAM.</p>
 </section>
 <section id="rotword" class="level5">
 <h5 class="anchored" data-anchor-id="rotword">RotWord</h5>
+<p>The RotWord function is implemented within a multitude of functions to rotate a row of the incoming word (termed as “state” within the pseudocode)</p>
 </section>
 </section>
 <section id="shiftrowsstate" class="level4">
 <h4 class="anchored" data-anchor-id="shiftrowsstate">ShiftRows(state)</h4>
+<p>ShiftRows rotates the incoming word by a differing amount for each row, and as such completely rotates the entire matrix within the function.</p>
+<p><img src="images/shiftrows.png" class="img-fluid"></p>
 </section>
 <section id="subbytes" class="level4">
 <h4 class="anchored" data-anchor-id="subbytes">SubBytes()</h4>
+<p>SubBytes uses the synchronized version of SubWord ( <a href="#sec-SubWord" class="quarto-xref">Section&nbsp;1.2.3.1</a> ) to perform the sbox transformation <img src="images/subword.png" class="img-fluid"></p>
 </section>
 </section>
 <section id="final-setup" class="level3">
@@ -292,22 +386,231 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="test-bench-trials">Test Bench Trials</h3>
 <p>The test bench trials did function properly for both the SPI and the CORE; in order to test both of these, however, a series of smaller test benches needed to be crafted to test each function. These were made using the defined table of AES functions as defined in the PDF.</p>
 <p>For each function, a set of vectors for the state input and state output were made, and the program was run to confirm that the right value was received. Since there are no such thing as edge cases in many of these functions, I didn’t construct any fringe case scenarios for this problem.</p>
+<p>Testing FSM Testbenches can be seen below, with various zooms on the FSM.</p>
+<p><img src="images/testbenches/fsm_testbench.png" class="img-fluid"> <img src="images/testbenches/fsm_tb_2.png" class="img-fluid"> <img src="images/testbenches/fsm_tb_3.png" class="img-fluid"> <img src="images/testbenches/fsm_tb_4.png" class="img-fluid"> <img src="images/testbenches/fsm_tb_round9.png" class="img-fluid"></p>
+<p>These FSM’s can be further demonstrated to be working by viewing these in the SPI Tesbenches.</p>
+<p><img src="images/testbenches/spi_tb.png" class="img-fluid"> <img src="images/testbenches/spi_tb_2.png" class="img-fluid"> <img src="images/testbenches/spi_tb_3.png" class="img-fluid"></p>
+<p>Once all the trials were confirmed to have been working within the testbench, I then moved on to implementing the design onto my actual machine.</p>
 </section>
 <section id="hardware-trials" class="level3">
 <h3 class="anchored" data-anchor-id="hardware-trials">Hardware Trials</h3>
+<p>The following schematic shows how the pin connects on the MCU and FPGA builds look.</p>
+<p><img src="images/schematic_fpga.png" class="img-fluid"></p>
 <p>I faced considerable problems with the hardware set up for this lab; I believe that this was, in part, due to a problem with my PB4 and PB5, which are shorted together due to soldering issues. With my Lab 6, I was able to avoid this issue using PB12 and PA11, but due to some of the requisites of this lab, and the time constraints on my own part, I was unable to complete this aspect of the project.</p>
+<p>The majority of the time that was stocked up during this project was the time it took to troubleshoot my software to hardware connection. Compiled, three days worth of hours were spent trying to get the hardware working. Multiple variations of code were tried while troubleshooting:</p>
+<ol type="1">
+<li><p>Initially, there was no “DONE” block in my FSM, and as a result my final program may have started in the wrong state. I fixed this by rewriting my FSM and making sure I included a state for each potential block.</p></li>
+<li><p>I was not initially using the right board, and instead had implemented my program with too few memory blocks; as a result, there were only 12 RAM buckets, and none of the sbox values could fit in them. When I upgraded, this issue was solved.</p></li>
+<li><p>I initially had 32 rather than 16 sbox modules initialized; this was because I had initialized an SubBytes register both in my fsm machine, to perform an operation before I entered rounds 1-9, and within my “rounds” function. I solved this by including a system of enables in all my functions, which allowed me to toggle what I was receiving out of “rounds”, and resultantly use rounds for every single computation.</p></li>
+</ol>
+<p>In the end, however, the issue was not my code; I continued running into the same problem, where the SPI was outputting a variety of values, always the same, but varying with time (there were a total of three distinct SPI values that the FPGA was receiving from the MCU). However, when I programmed my code onto another person’s FPGA, my code worked. I confirmed this on two FPGA boards, and confirmed that the software was correct, but something on my hardware was gone.</p>
 </section>
 <section id="results-and-discussion" class="level3">
 <h3 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h3>
+<p>I learned a lot of resilience with this project; there were many points where I wanted to give up, but I would continue trying and experimenting. Even though the trial and error felt wasteful, especially close to the end, I believe I understand AES-128 far better than I ever would have if I had gotten it working on my first run through.</p>
+<p>As can be seen below, all of the data was able to be seen with the use of a logic analyzer; I have put these in the listings at the bottom of this page.</p>
+<p>Additionally, in the future I would like to examine my FPGA with a Logic Analyzer to troubleshoot what’s wrong with the pins, and what may be shorted together on my board.</p>
 </section>
 <section id="conclusion" class="level3">
 <h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>In conclusion, after many long hours, I can consider this Lab a success. I think that AES encryption and SPI communications will always be difficult to understand, but with this Lab I’ve gotten proof that I can succeed by working hard.</p>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="https://youtube.com/shorts/uR9w-qRpS1g?feature=share"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="https://youtube.com/shorts/uR9w-qRpS1g"></video></div>
+
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0">
+<div class="thumbnail">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+<p><img loading="lazy" src="images/DS1Z_QuickPrint1.png" class="thumbnail-image"></p>
+</a><p><a href="" class="no-external"></a></p>
+</div>
+<div class="body">
+
+</div>
+<div class="metadata">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1">
+<div class="thumbnail">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+<p><img loading="lazy" src="images/DS1Z_QuickPrint2.png" class="thumbnail-image"></p>
+</a><p><a href="" class="no-external"></a></p>
+</div>
+<div class="body">
+
+</div>
+<div class="metadata">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2">
+<div class="thumbnail">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+<p><img loading="lazy" src="images/DS1Z_QuickPrint3.png" class="thumbnail-image"></p>
+</a><p><a href="" class="no-external"></a></p>
+</div>
+<div class="body">
+
+</div>
+<div class="metadata">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3">
+<div class="thumbnail">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+<p><img loading="lazy" src="images/DS1Z_QuickPrint4.png" class="thumbnail-image"></p>
+</a><p><a href="" class="no-external"></a></p>
+</div>
+<div class="body">
+
+</div>
+<div class="metadata">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4">
+<div class="thumbnail">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+<p><img loading="lazy" src="images/DS1Z_QuickPrint5.png" class="thumbnail-image"></p>
+</a><p><a href="" class="no-external"></a></p>
+</div>
+<div class="body">
+
+</div>
+<div class="metadata">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5">
+<div class="thumbnail">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+<p><img loading="lazy" src="images/DS1Z_QuickPrint6.png" class="thumbnail-image"></p>
+</a><p><a href="" class="no-external"></a></p>
+</div>
+<div class="body">
+
+</div>
+<div class="metadata">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6">
+<div class="thumbnail">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+<p><img loading="lazy" src="images/DS1Z_QuickPrint7.png" class="thumbnail-image"></p>
+</a><p><a href="" class="no-external"></a></p>
+</div>
+<div class="body">
+
+</div>
+<div class="metadata">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7">
+<div class="thumbnail">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+<p><img loading="lazy" src="images/DS1Z_QuickPrint8.png" class="thumbnail-image"></p>
+</a><p><a href="" class="no-external"></a></p>
+</div>
+<div class="body">
+
+</div>
+<div class="metadata">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8">
+<div class="thumbnail">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+<p><img loading="lazy" src="images/DS1Z_QuickPrint9.png" class="thumbnail-image"></p>
+</a><p><a href="" class="no-external"></a></p>
+</div>
+<div class="body">
+
+</div>
+<div class="metadata">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9">
+<div class="thumbnail">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+<p><img loading="lazy" src="images/DS1Z_QuickPrint10.png" class="thumbnail-image"></p>
+</a><p><a href="" class="no-external"></a></p>
+</div>
+<div class="body">
+
+</div>
+<div class="metadata">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10">
+<div class="thumbnail">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+<p><img loading="lazy" src="images/DS1Z_QuickPrint11.png" class="thumbnail-image"></p>
+</a><p><a href="" class="no-external"></a></p>
+</div>
+<div class="body">
+
+</div>
+<div class="metadata">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="11">
+<div class="thumbnail">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+<p><img loading="lazy" src="images/DS1Z_QuickPrint12.png" class="thumbnail-image"></p>
+</a><p><a href="" class="no-external"></a></p>
+</div>
+<div class="body">
+
+</div>
+<div class="metadata">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="12">
+<div class="thumbnail">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+<p><img loading="lazy" src="images/DS1Z_QuickPrint13.png" class="thumbnail-image"></p>
+</a><p><a href="" class="no-external"></a></p>
+</div>
+<div class="body">
+
+</div>
+<div class="metadata">
+<p><a href="" class="no-external"></a></p><a href="" class="no-external">
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -755,6 +1058,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>videojs(video_shortcode_videojs_video1);</script>
+<script>videojs(video_shortcode_videojs_video2);</script>
 
 
 
