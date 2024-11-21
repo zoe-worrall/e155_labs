@@ -51,7 +51,7 @@ int main(void) {
     */
 
     // 1. Configure mask bit for pin PA4 -- need to set it for EXTI2 ** changed to pin PA5 for now
-        // EXTI: GPIO lines are bits 0-15, and are configurable
+    // EXTI: GPIO lines are bits 0-15, and are configurable
     EXTI->IMR1 |= _VAL2FLD(EXTI_IMR1_IM5, 0b1); // 1: Interrupt request from Line 4 is not masked
     
     // 2. Disable rising edge trigger
