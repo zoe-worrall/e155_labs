@@ -1,11 +1,12 @@
 ---
-title: "Radio Frequency Circuit: Python Files and Writeups"
+title: "Radio Frequency Circuit: Python Files and writeup"
 listing:
   contents:
   - "/projects/designProjec1_Plotting.ipynb"
   - "/projects/designProject1_Analysis.ipynb"
   - "/projects/Lab4_pythonfile.ipynb"
   - "/projects/Lab5_PythonFile.ipynb"
+  - "/projects/Lab6_PythonFile.ipynb"
   sort: "date desc"
   type: default
   categories: true
