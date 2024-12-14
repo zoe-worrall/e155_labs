@@ -174,3 +174,7 @@ body.nav-fixed {
   .nav-footer-right {
     font-family:'Times New Roman';
   }
+
+  .quarto-grid-item p.card-img-top > img {
+    object-position: top
+  }

@@ -8,7 +8,6 @@ listing:
   - "/projects/Lab5_PythonFile.ipynb"
   - "/projects/Lab6_PythonFile.ipynb"
   - "/projects/DP2.ipynb"
-  - "/projects/DP2 Personal.xlsx"
   sort: "date desc"
   type: default
   categories: true
