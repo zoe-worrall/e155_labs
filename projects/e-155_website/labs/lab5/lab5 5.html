@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.45">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zoe Worrall - zworrall@g.hmc.edu">
+<meta name="dcterms.date" content="2024-09-25">
+
+<title>Lab 5 Writeup – Zoe Worrall's Website</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../../images/bg_test.png" rel="icon" type="image/png">
+<script src="../../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Zoe Worrall’s Website - Lab 5 Writeup">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/projects/e-155_website/labs/lab5/images/wheel_rot.png">
+<meta property="og:site_name" content="Zoe Worrall's Website">
+<meta property="og:image:height" content="894">
+<meta property="og:image:width" content="1274">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../../images/zoe_logo.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../projects/e-155_website/blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-e155-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">E155 Labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-e155-labs">    
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab1/lab1.html">
+ <span class="dropdown-text">Lab 1 Writeup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab2/lab2.html">
+ <span class="dropdown-text">Lab 2 Writeup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab3/lab3.html">
+ <span class="dropdown-text">Lab 3 Writeup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab4/lab4.html">
+ <span class="dropdown-text">Lab 4 Writeup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab5/lab5.html">
+ <span class="dropdown-text">Lab 5 Writeup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab6/lab6.html">
+ <span class="dropdown-text">Lab 6 Writeup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab7/lab7.html">
+ <span class="dropdown-text">Lab 7 Writeup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website">
+ <span class="dropdown-text">E155 Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/E80_sub.html">
+ <span class="dropdown-text">Engineering Systems E80</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/mcf_lci.html">
+ <span class="dropdown-text">Multicore Fiber Bundle Low Coherence Interferometry Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/open_ivis.html">
+ <span class="dropdown-text">openIVIS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/radio_frequency">
+ <span class="dropdown-text">RF Circuitry Projects</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../art/index.html"> 
+<span class="menu-text">Zoe Worrall’s Artworks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../resources.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../contacts/index.html"> 
+<span class="menu-text">Contact Me</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lab-5-interrupts" id="toc-lab-5-interrupts" class="nav-link active" data-scroll-target="#lab-5-interrupts">Lab 5: Interrupts</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
+  <li><a href="#why-interrupts" id="toc-why-interrupts" class="nav-link" data-scroll-target="#why-interrupts">Why Interrupts?</a></li>
+  <li><a href="#final-setup" id="toc-final-setup" class="nav-link" data-scroll-target="#final-setup">Final Setup</a></li>
+  <li><a href="#hardware-setup" id="toc-hardware-setup" class="nav-link" data-scroll-target="#hardware-setup">Hardware Setup</a></li>
+  <li><a href="#initial-testing" id="toc-initial-testing" class="nav-link" data-scroll-target="#initial-testing">Initial Testing</a></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://hmc-e155.github.io/assets/lab/25GA370.pdf"><i class="bi bi-link-45deg"></i>Motor Specifications, Dimensions, and Pins</a></li><li><a href="https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 Breadboard Adapter v4</a></li><li><a href="https://github.com/zoe-worrall/e155_labs/tree/main/mcu/lab05"><i class="bi bi-link-45deg"></i>Lab 5 Github Files</a></li><li><a href="https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf"><i class="bi bi-link-45deg"></i>STM32L432xx Reference Manual</a></li><li><a href="https://www.st.com/resource/en/datasheet/stm32l432kb.pdf"><i class="bi bi-link-45deg"></i>STM32L432xx Datasheet</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 5 Writeup</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">labreport</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zoe Worrall - zworrall@g.hmc.edu </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 25, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="lab-5-interrupts" class="level2">
+<h2 class="anchored" data-anchor-id="lab-5-interrupts">Lab 5: Interrupts</h2>
+<p><em>Hours Spent: 23.2, Mapped with Toggl Track</em></p>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>In this lab, a STM32L432KCU Microcontroller Unit (the MCU) was used to to read and print out the frequency of a <a href="https://hmc-e155.github.io/assets/lab/25GA370.pdf">25GA-370 DC Motor</a>. This lab made use of the STM32xx’s ability to plan responses to interrupts on the board, which in turn can be used to determine the direction and speed of a given motor based on the encoding of a given set of pins. <a href="https://hmc-e155.github.io/lab/lab5/">This lab</a> was framed to teach how to use interrupts and <a href="https://www.notion.so/kavidey/Debugging-in-Segger-with-printf-114a56ecd5de8045a9ffe1b0a805db4d?pvs=4">how to make use of Segger Embedded Studio’s printf</a> functions.</p>
+</section>
+<section id="design" class="level3">
+<h3 class="anchored" data-anchor-id="design">Design</h3>
+<p>This lab requires the use of a TS-25GA370 DC motor. This motor has two separate voltage supplies (<a href="#fig-encoder" class="quarto-xref">Figure&nbsp;1</a>): one that goes up to 12 V, and is responsible for rotating the motor itself, and the other is the encoder, which requires 5V, and is responsible for sending 5V signals out of the encoder pins, which can be read within this lab. There are two encoder pins that the motor sends out, pin A and pin B. These pins are offset by pi/2 radians, meaning that they behave similar to sine-cosine behavior, or to those that are familiar with it, IQ data in radio. Such a setup enables us to reconstruct received signals with only two data points, depending on whether the signals are rising or falling relative to each other at any given point.</p>
+<div id="fig-encoder" class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-encoder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/motor-pins.png" id="fig-encoder" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-encoder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<section id="setup" class="level4">
+<h4 class="anchored" data-anchor-id="setup">Setup</h4>
+<p>I learned my lesson about timers after Lab 4, where I repeatedly tried changing the frequency of my timer only to run calculations for the accuracy of a frequency and realize that the itmer was wrong. Instead of going through the same pain this time, I chose instead to calculate beforehand the exact frequencies I would need to read out of my board so that I could properly set the timer’s prescaling.</p>
+<p>Firstly, I set up every scenario I would potentially run into within this lab in order to understand what cases I would need to check on the motors for absolute accuracy. I drew all eight of them, as seen in <a href="#fig-wheels" class="quarto-xref">Figure&nbsp;2</a>, and determined that a full “period” of oscillation would actually be four interrupt signals received equal spacing apart. I decided that the best way to deduce frequency, as a result, would be to take the average of some past number of signals in order to determine the current speed of the motor.</p>
+<div id="fig-wheels" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wheels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/wheel_rot.png" id="fig-wheels" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-wheels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<p>I found two patterns separately that would help me determine both the speed and the frequency of the motor. Firstly, the motor has 12 “signals” that it sends to A, and the same number to B. As a result, every rotation there are a total of 12 pulses supplied by the motor via the quad encoder pins (<a href="#fig-encoder" class="quarto-xref">Figure&nbsp;1</a>). Additionally, since the gear reduction inside the motor is 10:1, there will be 120 pulses received per every actual rotation of the external pin. Resultantly, whatever readout I would get from one channel (i.e.&nbsp;readin A, for example) would represent 1/120 of a total rotation.</p>
+<p>As for the forwards or backwards spin, after drawing a step by step look at what would happen to A and B when the motor was rotating forwards versus backwards (<a href="#fig-overTime" class="quarto-xref">Figure&nbsp;3</a>), I was able to construct a table (<a href="#fig-tableA" class="quarto-xref">Figure&nbsp;4</a>) that described the behavior I was seeing.</p>
+<div id="fig-overTime" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-overTime-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/scenario_mapping.png" id="fig-overTime" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-overTime-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<div id="fig-tableA" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tableA-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/table_of_forwards.png" id="fig-tableA" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-tableA-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<p>After this, I worked backwards to find the maximum and minimum frequencies that I would be required to collect considering the planned interrupts of my timer.</p>
+<p>The datasheet for the motor states that the <a href="(https://hmc-e155.github.io/assets/lab/25GA370.pdf)">motor</a> can run between 10-600 rpm. When calculated into rotations per second, or more specifically the number of signals per second you get the following function:</p>
+<p><span class="math display">\[
+10 rpm * \frac{120 pulses (A and B)}{1 rotation} * \frac{1 minute}{60 seconds} = \frac{20 pulses}{1 second}
+\]</span></p>
+<p>This would mean that, in order to get the minimum number of samples possible to see this frequency, I would need to be able to sample at at least 40 Hz. For the sake of safety, I additionally said that I should be able to see up to 8Hz (i.e.&nbsp;one full period of an A and B signal rising and falling).</p>
+<p>For the maximum frequency of 600 rpm, I pretended we were instead going to measure maximum 800 rpm. This meant, according to the math seend above, that I would need to sample at a rate of 3200 pulses every second in order to not miss any of the samples I was expecting to see.</p>
+<p>With this in mind, I began deciding on the timer that I wanted to design; most timers on the system are already based off of the HCLK clock, or th 4MHz clock, that already exists in the system. I started first by figuring out how if, at minimum, I wanted to be able to to read out a 8Hz signal, I would need such a time period between Timer ticks that filling the entire ARR array of a timer would take longer than it would take to receive an 8Hz tick. To do so, I computed the period of 8Hz (<span class="math inline">\(1/8\)</span> of a second) and then multiplied it by 65535, or <span class="math inline">\(2^{16} - 1\)</span>, which is the maximum value that can be reached with the ARR variable. I then took the inverse of this to find that the maximum frequency I could possible do, while still being able to sample the 8Hz signal, was 524,280 Hz.</p>
+<p>As a result, I found that the general range in which I would be safely able to sample the rotations of the motor were between 3200 and 524280 Hz. Of these, I decided that it would good to have a clock frequency of 300,000.</p>
+</section>
+<section id="planning-the-code" class="level4">
+<h4 class="anchored" data-anchor-id="planning-the-code">Planning the Code</h4>
+<p>My intention within this project was to build a running average that I could use to measure the average speed of the motor. To do so, every interrupt the code would increment the index of a given array (either moving forwards or back to the beginning depending on its location), and the interrupt would call two functions to determine what was happening. I intended to use pins PA6 and PA9 for this system, since both pins are able to withstand 5V of power (pages 52-54, Table 14, of the <a href="https://hmc-e155.github.io/assets/doc/ds11451-stm32l432kc.pdf">STM32L432KC Datasheet</a>). In addition, these pins are already connected to the same interrupt pathway, which meant that I would only need to control one interrupt handler to understand what was going on in either pin at a given time.</p>
+</section>
+<section id="pre-code" class="level4">
+<h4 class="anchored" data-anchor-id="pre-code">Pre-Code</h4>
+<p>Segger Embedded Studio 8.16a was used to program all modules. In order to make sure I knew what needed to be done to handle an interrupt, I constructed a smaller project for creating an interrupt with a button, which would toggle and LED on and off.</p>
+<p>To control an interrupt, there are X main steps:</p>
+<ol type="1">
+<li>Enable the SYSCFG clock to get to your desired pin, and enable your pin.</li>
+</ol>
+<p><code>gpioEnable(GPIO_PORT_A); pinMode(PA5, GPIO_INPUT); RCC-&gt;APB2ENR |= (1&lt;&lt;0);</code></p>
+<ol start="2" type="1">
+<li>Set the configuration of the EXTI control register to the right value. This can be done using the SYSCFG structure that has come with the given STM32 headers. For those that noticed, the array of the EXTICR is indexed from 0, not from 1, even thought the names of the variables are indexed from 1: as a result, if I want to control the EXTI Control Register 2, I have to call <code>SYSCFG-&gt;EXTICR[1]</code>, since the bits at [2] would actually be for control register 3.</li>
+</ol>
+<p><code>SYSCFG-&gt;EXTICR[1] &amp;= ~_VAL2FLD(SYSCFG_EXTICR2_EXTI5, 0b111);</code></p>
+<ol start="3" type="1">
+<li><p>Enable global interrupts via the code <code>__enable_irq();</code></p></li>
+<li><p>Configure the code so that the triggers arrive on the right spots. First, I configure the GPIO pin I would be using to trigger the LED (PA5) to be read as if it were intended ot be used for an interrupt request. I then set it such that it would trigger an interrupt only on the falling trigger, not the rising edge.</p></li>
+</ol>
+<pre><code>EXTI-&gt;IMR1 |= _VAL2FLD(EXTI_IMR1_IM5, 0b1);
+
+// 2. Disable rising edge trigger
+EXTI-&gt;RTSR1 &amp;= ~_VAL2FLD(EXTI_RTSR1_RT5, 0b1);
+
+// 3. Enable falling edge trigger
+EXTI-&gt;FTSR1 |= _VAL2FLD(EXTI_FTSR1_FT5, 0b1);</code></pre>
+<ol start="5" type="1">
+<li>Finally, turn on the EXTI interrupt from within the Nested Vector Interrupt Controller (NVIC), specifically via the ISER register.</li>
+</ol>
+<p><code>NVIC-&gt;ISER[0] |= (1 &lt;&lt; EXTI9_5_IRQn);</code></p>
+<p>I then set up my button so that it was a pull-up resistor, and then set the DIP Switch button to pull it down to 0 when it was pressed. I was able to confirm, in this way, how interrupts worked via GPIO pins, and was able to expand this into my final code.</p>
+</section>
+<section id="code" class="level4">
+<h4 class="anchored" data-anchor-id="code">Code</h4>
+<p>My code consists primarily of only a c file and a header file this time (<code>main.c</code> and <code>main.h</code>).</p>
+<ol type="1">
+<li><p><strong>main.c</strong>: a C file that initializes and configures all the addresses and registers as required by the system. Additionally provides helper functions for the main that will be triggered or used by the triggered function <code>EXTI9_5_IRQHandler</code> to control the current array that is tracking the frequency.</p></li>
+<li><p><strong>main.h</strong>: Assigns the A and B input pins from the motor, as well as labels two timers (TIM2 and TIM6, specifically) as the clocks that will find the frequency or will be used for printing and delaying between prints.</p></li>
+</ol>
+<p>Since I only wanted to update the printout statements every second, I used the delay_millis with Timer 6 to wait for the requisite amount of time before running again.</p>
+<section id="global-variables" class="level5">
+<h5 class="anchored" data-anchor-id="global-variables">Global Variables</h5>
+<p>I configured my main file with a set of variables that could be used for two purposes; first, to keep track of the current number of ticks for the frequency, and second, to help the system work at extremely low frequencies. The variables are listed in the table below, with corresponding functionalities next to them (<a href="#tbl-globalVars" class="quarto-xref">Table&nbsp;1</a>)</p>
+<div id="tbl-globalVars" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[10,90]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-globalVars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: <strong>main.c Global Variabless</strong>
+</figcaption>
+<div aria-describedby="tbl-globalVars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 90%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable Name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>volatile int arrA[5]</td>
+<td>An array of counts: keeps track of how many counts have passed between each tick on the motor via TIM2-&gt;CNT; only changed when pin A triggers an interrupt</td>
+</tr>
+<tr class="even">
+<td>volatile int arrB[5]</td>
+<td>An array of counts, like arrA. The only difference is that it is changed when pin B is triggered</td>
+</tr>
+<tr class="odd">
+<td>volatile int idxA</td>
+<td>The index that is set to next be changed in arrA when the system is triggered by an input from pin A</td>
+</tr>
+<tr class="even">
+<td>volatile int idxB</td>
+<td>The index that is set to next be changed in arrB when the system is triggered by an input from pin B</td>
+</tr>
+<tr class="odd">
+<td>int hav_ent</td>
+<td>Whether or not we have entered an interrupt statement within the current loop of TIM6 (i.e., has an interrupt been triggered in the past second). This is used to determine whether or not the motor is actually spinning, and stalls the system for ten seconds until it determines that there is no signal.</td>
+</tr>
+<tr class="even">
+<td>volatile int curr_count_avg</td>
+<td>Is recalcualted every loop of the timer cycle. Finds the average amount of counts between an A to B signal or a B to A signal by averaging the values of arrA and arrB.</td>
+</tr>
+<tr class="odd">
+<td>volatile int forwards</td>
+<td>Changed within the interrupt loops. Determines whether the system is moving forwards or backwards (i.e.&nbsp;clockwise or counterclockwise)</td>
+</tr>
+<tr class="even">
+<td>volatile int first_time_loop_A</td>
+<td>Used at the very beginning of the system. Waits for the user to start moving the motor before it tries calculating average time.</td>
+</tr>
+<tr class="odd">
+<td>volatile int first_time_loop_B</td>
+<td>The same as first_time_loop_A, except this time triggered by an interrupt from encoder pin B.</td>
+</tr>
+<tr class="even">
+<td>double frequency</td>
+<td>The frequency of the system itself. It is equivalent to <span class="math inline">\(\frac{30000}{4 * curr_count_avg * 120}\)</span>, since the samples have been collected at 30000 Hz.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>This design is set to trigger on every edge of the potential interrupts that we’d see from pins A or B. The additional calculations confirm that it will be able to read both extremely low signals, and the fastest possible signals from the motor (i.e.&nbsp;the 10Hz signal when it is powered at 12 V).</p>
+</section>
+<section id="additional-modules" class="level5">
+<h5 class="anchored" data-anchor-id="additional-modules">Additional Modules</h5>
+<p>This code also makes use of the &lt;stdio.h&gt; header library, as well as the _write function that comes with the the <code>printf</code> library. This library (if you forget to import it or weren’t aware that you needed to when initializing your project) can be added to your *.emProject file, as depicted below (<a href="#fig-helpWithPrintF" class="quarto-xref">Figure&nbsp;5</a>).</p>
+<div id="fig-helpWithPrintF" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-helpWithPrintF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/add_printf.png" id="fig-helpWithPrintF" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-helpWithPrintF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<p>The printf statement applies, as far as I see, only to the Debug Terminal. Resultantly, when running your code in in Debug mode, and chose to play by itself (the green arrow), you will see the terminal consistently update depending on what’s in your printf statements. In my case, I chose to update based on a variety of factors, mainly being</p>
+<ol type="a">
+<li><p>Whether or not we had just started the program</p></li>
+<li><p>Whether the signal was arriving extremely slowly</p></li>
+<li><p>Whether the motor was turned on or not (if it had already run)</p></li>
+<li><p>How fast and in what direction the motor was moving.</p></li>
+</ol>
+<p>All of these print statements I set to be called by the main function through a series of if statemeents.</p>
+</section>
+</section>
+</section>
+<section id="why-interrupts" class="level3">
+<h3 class="anchored" data-anchor-id="why-interrupts">Why Interrupts?</h3>
+<p>Consider that you were trying to toggle an LED pin; inside of a simple while loop, you could simply check to see if a button was pressed, and set the LED. But if that while loop contains additional code, all of a sudden it is possible that the button could be asynchronously pressed, and you would completely miss the trigger to turn the LED on. This is the primary motivation for using interrupts with your MCU.</p>
+<p>For this code, in particular, we must keep in mind that the print statement is updating every 1 Hz, we won’t be able to check how fast the motor is running using this timer accurately. The most we could likely do would be to wait one millisecond, and check to see if we have an input, and do this method 1000 times. But the problem is that sometimes, waiting a millisecond could take longer than another because of the interrupt, or because of other processes on the chip. As a result, the program would inconsistently update its timer value (i.e.&nbsp;the updates wouldn’t always happen every second, and may take more time to arrive if the interrupts or if additional system processes are happening faster). Additionally consider what happens if you want to do more than just check for the motor interrupt - maybe this was a system that was measuring temperature underwater on a submarine, and the motors just need to be checked every so often to make sure that they aren’t stuttering or we haven’t hit a wall. In that case, there would be far more items to check off via manual polling, and it may sometimes take far to long to reach the frequency readouts; if that’s the case, they either wouldn’t be accurate, or would be missed altogether. Since motors rely on square waves, if you happen to sample the wave when it’s at 0, it will appear as if the motor isn’t on; it is only through consistently tracking when the motor changes its value that you can caccurately measure its frequency, and this is why interrupts are so useful.</p>
+</section>
+<section id="final-setup" class="level3">
+<h3 class="anchored" data-anchor-id="final-setup">Final Setup</h3>
+<p>The final layout for this program can be seen in <a href="#fig-finalLayout" class="quarto-xref">Figure&nbsp;6</a>.</p>
+<div id="fig-finalLayout" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-finalLayout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/block_diag.png" id="fig-finalLayout" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-finalLayout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<p>The program prints values every second. These values are determined after 1 second of waiting, and are calculated using the arrA and arrB vectors, which have the number of counts between each interrupt saved for the past 5 interrupts. At the very beginning of main’s while loop for this system, the variable hav_ent is set to 0; if it remains 0 the entire time, that means that there has been no interrupt within the 1 second delay, and the system enters a stall state. To allow for extremely slow frequencies, the system will wait for 10 beats; if hav_ent has not been set by this time, then the program assumes that the motor is not running, and prints out a variable saying as much.</p>
+</section>
+<section id="hardware-setup" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-setup">Hardware Setup</h3>
+<p>All that was required for the setup of this lab was the TS-25GA370 DC Motor and pins to read the input (PA6 and PA9), as well as to supply 5V and GND to the encoder pins on the motor. The motor was supplied separately with between 0-12V, as demonstrated in the schematic (<a href="#fig-schematic" class="quarto-xref">Figure&nbsp;7</a>)</p>
+<div id="fig-schematic" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/schematic.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Schematic Diagram
+</figcaption>
+</figure>
+</div>
+<p>Pins PA6 and PA9 were chosen, individually, becuase they are able to withstand 5 V of power as opposed to other pins that can only take in 3.3 V. This is detailed further in Table 14 (STM32L432xx pin definitions) in the <a href="https://www.st.com/resource/en/datasheet/stm32l432kb.pdf">STM32L432xx Datasheet</a>.</p>
+</section>
+<section id="initial-testing" class="level3">
+<h3 class="anchored" data-anchor-id="initial-testing">Initial Testing</h3>
+<p>To make sure that this system could initially run, I used the demos Python proram “interrupt_button.c”, which still remains in the project even though it is excluded from the build. I could easily use this button configuration to confirm that my interrupts were set up correctly, which aided a large part in debugging.</p>
+</section>
+<section id="results-and-discussion" class="level3">
+<h3 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h3>
+<p>In conclusion, this lab was a success in configuring an MCU board to use interrupts for measuring the velocity of a motor. It additionally provided information about the incorporation of printf statements within a program, which will prove helpful in later labs for debugging purposes.</p>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>In conclusion, all of the program works properly in simulation and in hardware, and can be confirmed with the use of an oscilloscope or a callibration plot that accounts for the voltage to spin rate of the motor.</p>
+<p>I spent a total of 23.2 hours working on this lab, with roughly three of them spent on the lab writeup, and two spent building the initial diagram of what signals I anticipated to see with the spinning motor.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/zoe-worrall\.github\.io\/e155_labs\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/zoe-worrall">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/zoeworrall">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

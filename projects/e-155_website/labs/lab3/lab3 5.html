@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.45">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zoe Worrall - zworrall@g.hmc.edu">
+<meta name="dcterms.date" content="2024-09-09">
+
+<title>Lab 3 Writeup – Zoe Worrall's Website</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../../images/bg_test.png" rel="icon" type="image/png">
+<script src="../../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<meta property="og:title" content="Zoe Worrall’s Website - Lab 3 Writeup">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://zoe-worrall.github.io/e155_labs/projects/e-155_website/labs/lab3/images/4x4Kepad.png">
+<meta property="og:site_name" content="Zoe Worrall's Website">
+<meta property="og:image:height" content="1302">
+<meta property="og:image:width" content="1296">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../../images/zoe_logo.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../projects/e-155_website/blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-e155-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">E155 Labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-e155-labs">    
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab1/lab1.html">
+ <span class="dropdown-text">Lab 1 Writeup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab2/lab2.html">
+ <span class="dropdown-text">Lab 2 Writeup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab3/lab3.html">
+ <span class="dropdown-text">Lab 3 Writeup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab4/lab4.html">
+ <span class="dropdown-text">Lab 4 Writeup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab5/lab5.html">
+ <span class="dropdown-text">Lab 5 Writeup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab6/lab6.html">
+ <span class="dropdown-text">Lab 6 Writeup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website/labs/lab7/lab7.html">
+ <span class="dropdown-text">Lab 7 Writeup</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="../../../../projects/e-155_website">
+ <span class="dropdown-text">E155 Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/E80_sub.html">
+ <span class="dropdown-text">Engineering Systems E80</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/mcf_lci.html">
+ <span class="dropdown-text">Multicore Fiber Bundle Low Coherence Interferometry Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/open_ivis.html">
+ <span class="dropdown-text">openIVIS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../projects/radio_frequency">
+ <span class="dropdown-text">RF Circuitry Projects</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../art/index.html"> 
+<span class="menu-text">Zoe Worrall’s Artworks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../resources.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../contacts/index.html"> 
+<span class="menu-text">Contact Me</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lab-3-keypad-scanner" id="toc-lab-3-keypad-scanner" class="nav-link active" data-scroll-target="#lab-3-keypad-scanner">Lab 3: Keypad Scanner</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#general-approach" id="toc-general-approach" class="nav-link" data-scroll-target="#general-approach">General Approach</a></li>
+  <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules">Modules</a></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://pages.hmc.edu/brake/class/e155/fa23/assets/doc/E155%20Development%20Board%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 FA Development Board</a></li><li><a href="https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf"><i class="bi bi-link-45deg"></i>E155 Breadboard Adapter v4</a></li><li><a href="https://github.com/zoe-worrall/e155_labs/tree/main/fpga/radiant_project/lab03_fin"><i class="bi bi-link-45deg"></i>Lab 3 Github Files</a></li><li><a href="https://hmc-e155.github.io/assets/doc/2N3906-D.pdf"><i class="bi bi-link-45deg"></i>PNP Transistor Datasheet</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 3 Writeup</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">labreport</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zoe Worrall - zworrall@g.hmc.edu </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 9, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="lab-3-keypad-scanner" class="level2">
+<h2 class="anchored" data-anchor-id="lab-3-keypad-scanner">Lab 3: Keypad Scanner</h2>
+<p><em>Hours Spent: 56 hours, Mapped with Toggl Track</em></p>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>The main point of this laboratory was to use asynchronous components and a finite state machine to control a keypad connected to an FPGA. The Finite state machine would keep track of both the values of the states, as well as have a recorded memory of both the most recent and the last pin pressed. The difficulties of this lab lay within creating a way to handle metastability; in order to ensure that no random metastability occured within the system while it was running, you need to have a set of flip flops through which you run the column input.</p>
+</section>
+<section id="general-approach" class="level3">
+<h3 class="anchored" data-anchor-id="general-approach">General Approach</h3>
+<p>I first began by drawing a rudimentary FSM chart:</p>
+<p><img src="images/Screenshot 2024-09-17 at 2.31.42 PM.png" class="img-fluid"></p>
+<p>This is based on the fundamental logic that there should be four parts to this problem: 1. A section of the code/hardware that sends a voltage through each row as it goes, <strong>waiting</strong> to detect a signal. If it does detect something, it sends us to the next state.</p>
+<ol start="2" type="1">
+<li><p>A section of the code/hardware that <strong>logs</strong> the corresponding rows and columns so that we can compute what the letter we need to light up is</p></li>
+<li><p>A section of the code/hardware that <strong>cycles</strong> for about 1ms to prevent bounceback caused by any of the keys</p></li>
+<li><p>A section of the code/hardware that waits until the original button (or what I coined the RX Signal) that was pressed is no longer pressed down (i.e.&nbsp;can’t say “nothing is pressed”, but rather that the original button is no longer pressed); thus, you wait <strong>till the RX signal stops</strong>.</p></li>
+</ol>
+<p>I additionally decided to define a row state machine, although this would reside within the actual program as combinational logic, not as a module.</p>
+<div id="fig-row_state_machine" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-row_state_machine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/row_fsm.png" id="fig-row_state_machine" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-row_state_machine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<section id="metastability" class="level4">
+<h4 class="anchored" data-anchor-id="metastability">Metastability</h4>
+<p>Some challenges with this lab are implementing a way to handle metastability; in this case, it was necessary to add a set of flip flops about the column input logic so that asyncronous signals could become synchronous; in my case, I chose to send the columns through two flipflops. I integrated this step within my FSM block, after I had initially made the logic for it, which resulted in the large amount of code that it contains; in the future, I’d like to trim this FSM block down so that it looks simpler and shows the outputs and inputs easier to the causal viewer. However, for now the flip flops have been implemented to run right after the waiting period, within the “LOG” state; the LOG state will wait for two cycles of flip flops, before taking the output of the flip flop (mat_stab), and using it as if it were the column. During this process, the intial row that the column was saved to has been stored, and I am powering it so that the upcoming TILL_RX_STOP step can run.</p>
+<p>My debouncing approach is likely more rudimentary than it could be: I could additionally have added a way to track how many one’s in a row the machine had received, and use that to determine if the button was actually pushed. This would have required a longer loop, but would likely have been more accurate, as currently some a quick tap of the key makes it repeat (even though I’ve made the CYCLE stage extremely long relatively speaking). I think that the looking at the 1’s strategy would be very effective for eliminating debouncing. I think that in particular, I could have implemented more flip-flops to really make sure that the state was what the board originally thought it was.</p>
+</section>
+<section id="drawing-charts" class="level4">
+<h4 class="anchored" data-anchor-id="drawing-charts">Drawing Charts</h4>
+<p>Using my initial approach as well as some blocking of the modules that I would need for this program, I was then able to construct a finalized FSM with defined output variables.</p>
+<p>This gives the following diagram and set of tables for inputs and outputs.</p>
+<p><img src="images/finite_state_mach.png" class="img-fluid"></p>
+<div id="tbl-state_trans_model" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-state_trans_model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: <strong>State Transition Table</strong>
+</figcaption>
+<div aria-describedby="tbl-state_trans_model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>state</th>
+<th>scenario/inputs</th>
+<th>next_state</th>
+<th>output values: row, past_letter, curr_letter, state, waiter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>WAIT</td>
+<td>col == 0</td>
+<td>WAIT</td>
+<td>row = ROW (see the <a href="@fig-row_state_machine">row state machine</a>), past_letter remains, curr_letter remains, state = WAIT, waiter = 0</td>
+</tr>
+<tr class="even">
+<td>WAIT</td>
+<td>col != 0</td>
+<td>LOG</td>
+<td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = WAIT, next_waiter = 2^19</td>
+</tr>
+<tr class="odd">
+<td>LOG</td>
+<td>mat_stab != (4’b0001 or 4’b0010 or 4’b0100 or 4’b1000)</td>
+<td>WAIT</td>
+<td>row = R_RESET (see the <a href="@fig-row_state_machine">row state machine</a>), next_past_letter = curr_letter, next_curr_letter = next_letter (output of letter_receiver module), state = LOG, next_waiter = waiter</td>
+</tr>
+<tr class="even">
+<td>LOG</td>
+<td>mat_stab == (4’b0001 or 4’b0010 or 4’b0100 or 4’b1000)</td>
+<td>CYCLE</td>
+<td>next_row = row (see the <a href="@fig-row_state_machine">row state machine</a>), past_letter remains, curr_letter remains, state = WAIT, waiter = waiter - 1</td>
+</tr>
+<tr class="odd">
+<td>CYCLE</td>
+<td>waiter != 0</td>
+<td>CYCLE</td>
+<td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = CYCLE, next_waiter = waiter - 1</td>
+</tr>
+<tr class="even">
+<td>CYCLE</td>
+<td>waiter == 0</td>
+<td>TX_RX_STOP</td>
+<td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = CYCLE, next_waiter = 0</td>
+</tr>
+<tr class="odd">
+<td>TILL_RX_STOP</td>
+<td>col[col_index] != 0</td>
+<td>TILL_RX_STOP</td>
+<td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = TILL_RX_STOP, next_waiter = 0</td>
+</tr>
+<tr class="even">
+<td>TILL_RX_STOP</td>
+<td>col[col_index] == 0</td>
+<td>LOG</td>
+<td>next_row = row, next_past_letter = past_letter , next_curr_letter = curr_letter, state = TILL_RX_STOP, next_waiter = 0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>I have additionally depicted below what the table for the row states looks like.</p>
+<div id="tbl-state_trans_model" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-state_trans_model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: <strong>State Transition Table for the Row States</strong>
+</figcaption>
+<div aria-describedby="tbl-state_trans_model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>row</th>
+<th>scenario/inputs</th>
+<th>next_row</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R_RESET</td>
+<td>X</td>
+<td>R_0</td>
+</tr>
+<tr class="even">
+<td>R_0</td>
+<td>col == 0</td>
+<td>R_1</td>
+</tr>
+<tr class="odd">
+<td>R_1</td>
+<td>col == 0</td>
+<td>R_2</td>
+</tr>
+<tr class="even">
+<td>R_2</td>
+<td>col == 0</td>
+<td>R_3</td>
+</tr>
+<tr class="odd">
+<td>R_3</td>
+<td>col == 0</td>
+<td>R_0</td>
+</tr>
+<tr class="even">
+<td>R_X</td>
+<td>col != 0</td>
+<td>R_X</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Currently in the works, I decided to try revamping my FSM so that I wasn’t doing everything at once inside of my FSM function; it initially made the most sense to me to try doing it in one place, but this made it hard to see all of the logic that was happening to an outside observer (i.e.&nbsp;Kavi)</strong></p>
+</section>
+</section>
+<section id="modules" class="level3">
+<h3 class="anchored" data-anchor-id="modules">Modules</h3>
+<p>My final product of code looks like the following. The program primarily consists of the top module, which contains the clock, the lab03 module, which holds the fsm and the dual segment display modules, and finally the individual modules inside them. Describing them below,</p>
+<ul>
+<li><p><strong>lab03_fsm</strong>: uses an internal flipflop from my flop_me module and a combinational logic block called letter_receiver to iterate through the defined states and return the desired values of interest.</p></li>
+<li><p><strong>dual_seven_seg</strong>: the same as from lab02, where it uses multiplexing to light up both of the arrays with two defined numbers; this time, the numbers are supplied by the fsm.</p></li>
+<li><p><strong>flop_me</strong>: a flip flop of some defined length that runs every time within the function in order to solve any metastability that may be present with a button push.</p></li>
+<li><p><strong>letter_receiver</strong>: a combinational logic block that combines the saved indices of the rows and columns in order to solve for whatever letter/number was pressed. This is how I get the next_letter variable within my finite state machine.</p></li>
+</ul>
+<p><img src="images/block_diagram_2.png" class="img-fluid"></p>
+<p>I confirmed using Questa that I was able to get the right values for all potential row inputs that I would have by iterating through the fsm (see the testbench below)</p>
+<p><img src="images/fsm_testbench.png" class="img-fluid"></p>
+<p>In order to form a comprehensive test, I initially begin by making sure that every row can be cycled through while we reside inside the Waiting state. No column was entered, and the testbench was used to track that the past letters, current letters, and finally the row cycling; since this is the waiting state, and nothing’s been pressed, the rows should cycle, and the output letters (0 and 0) stay the same (<a href="#fig-cyclingrows" class="quarto-xref">Figure&nbsp;2</a>)</p>
+<div id="fig-cyclingrows" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cyclingrows-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/fsm_cycling_rows_testbench.png" id="fig-cyclingrows" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cyclingrows-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<p>After this has been done, the system is then reset. This is confirmed by the testbench, and then the testbench enters a long for-loop that is used to confirm that every letter can be received and updated. For each loop of the table, the row and column are updated; the letter that has been generated is confirmed to be correct in the testbench, as well as the current lit rows and columns. The FSM additionally outputs its state, which is not used in the lab03 overall, but is used in the testbench to confirm that the proper state has also been entered. These cycles run through every row and every potential combination of row and column (<a href="#fig-forloop" class="quarto-xref">Figure&nbsp;3</a>).</p>
+<div id="fig-forloop" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-forloop-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/fsm_testbench_smal.png" id="fig-forloop" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-forloop-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<p>When we zoom out in full, we can confirm that all letters can be reached, and that they can be stored (<a href="#fig-fullrun" class="quarto-xref">Figure&nbsp;4</a>).</p>
+<div id="fig-fullrun" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fullrun-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/fsm_testbench.png" id="fig-fullrun" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-fullrun-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<p>Next, I made another test bench to test my lab03 module as a whole, which looks like the following;</p>
+<div id="fig-lab03Test" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lab03Test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/lab03_testbench.png" id="fig-lab03Test" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-lab03Test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+<p>This testbench acts very similar to the fsm testbench, but in this case it confirms that the segment oscillates back and forth between the past letter and the current letter. Similar to the previous testbench for the fsm, the values were compared with expected values in the test bench, and when no errors were thrown, and the for-loop was completed without any errors or red lines becoming apparent, the testbench was considered a success.</p>
+<p>As can be seen in <a href="#fig-lab03Test" class="quarto-xref">Figure&nbsp;5</a>, the full test could be run, and the expected oscillations between segments occured as lab03 was run.</p>
+<p>In both of these cases, I used a testbench to initialize and push inputs into the modules, and made sure that the expected values matched what I anticipated (indicated by no errors appearing in the terminal window).</p>
+<p>The final schematic of my system was very simple to make. I used four GPIO pins from the FPGA E155 adapter board as an output into the rows, and four GPIO pins from this same board as inputs. Of additional note, becuase I considered 1’s as “high” on my board, I turned off the pull-up resistors inside the column pins, and implemented pulldown resistors of 47kOhm impedance on my board, with the knowledge that the keypad’s resistors range between 60 and 200 Ohms (found by testing in lab with an oscilloscope); resultantly, any voltage drop caused by the voltage-divider setup I had made would be negligable over the keypad, and would allow for proper reading of the signal. All other parts of this schematic, as a reader may likely recognize, are the same as from Lab2; the seven segment display as well as it PNP transistors are all plugged into the same pins, and depend on the same inputs.</p>
+<p><img src="images/schematic_lab3_2.png" class="img-fluid"></p>
+<p><img src="images/4x4Kepad.png" class="img-fluid"></p>
+</section>
+<section id="results-and-discussion" class="level3">
+<h3 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h3>
+<p>As shown in the two test bench simulations above, the program is able to receive the desired outputs. When observed in the lab, with hardware, the correct behavior can be similarly observed. The main issue encountered in this lab were the following: * Implementation of pull-down resistors, and turning off the pull-up resistors within the keypads. * Implementation of a clock division that prevented the double-readout of a button push, which caused keys that sometimes held values a bit longer (on my keypad, keys E, 7, and 2) to be falsely read as a second input.</p>
+<p>If future development desired, I’d like to add more flipflops, as well as simplify the state machine layout within Verilog to make debugging easier and make it more understandable to new viewers; potentially if I have time over winter break, I’ll do that and make it extremely nice looking so that it looks better in GitHub.</p>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>This lab was extremely difficult. I recommend in the future sending out a post about where the keypads are in the beginning of lab, because many people had a hard time finding them: I’d additionally warn people about how some of the keypads don’t match their anticipated row and column values, and that people should plan on bringing in multimeters in order to test which buttons are connected where. Finally, I’d suggest that people start by thinking about the flip flops, and don’t ignore them until later on; it became much harder to implement once I had my program set up, and if I had had the ability to go back and redo it with the knowledge that multipathing would require me to wait periods of time within a module, etc., I likely would have set it up nicer and it would have been in separate modules.</p>
+<p>Additionally, I believe a note should be put somewhere about the speed of the clock, and to consider that as well when implementing your code. Although it is something that can be realized with the aid of an oscilloscope, it didn’t cross my mind because I was so fixated on the bugs that may be causing the issue. It may be nice to put a mention, maybe even a vague sentence, somewhere that says to keep an eye on not only the timing issues of your circuit, but in what time scale your circuit is running - that way it doesn’t spell out the answer, but still is informative to people like me who get stuck.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/zoe-worrall\.github\.io\/e155_labs\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/zoe-worrall">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/zoeworrall">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
